@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default Splash = () => (
+export default () => (
   <div className='splash'>
     <div>
       Welcome To DistanSing

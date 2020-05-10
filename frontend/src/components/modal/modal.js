@@ -11,7 +11,7 @@ function Modal({ modal, closeModal }) {
     return null;
   }
   let component;
-  switch (modal.component) {
+  switch (modal) {
     case "artistSignup":
       component = <ArtistSignupContainer />
       break;

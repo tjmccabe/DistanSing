@@ -1,8 +1,8 @@
 import {
   RECEIVE_CURRENT_ARTIST,
-  RECEIVE_ARTIST_LOGOUT,
   RECEIVE_ARTIST_SIGN_IN
-} from '../actions/artist_session_actions';
+} from '../../actions/artist_session_actions';
+import {RECEIVE_LOGOUT} from '../../actions/user_session_actions'
 
 const initialState = {
   isAuthenticated: false,
@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
         isAuthenticated: !!action.currentArtist,
         artist: action.currentArtist
       };
-    case RECEIVE_ARTIST_LOGOUT:
+    case RECEIVE_LOGOUT:
       return {
         isAuthenticated: false,
         artist: undefined

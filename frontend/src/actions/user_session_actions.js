@@ -3,13 +3,11 @@ import jwt_decode from 'jwt-decode';
 
 // User action constants
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
+export const RECEIVE_LOGOUT = "RECEIVE_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 // Errors action constants
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const REMOVE_SESSION_ERRORS = "REMOVE_SESSION_ERRORS";
 
 // User regular action creators
 export const receiveCurrentUser = currentUser => ({
@@ -21,8 +19,8 @@ export const receiveUserSignIn = () => ({
   type: RECEIVE_USER_SIGN_IN
 });
 
-export const logoutUser = () => ({
-  type: RECEIVE_USER_LOGOUT
+export const receiveLogout = () => ({
+  type: RECEIVE_LOGOUT
 });
 
 // Session errors regular action creators
@@ -30,10 +28,6 @@ export const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
-
-export const removeSessionErrors = () => ({
-  type: REMOVE_SESSION_ERRORS
-})
 
 // User thunk action creators
 export const signupUser = user => dispatch => (
@@ -59,8 +53,8 @@ export const loginUser = user => dispatch => (
   })
 )
 
-export const logoutUser = () => dispatch => {
+export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
   APIUtil.setAuthToken(false);
-  dispatch(logoutUser());
+  dispatch(receiveLogout());
 };
