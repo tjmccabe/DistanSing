@@ -1,4 +1,5 @@
 import React from "react";
+import EventsIndexItem from "./events_index_item";
 
 class EventsIndex extends React.Component {
   componentDidMount() {
@@ -9,12 +10,12 @@ class EventsIndex extends React.Component {
     const { events } = this.props;
     return (
       <div>
-        This is the Events Index
+        This is the Events Index that might be used by Splash, Artist Show, User Show
         {events.map( event => {
           return (
-            <div>
-              {event.name}
-            </div>
+            <EventsIndexItem 
+              key={event._id} 
+              event={event} />
           )
         })}
       </div>
