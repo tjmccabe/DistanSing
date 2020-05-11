@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
       password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentWillUnmount() {
@@ -55,31 +56,46 @@ class SignupForm extends React.Component {
     const name = formType === "artistSignup" ? "Enter Artist/Band Name" : "Enter Username"
 
     const AltUserLink = formType === "userSignup" ? (
-      <button onClick={() => openModal("artistLogin")}>
+      <div
+        onClick={() => openModal("artistSignup")}
+        className="session-form-link"
+        >
         Go to Artist Signup
-      </button>
+      </div>
     ) : (
-      <button onClick={() => openModal("userSignup")}>
+      <div
+        onClick={() => openModal("userSignup")}
+        className="session-form-link"
+      >
         Go to User Signup
-      </button>
+      </div>
     );
 
     const AltFormLink = formType === "userSignup" ? (
-      <button onClick={() => openModal("userLogin")}>
+      <div
+        onClick={() => openModal("userLogin")}
+        className="session-form-link"
+      >
         Already have an account? Log in
-      </button>
+      </div>
     ) : (
-      <button onClick={() => openModal("artistLogin")}>
+      <div
+        onClick={() => openModal("artistLogin")}
+        className="session-form-link"
+      >
         Already have an account? Log in
-      </button>
+      </div>
     );
 
     const ErrorList = this.renderErrors();
 
+    const formTitle = formType === "userSignup" ? "DistanSing User Signup" : "DistanSing Artist Signup"
+
     return (
       <div className="signup-form">
+        <div className="form-title">{formTitle}</div>
         {ErrorList}
-        <form onSubmit={this.handleSubmit()}> 
+        <form onSubmit={this.handleSubmit()} className="signup-form-form"> 
           <input 
             type="text"
             placeholder={ name }
@@ -100,10 +116,12 @@ class SignupForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange("password")}
           />
-          <button>Sign Up</button>
+          <div className="session-form-button">
+            <button className="session-form-filter">Sign Up</button>
+          </div>
         </form>
-        {AltUserLink}
         {AltFormLink}
+        {AltUserLink}
       </div>
     );
   }

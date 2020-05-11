@@ -3,7 +3,7 @@ import { loginUser, receiveSessionErrors } from "../../actions/user_session_acti
 import LoginForm from "./login_form";
 
 const mapStateToProps = (state, ownProps) => ({
-  errors: state.errors.session,
+  errors: Object.values(state.errors.session),
   formType: "userLogin"
 });
 
