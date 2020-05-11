@@ -24,6 +24,52 @@ router.get(
   }
 )
 
+router.get("/", (req, res) => {
+  User.find()
+    .sort({ date: -1 })
+    .then((data) => {
+      let users = {};
+      data.map((user) => {
+        users[user.id] = user;
+      });
+      res.json(users);
+    })
+    .catch((errors) =>
+      res.status(404).json({ nousersfound: "No users found" })
+    );
+});
+
+router.get("/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((errors) =>
+      res
+        .status(404)
+        .json({ nouserfound: "This user show page is under construction" })
+    );
+});
+
+router.patch(
+  "/:id",
+  passport.authenticate("user-rule", { session: false }),
+  (req, res) => {
+    // const { errors, isValid } = validateUserInput(req.body);
+
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
+
+    User.findbyId(req.params.id)
+      .then((user) => {
+        let updatedUser = Object.assign(user, req.body);
+        updatedUser.save().then((user) => res.json(user));
+      })
+      .catch((errors) =>
+        res.status(404).json({ nouserfound: "No user found with that ID" })
+      );
+  }
+);
+
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 

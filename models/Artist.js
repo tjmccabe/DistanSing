@@ -14,6 +14,10 @@ const ArtistSchema = new Schema({
     type: String,
     required: true
   },
+  bio: {
+    type: String,
+    default: ''
+  },
   date: {
     type: Date,
     default: Date.now

@@ -20,10 +20,56 @@ router.get(
     res.json({
       id: req.user.id,
       artistname: req.user.artistname,
-      email: req.user.email
+      email: req.user.email,
+      body: req.user.body
     });
   }
 )
+
+router.get("/", (req, res) => {
+  Artist.find()
+    .sort({ date: -1 })
+    .then((data) => {
+      let artists = {}; 
+      data.map(artist => {
+        artists[artist.id] = artist
+      })
+      res.json(artists)
+    })
+    .catch((errors) =>
+      res.status(404).json({ noartistsfound: "No artists found" })
+    );
+});
+
+router.get("/:id", (req, res) => {
+  Artist.findById(req.params.id)
+    .then((artist) => res.json(artist))
+    .catch((errors) =>
+      res.status(404).json({ noartistfound: "This artist show page is under construction" })
+    );
+});
+
+router.patch(
+  "/:id",
+  passport.authenticate("artist-rule", { session: false }),
+  (req, res) => {
+    // const { errors, isValid } = validateEventInput(req.body);
+
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
+
+    Artist.findById(req.params.id)
+      .then((artist) => {
+        let updatedArtist = Object.assign(artist, req.body);
+        updatedArtist.save().then((artist) => res.json(artist));
+      })
+      .catch((errors) =>
+        res.status(404).json({ noartistfound: "No artist found with that ID" })
+      );
+  }
+);
+
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
