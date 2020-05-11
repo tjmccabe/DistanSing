@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { loginArtist, removeSessionErrors } from "../../actions/user_session_actions";
+import { receiveSessionErrors } from "../../actions/user_session_actions";
+import { loginArtist } from '../../actions/artist_session_actions';
 import LoginForm from "./login_form";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (artist) => dispatch(loginArtist(artist)),
-  removeSessionErrors: () => dispatch(removeSessionErrors()),
+  removeSessionErrors: () => dispatch(receiveSessionErrors([])),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
