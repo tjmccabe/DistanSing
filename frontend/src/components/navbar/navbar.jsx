@@ -45,11 +45,14 @@ class NavBar extends React.Component {
         className="nav-bar-button logout-button"
         onClick={this.props.logout}
       >
-        <div>Welcome, {name}!</div>
         <button className="nav-bar-filter">
           Log Out
         </button>
       </div>
+    ) : null;
+
+    const Welcome = loggedIn ? (
+      <div className="nav-bar-greeting" >Welcome, {name}!</div>
     ) : null;
 
     const SearchPlaceholder = null; // come back to this when we can
@@ -72,6 +75,7 @@ class NavBar extends React.Component {
             {UserLogin}
             {UserSignup}
             {ArtistLogin}
+            {Welcome}
             {Logout}
           </div>
         </div>

@@ -13,16 +13,16 @@ function Modal({ modal, closeModal }) {
   let component;
   switch (modal) {
     case "artistSignup":
-      component = <ArtistSignupContainer />
+      component = <ArtistSignupContainer closeModal={closeModal}/>
       break;
     case "artistLogin":
-      component = <ArtistLoginContainer />
+      component = <ArtistLoginContainer closeModal={closeModal}/>
       break;
     case "userSignup":
-      component = <UserSignupContainer />
+      component = <UserSignupContainer closeModal={closeModal}/>
       break;
     case "userLogin":
-      component = <UserLoginContainer />
+      component = <UserLoginContainer closeModal={closeModal}/>
       break;
     default:
       return null;
