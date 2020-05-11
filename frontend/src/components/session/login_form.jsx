@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
   }
 
   renderErrors() {
-    return (
+    return this.props.errors[0] ? (
       <ul className="login-errors">
         {this.props.errors.map((error, idx) => {
           return (
@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
           )
         })}
       </ul>
-    )
+    ) : null;
   }
 
   phantomLogin() {
@@ -48,27 +48,51 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    const {formType, openModal} = this.props;
+
+    const AltUserLink = formType === "userLogin" ? (
+      <button onClick={() => openModal("artistLogin")}>
+        Go to Artist Login
+      </button>
+    ) : (
+      <button onClick={() => openModal("userLogin")}>
+        Go to User Login
+      </button>
+    );
+
+    const AltFormLink = formType === "userLogin" ? (
+      <button onClick={() => openModal("userSignup")}>
+        Don't have an account? Sign up
+      </button>
+    ) : (
+      <button onClick={() => openModal("artistSignup")}>
+        Don't have an account? Sign up
+      </button>
+    );
+
+    const ErrorList = this.renderErrors();
+
     return (
       <div className="login-form">
+        {ErrorList}
         <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.email}
+            placeholder="Enter Email"
+            onChange={this.handleChange("email")}
+          />
 
-          <label> Email:
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleChange("email")}
-            />
-          </label>
-
-          <label> Password:
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange("password")}
-            />
-          </label>
-          <button>Submit</button>
+          <input
+            type="password"
+            value={this.state.password}
+            placeholder="Enter Password"
+            onChange={this.handleChange("password")}
+          />
+          <button>Log In</button>
         </form>
+        {AltUserLink}
+        {AltFormLink}
       </div>
 
     )

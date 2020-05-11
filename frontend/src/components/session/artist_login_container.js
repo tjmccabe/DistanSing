@@ -5,6 +5,7 @@ import LoginForm from "./login_form";
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
+  formType: "artistLogin"
 });
 
 const mapDispatchToProps = (dispatch) => ({
