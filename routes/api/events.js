@@ -59,6 +59,7 @@ router.post(
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,
+      price: req.body.price,
       artist: req.user,
     });
     newEvent.save().then((event) => res.json(event));

@@ -8,7 +8,10 @@ class EventShow extends React.Component {
         This is Event Show Page
         {event.name}
         {event.date}
+        {event.price}
       </div>
     )
   }
 }
+
+export default EventShow;

@@ -9,6 +9,7 @@ class EventIndexItem extends React.Component {
       <div>
         {event.name}
         {event.date}
+        {event.price}
       </div>
     )
   }
