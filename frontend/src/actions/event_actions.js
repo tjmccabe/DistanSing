@@ -1,4 +1,4 @@
-import EventApiUtil from "../util/event_api_util";
+import * as EventApiUtil from "../util/event_api_util";
 
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const RECEIVE_ARTIST_EVENTS = "RECEIVE_ARTIST_EVENTS";
