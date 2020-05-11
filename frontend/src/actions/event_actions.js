@@ -1,8 +1,8 @@
 import * as EventApiUtil from "../util/event_api_util";
 
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
-export const RECEIVE_ARTIST_EVENTS = "RECEIVE_ARTIST_EVENTS";
-export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
+// export const RECEIVE_ARTIST_EVENTS = "RECEIVE_ARTIST_EVENTS";
+// export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
 
@@ -11,15 +11,15 @@ const receiveEvents = (events) => ({
   events,
 });
 
-const receiveArtistEvents = (events) => ({
-  type: RECEIVE_ARTIST_EVENTS,
-  events,
-});
+// const receiveArtistEvents = (events) => ({
+//   type: RECEIVE_ARTIST_EVENTS,
+//   events,
+// });
 
-const receiveUserEvents = (events) => ({
-  type: RECEIVE_USER_EVENTS,
-  events,
-});
+// const receiveUserEvents = (events) => ({
+//   type: RECEIVE_USER_EVENTS,
+//   events,
+// });
 
 const receiveEvent = (event) => ({
   type: RECEIVE_EVENT,
@@ -36,15 +36,15 @@ export const fetchEvents = () => (dispatch) =>
     .then((events) => dispatch(receiveEvents(events)))
     .catch((err) => console.log(err));
 
-export const fetchArtistEvents = (id) => (dispatch) =>
-  EventApiUtil.getArtistEvents(id)
-    .then((events) => dispatch(receiveArtistEvents(events)))
-    .catch((err) => console.log(err));
+// export const fetchArtistEvents = (id) => (dispatch) =>
+//   EventApiUtil.getArtistEvents(id)
+//     .then((events) => dispatch(receiveArtistEvents(events)))
+//     .catch((err) => console.log(err));
 
-export const fetchUserEvents = (id) => (dispatch) =>
-  EventApiUtil.getUserEvents(id)
-    .then((events) => dispatch(receiveUserEvents(events)))
-    .catch((err) => console.log(err));
+// export const fetchUserEvents = (id) => (dispatch) =>
+//   EventApiUtil.getUserEvents(id)
+//     .then((events) => dispatch(receiveUserEvents(events)))
+//     .catch((err) => console.log(err));
 
 export const fetchEvent = (eventId) => (dispatch) =>
   EventApiUtil.getEvent(eventId)

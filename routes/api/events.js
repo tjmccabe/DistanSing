@@ -21,14 +21,22 @@ router.get("/", (req, res) => {
     );
 });
 
-router.get("/artist/:artist_id", (req, res) => {
-  Event.find({ artist: req.params.user_id })
-    .sort({ date: -1 })
-    .then((events) => res.json(events))
-    .catch((errors) =>
-      res.status(404).json({ noeventsfound: "No events found for that artist ID" })
-    );
-});
+// router.get("/artist/:artist_id", (req, res) => {
+//   Event.find({ artist: req.params.user_id })
+//     .sort({ date: -1 })
+//     .then((data) => {
+//       let events = {};
+//       data.map((event) => {
+//         events[event.id] = event;
+//       });
+//       res.json(events);
+//     })
+//     .catch((errors) =>
+//       res
+//         .status(404)
+//         .json({ noeventsfound: "No events found for that artist ID" })
+//     );
+// });
 
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)
