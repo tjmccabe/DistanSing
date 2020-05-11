@@ -6,23 +6,24 @@ import ArtistSignupContainer from "../session/artist_signup_container";
 import UserLoginContainer from "../session/user_login_container";
 import UserSignupContainer from "../session/user_signup_container";
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, loggedIn }) {
+
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
     case "artistSignup":
-      component = <ArtistSignupContainer closeModal={closeModal}/>
+      component = <ArtistSignupContainer loggedIn={loggedIn} closeModal={closeModal}/>
       break;
     case "artistLogin":
-      component = <ArtistLoginContainer closeModal={closeModal}/>
+      component = <ArtistLoginContainer loggedIn={loggedIn} closeModal={closeModal}/>
       break;
     case "userSignup":
-      component = <UserSignupContainer closeModal={closeModal}/>
+      component = <UserSignupContainer loggedIn={loggedIn} closeModal={closeModal}/>
       break;
     case "userLogin":
-      component = <UserLoginContainer closeModal={closeModal}/>
+      component = <UserLoginContainer loggedIn={loggedIn} closeModal={closeModal}/>
       break;
     default:
       return null;
@@ -40,6 +41,7 @@ function Modal({ modal, closeModal }) {
 const mapStateToProps = (state) => {
   return {
     modal: state.ui.modal,
+    loggedIn: state.session.isAuthenticated
   };
 };
 

@@ -24,6 +24,8 @@
 
 .nav-logo-img {
   margin-right: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo-name {
@@ -33,7 +35,25 @@
 
 .nav-bar-button {
   display: flex;
-  margin-left: 5px;
+  margin-left: 10px;
+  border-radius: 3px;
+  height: 32px;
+  background-color: yellow;
+}
+
+.nav-bar-button button {
+  background-color: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-bar-filter:hover {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
 }
 
 .splash {
