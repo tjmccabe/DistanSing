@@ -10,7 +10,7 @@ const EventSchema = new Schema({
     type: Date,
     required: true,
   },
-  artistId: {
+  artist: {
     type: Schema.Types.ObjectId,
     ref: "Artist",
   },

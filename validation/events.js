@@ -1,4 +1,5 @@
 const Validator = require("validator");
+const validate = require('validate.js')
 const validText = require("./valid-text");
 
 module.exports = validateEventInput = (data) => {
@@ -12,7 +13,12 @@ module.exports = validateEventInput = (data) => {
   }
 
   if (Validator.isEmpty(data.date)) {
+    console.log(new Date())
     errors.date = "Event date field is required";
+  }
+
+  if (!validate.isDate(data.date)) {
+    errors.date = "Event date must be a valid date";
   }
 
   // if (!Validator.isISO8601(data.date, {strict: true})) {
