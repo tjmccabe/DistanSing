@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 // User action constants
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_LOGOUT = "RECEIVE_LOGOUT";
-export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 // Errors action constants
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -13,10 +12,6 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
-});
-
-export const receiveUserSignIn = () => ({
-  type: RECEIVE_USER_SIGN_IN
 });
 
 export const receiveLogout = () => ({
@@ -30,9 +25,9 @@ export const receiveSessionErrors = errors => ({
 });
 
 // User thunk action creators
-export const signupUser = user => dispatch => (
-  APIUtil.signupUser(user).then(() => (
-    dispatch(receiveUserSignIn())
+export const signupUser = formUser => dispatch => (
+  APIUtil.signupUser(formUser).then(() => (
+    dispatch(loginUser(formUser))
   ), err => (
     dispatch(receiveSessionErrors(err.response.data))
   ))

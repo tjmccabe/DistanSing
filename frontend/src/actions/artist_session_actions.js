@@ -5,16 +5,11 @@ import {RECEIVE_SESSION_ERRORS} from './user_session_actions'
 // Artist action constants
 export const RECEIVE_CURRENT_ARTIST = "RECEIVE_CURRENT_ARTIST";
 export const RECEIVE_ARTIST_LOGOUT = "RECEIVE_ARTIST_LOGOUT";
-export const RECEIVE_ARTIST_SIGN_IN = "RECEIVE_ARTIST_SIGN_IN";
 
 // Artist regular action creators
 export const receiveCurrentArtist = currentArtist => ({
   type: RECEIVE_CURRENT_ARTIST,
   currentArtist
-});
-
-export const receiveArtistSignIn = () => ({
-  type: RECEIVE_ARTIST_SIGN_IN
 });
 
 // Session errors regular action creators
@@ -24,10 +19,11 @@ export const receiveSessionErrors = errors => ({
 });
 
 // Artist thunk action creators
-export const signupArtist = artist => dispatch => (
-  APIUtil.signupArtist(artist).then(() => (
-    dispatch(receiveArtistSignIn())
-  ), err => (
+export const signupArtist = formArtist => dispatch => (
+  APIUtil.signupArtist(formArtist).then(() => {
+    dispatch(loginArtist(formArtist))
+  }
+  , err => (
     dispatch(receiveSessionErrors(err.response.data))
   ))
 );

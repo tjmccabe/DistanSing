@@ -21,13 +21,18 @@ class SignupForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.props.formType === "Name") {
-      this.setState({ artistName: this.state.username })
+  handleSubmit() {
+    return e => {
+      e.preventDefault();
+      if (this.props.formType === "Name") {
+        this.setState({ artistname: this.state.username }, 
+          () => {
+            this.props.signup(this.state)}
+        )
+      } else {
+        this.props.signup(this.state)
+      }
     }
-    // add logic here depending on this.props.formType
-    this.props.signup(this.state);
   }
 
   renderErrors() {
@@ -46,10 +51,12 @@ class SignupForm extends React.Component {
 
   render() {
     const { formType } = this.props;
+    const name = formType === "Name" ? "Artist/Band Name" : "Username"
+
     return (
       <div className="signup-form">
-        <form> 
-          <label> {formType}:
+        <form onSubmit={this.handleSubmit()}> 
+          <label> {name}:
             <input 
               type="text"
               placeholder={this.props.formType === "Name" ? "Enter arist or band name here" : "Enter desired username" }
@@ -73,7 +80,7 @@ class SignupForm extends React.Component {
               onChange={this.handleChange("password")}
             />
           </label>
-
+          <button>Submit</button>
         </form>
         
       </div>
