@@ -2,13 +2,9 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillReceiveProps(newProps) {
-
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const { loggedIn, current, loggedInAsUser, openModal } = this.props;
