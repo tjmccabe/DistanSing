@@ -4,9 +4,9 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-
-// We have not created this action yet, but will do so in the next step
+import { fetchArtist, fetchArtists } from './actions/artist_actions'
 import { logout } from './actions/user_session_actions';
+import { updateArtist } from './util/artist_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Render our root component and pass in the store as a prop
   const root = document.getElementById('root');
-
+  window.fetchArtist = fetchArtist
+  window.fetchArtists = fetchArtists
+  window.updateArtist = updateArtist
+  window.store = store
   ReactDOM.render(<Root store={store} />, root);
 });
