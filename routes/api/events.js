@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
 
 router.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("artist-rule", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
 
@@ -53,7 +53,7 @@ router.post(
 
 router.patch(
   "/:id", 
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("artist-rule", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
 

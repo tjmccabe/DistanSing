@@ -15,9 +15,10 @@ module.exports = validateEventInput = (data) => {
     errors.date = "Event date field is required";
   }
 
-  if (!Validator.isData(data.date)) {
-    errors.date = "Event date is not valid";
-  }
+  // if (!Validator.isISO8601(data.date, {strict: true})) {
+  //   errors.date = "Event date is not valid";
+  // }
+  // cannot get validation to work. isDate() is no longer a Validator method.
 
   return {
     errors,
