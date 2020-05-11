@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
       preloadedState = { session: { isAuthenticated: true, user: JSON.parse(localStorage.user) } }
     }
 
-    // debugger
-
     store = configureStore(preloadedState);
 
     const currentTime = Date.now() / 1000;

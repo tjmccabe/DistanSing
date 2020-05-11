@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class NavBar extends React.Component {
   render() {
     const { loggedIn, current, loggedInAsUser, openModal } = this.props;
     const name = loggedInAsUser ? current.username : loggedIn ? current.artistname : null;
-    // debugger
 
     const ArtistLogin = loggedIn ? null : (
       <div
@@ -62,13 +61,15 @@ class NavBar extends React.Component {
     return (
       <header className="nav-bar">
         <div className="nav-container">
-          <div className="nav-logo nav-bar-left">
-            <div>
-              Image Here
-            </div>
-            <a href="/#/" className="nav-logo-name">
-              DistanSing
-            </a>
+          <div className="nav-bar-left">
+            <Link to="/" className="nav-logo">
+              <div className="nav-logo-img">
+                Image Here
+              </div>
+              <div className="nav-logo-name">
+                DistanSing
+              </div>
+            </Link>
           </div>
           {SearchPlaceholder}
           <div className="nav-bar-right">

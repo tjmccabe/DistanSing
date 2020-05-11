@@ -1,0 +1,29 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 60px;
+  background-color: aquamarine;
+  position: fixed;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.nav-bar-left, .nav-bar-right, .nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  margin-right: 5px;
+}
+
+.nav-logo-name {
+  font-size: 28px;
+  font-family: 'Lobster', cursive;
+}
+
+.nav-bar-button {
+  margin-left: 5px;
+}

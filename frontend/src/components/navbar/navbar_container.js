@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
     loggedInAsUser,
     loggedInAsArtist,
     current: loggedInAsArtist ? state.session.artist : loggedInAsUser ? state.session.user : null
-    // user: state.entities.users[state.session.id],
 }};
 
 const mapDispatchToProps = (dispatch) => ({
