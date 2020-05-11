@@ -8,10 +8,9 @@ const users = require('./routes/api/users')
 const artists = require('./routes/api/artists')
 
 mongoose
-    .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
-    .catch(err => console.log(err));
-
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch((err) => console.log(err));
 
 app.use(passport.initialize());
 require('./config/passport')(passport)
