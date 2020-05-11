@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/artist/:artist_id", (req, res) => {
-  Event.find({ artistId: req.params.user_id })
+  Event.find({ artist: req.params.user_id })
     .sort({ date: -1 })
     .then((events) => res.json(events))
     .catch((errors) =>
@@ -45,7 +45,7 @@ router.post(
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,
-      artistId: req.user,
+      artist: req.user,
     });
     newEvent.save().then((event) => res.json(event));
   }

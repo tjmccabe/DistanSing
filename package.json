@@ -21,6 +21,8 @@
     "mongoose": "^5.9.13",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "validate": "^5.1.0",
+    "validate.js": "^0.13.1",
     "validator": "^13.0.0"
   },
   "devDependencies": {
