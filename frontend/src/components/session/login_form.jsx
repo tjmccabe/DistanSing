@@ -46,7 +46,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-form">
-        <form>
+        <form onSubmit={this.handleSubmit}>
 
           <label> Email:
             <input
@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
               onChange={this.handleChange("password")}
             />
           </label>
-
+          <button>Submit</button>
         </form>
       </div>
 

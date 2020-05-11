@@ -14,54 +14,54 @@ const Auth = ({
   path,
   loggedIn,
   exact
-}) => ( <
-  Route path = {
+}) => (<
+  Route path={
     path
   }
-  exact = {
+  exact={
     exact
   }
-  render = {
+  render={
     (props) => (
-      !loggedIn ? ( <
+      !loggedIn ? (<
         Component {
-          ...props
+        ...props
         }
-        />
+      />
       ) : (
-        <
-        Redirect to = "/" / >
-      )
+          <
+            Redirect to="/" />
+        )
     )
   }
-  />
-);
+/>
+  );
 
 const Protected = ({
   component: Component,
   loggedIn,
   ...rest
-}) => ( <
+}) => (<
   Route {
-    ...rest
+  ...rest
   }
-  render = {
+  render={
     props =>
-    loggedIn ? ( <
-      Component {
+      loggedIn ? (<
+        Component {
         ...props
-      }
+        }
       />
-    ) : (
-      <
-      Redirect to = "/login" / >
-    )
+      ) : (
+          <
+            Redirect to="/login" />
+        )
   }
-  />
-);
+/>
+  );
 
 const mapStateToProps = state => ({
-  loggedIn: state.session.isAuthenticated
+  loggedIn: state.session.isAuthenticated //needs to change with updated reducers ? maybe not?
 });
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
