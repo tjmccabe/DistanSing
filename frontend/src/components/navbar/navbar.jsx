@@ -11,33 +11,45 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { loggedIn, current, loggedInAsUser } = this.props;
+    const { loggedIn, current, loggedInAsUser, openModal } = this.props;
     const name = loggedInAsUser ? current.username : loggedIn ? current.artistname : null;
     // debugger
 
     const ArtistLogin = loggedIn ? null : (
-      <div className="nav-bar-button artist-login-button" onClick={this.props.logout}>
+      <div
+        className="nav-bar-button artist-login-button"
+        onClick={() => openModal("artistLogin")}
+      >
         <button className="nav-bar-filter">
           Artists
         </button>
       </div>)
 
     const UserLogin = loggedIn ? null : (
-      <div className="nav-bar-button user-login-button" onClick={this.props.logout}>
+      <div
+        className="nav-bar-button user-login-button"
+        onClick={() => openModal("userLogin")}
+      >
         <button className="nav-bar-filter">
           Log In
         </button>
       </div>)
 
     const UserSignup = loggedIn ? null : (
-      <div className="nav-bar-button user-signup-button" onClick={this.props.logout}>
+      <div
+        className="nav-bar-button user-signup-button"
+        onClick={() => openModal("userSignup")}
+      >
         <button className="nav-bar-filter">
           Sign Up
         </button>
       </div>)
 
     const Logout = loggedIn ? (
-      <div className="nav-bar-button logout-button" onClick={this.props.logout}>
+      <div
+        className="nav-bar-button logout-button"
+        onClick={this.props.logout}
+      >
         <div>Welcome, {name}!</div>
         <button className="nav-bar-filter">
           Log Out
