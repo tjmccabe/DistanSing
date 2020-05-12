@@ -8,8 +8,8 @@ class NavBar extends React.Component {
 
   render() {
     const { loggedIn, current, loggedInAsUser, openModal } = this.props;
-    const name = loggedInAsUser ? current.username : loggedIn ? current.artistname : null;
-
+    const name = loggedInAsUser && current ? current.username : loggedIn && current ? current.artistname : null;
+    
     const ArtistLogin = loggedIn ? null : (
       <div
         className="nav-bar-button artist-login-button"

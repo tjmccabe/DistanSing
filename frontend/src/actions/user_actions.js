@@ -9,16 +9,15 @@ const receiveUser = (user) => ({
 
 const receiveUsers = (users) => ({
   type: RECEIVE_USERS,
-  events,
+  users,
 });
 
-
 export const fetchUser = (userId) => (dispatch) =>
-  UserAPIUtil.getUser(userId).then((user) =>
-    dispatch(receiveUser(user)).catch((err) => console.log(err))
-);
+  UserAPIUtil.getUser(userId)
+    .then((user) => dispatch(receiveUser(user)))
+    .catch((err) => console.log(err));
 
 export const fetchUsers = () => (dispatch) =>
-  UserAPIUtil.getUsers().then((users) =>
-    dispatch(receiveUsers(users)).catch((err) => console.log(err))
-);
+  UserAPIUtil.getUsers()
+    .then((users) => dispatch(receiveUsers(users)))
+    .catch((err) => console.log(err));
