@@ -1,15 +1,20 @@
 import React from "react";
+import {demo} from "./demos";
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.phantomLogin = this.phantomLogin.bind(this);
+    this.demoing = false;
   }
 
   componentWillUnmount() {
     this.props.removeSessionErrors();
+  }
+
+  componentDidUpdate() {
+    if (this.props.loggedIn) this.props.closeModal()
   }
 
   handleChange(field) {
@@ -21,10 +26,6 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
-      .then(() => {
-        if (this.props.loggedIn) this.props.closeModal()
-      })
-      .catch(err => console.log(err))
   }
 
   renderErrors() {
@@ -42,13 +43,14 @@ class LoginForm extends React.Component {
     ) : null;
   }
 
-  phantomLogin() {
-    // this.props.login({ email: "demo@distansing.com", password: "123456" });
-    // fill in demo user info
+  demoSubmit() {
+    if (this.demoing) return;
+    this.demoing = true;
+    demo(this.props.formType, this.props.login)
   }
 
   render() {
-    const {formType, openModal} = this.props;
+    const {formType, openModal, login} = this.props;
 
     const AltUserLink = formType === "userLogin" ? (
       <div
@@ -85,6 +87,7 @@ class LoginForm extends React.Component {
     const ErrorList = this.renderErrors();
 
     const formTitle = formType === "userLogin" ? "DistanSing User Login" : "DistanSing Artist Login"
+    const demoTitle = formType === "userLogin" ? "Demo User Login" : "Demo Artist Login"
 
     return (
       <div className="login-form">
@@ -93,6 +96,7 @@ class LoginForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-form">
           <input
             type="text"
+            id="email-hook"
             value={this.state.email}
             placeholder="Enter Email"
             onChange={this.handleChange("email")}
@@ -100,6 +104,7 @@ class LoginForm extends React.Component {
 
           <input
             type="password"
+            id="password-hook"
             value={this.state.password}
             placeholder="Enter Password"
             onChange={this.handleChange("password")}
@@ -108,6 +113,14 @@ class LoginForm extends React.Component {
             <button className="session-form-filter">Log In</button>
           </div>
         </form>
+        <div className="session-form-button demo-button">
+          <button
+            className="session-form-filter"
+            onClick={() => this.demoSubmit()}
+          >
+            {demoTitle}
+          </button>
+        </div>
         {AltFormLink}
         {AltUserLink}
       </div>
