@@ -3,6 +3,7 @@ const multerS3 = require('multer-s3');
 const multer = require('multer');
 const path = require('path');
 const url = require('url');
+const keys = require('../config/keys');
 
 const s3 = new aws.S3({
   accessKeyId: keys.awsAccessKeyId,
@@ -34,6 +35,6 @@ const imageUpload = multer({
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   }
-}).single('image');
+}).single('imagefile');
 
 module.exports = imageUpload;
