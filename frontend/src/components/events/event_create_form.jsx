@@ -1,13 +1,15 @@
 import React from 'react'
 import ImageUpload from '../image_upload/image_upload';
 
-export default class EventEditForm extends React.Component {
+export default class EventCreateForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.event.name,
-      description: this.props.event.description,
-      imageurl: this.props.event.imageurl,
+      name: '',
+      description: '',
+      price: 0.00,
+      date: '',
+      imageurl: '',
       imagefile: null
     }
     this.handleInput = this.handleInput.bind(this);
@@ -27,34 +29,37 @@ export default class EventEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const data = this.prepareForm();
-    this.props.updateEvent(data);
+    this.props.createEvent(data);
   }
 
   prepareForm() {
     const formData = new FormData();
-    const { name, description, imagefile } = this.state;
+    const { name, description, price, date, imagefile } = this.state;
     if (imagefile) formData.append('imagefile', imagefile);
-    formData.append('id', this.props.event.id);
     formData.append('name', name);
     formData.append('description', description);
+    formData.append('price', price);
+    formData.append('date', date);
     return formData;
   }
 
   handleCancel() {
     this.setState({
-      name: this.props.event.name,
-      description: this.props.event.description,
-      imageurl: this.props.event.imageurl,
+      name: '',
+      description: '',
+      price: 0.00,
+      date: '',
+      imageurl: '',
       imagefile: null
-    });
+    })
   }
 
   render() {
-    const { name, description, imageurl } = this.state;
+    const { name, description, price, date } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <ImageUpload setImageFile={this.setImageFile} imageurl={imageurl} />
+          <ImageUpload setImageFile={this.setImageFile} imageurl='' />
         </div>
         <div>
           <label>Event Name
@@ -62,6 +67,12 @@ export default class EventEditForm extends React.Component {
           </label>
           <label>Description
             <textarea value={description} onChange={this.handleInput("description")} placeholder="What's going on?" />
+          </label>
+          <label>Price
+            <input type="number" value={price} onChange={this.handleInput("price")} min="0.00" max="1000.00" step="1.00" />
+          </label>
+          <label>Date
+            <input type="datetime-local" value={date} onChange={this.handleInput("date")} />
           </label>
         </div>
         <button>Save Changes</button>

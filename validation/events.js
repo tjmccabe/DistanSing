@@ -13,7 +13,6 @@ module.exports = validateEventInput = (data) => {
   }
 
   if (Validator.isEmpty(data.date)) {
-    console.log(new Date())
     errors.date = "Event date field is required";
   }
 
@@ -21,9 +20,9 @@ module.exports = validateEventInput = (data) => {
   //   errors.date = "Event date must be a valid date";
   // }
 
-  if (!Validator.isInt(data.price, {gt: 0})) {
-    errors.price = "Price set must be greater than 0"
-  }
+  // if (!Validator.isInt(data.price, {gt: 0})) {
+  //   errors.price = "Price set must be greater than 0"
+  // }
   // if (!Validator.isISO8601(data.date, {strict: true})) {
   //   errors.date = "Event date is not valid";
   // }

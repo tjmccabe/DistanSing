@@ -18,9 +18,6 @@ export const receiveSessionErrors = errors => ({
   errors
 });
 
-
-
-
 // Artist thunk action creators
 export const signupArtist = formArtist => dispatch => (
   APIUtil.signupArtist(formArtist).then(() => {
