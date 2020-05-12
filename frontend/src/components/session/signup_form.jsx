@@ -28,10 +28,17 @@ class SignupForm extends React.Component {
       if (this.props.formType === "artistSignup") {
         this.setState({ artistname: this.state.username }, 
           () => {
-            this.props.signup(this.state)}
+            this.props.signup(this.state)
+              .then(() => {
+                if (this.props.loggedIn) this.props.closeModal()
+              })
+            }
         )
       } else {
         this.props.signup(this.state)
+          .then(() => {
+            if (this.props.loggedIn) this.props.closeModal()
+          })
       }
     }
   }
