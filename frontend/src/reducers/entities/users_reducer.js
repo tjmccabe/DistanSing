@@ -9,11 +9,15 @@ const UsersReducer = (state = {}, action) => {
       newState = action.users.data;
       return newState;
     case RECEIVE_USER:
-      newState = Object.assign(newState, { [action.user.data._id]: action.user.data })
-      return newState;
+      if (action.user.data._id) {
+        return Object.assign(newState, { [action.user.data._id]: action.user.data });
+      }
+      return Object.assign(newState, { [action.user.data.id]: action.user.data })
     case RECEIVE_CURRENT_USER:
-      newState = Object.assign(newState, { [action.currentUser._id]: action.currentUser });
-      return newState;
+      if (action.currentUser._id) {
+        return Object.assign(newState, { [action.currentUser._id]: action.currentUser });
+      }
+      return Object.assign(newState, { [action.currentUser.id]: action.currentUser })
     default:
       return state;
   }

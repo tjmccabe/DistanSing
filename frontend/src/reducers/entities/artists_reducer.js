@@ -9,9 +9,15 @@ const ArtistsReducer = (state = {}, action) => {
       newState = action.artists.data;
       return newState;
     case RECEIVE_ARTIST:
-      return Object.assign(newState, { [action.artist.data.id]: action.artist.data});
+      if (action.artist.data._id) {
+        return Object.assign(newState, { [action.artist.data._id]: action.artist.data});
+      }
+      return Object.assign(newState, { [action.artist.data.id]: action.artist.data })
     case RECEIVE_CURRENT_ARTIST:
-      return Object.assign(newState, { [action.currentArtist.id]: action.currentArtist});
+      if (action.currentArtist._id) {
+        return Object.assign(newState, { [action.currentArtist._id]: action.currentArtist });
+      }
+      return Object.assign(newState, { [action.currentArtist.id]: action.currentArtist })
     default:
       return state;
   }
