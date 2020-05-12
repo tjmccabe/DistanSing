@@ -37,6 +37,7 @@ export const loginArtist = artist => dispatch => (
       token
     } = res.data;
     localStorage.setItem('jwtToken', token);
+    localStorage.setItem('artist', true);
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
     const artistCopy = Object.assign({}, res.data.artist, decoded)
