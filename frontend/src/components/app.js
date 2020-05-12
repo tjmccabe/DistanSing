@@ -5,12 +5,14 @@ import NavBarContainer from './navbar/navbar_container';
 import EventShowContainer from "./events/event_show_container";
 import Modal from './modal/modal';
 import Splash from './splash/splash';
+import ArtistShowContainer from '../components/artists/artist_show_container'
 
 const App = () => (
   <div>
     <Modal />
     <NavBarContainer />
     <Switch>
+      <Route path="/artists/:id" component={ArtistShowContainer} />
       <Route path="/events/:id" component={EventShowContainer} />
       <Route exact path="/" component={Splash} />
     </Switch>

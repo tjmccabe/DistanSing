@@ -1,13 +1,14 @@
 import { connect } from "react-redux";
 import ArtistShow from "./artist_show";
-import {} from "../../actions/artist_actions";
+import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
 
 const mapStateToProps = (state, ownProps) => ({
-  events: Object.values(state.entities.events),
+  artist: state.entities.artists[ownProps.match.params.id],
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchEvents: () => dispatch(fetchEvents()),
+  fetchArtist: (artistId) => dispatch(fetchArtist(artistId)),
+  fetchArtists: () => dispatch(fetchArtists())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistShow);
