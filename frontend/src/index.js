@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let preloadedState = {};
 
     // Create a dynamic preconfigured state we can immediately add to our store
-    if (decodedUser.artistname) {
-      preloadedState = { session: { isAuthenticated: true, artist: decodedUser } }
+    if (localStorage.artist) {
+      preloadedState = { session: { isAuthenticated: true, artist: JSON.parse(localStorage.artist) } }
     } else {
-      preloadedState = { session: { isAuthenticated: true, user: decodedUser } }
+      preloadedState = { session: { isAuthenticated: true, user: JSON.parse(localStorage.user) } }
     }
 
     store = configureStore(preloadedState);

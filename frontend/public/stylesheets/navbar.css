@@ -1,0 +1,62 @@
+.nav-bar {
+  height: 60px;
+  position: relative;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 60px;
+  background-color: aquamarine;
+  position: fixed;
+  width: 100%;
+  padding: 0 10px;
+  transition: all .7s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.nav-bar-left, .nav-bar-right, .nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-name {
+  font-size: 28px;
+  font-family: 'Lobster', cursive;
+}
+
+.nav-bar-button {
+  display: flex;
+  margin-left: 10px;
+  border-radius: 3px;
+  height: 32px;
+  background-color: yellow;
+}
+
+.nav-bar-button button {
+  background-color: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-bar-filter:hover {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+.splash {
+  height: 400px;
+  background-color: rgb(255, 249, 191);
+}

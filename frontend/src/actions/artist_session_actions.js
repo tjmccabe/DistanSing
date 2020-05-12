@@ -39,7 +39,10 @@ export const loginArtist = artist => dispatch => (
     localStorage.setItem('jwtToken', token);
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
-    dispatch(receiveCurrentArtist(decoded))
+    const artistCopy = Object.assign({}, res.data.artist, decoded)
+    delete artistCopy['password']
+    localStorage.setItem('artist', JSON.stringify(artistCopy));
+    dispatch(receiveCurrentArtist(artistCopy))
   })
   .catch(err => {
     dispatch(receiveSessionErrors(err.response.data));

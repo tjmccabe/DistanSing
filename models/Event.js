@@ -17,6 +17,10 @@ const EventSchema = new Schema({
   imageUrl: {
     type: String,
     default: ''
+  },
+  price: {
+    type: Number,
+    required: true,
   }
 });
 

@@ -4,7 +4,8 @@ import { loginArtist } from '../../actions/artist_session_actions';
 import LoginForm from "./login_form";
 
 const mapStateToProps = (state, ownProps) => ({
-  errors: state.errors.session,
+  errors: Object.values(state.errors.session),
+  formType: "artistLogin"
 });
 
 const mapDispatchToProps = (dispatch) => ({

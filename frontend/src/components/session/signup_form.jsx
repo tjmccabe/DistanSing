@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
       password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentWillUnmount() {
@@ -24,7 +25,7 @@ class SignupForm extends React.Component {
   handleSubmit() {
     return e => {
       e.preventDefault();
-      if (this.props.formType === "Name") {
+      if (this.props.formType === "artistSignup") {
         this.setState({ artistname: this.state.username }, 
           () => {
             this.props.signup(this.state)}
@@ -36,7 +37,7 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
-    return (
+    return this.props.errors[0] ? (
       <ul className="signup-errors">
         {this.props.errors.map((error, idx) => {
           return (
@@ -46,43 +47,81 @@ class SignupForm extends React.Component {
           );
         })}
       </ul>
-    );
+    ) : null;
   }
 
   render() {
-    const { formType } = this.props;
-    const name = formType === "Name" ? "Artist/Band Name" : "Username"
+    const { formType, openModal } = this.props;
+
+    const name = formType === "artistSignup" ? "Enter Artist/Band Name" : "Enter Username"
+
+    const AltUserLink = formType === "userSignup" ? (
+      <div
+        onClick={() => openModal("artistSignup")}
+        className="session-form-link"
+        >
+        Go to Artist Signup
+      </div>
+    ) : (
+      <div
+        onClick={() => openModal("userSignup")}
+        className="session-form-link"
+      >
+        Go to User Signup
+      </div>
+    );
+
+    const AltFormLink = formType === "userSignup" ? (
+      <div
+        onClick={() => openModal("userLogin")}
+        className="session-form-link"
+      >
+        Already have an account? Log in
+      </div>
+    ) : (
+      <div
+        onClick={() => openModal("artistLogin")}
+        className="session-form-link"
+      >
+        Already have an account? Log in
+      </div>
+    );
+
+    const ErrorList = this.renderErrors();
+
+    const formTitle = formType === "userSignup" ? "DistanSing User Signup" : "DistanSing Artist Signup"
 
     return (
       <div className="signup-form">
-        <form onSubmit={this.handleSubmit()}> 
-          <label> {name}:
-            <input 
-              type="text"
-              placeholder={this.props.formType === "Name" ? "Enter arist or band name here" : "Enter desired username" }
-              value={this.state.username}
-              onChange={this.handleChange("username")}
-            />
-          </label>
+        <div className="form-title">{formTitle}</div>
+        {ErrorList}
+        <form onSubmit={this.handleSubmit()} className="signup-form-form"> 
+          <input 
+            type="text"
+            placeholder={ name }
+            value={this.state.username}
+            onChange={this.handleChange("username")}
+          />
 
-          <label> Email:
-            <input 
-              type="text"
-              value={this.state.email}
-              onChange={this.handleChange("email")}
-            />
-          </label>
-
-          <label> Password:
-            <input 
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange("password")}
-            />
-          </label>
-          <button>Submit</button>
+          <input 
+            type="text"
+            value={this.state.email}
+            placeholder="Enter Email"
+            onChange={this.handleChange("email")}
+          />
+          
+          <input 
+            type="password"
+            placeholder="Create Password"
+            value={this.state.password}
+            onChange={this.handleChange("password")}
+          />
+          <div className="session-form-button">
+            <button className="session-form-filter">Sign Up</button>
+          </div>
         </form>
-        
+        {AltFormLink}
+        {AltUserLink}
       </div>
     );
   }
