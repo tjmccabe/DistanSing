@@ -91,7 +91,6 @@ class SignupForm extends React.Component {
 
     const formTitle = formType === "userSignup" ? "DistanSing User Signup" : "DistanSing Artist Signup"
     const dynamicName = formType === 'artistSignup' ? this.state.artistname : this.state.username
-    const dynamicSubmit = formType === 'artistSignup'? this.handleSubmit2 : this.handleSubmit
 
     return (
       <div className="signup-form">
