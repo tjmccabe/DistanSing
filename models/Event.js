@@ -14,6 +14,10 @@ const EventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Artist",
   },
+  price: {
+    type: Number,
+    required: true,
+  }
 });
 
 module.exports = Event = mongoose.model("Event", EventSchema);
