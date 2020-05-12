@@ -43,7 +43,6 @@ export const loginUser = user => dispatch => (
     const decoded = jwt_decode(token);
     const userCopy = Object.assign({}, res.data.user, decoded)
     delete userCopy['password']
-    localStorage.setItem('user', JSON.stringify(userCopy));
     dispatch(receiveCurrentUser(userCopy))
   })
   .catch(err => {
@@ -53,8 +52,6 @@ export const loginUser = user => dispatch => (
 
 export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
-  localStorage.removeItem('artist');
-  localStorage.removeItem('user');
   APIUtil.setAuthToken(false);
   dispatch(receiveLogout());
 };

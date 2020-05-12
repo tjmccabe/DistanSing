@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { fetchArtist, fetchArtists } from './actions/artist_actions'
+import { fetchUser } from './actions/user_actions'
 import { logout } from './actions/user_session_actions';
 import { updateArtist } from './util/artist_api_util'
 
@@ -22,12 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create a dynamic preconfigured state we can immediately add to our store
     if (localStorage.artist) {
-      preloadedState = { session: { isAuthenticated: true, artist: JSON.parse(localStorage.artist) } }
+      preloadedState = { session: { isAuthenticated: true, artist: decodedUser } }
     } else {
-      preloadedState = { session: { isAuthenticated: true, user: JSON.parse(localStorage.user) } }
+      preloadedState = { session: { isAuthenticated: true, user: decodedUser } }
     }
 
     store = configureStore(preloadedState);
+    if (localStorage.artist) store.dispatch(fetchArtist(decodedUser.id))
+    if (localStorage.user) store.dispatch(fetchUser(decodedUser.id))
 
     const currentTime = Date.now() / 1000;
 
