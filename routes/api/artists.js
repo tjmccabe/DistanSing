@@ -7,10 +7,7 @@ const keys = require('../../config/keys');
 const validateRegisterInput = require('../../validation/artist_register')
 const validateLoginInput = require('../../validation/artist_login')
 const passport = require('passport');
-
-router.get("/test", (req, res) => {
-  res.json({ msg: "This is the artist route" });
-});
+const imageUpload = require('../../util/image_upload_util');
 
 router.get(
   "/current",
@@ -54,7 +51,7 @@ router.patch(
   passport.authenticate("artist-rule", { session: false }),
   (req, res) => {
     // const { errors, isValid } = validateEventInput(req.body);
-
+    
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
@@ -157,7 +154,5 @@ router.post('/login', (req, res) => {
         })
     })
 })
-
-
 
 module.exports = router;

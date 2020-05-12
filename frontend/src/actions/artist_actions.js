@@ -26,5 +26,4 @@ export const fetchArtists = () => (dispatch) => {
 
 export const updateArtist = (artist) => (dispatch) =>
   ArtistAPIUtil.updateArtist(artist).then((artist) =>
-    dispatch(receiveArtist(artist)).catch((err) => console.log(err))
-  );
+    dispatch(receiveArtist(artist))).catch((err) => console.log(err))
