@@ -8,11 +8,10 @@ const mapStateToProps = (state, ownProps) => {
   const loggedInAsArtist = (!!state.session.artist);
 
   return {
-    loggedIn: (state.session.artist || state.session.user),
+    loggedIn: (loggedInAsUser || loggedInAsArtist),
     loggedInAsUser,
     loggedInAsArtist,
     current: loggedInAsArtist ? state.session.artist : loggedInAsUser ? state.session.user : null
-    // user: state.entities.users[state.session.id],
 }};
 
 const mapDispatchToProps = (dispatch) => ({

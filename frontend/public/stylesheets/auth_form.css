@@ -1,0 +1,71 @@
+.login-form, .signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 30px 40px 20px;
+  box-shadow: rgba(102, 79, 79, 0.9) 0 0 10px;
+  box-sizing: border-box;
+}
+
+.login-form-form, .signup-form-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-form-form input, .signup-form-form input {
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 14px;
+  padding: 5px;
+  border: none;
+  border-radius: 2px;
+}
+
+.session-form-button, .session-form-filter {
+  border-radius: 4px;
+}
+
+.session-form-button {
+  width: 90%;
+  margin-bottom: 10px;
+  height: 32px;
+  background-color: salmon;
+  display: flex;
+  justify-content: center;
+}
+
+.session-form-filter {
+  background-color: inherit;
+  border: none;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.session-form-filter:hover {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.session-form-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.session-form-link {
+  margin-bottom: 10px;
+}
