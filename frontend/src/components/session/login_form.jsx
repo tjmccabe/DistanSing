@@ -87,6 +87,7 @@ class LoginForm extends React.Component {
     const ErrorList = this.renderErrors();
 
     const formTitle = formType === "userLogin" ? "DistanSing User Login" : "DistanSing Artist Login"
+    const demoTitle = formType === "userLogin" ? "Demo User Login" : "Demo Artist Login"
 
     return (
       <div className="login-form">
@@ -116,7 +117,9 @@ class LoginForm extends React.Component {
           <button
             className="session-form-filter"
             onClick={() => this.demoSubmit()}
-          >Demo Login</button>
+          >
+            {demoTitle}
+          </button>
         </div>
         {AltFormLink}
         {AltUserLink}

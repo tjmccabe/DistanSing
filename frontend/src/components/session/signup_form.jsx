@@ -17,6 +17,10 @@ class SignupForm extends React.Component {
     this.props.removeSessionErrors();
   }
 
+  componentDidUpdate() {
+    if (this.props.loggedIn) this.props.closeModal()
+  }
+
   handleChange(field) {
     if (this.props.formType === 'artistSignup' && field === 'username') field = 'artistname'
     return (e) => {
@@ -27,11 +31,7 @@ class SignupForm extends React.Component {
   handleSubmit() {
     return e => {
       e.preventDefault();
-        this.props.signup(this.state)
-          .then(() => {
-            if (this.props.loggedIn) this.props.closeModal()
-        }
-      )
+      this.props.signup(this.state)
     }
   }
 
