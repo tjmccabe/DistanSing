@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let preloadedState = {};
 
     // Create a dynamic preconfigured state we can immediately add to our store
-    if (localStorage.artist) {
+    if (localStorage.jwtToken) {
       preloadedState = { session: { isAuthenticated: true, artist: decodedUser } }
     } else {
       preloadedState = { session: { isAuthenticated: true, user: decodedUser } }

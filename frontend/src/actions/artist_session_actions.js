@@ -23,12 +23,21 @@ export const receiveSessionErrors = errors => ({
 
 // Artist thunk action creators
 export const signupArtist = formArtist => dispatch => (
-  APIUtil.signupArtist(formArtist).then(() => {
-    dispatch(loginArtist(formArtist))
-  }
-  , err => (
-    dispatch(receiveSessionErrors(err.response.data))
-  ))
+   APIUtil.signupArtist(formArtist).then(res => {
+    const {
+      token
+    } = res.data;
+    localStorage.setItem('jwtToken', token);
+    localStorage.setItem('artist', true);
+    APIUtil.setAuthToken(token);
+    const decoded = jwt_decode(token);
+    const artistCopy = Object.assign({}, res.data.artist, decoded)
+    delete artistCopy['password']
+    dispatch(receiveCurrentArtist(artistCopy))
+  })
+  .catch(err => {
+    dispatch(receiveSessionErrors(err.response.data));
+  })
 );
 
 export const loginArtist = artist => dispatch => (
