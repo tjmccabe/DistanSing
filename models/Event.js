@@ -14,6 +14,10 @@ const EventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Artist",
   },
+  imageUrl: {
+    type: String,
+    default: ''
+  }
 });
 
 module.exports = Event = mongoose.model("Event", EventSchema);

@@ -28,22 +28,7 @@ export default class ImageUpload extends React.Component {
     }
     fileReader.readAsDataURL(file);
   }
-
-  // We won't need this once edit forms are implemented
-  handleSubmitClick() {
-    const data = new FormData();
-    if (this.state.imageFile) {
-      data.append('artistImage', this.state.imageFile, this.state.imageFile.name);
-      axios.post('/api/artists/test', data, {
-        headers: {
-          'accept': 'application/json',
-          'Accept-Language': 'en-US,en;q=0.8',
-          'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-        }
-      }).then(res => console.log(res))
-    }
-  }
-
+  
   render() {
     return (
       <div>

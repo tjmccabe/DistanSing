@@ -51,7 +51,7 @@ router.patch(
   passport.authenticate("artist-rule", { session: false }),
   (req, res) => {
     // const { errors, isValid } = validateEventInput(req.body);
-
+    
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
