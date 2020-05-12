@@ -5,6 +5,7 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       username: "",
+      artistname: "",
       email: "",
       password: "",
     };
@@ -17,6 +18,7 @@ class SignupForm extends React.Component {
   }
 
   handleChange(field) {
+    if (this.props.formType === 'artistSignup' && field === 'username') field = 'artistname'
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
@@ -25,23 +27,14 @@ class SignupForm extends React.Component {
   handleSubmit() {
     return e => {
       e.preventDefault();
-      if (this.props.formType === "artistSignup") {
-        this.setState({ artistname: this.state.username }, 
-          () => {
-            this.props.signup(this.state)
-              .then(() => {
-                if (this.props.loggedIn) this.props.closeModal()
-              })
-            }
-        )
-      } else {
         this.props.signup(this.state)
           .then(() => {
             if (this.props.loggedIn) this.props.closeModal()
-          })
-      }
+        }
+      )
     }
   }
+
 
   renderErrors() {
     return this.props.errors[0] ? (
@@ -97,6 +90,8 @@ class SignupForm extends React.Component {
     const ErrorList = this.renderErrors();
 
     const formTitle = formType === "userSignup" ? "DistanSing User Signup" : "DistanSing Artist Signup"
+    const dynamicName = formType === 'artistSignup' ? this.state.artistname : this.state.username
+    const dynamicSubmit = formType === 'artistSignup'? this.handleSubmit2 : this.handleSubmit
 
     return (
       <div className="signup-form">
@@ -106,7 +101,7 @@ class SignupForm extends React.Component {
           <input 
             type="text"
             placeholder={ name }
-            value={this.state.username}
+            value={ dynamicName }
             onChange={this.handleChange("username")}
           />
 
