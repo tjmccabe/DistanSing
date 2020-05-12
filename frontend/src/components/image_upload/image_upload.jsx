@@ -1,41 +1,35 @@
 import React from 'react';
-import axios from "axios";
-
-// YOU MUST PASS AS PROPS A SET IMAGE FILE LOCAL STATE FUNCTION FOR THE FORM
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       imageFile: null,
-      imageUrl: ''
+      imageUrl: this.props.imageurl
     }
     this.handleImageInput = this.handleImageInput.bind(this);
     this.handleUploadClick = this.handleUploadClick.bind(this);
-    this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
 
-  handleUploadClick() {
+  handleUploadClick(e) {
+    e.preventDefault();
     document.querySelector('.hidden-upload').click();
   }
 
   handleImageInput(e) {
     const file = e.target.files[0];
-    this.props.setImageFile({ imageFile: file })
+    this.props.setImageFile(file);
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({ imageFile: file, imageUrl: fileReader.result })
     }
     fileReader.readAsDataURL(file);
   }
-  
+
   render() {
     return (
       <div>
-        {this.state.imageUrl ?
-          <img src={this.state.imageUrl} />
-          : <div></div>
-        }
+        <img src={this.state.imageUrl} width='200' height='200' />
         <input hidden className='hidden-upload' type="file" onChange={this.handleImageInput} />
         <button onClick={this.handleUploadClick} >📷 Upload Image</button>
       </div>

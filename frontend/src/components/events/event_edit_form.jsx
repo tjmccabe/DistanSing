@@ -1,13 +1,13 @@
 import React from 'react'
 import ImageUpload from '../image_upload/image_upload';
 
-export default class ArtistEditForm extends React.Component {
+export default class EventEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      artistname: this.props.artist.artistname,
-      bio: this.props.artist.bio,
-      imageurl: this.props.artist.imageurl,
+      name: this.props.event.name,
+      description: this.props.event.description,
+      imageurl: this.props.event.imageurl,
       imagefile: null
     }
     this.handleInput = this.handleInput.bind(this);
@@ -27,16 +27,16 @@ export default class ArtistEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const data = this.prepareForm();
-    this.props.updateArtist(data);
+    this.props.updateEvent(data);
   }
 
   prepareForm() {
     const formData = new FormData();
-    const { artistname, bio, imagefile } = this.state;
+    const { name, description, imagefile } = this.state;
     if (imagefile) formData.append('imagefile', imagefile);
-    formData.append('id', this.props.artist.id);
-    formData.append('artistname', artistname);
-    formData.append('bio', bio);
+    formData.append('id', this.props.event.id);
+    formData.append('name', name);
+    formData.append('bio', description);
     return formData;
   }
 
@@ -50,18 +50,18 @@ export default class ArtistEditForm extends React.Component {
   }
 
   render() {
-    const { artistname, bio, imageurl } = this.state;
+    const { name, description, imageurl } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
           <ImageUpload setImageFile={this.setImageFile} imageurl={imageurl} />
         </div>
         <div>
-          <label>Artist/Band Name
-            <input type="text" value={artistname} onChange={this.handleInput("artistname")}/>
+          <label>Event Name
+            <input type="text" value={name} onChange={this.handleInput("name")} />
           </label>
-          <label>Bio
-            <textarea value={bio} onChange={this.handleInput("bio")} placeholder="Tell the world about yourself"/>
+          <label>Description
+            <textarea value={description} onChange={this.handleInput("description")} placeholder="What's going on?" />
           </label>
         </div>
         <button>Save Changes</button>

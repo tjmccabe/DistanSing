@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { updateArtist } from '../../actions/artist_actions';
-import ArtistEditForm from './song_upload_form';
+import ArtistEditForm from './artist_edit_form';
 
 const mapStateToProps = state => ({
-  artist: state.session.artist
+  artist: state.entities.artists[state.session.artist.id]
 })
 
 const mapDispatchToProps = dispatch => ({
