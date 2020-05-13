@@ -1,4 +1,7 @@
 import React from 'react';
+import Carousel from './carousel.jsx';
+import ArtistFeature from './artist_feature.jsx';
+import Flickity from 'flickity';
 
 class Splash extends React.Component {
   // constructor(props) {
@@ -8,10 +11,6 @@ class Splash extends React.Component {
   componentDidMount() {
     this.props.fetchEvents()
     this.props.fetchArtists()
-  }
-
-  eventCarousel(events) {
-
   }
 
   shuffle(arr) {
@@ -27,26 +26,35 @@ class Splash extends React.Component {
 
     let liveStreams = this.props.events.filter(event => {
       const date = (new Date(event.date)).getTime();
-      return (date < now && date > (now-3600000))
+      // return (date < now && date > (now-3600000))
+      return (date > now)
       // maybe refactor if streaming gives us more info about live streams
     })
 
-    return this.eventCarousel(this.shuffle(liveStreams))
+    let shuffled = this.shuffle(liveStreams)
+
+    return shuffled[0] ? <Carousel streams={shuffled} type="live"/> : null
   }
 
   getUpcomingStreams() {
     let now = (new Date()).getTime()
-
+    
     let soonStreams = this.props.events.filter(event => {
       const date = (new Date(event.date)).getTime();
-      return (date > now && date < (now + 86400000))
+      // return (date > now && date < (now + 86400000))
+      return (date > now)
     })
+    // debugger
 
-    return this.eventCarousel(this.shuffle(soonStreams))
+    let shuffled = this.shuffle(soonStreams)
+
+    return shuffled[0] ? <Carousel streams={shuffled} type="soon"/> : null
   }
 
   getTrendingArtists() {
+    let shuffled = this.shuffle(this.props.artists).slice(0,6)
 
+    return shuffled[0] ? <ArtistFeature artists={shuffled}/> : null
   }
 
   render() {
@@ -54,26 +62,40 @@ class Splash extends React.Component {
     const soons = this.getUpcomingStreams()
     const randos = this.getTrendingArtists()
 
-    const LiveNow = lives && lives[0] ? (
-      <div id="live-now">
+    const LiveNow = lives ? (
+      <div className="stream-carousel-container" id="live-now">
         <h3>LIVE</h3>
         {lives}
       </div>
     ) : null;
 
-    const StreamingSoon = soons && soons[0] ? (
-      <div id="streaming-soon">
+    const StreamingSoon = soons ? (
+      <div className="stream-carousel-container" id="streaming-soon">
         <h3>Streaming Soon...</h3>
         {soons}
       </div>
     ) : null;
 
-    const TrendingArtists = randos && randos[0] ? (
-      <div>
+    const TrendingArtists = randos ? (
+      <div id="trending-artists">
         <h3>Trending Artists</h3>
         {randos}
       </div>
     ): null;
+
+    let soonCarousel = document.querySelector('.soon-carousel');
+    new Flickity(soonCarousel, {
+      draggable: false,
+      wrapAround: true,
+      cellAlign: 'center'
+    });
+
+    let liveCarousel = document.querySelector('.live-carousel');
+    new Flickity(liveCarousel, {
+      draggable: false,
+      wrapAround: true,
+      cellAlign: 'center'
+    });
 
     return(
       <div className='splash'>
