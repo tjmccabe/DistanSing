@@ -5,6 +5,7 @@ export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 // export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
+export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 
 const receiveEvents = (events) => ({
   type: RECEIVE_EVENTS,
@@ -31,10 +32,15 @@ const removeEvent = (eventId) => ({
   eventId,
 });
 
+const receiveEventErrors = (errors) => ({
+  type: RECEIVE_EVENT_ERRORS,
+  errors
+})
+
 export const fetchEvents = () => (dispatch) =>
   EventApiUtil.getEvents()
     .then((events) => dispatch(receiveEvents(events)))
-    .catch((err) => console.log(err));
+    .catch((err) => receiveEventErrors(err));
 
 // export const fetchArtistEvents = (id) => (dispatch) =>
 //   EventApiUtil.getArtistEvents(id)
@@ -49,19 +55,20 @@ export const fetchEvents = () => (dispatch) =>
 export const fetchEvent = (eventId) => (dispatch) =>
   EventApiUtil.getEvent(eventId)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => console.log(err));
+    .catch((err) => receiveEventErrors(err));
 
-export const createEvent = (event) => (dispatch) =>
+export const createEvent = (event) => (dispatch) => 
   EventApiUtil.createEvent(event)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => console.log(err));
+    .catch((err) => dispatch(receiveEventErrors(JSON.parse(err.request.response))));
+
 
 export const updateEvent = (event) => (dispatch) =>
   EventApiUtil.updateEvent(event)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => console.log(err));
+    .catch((err) => receiveEventErrors(err));
 
 export const deleteEvent = (eventId) => (dispatch) =>
   EventApiUtil.deleteEvent(eventId)
   .then(() => dispatch(removeEvent(eventId)))
-  .catch((err) => console.log(err));
+  .catch((err) => receiveEventErrors(err));
