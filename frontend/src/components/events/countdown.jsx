@@ -51,16 +51,60 @@ class Countdown extends React.Component {
     }, 1000)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      const diff = new Date(this.props.date).getTime() - new Date().getTime();
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      // const minutes = 0;
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      this.setState({ days, hours, minutes, seconds });
+    }
+  }
+
   render() {
     const { days, hours, minutes, seconds } = this.state;
-    return (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) ? 
-    (<h1>Live Now!</h1>) :
-    (<h1>Time to live: 
-      {` ${days < 10 ? `0${days}`: days} days, `}
-      {`${hours < 10 ? `0${hours}`: hours} hours, `} 
-      {`${minutes < 10 ? `0${minutes}`: minutes} minutes, `} 
-      {`${seconds < 10 ? `0${seconds}` : seconds} seconds.`}
-    </h1>)
+    return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? (
+      <div className="countdown-live-now">Live Now!</div>
+    ) : (
+      <div className="countdown-timer">
+        <div className="countdown-timer-header">Time to Live:</div>
+        <div className="countdown-time">
+          <div className="countdown-time-days">
+            <div className="countdown-days-value">
+              <div className="test">
+                {` ${days < 100 ? (days < 10 ? `00${days}` : `0${days}`) : days}`}
+              </div>
+            </div>
+            <div className="countdown-time-text">day(s)</div>
+          </div>
+
+          <div className="countdown-time-hours">
+            <div className="countdown-hours-value">
+              {`${hours < 10 ? `0${hours}` : hours}`}
+            </div>
+            <div className="countdown-time-text">hour(s)</div>
+          </div>
+
+          <div className="countdown-time-minutes">
+            <div className="countdown-minutes-value">
+              {`${minutes < 10 ? `0${minutes}` : minutes}`}
+            </div>
+            <div className="countdown-time-text">minute(s)</div>
+          </div>
+
+          <div className="countdown-time-seconds">
+            <div className="countdown-seconds-value">
+              {`${seconds < 10 ? `0${seconds}` : seconds}`}
+            </div>
+            <div className="countdown-time-text">second(s)</div>
+          </div>
+        </div>
+      </div>
+    );
   }
   
 }

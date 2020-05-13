@@ -8,7 +8,7 @@ const imageUpload = require('../../util/image_upload_util');
 
 router.get("/", (req, res) => {
   Event.find()
-    .sort({ date: -1 })
+    .sort({ date: 1 })
     .then((data) => {
       let events = {};
       data.map((event) => {

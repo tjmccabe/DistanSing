@@ -9,7 +9,9 @@
   align-items: center;
   box-sizing: border-box;
   height: 60px;
-  background-color: aquamarine;
+  background: #3D5A80;
+  /* background: rgba(1, 1, 1, 0); */
+  color: white;
   position: fixed;
   width: 100%;
   padding: 0 10px;
@@ -38,7 +40,7 @@
   margin-left: 10px;
   border-radius: 3px;
   height: 32px;
-  background-color: yellow;
+  background-color: #ECF3FF;
 }
 
 .nav-bar-button button {
@@ -49,6 +51,7 @@
   border: none;
   font-size: 16px;
   font-weight: bold;
+  
 }
 
 .nav-bar-filter:hover {

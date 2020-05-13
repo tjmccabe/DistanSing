@@ -1,55 +1,67 @@
 import React from "react";
 import Countdown from "./countdown";
+import EventIndexContainer from "./events_index_container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+
 
 class EventShow extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchEvent(this.props.match.params.id)
-  //     .then((res) => {
-  //       // debugger
-  //       this.props.fetchArtist(res.event.data.artist);
-  //     })
-  // }
+  componentDidMount() {
+    this.props.fetchArtists()
+      .then(() => this.props.fetchEvent(this.props.match.params.id))
+  }
 
   render() {
-    const { event } = this.props;
+    const { artist, event } = this.props;
     if (!event) return null;
-    // "2020-05-12T17:05"
-    // "2020-05-13T00:05:00.000+00:00"
     const date = new Date(event.date);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
-    const hour = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
+    // const month = date.getMonth() + 1;
+    // const day = date.getDate();
+    // const year = date.getFullYear();
+    // const hour = date.getHours();
+    // const minutes = date.getMinutes();
+    // const seconds = date.getSeconds();
 
     return (
       <div className="event-show">
         <div className="event-show-container">
           <div className="event-show-header">
             <div className="event-show-calendar">
-              {month} {day} {year} {hour} {minutes} {seconds}
+              <Calendar value={date}/>
             </div>
             <div className="event-show-countdown">
               <Countdown date={date}/>
             </div>
             <div className="event-show-buy">
-              Buy Now {event.price}
+              <div className="event-show-buynow">
+                <FontAwesomeIcon icon={faShoppingCart}/> Buy Now
+              </div>
+              <div className="event-show-price">
+                $ {event.price}
+              </div>
             </div>
           </div>
           
           <div className="event-show-main">
-            <div>
-              Artist Pic
-            </div>
-            <div>
-              {event.name}
-              {event.description}
+            <div className="event-show-main-container">
+              <div className="event-show-pic">
+                <img src={artist.imageurl} alt="whatt"/>
+              </div>
+              <div className="event-show-body">
+                <div className="event-show-name">
+                  {event.name}
+                </div>
+                <div className="event-show-description">
+                  {event.description}
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="event-show-upcoming">
-            Events Index filtered by event.artist._id
+            <EventIndexContainer />
           </div>
         </div>
       </div>
