@@ -2,9 +2,13 @@ import React from "react";
 import Countdown from "./countdown";
 
 class EventShow extends React.Component {
-  componentDidMount() {
-    this.props.fetchEvents();
-  }
+  // componentDidMount() {
+  //   this.props.fetchEvent(this.props.match.params.id)
+  //     .then((res) => {
+  //       // debugger
+  //       this.props.fetchArtist(res.event.data.artist);
+  //     })
+  // }
 
   render() {
     const { event } = this.props;
@@ -26,11 +30,10 @@ class EventShow extends React.Component {
             <div className="event-show-calendar">
               {month} {day} {year} {hour} {minutes} {seconds}
             </div>
-            <div>
-              Countdown
+            <div className="event-show-countdown">
               <Countdown date={date}/>
             </div>
-            <div>
+            <div className="event-show-buy">
               Buy Now {event.price}
             </div>
           </div>
