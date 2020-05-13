@@ -49,16 +49,12 @@ class Countdown extends React.Component {
     }, 1000)
   }
 
-  componentWillUnmount() {
-
-  }
-
   render() {
     const { days, hours, minutes, seconds } = this.state
     return(
       <div>
         <div>
-          {days === 0 && hours === 0 && minutes === 0 && seconds === 0
+          {days < 0 || hours < 0 || minutes < 0 || seconds < 0
             ? <h1>Live Now!</h1>
           : <h1>Time to live: {days < 10 ? `0${days}`: days} days, {hours < 10 ? `0${hours}`: hours} hours, {minutes < 10 ? `0${minutes}`: minutes} minutes, {seconds < 10 ? `0${seconds}` : seconds} seconds</h1>
           }
