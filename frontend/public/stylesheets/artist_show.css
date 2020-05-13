@@ -1,0 +1,52 @@
+/* Artist Show Container */
+
+.artist-show-container {
+  display: flex;
+  height: 500px;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
+
+.artist-show-container img {
+  height: 400px;
+  width: 400px;
+  border: 3px solid black;
+  border-radius: 70px;
+}
+
+.artist-bio {
+  height: 400px;
+  width: 100%;
+  margin-left: 50px;
+  margin-right: 100px;
+  border: 3px solid black;
+}
+
+.artist-bio h1 {
+    font-family: auto;
+    font-size: 33px;
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.artist-bio p {
+  margin: 10px 0px 0px 30px;
+}
+
+/* Artist Event Index Container */
+
+.artist-event-index-container {
+  height: 300px;
+  margin-left: 100px;
+}
+
+.artist-event-index-container h1 {
+  display: flex;
+  align-items: center;
+  font-size: 33px;
+  height: 50px;
+  width: 600px;
+  border: 3px solid black;
+}

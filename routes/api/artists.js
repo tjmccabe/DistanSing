@@ -7,16 +7,12 @@ const keys = require('../../config/keys');
 const validateRegisterInput = require('../../validation/artist_register')
 const validateLoginInput = require('../../validation/artist_login')
 const passport = require('passport');
-
-router.get("/test", (req, res) => {
-  res.json({ msg: "This is the artist route" });
-});
+const imageUpload = require('../../util/image_upload_util');
 
 router.get(
   "/current",
   passport.authenticate("artist-rule", { session: false }),
   (req, res) => {
-    console.log(req)
     res.json({
       id: req.user.id,
       artistname: req.user.artistname,
@@ -49,25 +45,26 @@ router.get("/:id", (req, res) => {
     );
 });
 
-router.patch(
-  "/:id",
-  passport.authenticate("artist-rule", { session: false }),
-  (req, res) => {
-    // const { errors, isValid } = validateEventInput(req.body);
-
-    // if (!isValid) {
-    //   return res.status(400).json(errors);
-    // }
-
-    Artist.findById(req.params.id)
-      .then((artist) => {
-        let updatedArtist = Object.assign(artist, req.body);
-        updatedArtist.save().then((artist) => res.json(artist));
-      })
-      .catch((errors) =>
-        res.status(404).json({ noartistfound: "No artist found with that ID" })
-      );
-  }
+router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (req, res) => {
+  let imageLocation;
+  imageUpload(req, res, (error) => {
+    if (error) {
+      res.json({ error: error });
+    } else {
+      if (req.file) {
+        imageLocation = req.file.location;
+      }
+      Artist.findById(req.params.id)
+        .then((artist) => {
+          let updatedArtist = Object.assign(artist, req.user, { imageurl: imageLocation });
+          updatedArtist.save().then((artist) => res.json(artist));
+        })
+        .catch((errors) =>
+          res.status(404).json({ noartistfound: "No artist found with that ID" })
+        )
+      }
+    }
+  )}
 );
 
 
@@ -157,7 +154,5 @@ router.post('/login', (req, res) => {
         })
     })
 })
-
-
 
 module.exports = router;

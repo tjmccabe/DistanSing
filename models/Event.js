@@ -18,9 +18,17 @@ const EventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Artist",
   },
+  imageurl: {
+    type: String,
+    default: ""
+  },
   price: {
     type: Number,
     required: true,
+  },
+  description: {
+    type: String,
+    
   }
 });
 

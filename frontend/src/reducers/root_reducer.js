@@ -8,7 +8,7 @@ const RootReducer = combineReducers({
   entities,
   session,
   ui,
-  errors,
+  errors
 });
 
 export default RootReducer;
