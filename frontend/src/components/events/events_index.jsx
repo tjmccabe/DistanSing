@@ -8,7 +8,6 @@ class EventsIndex extends React.Component {
 
   render() {
     const { events } = this.props;
-    debugger
     return (
       <div>
         This is the Events Index that might be used by Splash, Artist Show, User Show

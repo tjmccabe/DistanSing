@@ -6,6 +6,7 @@ import EventShowContainer from "./events/event_show_container";
 import Modal from './modal/modal';
 import Splash from './splash/splash';
 import ArtistShowContainer from '../components/artists/artist_show_container'
+import EventCreateContainer from './events/event_create_container';
 
 const App = () => (
   <div>
@@ -13,6 +14,7 @@ const App = () => (
     <NavBarContainer />
     <Switch>
       <Route path="/artists/:id" component={ArtistShowContainer} />
+      <Route path="/events/create" component={EventCreateContainer} />
       <Route path="/events/:id" component={EventShowContainer} />
       <Route exact path="/" component={Splash} />
     </Switch>

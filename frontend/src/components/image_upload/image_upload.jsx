@@ -28,10 +28,10 @@ export default class ImageUpload extends React.Component {
 
   render() {
     return (
-      <div>
-        <img src={this.state.imageUrl} alt='distansing-img-upload' width='200' height='200' />
+      <div className='image-upload-container'>
+        <img className='image-upload' src={this.state.imageUrl} alt='distansing-img-upload' />
         <input hidden className='hidden-upload' type="file" onChange={this.handleImageInput} />
-        <button onClick={this.handleUploadClick} >Upload Image</button>
+        <button className='image-upload-btn' onClick={this.handleUploadClick}>Upload Image</button>
       </div>
     )
   }

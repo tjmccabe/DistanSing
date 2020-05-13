@@ -15,17 +15,13 @@ module.exports = validateEventInput = (data) => {
     errors.date = "Event date field is required";
   }
 
-  if (!validate.isDate(data.date)) {
-    errors.date = "Event date must be a valid date";
-  }
+  // if (!validate.isDate(Date.parse(data.date))) {
+  //   errors.date = "Event date must be a valid date";
+  // }
 
-  // if (!Validator.isInt(data.price, {gt: 0})) {
-  //   errors.price = "Price set must be greater than 0"
-  // }
-  // if (!Validator.isISO8601(data.date, {strict: true})) {
-  //   errors.date = "Event date is not valid";
-  // }
-  // cannot get validation to work. isDate() is no longer a Validator method.
+  if (!Validator.isFloat(data.price), {gt: 0.00}) {
+    errors.price = "Price set must be greater than 0"
+  }
 
   return {
     errors,
