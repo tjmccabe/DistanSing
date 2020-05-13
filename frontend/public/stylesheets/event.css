@@ -1,0 +1,21 @@
+.event-show {
+  display: flex;
+}
+
+.event-show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.event-show-header {
+  display: flex;
+}
+
+.event-show-main {
+  display: flex;
+}
+
+.event-show-upcoming {
+  display: flex;
+}
