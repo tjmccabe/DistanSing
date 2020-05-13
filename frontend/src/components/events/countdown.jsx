@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Countdown extends React.Component {
         if (minutes === 0) {
           if (hours === 0) {
             if (days === 0) {
-              clearInterval(this.myInterval)
+              clearInterval(this.myInterval);
+              // this.props.location.reload();
             } else {
               this.setState(({ days }) => ({
                 days: days - 1,
@@ -50,19 +52,17 @@ class Countdown extends React.Component {
   }
 
   render() {
-    const { days, hours, minutes, seconds } = this.state
-    return(
-      <div>
-        <div>
-          {days < 0 || hours < 0 || minutes < 0 || seconds < 0
-            ? <h1>Live Now!</h1>
-          : <h1>Time to live: {days < 10 ? `0${days}`: days} days, {hours < 10 ? `0${hours}`: hours} hours, {minutes < 10 ? `0${minutes}`: minutes} minutes, {seconds < 10 ? `0${seconds}` : seconds} seconds</h1>
-          }
-        </div>
-      </div>
-    )
+    const { days, hours, minutes, seconds } = this.state;
+    return (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) ? 
+    (<h1>Live Now!</h1>) :
+    (<h1>Time to live: 
+      {` ${days < 10 ? `0${days}`: days} days, `}
+      {`${hours < 10 ? `0${hours}`: hours} hours, `} 
+      {`${minutes < 10 ? `0${minutes}`: minutes} minutes, `} 
+      {`${seconds < 10 ? `0${seconds}` : seconds} seconds.`}
+    </h1>)
   }
   
 }
 
-export default Countdown;
+export default withRouter(Countdown);
