@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const {formType, openModal, login} = this.props;
+    const {formType, openModal} = this.props;
 
     const AltUserLink = formType === "userLogin" ? (
       <div

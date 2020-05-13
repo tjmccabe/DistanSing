@@ -2,7 +2,9 @@
 @import "./application.css";
 @import "./modal.css";
 @import "./navbar.css";
+@import "./splash.css";
 @import "./auth_form.css";
 @import "./event.css";
 @import "./artist_show.css";
 @import "./event_create.css";
+@import "./show_event_item.css";

@@ -40,7 +40,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)
-    .then((event) => {console.log(event); res.json(event)})
+    .then((event) => {
+      console.log(event)
+      res.json(event)})
     .catch((errors) =>
       res.status(404).json({ noeventfound: "No event found with that ID" })
     );

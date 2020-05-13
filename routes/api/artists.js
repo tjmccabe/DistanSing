@@ -39,10 +39,21 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Artist.findById(req.params.id)
-    .then((artist) => res.json(artist))
-    .catch((errors) =>
+    .then((artist) =>{
+      Event.find({artist: artist._id})
+        .sort({ date: -1})
+        .then((events) => {
+          let payload = Object.assign({}, artist._doc);
+          let eventsObject = {};
+          events.map((event) => eventsObject[event._id] = event);
+          payload['artistEvents'] = eventsObject;
+          res.json(payload);
+        })
+      })
+    .catch((errors) => {
+      console.log(errors)
       res.status(404).json({ noartistfound: "This artist show page is under construction" })
-    );
+    });
 });
 
 router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (req, res) => {
