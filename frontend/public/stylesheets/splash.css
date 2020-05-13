@@ -51,8 +51,8 @@
 .carousel-item {
   box-sizing: border-box;
   height: 150px;
-  min-width: 17%;
-  max-width: 17%;
+  min-width: 22%;
+  max-width: 22%;
   border-radius: 8px;
 }
 

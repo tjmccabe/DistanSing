@@ -69,7 +69,7 @@ const Carousel = ({ streams, type }) => {
     return chunks;
   }
 
-  const panes = chunk(streams, 5)
+  const panes = chunk(streams, 4)
 
   return(
     <ol className={`stream-carousel ${type}-carousel`}>
