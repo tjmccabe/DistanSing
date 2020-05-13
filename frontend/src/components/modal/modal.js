@@ -5,6 +5,8 @@ import ArtistLoginContainer from "../session/artist_login_container";
 import ArtistSignupContainer from "../session/artist_signup_container";
 import UserLoginContainer from "../session/user_login_container";
 import UserSignupContainer from "../session/user_signup_container";
+import ArtistEditContainer from "../artists/artist_edit_container";
+import EventEditContainer from "../events/event_edit_container";
 
 function Modal({ modal, closeModal, loggedIn, openModal }) {
 
@@ -46,6 +48,31 @@ function Modal({ modal, closeModal, loggedIn, openModal }) {
           loggedIn={loggedIn}
           closeModal={closeModal}
           openModal={openModal}
+        />
+      )
+      break;
+    case "userLogin":
+      component = (
+        <UserLoginContainer
+          loggedIn={loggedIn}
+          closeModal={closeModal}
+          openModal={openModal}
+        />
+      )
+      break;
+    case "artistEdit":
+      component = (
+        <ArtistEditContainer
+          loggedIn={loggedIn}
+          closeModal={closeModal}
+        />
+      )
+      break;
+    case "eventEdit":
+      component = (
+        <EventEditContainer
+          loggedIn={loggedIn}
+          closeModal={closeModal}
         />
       )
       break;

@@ -9,8 +9,6 @@ export default class EventCreateForm extends React.Component {
       description: '',
       price: '0.00',
       date: '',
-      hours: '',
-      minutes: '',
       imageurl: '',
       imagefile: null
     }
