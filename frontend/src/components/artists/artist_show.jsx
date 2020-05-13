@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowEventItem from './show_event_item';
+import { Link } from 'react-router-dom';
 
 
 class ArtistShow extends React.Component{
@@ -23,14 +24,15 @@ class ArtistShow extends React.Component{
     
     
       return (
-        <div>
-          <div className="artist-show-container">
+        <div className='artist-show-container'>
+          <div className="artist-bio-container">
             <img src={`${artist.imageurl}`} alt="" />
             <div className="artist-bio">
               <h1>{artist.artistname}</h1>
               <p>{temp_text}</p>
             </div>
           </div>
+          <Link to={`/artists/${this.props.match.params.id}/edit`}>Edit</Link>
           <div className="artist-event-index-container">
             <h1>{artist.artistname}'s upcoming events:</h1>
             <div className='show-item-container'>
