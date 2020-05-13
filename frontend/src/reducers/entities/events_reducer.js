@@ -12,10 +12,11 @@ export default function (state = {}, action) {
     case RECEIVE_EVENTS:
       return action.events.data;
     case RECEIVE_EVENT:
-      newState[action.events.data.id] = action.events.data;
+      newState[action.event.data._id] = action.event.data;
+      newState[action.event.data._id].artist = newState[action.event.data._id].artist._id 
       return newState;
     case REMOVE_EVENT:
-      delete newState[action.events.data.id];
+      delete newState[action.eventId];
       return newState;
     default:
       return state;

@@ -47,20 +47,19 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", passport.authenticate("artist-rule", { session: false }), (req, res) => {
-    const { errors, isValid } = validateEventInput(req.body);
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-
+    // const { errors, isValid } = validateEventInput(req.body);
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
   let imageLocation;
   imageUpload(req, res, (error) => {
     if (error) {
-      // console.log(req.body)
       return res.status(400).json(error);
     } else {
       if (req.file) {
         imageLocation = req.file.location;
       }
+      console.log(req.body.date)
       const newEvent = new Event({
         name: req.body.name,
         date: req.body.date,
@@ -69,7 +68,11 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
         imageurl: imageLocation,
         artist: req.user,
       });
-      newEvent.save().then((event) => res.json(event));
+      newEvent.save()
+        .then((event) => 
+          res.json(event))
+        .catch((errors) =>
+          res.status(400).json({ eventcreatefailed: "This operation was unsuccessful. Please try again." }))
     }
   })
 });

@@ -7,7 +7,7 @@ export default class EventCreateForm extends React.Component {
     this.state = {
       name: '',
       description: '',
-      price: 0.00,
+      price: '0.00',
       date: '',
       imageurl: '',
       imagefile: null
@@ -68,11 +68,21 @@ export default class EventCreateForm extends React.Component {
           <label>Description
             <textarea value={description} onChange={this.handleInput("description")} placeholder="What's going on?" />
           </label>
-          <label>Price
-            <input type="number" value={price} onChange={this.handleInput("price")} min="0.00" max="1000.00" step="1.00" />
+          <label>Ticket Price
+            <input type="number" className="event-price-input" value={price} onChange={this.handleInput("price")} min="0.00" max="1000.00" step="0.01" />
           </label>
           <label>Date
             <input type="datetime-local" value={date} onChange={this.handleInput("date")} />
+            <div>
+              <input type="number" min="1" max="12" />
+              <span>:</span>
+              <input type="number" min="0" max="6" />
+              <input type="number" min="0" max="9" />
+              <select>
+                <option value="AM">AM</option>
+                <option value="AM">PM</option>
+              </select>
+            </div>
           </label>
         </div>
         <button>Save Changes</button>
