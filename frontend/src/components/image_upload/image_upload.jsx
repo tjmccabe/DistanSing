@@ -1,38 +1,59 @@
 import React from 'react';
 
 export default class ImageUpload extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imageFile: null,
-      imageUrl: this.props.imageurl
+    constructor(props) {
+      super(props);
+      this.state = {
+        imageFile: null,
+        imageUrl: "",
+      };
+      this.handleImageInput = this.handleImageInput.bind(this);
+      this.handleUploadClick = this.handleUploadClick.bind(this);
     }
-    this.handleImageInput = this.handleImageInput.bind(this);
-    this.handleUploadClick = this.handleUploadClick.bind(this);
-  }
 
-  handleUploadClick(e) {
-    e.preventDefault();
-    document.querySelector('.hidden-upload').click();
-  }
-
-  handleImageInput(e) {
-    const file = e.target.files[0];
-    this.props.setImageFile(file);
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result })
+    componentDidUpdate(prevProps) {
+      if (prevProps.imageurl !== this.props.imageurl) {
+        this.setState({ imageUrl: this.props.imageurl });
+      }
     }
-    fileReader.readAsDataURL(file);
-  }
+    handleUploadClick(e) {
+      e.preventDefault();
+      document.querySelector(".hidden-upload").click();
+    }
 
-  render() {
-    return (
-      <div>
-        <img src={this.state.imageUrl} alt='distansing-img-upload' width='200' height='200' />
-        <input hidden className='hidden-upload' type="file" onChange={this.handleImageInput} />
-        <button onClick={this.handleUploadClick} >Upload Image</button>
-      </div>
-    )
+    handleImageInput(e) {
+      const file = e.target.files[0];
+      this.props.setImageFile(file);
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        this.setState({
+          imageFile: file,
+          imageUrl: fileReader.result,
+        });
+      };
+      fileReader.readAsDataURL(file);
+    }
+
+    render() {
+      console.log(this.state);
+      return (
+        <div>
+          <img
+            src={this.state.imageUrl}
+            alt="distansing-img-upload"
+            width="200"
+            height="200"
+          />
+          <input
+            hidden
+            className="hidden-upload"
+            type="file"
+            onChange={this.handleImageInput}
+          />
+          <button onClick={this.handleUploadClick}>
+            Upload Image
+          </button>
+        </div>
+      );
+    }
   }
-}

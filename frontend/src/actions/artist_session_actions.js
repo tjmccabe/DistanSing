@@ -21,9 +21,7 @@ export const receiveSessionErrors = errors => ({
 // Artist thunk action creators
 export const signupArtist = formArtist => dispatch => (
    APIUtil.signupArtist(formArtist).then(res => {
-    const {
-      token
-    } = res.data;
+    const { token } = res.data;
     localStorage.setItem('jwtToken', token);
     localStorage.setItem('artist', true);
     APIUtil.setAuthToken(token);
@@ -39,9 +37,7 @@ export const signupArtist = formArtist => dispatch => (
 
 export const loginArtist = artist => dispatch => (
   APIUtil.loginArtist(artist).then(res => {
-    const {
-      token
-    } = res.data;
+    const { token } = res.data;
     localStorage.setItem('jwtToken', token);
     localStorage.setItem('artist', true);
     APIUtil.setAuthToken(token);

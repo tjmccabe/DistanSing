@@ -15,8 +15,12 @@
   position: fixed;
   width: 100%;
   padding: 0 10px;
-  transition: all .7s;
+  transition: all .4s;
+}
+
+.nav-container.scrolled {
   box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  background-color: aquamarine;
 }
 
 .nav-bar-left, .nav-bar-right, .nav-logo {
@@ -57,9 +61,4 @@
 .nav-bar-filter:hover {
   background-color: rgba(0, 0, 0, .1);
   cursor: pointer;
-}
-
-.splash {
-  height: 400px;
-  background-color: rgb(255, 249, 191);
 }

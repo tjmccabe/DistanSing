@@ -49,6 +49,15 @@ function Modal({ modal, closeModal, loggedIn, openModal }) {
         />
       )
       break;
+    case "userLogin":
+      component = (
+        <UserLoginContainer
+          loggedIn={loggedIn}
+          closeModal={closeModal}
+          openModal={openModal}
+        />
+      )
+      break;
     default:
       return null;
   }
