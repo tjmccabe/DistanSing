@@ -9,6 +9,8 @@ export default class EventCreateForm extends React.Component {
       description: '',
       price: '0.00',
       date: '',
+      hours: '',
+      minutes: '',
       imageurl: '',
       imagefile: null
     }
@@ -16,6 +18,7 @@ export default class EventCreateForm extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setImageFile = this.setImageFile.bind(this);
+    this.handleMinutes = this.handleMinutes.bind(this);
   }
 
   handleInput(type) {
@@ -73,16 +76,15 @@ export default class EventCreateForm extends React.Component {
           </label>
           <label>Date
             <input type="datetime-local" value={date} onChange={this.handleInput("date")} />
-            <div>
+            {/* <div>
               <input type="number" min="1" max="12" />
               <span>:</span>
-              <input type="number" min="0" max="6" />
-              <input type="number" min="0" max="9" />
+              <input type="number" onClick={this.handleMinutes} min="0" max="59" />
               <select>
                 <option value="AM">AM</option>
-                <option value="AM">PM</option>
+                <option value="PM">PM</option>
               </select>
-            </div>
+            </div> */}
           </label>
         </div>
         <button>Save Changes</button>
