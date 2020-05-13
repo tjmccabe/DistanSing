@@ -1,21 +1,218 @@
 .event-show {
   display: flex;
+  justify-content: center;
+  background: #F2F2F2;
+
+  /* background: #6E7376; */
+  min-height: 100vh;
+  /* background-image: linear-gradient(to top right, #4ECDC4, #FFE66D); */
 }
 
 .event-show-container {
-  display: flex;
+  display: flex; 
   flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .event-show-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 50px 40px;
+}
+
+.react-calendar {
+  zoom: 0.6;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.event-show-countdown {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+}
+
+.countdown-live-now {
+  font-size: 100px;
+  animation:live 1.5s infinite;
+}
+
+@keyframes live{
+  0%{ color: #85182A }
+  25%{ color: #A71E34 }
+  25%{ color: #BD1F36 }
+  75%{ color: #DA1E37 }
+  100%{ color: transparent }
+}
+.countdown-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-time {
+  font-family: 'Lobster', 'sans-serif';
+  width: 500px;
+  display: flex;
+  justify-content: space-between;  
+}
+
+.countdown-timer-header {
+  margin-bottom: 10px;
+  font-size: 20px;
+
+}
+
+.countdown-time-days {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-time-hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-time-minutes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-time-seconds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-time-text {
+  margin-top: 10px;
+}
+
+.countdown-days-value {
+  height: 60px;
+  width: 80px;
+  text-align: center;
+  font-size: 50px;
+  background: #F15946;
+  color: white;
+  line-height: 75px;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+
+/* .test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+} */
+
+.countdown-hours-value {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  font-size: 50px;
+  background: #F15946;
+  color: white;
+  line-height: 75px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  }
+
+.countdown-minutes-value {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  font-size: 50px;
+  background: #F15946;
+  color: white;
+  line-height: 75px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  }
+
+.countdown-seconds-value {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  font-size: 50px;
+  background: #F15946;
+  color: white;
+  line-height: 75px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  }
+
+.event-show-buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+  /* background: #7A9E9F; */
+  background: #7FD8BE;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  border-radius: 10px;
+  position: relative;
+  top: 100px;
+}
+
+.event-show-buynow {
+  font-size: 20px;
+}
+
+.event-show-price {
+  font-size: 24px;
+}
+
+.event-show-upcoming {
   display: flex;
 }
 
 .event-show-main {
   display: flex;
+  justify-content: center;
+  color: #293241;
+  margin: 0 60px;
+}
+
+.event-show-main-container {
+  display: flex;
+  min-width: 900px;
+  justify-content: flex-start;
+}
+
+.event-show-pic > img {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.event-show-body {
+  margin-left: 40px;
+  height: 200px;
+  max-width: 600px;
+}
+
+.event-show-name {
+  margin: 10px 0px 10px 10px;
+  font-size: 24px;
 }
 
 .event-show-upcoming {
   display: flex;
+  justify-content: center;
+  margin: 40px 40px 0px 40px;
+  background: white;
+}
+
+.event-index-item {
+  height: 40px;
+  width: 500px;
+  margin-top: 20px;
 }
