@@ -1,18 +1,28 @@
 /* Artist Show Container */
 
 .artist-show-container {
+  background-color: #F2F2F2;
+  padding: 40px 0px;
+  height: 472px;
+}
+/* Artist Bio Container */
+
+.artist-bio-container {
   display: flex;
   height: 500px;
   margin-top: 40px;
   margin-left: 100px;
   min-width: 1000px;
+  
 }
 
 
-.artist-show-container img {
+.artist-bio-container img {
   height: 400px;
-  width: 400px;
-  border: 3px solid black;
+  width: 500px;
+  min-width: 500px;
+  object-fit: cover;
+  border: 2px solid gray;
   border-radius: 70px;
 }
 

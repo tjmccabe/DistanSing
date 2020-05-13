@@ -6,16 +6,27 @@ export default class ArtistEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      artistname: this.props.artist.artistname,
-      genre: this.props.artist.genre,
-      bio: this.props.artist.bio,
-      imageurl: this.props.artist.imageurl,
+      artistname: '',
+      genre: '',
+      bio: '',
+      imageurl: '',
       imagefile: null
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setImageFile = this.setImageFile.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchArtist(this.props.match.params.id)
+      .then(()=> this.setState({
+        artistname: this.props.artist.artistname,
+        genre: this.props.artist.genre,
+        bio: this.props.artist.bio,
+        imageurl: this.props.artist.imageurl,
+        imagefile: null
+    }))
   }
 
   handleInput(type) {
@@ -36,23 +47,22 @@ export default class ArtistEditForm extends React.Component {
     const formData = new FormData();
     const { artistname, bio, imagefile } = this.state;
     if (imagefile) formData.append('imagefile', imagefile);
-    formData.append('id', this.props.artist.id);
+    formData.append('id', this.props.artist._id);
     formData.append('artistname', artistname);
     formData.append('bio', bio);
     return formData;
   }
 
   handleCancel() {
-    this.setState({
-      artistname: this.props.artist.artistname,
-      bio: this.props.artist.bio,
-      imageurl: this.props.artist.imageurl,
-      imagefile: null
-    })
+    this.props.history.goBack();
   }
 
   render() {
     const { artistname, genre, bio, imageurl } = this.state;
+    const { artist } = this.props;
+    if (!artist) return null; 
+    console.log(this.state)
+    console.log(this.props)
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
