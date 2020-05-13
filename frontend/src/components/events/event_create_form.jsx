@@ -18,7 +18,6 @@ export default class EventCreateForm extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setImageFile = this.setImageFile.bind(this);
-    this.handleMinutes = this.handleMinutes.bind(this);
   }
 
   handleInput(type) {

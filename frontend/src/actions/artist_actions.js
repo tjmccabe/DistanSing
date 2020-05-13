@@ -2,9 +2,9 @@ import * as ArtistAPIUtil from '../util/artist_api_util'
 export const RECEIVE_ARTIST = "RECEIVE_ARTIST";
 export const RECEIVE_ARTISTS = "RECEIVE_ARTISTS";
 
-const receiveArtist = (artist) => ({
+const receiveArtist = (payload) => ({
   type: RECEIVE_ARTIST,
-  artist,
+  payload,
 });
 
 const receiveArtists = (artists) => ({
@@ -14,7 +14,7 @@ const receiveArtists = (artists) => ({
 
 export const fetchArtist = (artistId) => (dispatch) => (
   ArtistAPIUtil.getArtist(artistId)
-  .then((artist) =>dispatch(receiveArtist(artist)))
+  .then((payload) => {console.log(payload); dispatch(receiveArtist(payload))})
   .catch((err) => console.log(err))
 );
 
