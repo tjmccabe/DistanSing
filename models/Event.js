@@ -28,7 +28,7 @@ const EventSchema = new Schema({
   },
   description: {
     type: String,
-    
+    default: ""
   }
 });
 

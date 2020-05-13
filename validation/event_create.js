@@ -1,11 +1,11 @@
 const Validator = require("validator");
+const validate = require("validate");
 const validText = require("./valid-text");
 
 module.exports = validateEventInput = (data) => {
   let errors = {};
 
   data.name = validText(data.name) ? data.name : "";
-  data.date = validText(data.date) ? data.date : "";
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Event name field is required";
@@ -15,9 +15,9 @@ module.exports = validateEventInput = (data) => {
     errors.date = "Event date field is required";
   }
 
-  // if (!validate.isDate(data.date)) {
-  //   errors.date = "Event date must be a valid date";
-  // }
+  if (!validate.isDate(data.date)) {
+    errors.date = "Event date must be a valid date";
+  }
 
   // if (!Validator.isInt(data.price, {gt: 0})) {
   //   errors.price = "Price set must be greater than 0"

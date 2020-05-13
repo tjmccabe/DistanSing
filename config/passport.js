@@ -13,7 +13,6 @@ options.secretOrKey = keys.secretOrKey;
 
 module.exports = passport => {
   passport.use('user-rule', new JwtStrategy(options, (jwt_payload, done) => {
-    console.log(jwt_payload);
     User.findById(jwt_payload.id)
       .then(user => {
         if (user) {
@@ -25,7 +24,6 @@ module.exports = passport => {
   }));
 
   passport.use('artist-rule', new JwtStrategy(options, (jwt_payload2, done) => {
-    console.log(jwt_payload2);
     Artist.findById(jwt_payload2.id)
       .then(artist => {
         if (artist) {

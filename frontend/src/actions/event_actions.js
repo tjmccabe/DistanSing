@@ -48,20 +48,20 @@ export const fetchEvents = () => (dispatch) =>
 
 export const fetchEvent = (eventId) => (dispatch) =>
   EventApiUtil.getEvent(eventId)
-    .then((event) => dispatch(receiveEvent(event))
-    .catch((err) => console.log(err)));
+    .then((event) => dispatch(receiveEvent(event)))
+    .catch((err) => console.log(err));
 
 export const createEvent = (event) => (dispatch) =>
   EventApiUtil.createEvent(event)
-    .then((event) => dispatch(receiveEvent(event))
-    .catch((err) => console.log(err)));
+    .then((event) => dispatch(receiveEvent(event)))
+    .catch((err) => console.log(err));
 
 export const updateEvent = (event) => (dispatch) =>
   EventApiUtil.updateEvent(event)
-    .then((event) => dispatch(receiveEvent(event))
-    .catch((err) => console.log(err)));
+    .then((event) => dispatch(receiveEvent(event)))
+    .catch((err) => console.log(err));
 
 export const deleteEvent = (eventId) => (dispatch) =>
   EventApiUtil.deleteEvent(eventId)
-  .then(() => dispatch(removeEvent(eventId))
-  .catch((err) => console.log(err)));
+  .then(() => dispatch(removeEvent(eventId)))
+  .catch((err) => console.log(err));
