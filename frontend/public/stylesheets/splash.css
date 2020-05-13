@@ -83,9 +83,10 @@
 
 .random-artist-container {
   box-sizing: border-box;
-  width: 35%;
+  max-width: 35%;
   align-items: flex-start;
   justify-content: center;
+  max-height: calc(100vh - 200px)
 }
 
 .artist-feature {
@@ -102,6 +103,7 @@
   box-sizing: border-box;
   background-size: cover;
   background-position: 50%;
+  max-width: 40%;
   min-width: 40%;
   margin-bottom: 40px;
   height: 120px;
@@ -109,7 +111,6 @@
 }
 
 .artist-feature-item-filter {
-  text-overflow: ellipsis;
   font-size: 16px;
   font-weight: bold;
   box-sizing: border-box;
