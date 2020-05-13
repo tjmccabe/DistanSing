@@ -1,7 +1,6 @@
 .nav-bar {
   height: 60px;
   position: relative;
-  background-color: rgb(255, 249, 191);
 }
 
 .nav-container {
@@ -59,9 +58,4 @@
 .nav-bar-filter:hover {
   background-color: rgba(0, 0, 0, .1);
   cursor: pointer;
-}
-
-.splash {
-  height: 400px;
-  background-color: rgb(255, 249, 191);
 }
