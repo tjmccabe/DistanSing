@@ -40,7 +40,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)
-    .then((event) => res.json(event))
+    .then((event) => {
+      console.log(event)
+      res.json(event)})
     .catch((errors) =>
       res.status(404).json({ noeventfound: "No event found with that ID" })
     );
@@ -59,7 +61,11 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
       if (req.file) {
         imageLocation = req.file.location;
       }
-      console.log(req.body.date)
+      // console.log(req.user)
+      // console.log('----------')
+
+      // console.log(req.body)
+      // console.log(req.params)
       const newEvent = new Event({
         name: req.body.name,
         date: req.body.date,

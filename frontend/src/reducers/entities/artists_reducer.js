@@ -9,10 +9,10 @@ const ArtistsReducer = (state = {}, action) => {
       newState = action.artists.data;
       return newState;
     case RECEIVE_ARTIST:
-      if (action.artist.data._id) {
-        return Object.assign(newState, { [action.artist.data._id]: action.artist.data});
+      if (action.payload.data._id) {
+        return Object.assign(newState, { [action.payload.data._id]: action.payload.data});
       }
-      return Object.assign(newState, { [action.artist.data.id]: action.artist.data })
+      return Object.assign(newState, { [action.payload.data.id]: action.payload.data })
     case RECEIVE_CURRENT_ARTIST:
       if (action.currentArtist._id) {
         return Object.assign(newState, { [action.currentArtist._id]: action.currentArtist });
