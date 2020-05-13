@@ -1,10 +1,31 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import { throttle } from 'throttle-debounce'
 
 class NavBar extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  componentDidMount() {
+    this.listenForScroll()
+  }
+
+  componentWillUnmount() {
+    this.throttled.cancel();
+  }
+
+  listenForScroll() {
+    this.throttled = throttle(200, () => check_if_scrolled());
+    document.addEventListener("scroll", this.throttled)
+
+    function check_if_scrolled() {
+      let bar = document.getElementById('navbar')
+      let html = document.getElementById('html')
+
+      let pixelsFromTop = html.scrollTop;
+
+      pixelsFromTop > 0 ? bar.classList.add("scrolled") : (
+        bar.classList.remove("scrolled")
+      )
+    }
+  }
 
   render() {
     const { loggedIn, current, loggedInAsUser, openModal } = this.props;
@@ -59,7 +80,7 @@ class NavBar extends React.Component {
 
     return (
       <header className="nav-bar">
-        <div className="nav-container">
+        <div className="nav-container" id="navbar">
           <div className="nav-bar-left">
             <Link to="/" className="nav-logo">
               <div className="nav-logo-img">

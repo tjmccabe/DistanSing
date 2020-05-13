@@ -12,9 +12,9 @@ const App = () => (
     <Modal />
     <NavBarContainer />
     <Switch>
+      <Route exact path="/" component={Splash} />
       <Route path="/artists/:id" component={ArtistShowContainer} />
       <Route path="/events/:id" component={EventShowContainer} />
-      <Route exact path="/" component={Splash} />
     </Switch>
   </div>
 );
