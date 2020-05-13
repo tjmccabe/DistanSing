@@ -1,5 +1,6 @@
 body {
   box-sizing: border-box;
+  background-color: pink;
 }
 
 a {
@@ -10,6 +11,3 @@ a:visited {
   text-decoration: none;
   color: inherit
 }
-
-/* just an example to test if it works^
-feel free to delete */
