@@ -50,15 +50,6 @@ class UserStreamShow extends React.Component {
         alert(`An error has occurred: ${err}`);
         console.log(err);
       })
-  
-      peer.on("call", call => {
-        call.answer();
-
-        call.on("stream", stream => {
-          this.recStream(stream, "rVideo")
-        })
-        
-      })
     });
   }
 
