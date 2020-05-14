@@ -8,11 +8,12 @@ import SplashContainer from './splash/splash-container';
 import ArtistShowContainer from '../components/artists/artist_show_container'
 import EventCreateContainer from './events/event_create_container';
 import ArtistEditFormContainer from '../components/artists/artist_edit_form_container';
-
+import StreamShow from '../components/streams/stream_show';
 const App = () => (
   <div>
     <Modal />
     <NavBarContainer />
+    <StreamShow />
     <Switch>
       <Route exact path="/" component={SplashContainer} />
       <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
