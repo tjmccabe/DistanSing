@@ -11,3 +11,12 @@ a:visited {
   text-decoration: none;
   color: inherit
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:#3D5A80; 
+  border-radius: 10px;
+}
