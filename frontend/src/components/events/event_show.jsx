@@ -39,7 +39,7 @@ class EventShow extends React.Component {
                 <FontAwesomeIcon icon={faShoppingCart}/> Buy Now
               </div>
               <div className="event-show-price">
-                $ {event.price}
+                $ {event.price.toFixed(2)}
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ class EventShow extends React.Component {
           <div className="event-show-main">
             <div className="event-show-main-container">
               <div className="event-show-pic">
-                <img src={artist.imageurl} alt="whatt"/>
+                <img src={artist.imageurl}/>
               </div>
               <div className="event-show-body">
                 <div className="event-show-name">

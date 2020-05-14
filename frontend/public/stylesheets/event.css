@@ -3,7 +3,7 @@
   justify-content: center;
   background: #F2F2F2;
 
-  /* background: #6E7376; */
+  /* background: #506CF0; */
   min-height: 100vh;
   /* background-image: linear-gradient(to top right, #4ECDC4, #FFE66D); */
 }
@@ -35,14 +35,15 @@
 
 .countdown-live-now {
   font-size: 100px;
-  animation:live 1.5s infinite;
+  font-weight: 900;
+  animation:live 1s infinite;
 }
 
 @keyframes live{
-  0%{ color: #85182A }
-  25%{ color: #A71E34 }
-  25%{ color: #BD1F36 }
-  75%{ color: #DA1E37 }
+  0%{ color: #506CF0 }
+  25%{ color: #A7B4FF }
+  50%{ color: #B3BEFF }
+  75%{ color: #CBD3FF}
   100%{ color: transparent }
 }
 .countdown-timer {
@@ -97,7 +98,8 @@
   width: 80px;
   text-align: center;
   font-size: 50px;
-  background: #F15946;
+  background: #506CF0;
+  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -116,7 +118,8 @@
   width: 60px;
   text-align: center;
   font-size: 50px;
-  background: #F15946;
+  background: #506CF0;
+  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -128,7 +131,8 @@
   width: 60px;
   text-align: center;
   font-size: 50px;
-  background: #F15946;
+  background: #506CF0;
+  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -140,7 +144,8 @@
   width: 60px;
   text-align: center;
   font-size: 50px;
-  background: #F15946;
+  background: #506CF0;
+  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -150,12 +155,13 @@
 .event-show-buy {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   min-width: 110px;
   /* background: #7A9E9F; */
-  background: #7FD8BE;
+  background: #FD5E60;
   color: #FFFFFF;
-  padding: 10px 15px;
+  padding: 10px 15px 5px 15px;
   border-radius: 10px;
   position: relative;
   top: 100px;
@@ -202,6 +208,10 @@
 .event-show-name {
   margin: 10px 0px 10px 10px;
   font-size: 24px;
+}
+
+.event-show-description {
+  line-height: 24px;
 }
 
 .event-show-upcoming {

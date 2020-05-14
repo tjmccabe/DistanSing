@@ -10,7 +10,8 @@
   align-items: center;
   box-sizing: border-box;
   height: 60px;
-  background: #3D5A80;
+  background: #B3BEFF;
+  background: #506CF0;
   color: white;
   position: fixed;
   width: 100%;
@@ -20,7 +21,7 @@
 
 .nav-container.scrolled {
   box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  background-color: aquamarine;
+  background-color: #7486F0;
 }
 
 .nav-bar-left, .nav-bar-right, .nav-logo {
@@ -44,7 +45,8 @@
   margin-left: 10px;
   border-radius: 3px;
   height: 32px;
-  background-color: #ECF3FF;
+  background-color: #F2F2F2;
+  color: #7486F0;
 }
 
 .nav-bar-button button {
@@ -55,7 +57,6 @@
   border: none;
   font-size: 16px;
   font-weight: bold;
-  
 }
 
 .nav-bar-filter:hover {
