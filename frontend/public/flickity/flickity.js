@@ -29,7 +29,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('jquery')
+      require('./node_modules/jquery')
     );
   } else {
     // browser global
@@ -550,7 +550,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('desandro-matches-selector')
+      require('./node_modules/desandro-matches-selector')
     );
   } else {
     // browser global
@@ -785,7 +785,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('get-size')
+      require('./node_modules/get-size')
     );
   } else {
     // browser global
@@ -963,7 +963,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('fizzy-ui-utils')
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -1170,9 +1170,9 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('ev-emitter'),
-      require('get-size'),
-      require('fizzy-ui-utils'),
+      require('./node_modules/ev-emitter'),
+      require('./node_modules/get-size'),
+      require('./node_modules/fizzy-ui-utils'),
       require('./cell'),
       require('./slide'),
       require('./animate')
@@ -2102,7 +2102,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('ev-emitter')
+      require('./node_modules/ev-emitter')
     );
   } else {
     // browser global
@@ -2405,7 +2405,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('unipointer')
+      require('./node_modules/unipointer')
     );
   } else {
     // browser global
@@ -2680,8 +2680,8 @@
     module.exports = factory(
       window,
       require('./flickity'),
-      require('unidragger'),
-      require('fizzy-ui-utils')
+      require('./node_modules/unidragger'),
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -3074,8 +3074,8 @@
     module.exports = factory(
       window,
       require('./flickity'),
-      require('unipointer'),
-      require('fizzy-ui-utils')
+      require('./node_modules/unipointer'),
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -3286,8 +3286,8 @@
     module.exports = factory(
       window,
       require('./flickity'),
-      require('unipointer'),
-      require('fizzy-ui-utils')
+      require('./node_modules/unipointer'),
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -3473,8 +3473,8 @@
   } else if (typeof module == 'object' && module.exports) {
     // CommonJS
     module.exports = factory(
-      require('ev-emitter'),
-      require('fizzy-ui-utils'),
+      require('./node_modules/ev-emitter'),
+      require('./node_modules/fizzy-ui-utils'),
       require('./flickity')
     );
   } else {
@@ -3666,7 +3666,7 @@
     module.exports = factory(
       window,
       require('./flickity'),
-      require('fizzy-ui-utils')
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -3828,7 +3828,7 @@
     module.exports = factory(
       window,
       require('./flickity'),
-      require('fizzy-ui-utils')
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -4008,8 +4008,8 @@
   } else if (typeof module == 'object' && module.exports) {
     // CommonJS
     module.exports = factory(
-      require('flickity'),
-      require('fizzy-ui-utils')
+      require('./node_modules/flickity'),
+      require('./node_modules/fizzy-ui-utils')
     );
   } else {
     // browser global
@@ -4165,7 +4165,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('ev-emitter')
+      require('./node_modules/ev-emitter')
     );
   } else {
     // browser global
@@ -4543,7 +4543,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('flickity'),
+      require('./node_modules/flickity'),
       require('imagesloaded')
     );
   } else {
