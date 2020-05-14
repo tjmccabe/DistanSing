@@ -1,7 +1,5 @@
 import React from 'react'
 import ImageUpload from '../image_upload/image_upload';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import TimePicker from 'react-time-picker';
 import 'react-clock/dist/Clock.css';
 import CurrencyInput from 'react-currency-input';
@@ -15,11 +13,14 @@ export default class EventCreateForm extends React.Component {
       name: "",
       description: "",
       price: "0.00",
-      date: date,
-      time: time,
+      month: date.getMonth(),
+      day: date.getDay(),
+      year: date.getFullYear(),
+      hour: time,
       imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/s_image_1-1589313843602.jpg",
       imagefile: null
     }
+    this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,6 +48,7 @@ export default class EventCreateForm extends React.Component {
     const formData = new FormData();
     let { name, description, price, date, time, imagefile } = this.state;
     date = this.formatDate(date);
+    time = this.formatTime(time);
     let datetime = date + "T" + time;
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
@@ -83,8 +85,19 @@ export default class EventCreateForm extends React.Component {
     return [year, month, day].join('-');
   }
 
+  formatTime(time12h) {
+    const [time, modifier] = time12h.split(' ');
+    let [hours, minutes] = time.split(':');
+    if (hours === '12') {
+      hours = '00';
+    }
+    if (modifier === 'PM') {
+      hours = parseInt(hours, 10) + 12;
+    }
+    return `${hours}:${minutes}`;
+  }
+
   renderErrors() {
-    
     return this.props.errors[0] ? (
       <ul className="event-create-errors">
         {this.props.errors.map((error, idx) => {
@@ -106,26 +119,33 @@ export default class EventCreateForm extends React.Component {
     return (
       <div className="event-create-page">
         <form className="event-create-form" onSubmit={this.handleSubmit}>
-          <div className="event-create-left">
-            <ImageUpload setImageFile={this.setImageFile} imageurl={imageurl} />
-            <div className="event-date">
-              <Calendar value={date} onChange={this.handleDate()} />
-              <TimePicker className="" value={time} onChange={this.handleTime()} disableClock clearIcon={null} />
-            </div>
-          </div>
-          <div className="event-create-right">
-            <div className="event-inputs-container">
-              <input className="event-name-field" type="text" value={name} onChange={this.handleInput("name")} placeholder="Event Name" />
-              <div className="event-price-container">
-                <span className="event-price-label">Price</span>
-                <CurrencyInput className="event-price-field" onChange={this.handlePrice()} value={price} prefix="$"/>
+          <h1 className="event-create-header">Your fans are waiting...</h1>
+          <div className="event-create-container">
+            <div className="event-create-left">
+              <ImageUpload 
+                setImageFile={this.setImageFile} 
+                imageurl={imageurl} 
+                classNames={["image-upload-container", "image-upload", "image-upload-btn"]}/>
+              <div className="event-date">
+                
+                <TimePicker className="" value={time} onChange={this.handleTime()} disableClock clearIcon={null} />
+                <input type="date"/>
               </div>
             </div>
-            <textarea className="event-description-field" value={description} onChange={this.handleInput("description")} placeholder="Tell your fans about the event" />
-            {ErrorList}
-            <div className="event-create-btns">
-              <button className="event-create-btn">Create Event</button>
-              <button className="event-cancel-btn" onClick={this.handleCancel}>Cancel</button>
+            <div className="event-create-right">
+              <div className="event-inputs-container">
+                <input className="event-name-field" type="text" value={name} onChange={this.handleInput("name")} placeholder="Event Name" />
+                <div className="event-price-container">
+                  <span className="event-price-label">Price</span>
+                  <CurrencyInput className="event-price-field" onChange={this.handlePrice()} value={price} prefix="$"/>
+                </div>
+              </div>
+              <textarea className="event-description-field" value={description} onChange={this.handleInput("description")} placeholder="Tell your fans about the event" />
+              {ErrorList}
+              <div className="event-create-btns">
+                <button className="event-create-btn">Create Event</button>
+                <button className="event-cancel-btn" onClick={this.handleCancel}>Cancel</button>
+              </div>
             </div>
           </div>
         </form>
