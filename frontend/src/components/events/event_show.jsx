@@ -3,15 +3,38 @@ import Countdown from "./countdown";
 import EventIndexContainer from "./events_index_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import StreamShow from '../streams/stream_show';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 
-
 class EventShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      streaming: false
+    }
+    this.startStream = this.startStream.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchArtists()
       .then(() => this.props.fetchEvent(this.props.match.params.id))
+  }
+
+  startStream() {
+    this.setState({ streaming: true })
+  }
+
+  showStream() {
+    const { artist, currentId } = this.props;
+    if (artist._id === currentId) {
+      return <StreamShow performingArtist={true} />;
+    } else if (currentId) {
+      return <StreamShow audience={true} />;
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -20,7 +43,11 @@ class EventShow extends React.Component {
     const date = new Date(event.date);
     // const isTime = date.getTime() < (new Date()).getTime() ? true : false;
 
-    return (
+    return this.state.streaming ? 
+      <div>
+        {this.showStream()}
+      </div>
+     : (
       <div className="event-show">
         <div className="event-show-container">
           <div className="event-show-header">
@@ -28,7 +55,7 @@ class EventShow extends React.Component {
               <Calendar value={date}/>
             </div>
             <div className="event-show-countdown">
-              <Countdown artist={artist} date={date} currentId={currentId}/>
+              <Countdown startStream={this.startStream} artist={artist} date={date} currentId={currentId}/>
             </div>
             <div className="event-show-buy">
               <div className="event-show-buynow">
