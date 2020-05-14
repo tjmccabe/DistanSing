@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ArtistFeatureItem = ({artist}) => {
+const ArtistFeatureItem = ({artist, linkToArtistShow}) => {
   const genre = artist.genre === "None" ? null : artist.genre
 
   const bkg = artist.imageurl ?
@@ -12,6 +12,7 @@ const ArtistFeatureItem = ({artist}) => {
     <li
       className="artist-feature-item"
       style={bkg}
+      onClick={ () => linkToArtistShow(artist) }
     >
       <div className="artist-feature-item-filter">
         <div>{artist.artistname}</div>
@@ -21,13 +22,12 @@ const ArtistFeatureItem = ({artist}) => {
   )
 }
 
-
-const ArtistFeature = ({artists}) => {
+const ArtistFeature = ({artists, linkToArtistShow}) => {
 
   return(
     <ul className="artist-feature">
       {artists.map(artist => (
-        <ArtistFeatureItem artist={artist} key={`artist-${artist._id}`} />
+        <ArtistFeatureItem artist={artist} key={`artist-${artist._id}`} linkToArtistShow={linkToArtistShow} />
       ))}
     </ul>
   )
