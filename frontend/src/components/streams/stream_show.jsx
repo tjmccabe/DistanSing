@@ -33,9 +33,7 @@ class StreamShow extends React.Component {
   recStream(stream, elementId) {
     const video = document.getElementById(elementId);
     video.srcObject = stream;
-    // video.play();
     window.peerStream = stream;
-
   }
 
   startPlaying() {
@@ -52,9 +50,6 @@ class StreamShow extends React.Component {
       });
       // emit
       
-      // const peer = new Peer({ key: '1wjd5qra8257b9', host: "https://0.peerjs.com" })
-      // const peer = new Peer({ key: '1wjd5qra8257b9' })
-      // const peer = new Peer({ host: "https://0.peerjs.com" })
       const peer = new Peer()
   
       peer.on("open", () => {
@@ -123,8 +118,8 @@ class StreamShow extends React.Component {
     const { video } = this.state;
     return this.state.playing ? (
       <div>
-        <video id="lVideo" src={video} controls muted autoPlay={true} ></video>
-        <video id="rVideo" src={video} controls muted autoPlay={true} ></video>
+        <video id="lVideo" controls muted autoPlay={true} ></video>
+        <video id="rVideo" controls muted autoPlay={true} ></video>
         <p id="displayId"></p>
         <p>Glen's bedroom is poppin!!!</p>
         <input type="text" id="connId" />

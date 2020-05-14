@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import StreamShow from '../streams/stream_show';
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -65,10 +66,26 @@ class Countdown extends React.Component {
     }
   }
 
+  showStream() {
+    const { artist, currentId } = this.props;
+    if (artist._id === currentId) {
+      return <StreamShow performingArtist={true} />;
+    } else if (currentId) {
+      return <StreamShow audience={true} />;
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { days, hours, minutes, seconds } = this.state;
+    const player = this.showStream();
+
     return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? (
-      <div className="countdown-live-now">Live Now!</div>
+      <div>
+        <div className="countdown-live-now">Live Now!</div>
+        {player}
+      </div>
     ) : (
       <div className="countdown-timer">
         <div className="countdown-timer-header">Time to Live:</div>

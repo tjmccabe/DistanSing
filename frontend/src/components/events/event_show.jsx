@@ -7,6 +7,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 
+
 class EventShow extends React.Component {
   componentDidMount() {
     this.props.fetchArtists()
@@ -14,15 +15,10 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { artist, event } = this.props;
+    const { artist, event, currentId } = this.props;
     if (!event) return null;
     const date = new Date(event.date);
-    // const month = date.getMonth() + 1;
-    // const day = date.getDate();
-    // const year = date.getFullYear();
-    // const hour = date.getHours();
-    // const minutes = date.getMinutes();
-    // const seconds = date.getSeconds();
+    // const isTime = date.getTime() < (new Date()).getTime() ? true : false;
 
     return (
       <div className="event-show">
@@ -32,7 +28,7 @@ class EventShow extends React.Component {
               <Calendar value={date}/>
             </div>
             <div className="event-show-countdown">
-              <Countdown date={date}/>
+              <Countdown artist={artist} date={date} currentId={currentId}/>
             </div>
             <div className="event-show-buy">
               <div className="event-show-buynow">
