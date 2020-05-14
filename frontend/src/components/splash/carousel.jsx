@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-const CarouselItem = ({stream, artists}) => {
+const CarouselItem = ({stream, artists, linkToEventShow}) => {
   const price = stream.price === 0 ? "FREE" : `Price: $${stream.price}`
 
   const bkg = stream.imageurl ?
@@ -29,6 +29,7 @@ const CarouselItem = ({stream, artists}) => {
     <li
       className="carousel-item"
       style={bkg}
+      onClick={() => linkToEventShow(stream)}
     >
       <div className="carousel-item-filter">
         <div>{stream.name}</div>
@@ -41,17 +42,18 @@ const CarouselItem = ({stream, artists}) => {
 }
 
 const mSTP = (state, ownProps) => ({
-  artists: state.entities.artists
+  artists: state.entities.artists,
+  linkToEventShow: ownProps.linkToEventShow
 });
 
 const CarouselItemContainer = connect(mSTP)(CarouselItem);
 
-const Carousel = ({ streams, type }) => {
+const Carousel = ({ streams, type, linkToEventShow}) => {
 
   return(
     <ol className={`stream-carousel`} id={`${type}-carousel`}>
       {streams.map((stream, idx) => (
-        <CarouselItemContainer stream={stream} type={type} key={`stream-${type}-${idx}`} />
+        <CarouselItemContainer stream={stream} type={type} key={`stream-${type}-${idx}`} linkToEventShow={linkToEventShow} />
       ))}
     </ol>
   )

@@ -4,6 +4,11 @@ import ArtistFeature from './artist_feature.jsx';
 import Flickity from 'flickity';
 
 class Splash extends React.Component {
+  constructor(props) {
+    super(props);
+    this.linkToArtistShow = this.linkToArtistShow.bind(this);
+    this.linkToEventShow = this.linkToEventShow.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchEvents()
@@ -31,7 +36,7 @@ class Splash extends React.Component {
 
     let shuffled = this.shuffle(liveStreams)
 
-    return shuffled[0] ? <Carousel streams={shuffled} type="live"/> : null
+    return shuffled[0] ? <Carousel streams={shuffled} type="live" linkToEventShow={this.linkToEventShow} /> : null
   }
 
   getUpcomingStreams() {
@@ -46,14 +51,25 @@ class Splash extends React.Component {
 
     let shuffled = this.shuffle(soonStreams)
 
-    return shuffled[0] ? <Carousel streams={shuffled} type="soon"/> : null
+    return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null
   }
 
   getTrendingArtists() {
     if (!this.props.artists) return null;
     let shuffled = this.shuffle(this.props.artists).slice(0,6)
 
-    return shuffled[0] ? <ArtistFeature artists={shuffled}/> : null
+    return shuffled[0] ? <ArtistFeature artists={shuffled} linkToArtistShow={this.linkToArtistShow} /> : null
+  }
+
+  linkToArtistShow(artist) {
+    this.props.fetchArtist(artist._id)
+      .then(() => this.props.history.push(`/artists/${artist._id}`))
+  }
+
+  linkToEventShow(event) {
+    // this.props.fetchArtist(artist._id)
+    //   .then(() => this.props.history.push(`/artists/${artist._id}`))
+    this.props.history.push(`/events/${event._id}`)
   }
 
   render() {
