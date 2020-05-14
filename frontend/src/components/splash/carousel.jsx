@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-const CarouselItem = ({stream, artists}) => {
+const CarouselItem = ({stream, artists, linkToEventShow}) => {
   const price = stream.price === 0 ? "FREE" : `Price: $${stream.price}`
 
   const bkg = stream.imageurl ?
@@ -29,6 +29,7 @@ const CarouselItem = ({stream, artists}) => {
     <li
       className="carousel-item"
       style={bkg}
+      onClick={() => linkToEventShow(stream)}
     >
       <div className="carousel-item-filter">
         <div>{stream.name}</div>
@@ -41,23 +42,24 @@ const CarouselItem = ({stream, artists}) => {
 }
 
 const mSTP = (state, ownProps) => ({
-  artists: state.entities.artists
+  artists: state.entities.artists,
+  linkToEventShow: ownProps.linkToEventShow
 });
 
 const CarouselItemContainer = connect(mSTP)(CarouselItem);
 
-const CarouselPane = ({ pane, type }) => {
+const CarouselPane = ({ pane, type, linkToEventShow }) => {
 
   return (
     <ul className="carousel-pane carousel-cell">
       {pane.map(stream => (
-        <CarouselItemContainer stream={stream} key={`stream-${type}-${stream._id}`} />
+        <CarouselItemContainer stream={stream} key={`stream-${type}-${stream._id}`} linkToEventShow={linkToEventShow} />
       ))}
     </ul>
   )
 }
 
-const Carousel = ({ streams, type }) => {
+const Carousel = ({ streams, type, linkToEventShow }) => {
   function chunk(arr, len) {
     let chunks = [],
       i = 0,
@@ -74,7 +76,7 @@ const Carousel = ({ streams, type }) => {
   return(
     <ol className={`stream-carousel ${type}-carousel`}>
       {panes.map((pane, idx) => (
-        <CarouselPane pane={pane} type={type} key={`stream-${type}-${idx}`} />
+        <CarouselPane pane={pane} type={type} key={`stream-${type}-${idx}`} linkToEventShow={linkToEventShow} />
       ))}
     </ol>
   )
