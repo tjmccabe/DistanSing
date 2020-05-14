@@ -64,7 +64,6 @@ class StreamShow extends React.Component {
       peer.on("connection", connection => {
         this.conn = connection;
         this.peerId = connection.peer
-        debugger;
 
         document.getElementById("connId").value = this.peerId;
       })

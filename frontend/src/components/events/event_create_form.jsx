@@ -88,7 +88,6 @@ export default class EventCreateForm extends React.Component {
     return this.props.errors[0] ? (
       <ul className="event-create-errors">
         {this.props.errors.map((error, idx) => {
-          debugger;
           return (
             <li
               key={idx}>
