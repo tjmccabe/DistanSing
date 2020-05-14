@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from './carousel.jsx';
 import ArtistFeature from './artist_feature.jsx';
 import Flickity from 'flickity';
+import UserStreamShow from "../streams/user_stream_show";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -121,6 +122,7 @@ class Splash extends React.Component {
       
       return(
       <div className='splash'>
+        <UserStreamShow />
         <div className="splash-header">
           <h2 className="site-heading">
             Welcome To DistanSing, where we're all only 6 beats apart
