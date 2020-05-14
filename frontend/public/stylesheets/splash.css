@@ -21,17 +21,25 @@
 }
 
 .splash-body h3 {
-  color: red;
+  color: #3D5A80;
   font-size: 24px;
   font-weight: bold;
   margin-left: 40px;
   align-self: left
 }
 
+#live-now h3 {
+  color: red
+}
+
 .event-category-container {
   box-sizing: border-box;
   min-width: 65%;
   max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .stream-carousel {
@@ -42,18 +50,12 @@
   align-self: center;
 }
 
-.carousel-pane {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-}
-
 .carousel-item {
   box-sizing: border-box;
   height: 150px;
-  min-width: 22%;
-  max-width: 22%;
+  width: 24%;
   border-radius: 8px;
+  margin: .4%;
 }
 
 .carousel-item-filter {
@@ -71,7 +73,7 @@
 }
 
 .carousel-item-filter:hover {
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, .25);
   cursor: pointer;
 }
 
@@ -83,28 +85,26 @@
 
 .random-artist-container {
   box-sizing: border-box;
-  max-width: 35%;
+  width: 35%;
+  max-width: 500px;
   align-items: flex-start;
   justify-content: center;
-  max-height: calc(100vh - 200px)
 }
 
 .artist-feature {
   width: 100%;
-  padding: 20px;
+  padding: 20px 20px 0;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  height: calc(100vh - 200px)
 }
 
 .artist-feature-item {
   box-sizing: border-box;
   background-size: cover;
   background-position: 50%;
-  max-width: 40%;
-  min-width: 40%;
+  width: 40%;
   margin-bottom: 40px;
   height: 120px;
   border-radius: 3px;

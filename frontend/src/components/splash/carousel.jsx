@@ -46,35 +46,12 @@ const mSTP = (state, ownProps) => ({
 
 const CarouselItemContainer = connect(mSTP)(CarouselItem);
 
-const CarouselPane = ({ pane, type }) => {
-
-  return (
-    <ul className="carousel-pane carousel-cell">
-      {pane.map(stream => (
-        <CarouselItemContainer stream={stream} key={`stream-${type}-${stream._id}`} />
-      ))}
-    </ul>
-  )
-}
-
 const Carousel = ({ streams, type }) => {
-  function chunk(arr, len) {
-    let chunks = [],
-      i = 0,
-      n = arr.length;
-
-    while (i < n) {
-      chunks.push(arr.slice(i, i += len));
-    }
-    return chunks;
-  }
-
-  const panes = chunk(streams, 4)
 
   return(
-    <ol className={`stream-carousel ${type}-carousel`}>
-      {panes.map((pane, idx) => (
-        <CarouselPane pane={pane} type={type} key={`stream-${type}-${idx}`} />
+    <ol className={`stream-carousel`} id={`${type}-carousel`}>
+      {streams.map((stream, idx) => (
+        <CarouselItemContainer stream={stream} type={type} key={`stream-${type}-${idx}`} />
       ))}
     </ol>
   )
