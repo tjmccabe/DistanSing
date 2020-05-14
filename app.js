@@ -41,6 +41,11 @@ io.on("connection", (socket) => {
   socket.on("stream", (data) => {
     io.sockets.emit("stream", data);
   });
+
+  socket.on("userId", userId => {
+    io.sockets.emit("requestArtistConnect", userId);
+  })
+
 }); 
 
 // --------------------------

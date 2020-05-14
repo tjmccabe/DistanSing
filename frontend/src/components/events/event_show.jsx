@@ -3,7 +3,7 @@ import Countdown from "./countdown";
 import EventIndexContainer from "./events_index_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import StreamShow from '../streams/stream_show';
+import ArtistStreamShow from '../streams/artist_stream_show';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
@@ -29,9 +29,9 @@ class EventShow extends React.Component {
   showStream() {
     const { artist, currentId } = this.props;
     if (artist._id === currentId) {
-      return <StreamShow performingArtist={true} />;
+      return <ArtistStreamShow performingArtist={true} />;
     } else if (currentId) {
-      return <StreamShow audience={true} />;
+      return <ArtistStreamShow audience={true} />;
     } else {
       return null;
     }
