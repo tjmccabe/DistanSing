@@ -15,10 +15,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-<<<<<<< HEAD
   /* margin-bottom: 10px; */
-=======
->>>>>>> b789a0e8525340768c10a3faf967485cbdcd0316
 }
 
 .login-form-form input, .signup-form-form input {
