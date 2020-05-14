@@ -1,5 +1,5 @@
 import { RECEIVE_ARTIST, RECEIVE_ARTISTS } from "../../actions/artist_actions";
-import { RECEIVE_CURRENT_ARTIST } from "../../actions/artist_session_actions";
+// import { RECEIVE_CURRENT_ARTIST } from "../../actions/artist_session_actions";
 
 const ArtistsReducer = (state = {}, action) => {
   Object.freeze(state);

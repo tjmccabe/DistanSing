@@ -15,12 +15,15 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+<<<<<<< HEAD
   /* margin-bottom: 10px; */
+=======
+>>>>>>> b789a0e8525340768c10a3faf967485cbdcd0316
 }
 
 .login-form-form input, .signup-form-form input {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 14px;
   padding: 5px;
   border: none;
@@ -33,9 +36,9 @@
 
 .session-form-button {
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   height: 32px;
-  background-color: #FD5E60;
+  background-color: #3D5A80;
   display: flex;
   justify-content: center;
 }

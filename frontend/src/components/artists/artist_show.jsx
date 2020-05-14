@@ -29,7 +29,7 @@ class ArtistShow extends React.Component{
             <img src={`${artist.imageurl}`} alt="" />
             <div className="artist-bio">
               <h1>{artist.artistname}</h1>
-              <p>{temp_text}</p>
+              <p className="artist-bio-text">{temp_text}</p>
             </div>
           </div>
           <Link to={`/artists/${this.props.match.params.id}/edit`}>Edit</Link>

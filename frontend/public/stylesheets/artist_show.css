@@ -1,16 +1,15 @@
 /* Artist Show Container */
 
 .artist-show-container {
-  background-color: #F2F2F2;
-  padding: 40px 0px;
-  height: 472px;
+  padding-top: 40px;
+  height: 230px;
 }
 /* Artist Bio Container */
 
 .artist-bio-container {
   display: flex;
-  height: 500px;
-  margin-top: 40px;
+  height: 250px;
+  margin-top: 25px;
   margin-left: 100px;
   min-width: 1000px;
   
@@ -18,34 +17,39 @@
 
 
 .artist-bio-container img {
-  height: 400px;
-  width: 500px;
-  min-width: 500px;
+  height: 220px;
+  width: 300px;
+  min-width: 200px;
   object-fit: cover;
   border: 2px solid gray;
   border-radius: 70px;
 }
 
 .artist-bio {
-  height: 400px;
+  height: 200px;
   width: 100%;
-  min-width: 795px;
-  margin-left: 50px;
+  min-width: 120px;
+  margin-left: 20px;
   margin-right: 100px;
-  border: 3px solid black;
+  box-sizing: border-box;
 }
 
 .artist-bio h1 {
-    font-family: auto;
-    font-size: 33px;
-    text-decoration: underline;
+    font-family: 'Abril Fatface';
+    font-size: 35px;
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
-.artist-bio p {
-  margin: 10px 0px 0px 30px;
-  font-size: 24px;
+.artist-bio-text {
+  width: 85%;
+  margin: 10px 0px 0px 20px;
+  line-height: 1.5em;
+  font-size: 20px;
+  height: 150px;
+  overflow: auto;
+  padding-right: 15px;
+  box-sizing: border-box;
 }
 
 /* Artist Event Index Container */
@@ -57,11 +61,10 @@
 
 .artist-event-index-container h1 {
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
   font-weight: 600;
   align-items: center;
-  font-size: 33px;
-  height: 60px;
-  width: 450px;
-  border: 3px solid black;
+  font-size: 22px;
+  height: 30px;
+  width: 100%;
 }

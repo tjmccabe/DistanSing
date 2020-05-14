@@ -1,6 +1,7 @@
 .nav-bar {
   height: 60px;
   position: relative;
+  z-index: 99;
 }
 
 .nav-container {
