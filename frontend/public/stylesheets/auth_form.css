@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
 }
 
 .login-form-form input, .signup-form-form input {
@@ -35,7 +35,7 @@
   width: 90%;
   margin-bottom: 10px;
   height: 32px;
-  background-color: salmon;
+  background-color: #FD5E60;
   display: flex;
   justify-content: center;
 }
@@ -56,7 +56,7 @@
 }
 
 .form-title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
   font-size: 20px;
 }
@@ -67,5 +67,9 @@
 }
 
 .session-form-link {
+  margin-bottom: 10px;
+}
+
+.login-errors {
   margin-bottom: 10px;
 }
