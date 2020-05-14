@@ -10,7 +10,6 @@ class ArtistShow extends React.Component{
 
 
   componentDidMount(){
-    // debugger
     this.props.fetchArtist(this.props.match.params.id)
   }
 
