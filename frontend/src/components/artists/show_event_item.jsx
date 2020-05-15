@@ -2,10 +2,6 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 
 class ShowEventItem extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     const { event } = this.props;
@@ -39,11 +35,7 @@ class ShowEventItem extends React.Component {
         <div className="item-details">
           <div className="item-text">
             <h4>{event.name}</h4>
-            <div>
-              {month} {day}, {year}, {hour % 12 === 0 ? hour : hour % 12}:
-              {minute < 10 ? `0${minute}` : minute}
-              {hour > 11 ? "PM" : "AM"}
-            </div>
+            <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
             <p>{event.description}</p>
           </div>
           <span>{event.price.toFixed(2)}</span>

@@ -29,7 +29,7 @@ router.post('/search', (req, res) => {
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)
     .then((event) => {
-      console.log(event)
+      // console.log(event)
       res.json(event)})
     .catch((errors) =>
       res.status(404).json({ noeventfound: "No event found with that ID" })
@@ -49,9 +49,9 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
     if (req.file) {
       imageLocation = req.file.location;
     }
-    console.log(req.body)
-    console.log('---------')
-    console.log(req.user)
+    // console.log(req.body)
+    // console.log('---------')
+    // console.log(req.user)
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,
@@ -78,14 +78,16 @@ router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
-    if (req.file) {
-      imageLocation = req.file.location;
-    }
     Event.findById(req.params.id)
-      .then((event) => {
+    .then((event) => {
+        if (req.file) {
+          imageLocation = req.file.location;
+        } else {
+          imageLocation = event.imageurl;
+        }
         if (req.user._id.toString() === event.artist.toString()) {
           let updatedEvent = Object.assign(event, req.body, { imageurl: imageLocation });
-          console.log(updatedEvent)
+          // console.log(updatedEvent)
           updatedEvent.save().then((event) => res.json(event));
         } else {
           res.status(404).json({ noteventcreator: "You are not the creator of this event"});

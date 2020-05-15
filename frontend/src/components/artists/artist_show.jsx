@@ -1,7 +1,8 @@
 import React from "react";
 import ShowEventItem from "./show_event_item";
-import { Link } from "react-router-dom";
 import DeleteEvent from "./delete_event";
+import { Link, withRouter } from "react-router-dom";
+
 class ArtistShow extends React.Component {
   // constructor(props){
   //   super(props)
@@ -21,7 +22,7 @@ class ArtistShow extends React.Component {
     const ArtistEvents =
       artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
         <div className="artist-event-index-container">
-          <h1>{artist.artistname}'s upcoming events:</h1>
+          <h1>Upcoming events from {artist.artistname}:</h1>
           <div className="show-item-container">
             {Object.values(artist.artistEvents).map((event, idx) => (
               <div key={idx}>
@@ -65,4 +66,4 @@ class ArtistShow extends React.Component {
     );
   }
 }
-export default ArtistShow;
+export default withRouter(ArtistShow);

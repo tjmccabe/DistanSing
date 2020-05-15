@@ -46,11 +46,11 @@ router.get("/:id", (req, res) => {
       Event.find({ "_id": { $in: keys }})
         .then( events => {
           let payload = Object.assign({}, user._doc);
-          console.log(payload);
+          // console.log(payload);
           let userEvents = {};
           events.map(event => userEvents[event._id] = event);
           payload["userEvents"] = userEvents;
-          console.log(payload);
+          // console.log(payload);
           res.json(payload);    
         })
     })
