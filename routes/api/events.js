@@ -42,14 +42,15 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
     if (error) {
       return res.status(400).json(error);
     } 
-    const { errors, isValid } = validateEventInput(req.body);
-    if (!isValid) {
-      console.log(errors)
-      return res.status(400).json(errors);
-    }
+    // const { errors, isValid } = validateEventInput(req.body);
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
     if (req.file) {
       imageLocation = req.file.location;
     }
+    console.log(req.body)
+    console.log(req.user)
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,
