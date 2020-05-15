@@ -62,7 +62,6 @@ export const createEvent = (event) => (dispatch) =>
     .then((event) => dispatch(receiveEvent(event)))
     .catch((err) => dispatch(receiveEventErrors(JSON.parse(err.request.response))));
 
-
 export const updateEvent = (event) => (dispatch) =>
   EventApiUtil.updateEvent(event)
     .then((event) => dispatch(receiveEvent(event)))

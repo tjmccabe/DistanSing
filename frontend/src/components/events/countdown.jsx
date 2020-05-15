@@ -66,20 +66,24 @@ class Countdown extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.myInterval);
+  }
 
 
   render() {
     const { days, hours, minutes, seconds } = this.state;
-    const { startStream } = this.props;
+    const {hasTicket} = this.props
+
+    const flashyText = hasTicket ? "Waiting for Artist" : "Live Now!"
 
     return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? (
       <div>
-        <div className="countdown-live-now">Live Now!</div>
-        <button onClick={startStream}>Start Stream</button>
+        <div className="countdown-live-now">{flashyText}</div>
       </div>
     ) : (
       <div className="countdown-timer">
-        <div className="countdown-timer-header">Time to Live:</div>
+        <div className="countdown-timer-header">Time remaining until LIVE:</div>
         <div className="countdown-time">
           <div className="countdown-time-days">
             <div className="countdown-days-value">

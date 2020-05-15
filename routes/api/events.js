@@ -84,17 +84,18 @@ router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (
     if (error) {
       res.json({ error: error });
     }
-    const { errors, isValid } = validateEventInput(req.body);
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
+    // const { errors, isValid } = validateEventInput(req.body);
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
     if (req.file) {
       imageLocation = req.file.location;
     }
     Event.findById(req.params.id)
       .then((event) => {
-        if (req.user === event.artist) {
+        if (req.user._id.toString() === event.artist.toString()) {
           let updatedEvent = Object.assign(event, req.body, { imageurl: imageLocation });
+          console.log(updatedEvent)
           updatedEvent.save().then((event) => res.json(event));
         } else {
           res.status(404).json({ noteventcreator: "You are not the creator of this event"});

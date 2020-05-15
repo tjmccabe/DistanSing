@@ -51,14 +51,6 @@ class UserStreamShow extends React.Component {
         console.log(err);
       })
   
-      peer.on("call", call => {
-        call.answer();
-
-        call.on("stream", stream => {
-          this.recStream(stream, "rVideo")
-        })
-        
-      })
     });
   }
 
