@@ -26,15 +26,16 @@ class EventShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     clearInterval(this.timer)
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+    if (!this.props.isTime) return;
     if (this.props.event && this.props.event.streaming && !this.state.streaming) {
       this.startStreaming()
       return
     }
     if (this.props.event && !this.state.streaming) {
       this.timer = setInterval(() => this.props.fetchEvent(this.props.match.params.id), 5000)
-    }
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      window.scrollTo(0, 0);
     }
   }
 
@@ -108,10 +109,10 @@ class EventShow extends React.Component {
       </div>
     );
 
-    console.log(currentId)
-    console.log(artist._id)
-    console.log(artist.artistname)
-    console.log(this.state)
+    // console.log(currentId)
+    // console.log(artist._id)
+    // console.log(artist.artistname)
+    // console.log(this.state)
     if (this.state.streaming && currentId === artist._id) return this.showStream()
 
     if (this.state.streaming && hasTicket) return this.showStream()

@@ -61,8 +61,8 @@ export default class ArtistEditForm extends React.Component {
     const { artistname, genre, bio, imageurl } = this.state;
     const { artist } = this.props;
     if (!artist) return null; 
-    console.log(this.state)
-    console.log(this.props)
+    // console.log(this.state)
+    // console.log(this.props)
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
