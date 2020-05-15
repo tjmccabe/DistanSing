@@ -48,7 +48,11 @@ class EventShow extends React.Component {
   }
 
   buyTicket() {
-    this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
+    if (this.props.currentUserPurchase) {
+      this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
+    } else {
+      window.alert("You are an artist. You should be performing, not attending other artists' events.")
+    }
   }
 
   showArtist() {
