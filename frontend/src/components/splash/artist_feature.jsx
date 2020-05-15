@@ -5,7 +5,6 @@ const ArtistFeatureItem = ({artist, linkToArtistShow}) => {
 
   const bkg = artist.imageurl ?
     { backgroundImage: `url(${artist.imageurl})` } :
-    // {background: 'transparent'}
     { backgroundColor: 'seashell' }
 
   return(

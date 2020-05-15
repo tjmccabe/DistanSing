@@ -5,10 +5,11 @@ import NavBarContainer from './navbar/navbar_container';
 import EventShowContainer from "./events/event_show_container";
 import Modal from './modal/modal';
 import SplashContainer from './splash/splash-container';
-import ArtistShowContainer from '../components/artists/artist_show_container'
+import ArtistShowContainer from './artists/artist_show_container'
 import EventCreateContainer from './events/event_create_container';
-import ArtistEditFormContainer from '../components/artists/artist_edit_form_container';
-import UserShowContainer from "../components/users/user_show_container";
+import ArtistEditFormContainer from './artists/artist_edit_form_container';
+import UserShowContainer from "./users/user_show_container";
+import SearchIndex from "./search/search_index";
 
 const App = () => (
   <div>
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/events/create" component={EventCreateContainer} />
       <Route path="/events/:id" component={EventShowContainer} />
       <Route path="/users/:id" component={UserShowContainer} />
+      <Route path="/search/:fragment" component={SearchIndex} />
     </Switch>
   </div>
 );
