@@ -5,27 +5,29 @@ module.exports = validateEventInput = (data) => {
   let errors = {};
 
   data.name = validText(data.name) ? data.name : "";
-  data.date = validText(data.date) ? data.date : "";
+
+  data.date = validText(data.name) ? data.name : "";
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Event name field is required";
   }
 
   if (Validator.isEmpty(data.date)) {
-    errors.date = "Event date field is required";
+    errors.date = "You must enter a date";
   }
 
-  // if (!validate.isDate(data.date)) {
-  //   errors.date = "Event date must be a valid date";
+  // Validator.validDate = str => {
+  //   let date = Date.parse(str);
+  //   let today = new Date()
+  //   if (isNaN(date) || date.getTime() < today.getTime() || str.split('T')[0].split(' ').length < 3) {
+  //     return false;
+  //   }
+  //   return true;
   // }
 
-  // if (!Validator.isInt(data.price, {gt: 0})) {
-  //   errors.price = "Price set must be greater than 0"
+  // if (Validator.validDate(data.date)) {
+  //   errors.date = "You must enter a valid date"
   // }
-  // if (!Validator.isISO8601(data.date, {strict: true})) {
-  //   errors.date = "Event date is not valid";
-  // }
-  // cannot get validation to work. isDate() is no longer a Validator method.
 
   return {
     errors,

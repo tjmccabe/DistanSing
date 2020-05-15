@@ -21,22 +21,10 @@ router.get("/", (req, res) => {
     );
 });
 
-// router.get("/artist/:artist_id", (req, res) => {
-//   Event.find({ artist: req.params.user_id })
-//     .sort({ date: -1 })
-//     .then((data) => {
-//       let events = {};
-//       data.map((event) => {
-//         events[event.id] = event;
-//       });
-//       res.json(events);
-//     })
-//     .catch((errors) =>
-//       res
-//         .status(404)
-//         .json({ noeventsfound: "No events found for that artist ID" })
-//     );
-// });
+router.post('/search', (req, res) => {
+  Event.find({ name: { '$regex': `^${req.body.fragment}.*` , $options: '-i' } })
+    .then(events => res.json(events))
+})
 
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)
@@ -54,14 +42,15 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
     if (error) {
       return res.status(400).json(error);
     } 
-    const { errors, isValid } = validateEventInput(req.body);
-    if (!isValid) {
-      console.log(errors)
-      return res.status(400).json(errors);
-    }
+    // const { errors, isValid } = validateEventInput(req.body);
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
     if (req.file) {
       imageLocation = req.file.location;
     }
+    console.log(req.body)
+    console.log(req.user)
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,

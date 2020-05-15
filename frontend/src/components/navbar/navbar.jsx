@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { throttle } from 'throttle-debounce'
+import SearchBar from '../search/search_bar';
 
 class NavBar extends React.Component {
   componentDidMount() {
@@ -33,9 +34,9 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { loggedIn, current, loggedInAsUser, openModal } = this.props;
+    const { loggedIn, current, loggedInAsUser, openModal, loggedInAsArtist } = this.props;
     const name = loggedInAsUser && current ? current.username : loggedIn && current ? current.artistname : null;
-    
+    const id = loggedIn && current ? current._id : null;
     const ArtistLogin = loggedIn ? null : (
       <div
         className="nav-bar-button artist-login-button"
@@ -77,11 +78,12 @@ class NavBar extends React.Component {
       </div>
     ) : null;
 
-    const Welcome = loggedIn ? (
-      <div className="nav-bar-greeting" >Welcome, {name}!</div>
-    ) : null;
-
-    const SearchPlaceholder = null; // come back to this when we can
+    const Welcome = loggedInAsUser && current ? (
+          <Link to={`/users/${id}`}>Welcome, {name}!</Link>
+        ) : loggedInAsArtist && current ? (
+          <Link to={`/artists/${id}`}>Welcome, {name}!</Link>
+        )
+      : null;
 
     return (
       <header className="nav-bar">
@@ -96,7 +98,7 @@ class NavBar extends React.Component {
               </div>
             </Link>
           </div>
-          {SearchPlaceholder}
+          <SearchBar />
           <div className="nav-bar-right">
             {UserLogin}
             {UserSignup}

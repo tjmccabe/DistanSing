@@ -15,6 +15,7 @@ class EventShow extends React.Component {
       streaming: false
     }
     this.startStreaming = this.startStreaming.bind(this);
+    this.showArtist = this.showArtist.bind(this);
     this.buyTicket = this.buyTicket.bind(this);
   }
 
@@ -32,6 +33,9 @@ class EventShow extends React.Component {
     if (this.props.event && !this.state.streaming) {
       this.timer = setInterval(() => this.props.fetchEvent(this.props.match.params.id), 5000)
     }
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
   }
 
   componentWillUnmount() {
@@ -47,6 +51,10 @@ class EventShow extends React.Component {
     this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
   }
 
+  showArtist() {
+    this.props.history.push(`/artists/${this.props.artist._id}`)
+  }
+
   showStream() {
     const { artist, currentId } = this.props;
     if (artist._id === currentId) {
@@ -59,11 +67,11 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { artist, event, currentId, hasTicket } = this.props;
+    const { artist, event, currentId, currentUserPurchase } = this.props;
     if (!event || !artist) return null;
     const date = new Date(event.date);
     const isTime = date.getTime() < (new Date()).getTime() ? true : false;
-
+    const hasTicket = currentUserPurchase ? currentUserPurchase.events[event._id] : false;
     const StartStreamButton = (currentId === artist._id && isTime) ? (
       <button onClick={this.startStreaming}>START STREAMING TO YOUR FANS</button>
     ) : null;
@@ -72,33 +80,27 @@ class EventShow extends React.Component {
       <div className="event-show-buy">
         <div className="event-show-buynow">
           <FontAwesomeIcon icon={faCheck} /> Bought
-        </div >
-      </div >
-    ) : !currentId ? (
-        <div className="event-show-buy">
-          <div className="event-show-buynow">
-            Log in to reserve ticket
-          </div>
-        </div >
-    ) : event.price === 0 ? (
-      <div className = "event-show-buy">
-        <div className = "event-show-buynow">
-          <FontAwesomeIcon icon = { faTicketAlt }/> Reserve Ticket
-        </div >
-        <div className="event-show-price">
-          (Free)
         </div>
-      </div >
-    ) : (
+      </div>
+    ) : !currentId ? (
+      <div className="event-show-buy">
+        <div className="event-show-buynow">Log in to reserve ticket</div>
+      </div>
+    ) : event.price === 0 ? (
       <div className="event-show-buy">
         <div className="event-show-buynow">
-          <FontAwesomeIcon icon={faShoppingCart} /> Buy Now
-        </div >
-        <div className="event-show-price">
-          $ {event.price.toFixed(2)}
+          <FontAwesomeIcon icon={faTicketAlt} /> Reserve Ticket
         </div>
-      </div >
-    )
+        <div className="event-show-price">(Free)</div>
+      </div>
+    ) : (
+      <div onClick={this.buyTicket} className="event-show-buy">
+        <div className="event-show-buynow">
+          <FontAwesomeIcon icon={faShoppingCart} /> Buy Now
+        </div>
+        <div className="event-show-price">$ {event.price.toFixed(2)}</div>
+      </div>
+    );
 
     console.log(currentId)
     console.log(artist._id)
@@ -114,37 +116,23 @@ class EventShow extends React.Component {
           {StartStreamButton}
           <div className="event-show-header">
             <div className="event-show-calendar">
-              <Calendar value={date}/>
+              <Calendar value={date} />
             </div>
             <div className="event-show-countdown">
-              <Countdown artist={artist} date={date} hasTicket={hasTicket}/>
-            </div>
-            <div 
-              onClick={this.buyTicket}
-              className="event-show-buy"
-            >
-              <div className="event-show-buynow">
-                <FontAwesomeIcon icon={faShoppingCart}/> Buy Now
-              </div>
-              <div className="event-show-price">
-                $ {event.price.toFixed(2)}
-              </div>
+              <Countdown artist={artist} date={date} hasTicket={hasTicket} />
             </div>
             {BuyButton}
           </div>
-          
+
           <div className="event-show-main">
             <div className="event-show-main-container">
-              <div className="event-show-pic">
-                <img src={artist.imageurl} alt={artist.artistname}/>
+              <div className="event-show-pic" onClick={this.showArtist}>
+                <img src={artist.imageurl} alt={artist.artistname} />
               </div>
               <div className="event-show-body">
-                <div className="event-show-artistname">
-                  {artist.artistname}
-                </div>
-                <div className="event-show-name">
-                  {event.name}
-                </div>
+                {/* <div className="event-show-artistname" onClick={this.props.history.push(`/artists/${artist._id}`)}> */}
+                <div className="event-show-artistname">{artist.artistname}</div>
+                <div className="event-show-name">{event.name}</div>
                 <div className="event-show-description">
                   {event.description}
                 </div>
@@ -157,7 +145,7 @@ class EventShow extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
