@@ -188,6 +188,10 @@
   justify-content: flex-start;
 }
 
+.event-show-pic:hover {
+  cursor: pointer;
+}
+
 .event-show-pic > img {
   height: 200px;
   width: 200px;

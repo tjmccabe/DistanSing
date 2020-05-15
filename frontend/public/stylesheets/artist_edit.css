@@ -1,23 +1,25 @@
 .artist-edit {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  background-image: url('https://distansing-dev.s3-us-west-1.amazonaws.com/big-crowd.jpg');
+  background-size: cover;
 }
 
 .artist-edit-form {
   display: flex;
+  justify-content: space-evenly;
   height: 400px;
+  width: 50%;
+  background-color: #F2F2F2;
+  padding: 50px;
+  margin: 50px;
 }
 
 .artist-edit-right {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 300px;
-}
-
-.artist-edit-main {
-  
+  min-width: 300px;
 }
 
 .artist-edit-name {
@@ -41,5 +43,31 @@
 .artist-edit-footer {
   display: flex;
   justify-content: flex-end;
+  margin-right: 15px;
+}
 
+.artist-edit-save {
+  color: #FFFFFF;
+  background: #FD5E60;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.artist-edit-save:hover {
+  cursor: pointer;
+}
+
+.artist-edit-cancel {
+  color: #FFFFFF;
+  background: #E5E5E5;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.artist-edit-cancel:hover {
+  cursor: pointer;
 }
