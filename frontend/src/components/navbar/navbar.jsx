@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { throttle } from 'throttle-debounce'
+import SearchBar from '../search/search_bar';
 
 class NavBar extends React.Component {
   componentDidMount() {
@@ -90,6 +91,7 @@ class NavBar extends React.Component {
                 DistanSing
               </div>
             </Link>
+            <SearchBar />
           </div>
           {SearchPlaceholder}
           <div className="nav-bar-right">

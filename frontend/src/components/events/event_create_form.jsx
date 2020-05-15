@@ -13,15 +13,15 @@ export default class EventCreateForm extends React.Component {
       name: "",
       description: "",
       price: "0.00",
-      month: date.getMonth(),
-      day: date.getDay(),
-      year: date.getFullYear(),
+      month: "",
+      day: "",
+      year: "",
       time: time,
       imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/s_image_1-1589313843602.jpg",
       imagefile: null
     }
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    this.DAYS = [...Array(12).keys()].map(num => num + 1);
+    this.DAYS = [...Array(31).keys()].map(num => num + 1);
     this.YEARS = [...Array(20).keys()].map(num => num + parseInt(date.getFullYear()));
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -43,14 +43,18 @@ export default class EventCreateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const data = this.prepareForm();
-    this.props.createEvent(data);
+    this.props.createEvent(data)
+      .then(event => {
+        if (event._id) {
+          this.props.history.push(`/events/${event._id}`)
+        }
+      })
   }
 
   prepareForm() {
     const formData = new FormData();
-    let { name, description, price, date, time, imagefile } = this.state;
-    date = this.formatDate(date);
-    time = this.formatTime(time);
+    let { name, description, price, day, month, year, time, imagefile } = this.state;
+    let date = month + ' ' + day + ' ' + year;
     let datetime = date + "T" + time;
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
@@ -127,20 +131,20 @@ export default class EventCreateForm extends React.Component {
               <div className="event-date">
                 <select defaultValue={"Month"} onChange={this.handleInput("month")}>
                   <option disabled value="Month">Month</option>
-                  {this.MONTHS.map(month =>
-                    <option value={month}>{month}</option>
+                  {this.MONTHS.map((month, idx) =>
+                    <option key={idx} value={month}>{month}</option>
                   )}
                 </select>
                 <select defaultValue="Day" onChange={this.handleInput("day")}>
                   <option disabled value="Day">Day</option>
-                  {this.DAYS.map(day =>
-                    <option value={day}>{day}</option>
+                  {this.DAYS.map((day, idx) =>
+                    <option key={idx} value={day}>{day}</option>
                   )}
                 </select>
                 <select defaultValue="Year" onChange={this.handleInput("year")}>
                   <option disabled value="Year">Year</option>
-                  {this.YEARS.map(year =>
-                    <option value={year}>{year}</option>
+                  {this.YEARS.map((year, idx) =>
+                    <option key={idx} value={year}>{year}</option>
                   )}
                 </select>
                 <TimePicker className="" value={time} onChange={this.handleTime()} disableClock clearIcon={null} />
