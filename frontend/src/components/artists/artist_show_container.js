@@ -4,8 +4,10 @@ import { fetchArtist } from "../../actions/artist_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let artist = state.entities.artists ? state.entities.artists[ownProps.match.params.id] : null;
+  let currentArtist = state.session.artist ? state.entities.artists[state.session.artist._id] : null;
   return {
     artist,
+    currentArtist,
   }
 };
 

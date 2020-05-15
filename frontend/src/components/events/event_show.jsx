@@ -141,8 +141,14 @@ class EventShow extends React.Component {
           </div>
 
           <div className="event-show-upcoming">
-            <EventIndexContainer />
-          </div>
+            <div className="event-upcoming-container">
+              <div>
+                {`Other upcoming events by ${artist.artistname}`}
+              </div>
+              <EventIndexContainer artist={artist}/>
+            </div>
+
+            </div>
         </div>
       </div>
     );

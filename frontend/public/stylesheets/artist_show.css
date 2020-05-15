@@ -54,6 +54,11 @@
 
 /* Artist Event Index Container */
 
+.artist-event-index {
+  display: flex;
+  flex-direction: center;
+}
+
 .artist-event-index-container {
   height: 300px;
   margin: 0px 100px;

@@ -9,7 +9,7 @@ class EventsIndex extends React.Component {
   render() {
     const { events } = this.props;
     return (
-      <div>
+      <div className="event-index">
         {events.map( event => {
           return (
             <ShowEventItem 
