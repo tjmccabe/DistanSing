@@ -33,15 +33,19 @@ class SearchIndex extends React.Component {
     const { searchResults } = this.state;
     if (!searchResults) return null;
     return (
-      <div className="">
-        <h1>All results for: {match.params.fragment}</h1>
+      <div className="search-results-container">
+        <h1 className="search-results-header">All results for: <span className="search-fragment">{match.params.fragment}</span></h1>
         <h2>Artists</h2>
-        <div>
+        <div className="search-artists-results">
           {searchResults.artists.map(artist => 
             <div 
               key={artist._id}
-              className="artist-feature-item"
-              style={{backgroundImage: `url(${artist.imageurl})` }}
+              className="artist-feature-item artist-search-item"
+              style={{
+                backgroundImage: `url(${artist.imageurl})`,
+                width: '200px',
+                height: '200px'
+              }}
               onClick={() => history.push(`/artists/${artist._id}`)}
               >
                 <div className="artist-feature-item-filter">
@@ -52,7 +56,7 @@ class SearchIndex extends React.Component {
           )}
         </div>
         <h2>Events</h2>
-        <div>
+        <div className="search-events-results">
           {searchResults.events.map(event => 
             <ShowEventItem
               key={event._id}
