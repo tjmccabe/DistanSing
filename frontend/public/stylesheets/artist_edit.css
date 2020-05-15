@@ -1,0 +1,45 @@
+.artist-edit {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.artist-edit-form {
+  display: flex;
+  height: 400px;
+}
+
+.artist-edit-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.artist-edit-main {
+  
+}
+
+.artist-edit-name {
+  font-size: 20px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 2px solid #e5e5e5;
+}
+
+.artist-edit-bio {
+  height: 200px;
+  width: 100%;
+  font-size: 16px;
+  min-width: 120px;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid #e5e5e5;
+}
+
+.artist-edit-footer {
+  display: flex;
+  justify-content: flex-end;
+
+}

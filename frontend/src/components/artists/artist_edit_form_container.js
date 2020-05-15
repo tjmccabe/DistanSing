@@ -4,7 +4,7 @@ import ArtistEditForm from './artist_edit_form';
 
 
 const mapStateToProps = state => {
-  const artist = state.entities.artists[state.session.artist.id] ? state.entities.artists[state.session.artist.id] : null;
+  const artist = state.session.artist ? state.entities.artists[state.session.artist.id] : null;
   return {
     artist,
   }
