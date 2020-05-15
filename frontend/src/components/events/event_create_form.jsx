@@ -45,7 +45,6 @@ export default class EventCreateForm extends React.Component {
     const data = this.prepareForm();
     this.props.createEvent(data)
       .then(event => {
-        debugger
         if (event.event.data._id) {
           this.props.history.push(`/events/${event.event.data._id}`)
         }

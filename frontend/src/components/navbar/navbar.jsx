@@ -82,8 +82,6 @@ class NavBar extends React.Component {
       <div className="nav-bar-greeting" >Welcome, {name}!</div>
     ) : null;
 
-    const SearchPlaceholder = null; // come back to this when we can
-
     return (
       <header className="nav-bar">
         <div className="nav-container" id="navbar">
@@ -96,9 +94,8 @@ class NavBar extends React.Component {
                 DistanSing
               </div>
             </Link>
-            <SearchBar />
           </div>
-          {SearchPlaceholder}
+          <SearchBar />
           <div className="nav-bar-right">
             {UserLogin}
             {UserSignup}
