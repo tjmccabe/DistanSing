@@ -9,7 +9,10 @@ class EventsIndex extends React.Component {
   render() {
     const { events } = this.props;
     return (
-      <div>
+      <div className="event-index-container">
+        <h1>
+          Recommended upcoming events:
+        </h1>
         {events.map( event => {
           return (
             <ShowEventItem 

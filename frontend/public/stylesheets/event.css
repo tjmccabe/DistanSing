@@ -243,3 +243,8 @@
   cursor: pointer;
   background-color: rgba(255, 0, 0, .75);
 }
+
+.event-index-container h1 {
+  font-weight: bold;
+  font-size: 24px;
+}
