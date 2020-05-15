@@ -3,8 +3,9 @@ import axios from "axios";
 import SearchDropdown from './search_dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from 'react-router-dom';
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +15,8 @@ export default class SearchBar extends React.Component {
     }
     this.handleInput = this.handleInput.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   closeDropdown() {
@@ -28,6 +31,17 @@ export default class SearchBar extends React.Component {
         .then(this.setState({ openDropdown: true }))
     }
     this.setState({ fragment: e.target.value })
+  }
+
+  handleEnter(e) {
+    if (e.key === 'Enter') {
+      this.handleSearchSubmit();
+    }
+  }
+
+  handleSearchSubmit() {
+    this.closeDropdown();
+    this.props.history.push(`/search/${this.state.fragment}`);
   }
 
   search = async function (fragment) {
@@ -54,6 +68,7 @@ export default class SearchBar extends React.Component {
           className="search-input"
           type="text" 
           onChange={this.handleInput} 
+          onKeyPress={this.handleEnter}
           placeholder="Search" />
         { openDropdown && searchResults ?  
           <SearchDropdown 
@@ -66,3 +81,5 @@ export default class SearchBar extends React.Component {
     )
   }
 }
+
+export default withRouter(SearchBar);
