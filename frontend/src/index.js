@@ -9,6 +9,7 @@ import { fetchUser } from './actions/user_actions'
 import { logout } from './actions/user_session_actions';
 import { updateArtist } from './util/artist_api_util'
 
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (localStorage.jwtToken) {
