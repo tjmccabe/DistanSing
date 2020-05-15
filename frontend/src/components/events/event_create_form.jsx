@@ -17,7 +17,7 @@ export default class EventCreateForm extends React.Component {
       day: "",
       year: "",
       time: time,
-      imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/s_image_1-1589313843602.jpg",
+      imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/default_event_image.jpg",
       imagefile: null
     }
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
