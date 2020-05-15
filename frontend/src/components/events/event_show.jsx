@@ -2,7 +2,7 @@ import React from "react";
 import Countdown from "./countdown";
 import EventIndexContainer from "./events_index_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faCheck, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import ArtistStreamShowContainer from '../streams/artist_stream_show_container';
 import UserStreamShow from '../streams/user_stream_show';
 import Calendar from "react-calendar";
@@ -21,8 +21,6 @@ class EventShow extends React.Component {
   componentDidMount() {
     this.props.fetchArtists()
       .then(() => this.props.fetchEvent(this.props.match.params.id))
-
-    
   }
 
   componentDidUpdate(prevProps) {
@@ -52,12 +50,8 @@ class EventShow extends React.Component {
     } else if (currentId) {  // NEED TO CHECK IF THEY HAVE A TICKET
       return <UserStreamShow />
     } else {
-      this.normalPage()
+      return null
     }
-  }
-
-  normalPage() {
-    return null
   }
 
   render() {
@@ -76,10 +70,19 @@ class EventShow extends React.Component {
           <FontAwesomeIcon icon={faCheck} /> Bought
         </div >
       </div >
-    ) : (
+    ) : !currentId ? (null) : event.price === 0 ? (
       <div className = "event-show-buy">
         <div className = "event-show-buynow">
-          <FontAwesomeIcon icon = { faShoppingCart }/> Buy Now
+          <FontAwesomeIcon icon = { faTicketAlt }/> Reserve Ticket
+        </div >
+        <div className="event-show-price">
+          (Free)
+        </div>
+      </div >
+    ) : (
+      <div className="event-show-buy">
+        <div className="event-show-buynow">
+          <FontAwesomeIcon icon={faShoppingCart} /> Buy Now
         </div >
         <div className="event-show-price">
           $ {event.price.toFixed(2)}
@@ -87,6 +90,10 @@ class EventShow extends React.Component {
       </div >
     )
 
+    console.log(currentId)
+    console.log(artist._id)
+    console.log(artist.artistname)
+    console.log(this.state)
     if (this.state.streaming && currentId === artist._id) return this.showStream()
 
     if (this.state.streaming && hasTicket) return this.showStream()
