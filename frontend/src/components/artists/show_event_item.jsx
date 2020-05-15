@@ -16,7 +16,6 @@ class ShowEventItem extends React.Component {
           </div>
           <span>{event.price.toFixed(2)}</span>
         </div>
-
       </div>
     );
   }

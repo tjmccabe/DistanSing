@@ -13,7 +13,6 @@ export default function (state = {}, action) {
     case RECEIVE_EVENTS:
       return action.events.data;
     case RECEIVE_EVENT:
-      // debugger
       newState[action.event.data._id] = action.event.data;
       // newState[action.event.data._id].artist = newState[action.event.data._id].artist._id 
       return newState;

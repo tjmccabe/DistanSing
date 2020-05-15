@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
+
 class Countdown extends React.Component {
   constructor(props) {
     super(props);
@@ -65,10 +66,17 @@ class Countdown extends React.Component {
     }
   }
 
+
+
   render() {
     const { days, hours, minutes, seconds } = this.state;
+    const { startStream } = this.props;
+
     return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 ? (
-      <div className="countdown-live-now">Live Now!</div>
+      <div>
+        <div className="countdown-live-now">Live Now!</div>
+        <button onClick={startStream}>Start Stream</button>
+      </div>
     ) : (
       <div className="countdown-timer">
         <div className="countdown-timer-header">Time to Live:</div>
