@@ -25,10 +25,6 @@ const EventSchema = new Schema({
   price: {
     type: Number,
     required: true,
-  },
-  description: {
-    type: String,
-    default: ""
   }
 });
 

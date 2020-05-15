@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js",
+    "seed": "node seed.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
@@ -36,6 +37,9 @@
     "webrtc": "^1.14.1"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.5.7",
     "nodemon": "^2.0.3"
   }
 }
