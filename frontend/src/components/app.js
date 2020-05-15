@@ -8,6 +8,7 @@ import SplashContainer from './splash/splash-container';
 import ArtistShowContainer from '../components/artists/artist_show_container'
 import EventCreateContainer from './events/event_create_container';
 import ArtistEditFormContainer from '../components/artists/artist_edit_form_container';
+import UserShowContainer from "../components/users/user_show_container";
 
 const App = () => (
   <div>
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/artists/:id" component={ArtistShowContainer} />
       <Route path="/events/create" component={EventCreateContainer} />
       <Route path="/events/:id" component={EventShowContainer} />
+      <Route path="/users/:id" component={UserShowContainer} />
     </Switch>
   </div>
 );

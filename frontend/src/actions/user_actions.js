@@ -21,3 +21,8 @@ export const fetchUsers = () => (dispatch) =>
   UserAPIUtil.getUsers()
     .then((users) => dispatch(receiveUsers(users)))
     .catch((err) => console.log(err));
+
+export const updateUser = user => dispatch =>
+  UserAPIUtil.updateUser(user)
+    .then(user => dispatch(receiveUser(user)))
+    .catch(err => console.log(err));
