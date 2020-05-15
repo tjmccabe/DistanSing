@@ -9,7 +9,7 @@ class ArtistShow extends React.Component {
     this.props.fetchArtist(this.props.match.params.id);
   }
   render() {
-    const { artist } = this.props;
+    const { artist, owner, loggedInAsArtist } = this.props;
     if (!artist) return null;
     console.log(artist);
     const temp_text =
@@ -25,6 +25,14 @@ class ArtistShow extends React.Component {
           </div>
         </div>
       ) : null;
+    const EditArtist =
+      loggedInAsArtist && owner ? (
+        <Link to={`/artists/${this.props.match.params.id}/edit`}>Edit</Link>
+      ) : null;
+    const CreateEvent =
+      loggedInAsArtist && owner ? (
+        <Link to='/events/create'>Create Event</Link>
+      ) : null;
     return (
       <div className="artist-show-container">
         <div className="artist-bio-container">
@@ -34,7 +42,8 @@ class ArtistShow extends React.Component {
             <p className="artist-bio-text">{temp_text}</p>
           </div>
         </div>
-        <Link to={`/artists/${this.props.match.params.id}/edit`}>Edit</Link>
+        {EditArtist}
+        {CreateEvent}
         {ArtistEvents}
       </div>
     );
