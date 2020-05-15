@@ -39,7 +39,7 @@ router.get("/", (req, res) => {
 
 router.post('/search', (req, res) => {
   console.log(req.body)
-  Artist.find({ artistname: { $regex: `^${req.body.fragment}.*`, $options: '-i' } })
+  Artist.find({ artistname: { $regex: `.*${req.body.fragment}.*`, $options: '-i' } })
     .then(artists => res.json(artists))
 })
 
