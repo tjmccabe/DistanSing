@@ -29,10 +29,10 @@ class Splash extends React.Component {
   }
 
   getLiveStreams() {
-    // if (Object.values(this.props.events) < 6) {
-    //   this.props.fetchEvents()
-    //   return null;
-    // }
+    if (Object.values(this.props.events).length < 6) {
+      this.props.fetchEvents()
+      return null;
+    }
     let now = (new Date()).getTime()
 
     let liveStreams = this.props.events.filter(event => {
@@ -48,10 +48,10 @@ class Splash extends React.Component {
   }
 
   getUpcomingStreams() {
-    // if (Object.values(this.props.events) < 6) {
-    //   this.props.fetchEvents()
-    //   return null;
-    // }
+    if (Object.values(this.props.events).length < 6) {
+      this.props.fetchEvents()
+      return null;
+    }
     let now = (new Date()).getTime()
     
     let soonStreams = this.props.events.filter(event => {
@@ -66,10 +66,10 @@ class Splash extends React.Component {
   }
 
   getTrendingArtists() {
-    // if (Object.values(this.props.artists) < 8) {
-    //   this.props.fetchArtists()
-    //   return null;
-    // }
+    if (Object.values(this.props.artists).length < 8) {
+      this.props.fetchArtists()
+      return null;
+    }
     let shuffled = this.shuffle(this.props.artists).slice(0,8)
 
     return shuffled[0] ? <ArtistFeature artists={shuffled} linkToArtistShow={this.linkToArtistShow} /> : null
