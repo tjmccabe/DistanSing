@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import ArtistShow from "./artist_show";
 import { fetchArtist } from "../../actions/artist_actions";
+import { deleteEvent } from "../../actions/event_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const loggedInAsArtist = !!state.session.artist;
@@ -15,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchArtist: (artistId) => dispatch(fetchArtist(artistId))
+  fetchArtist: (artistId) => dispatch(fetchArtist(artistId)),
+  deleteEvent: (eventId) => dispatch(deleteEvent(eventId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistShow);
