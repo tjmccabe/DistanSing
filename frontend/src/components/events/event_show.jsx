@@ -49,7 +49,11 @@ class EventShow extends React.Component {
   }
 
   buyTicket() {
-    this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
+    if (this.props.currentUserPurchase) {
+      this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
+    } else {
+      window.alert("You are an artist. You should be performing, not attending other artists' events.")
+    }
   }
 
   showArtist() {
@@ -134,7 +138,10 @@ class EventShow extends React.Component {
           <div className="event-show-main">
             <div className="event-show-main-container">
               <div className="event-show-pic" onClick={this.showArtist}>
-                <img src={artist.imageurl} alt={artist.artistname} />
+                <img 
+                  src={artist.imageurl} 
+                  alt={artist.artistname} 
+                />
               </div>
               <div className="event-show-body">
                 {/* <div className="event-show-artistname" onClick={this.props.history.push(`/artists/${artist._id}`)}> */}
@@ -148,8 +155,14 @@ class EventShow extends React.Component {
           </div>
 
           <div className="event-show-upcoming">
-            <EventIndexContainer />
-          </div>
+            <div className="event-upcoming-container">
+              <h1>
+                {`Upcoming events by ${artist.artistname}`}
+              </h1>
+              <EventIndexContainer artist={artist}/>
+            </div>
+
+            </div>
         </div>
       </div>
     );

@@ -10,17 +10,16 @@ class EventsIndex extends React.Component {
     const { events } = this.props;
     return (
       <div className="event-index-container">
-        <h1>
-          Recommended upcoming events:
-        </h1>
-        {events.map( event => {
-          return (
-            <ShowEventItem 
-              key={event._id}
-              event={event}
-            />
-          )
-        })}
+        <div className="event-index">
+          {events.map( event => {
+            return (
+              <ShowEventItem 
+                key={event._id}
+                event={event}
+              />
+            )
+          })}
+        </div>
       </div>
     )
   }

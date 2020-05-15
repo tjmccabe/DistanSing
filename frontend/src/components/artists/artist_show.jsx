@@ -1,7 +1,8 @@
 import React from "react";
 import ShowEventItem from "./show_event_item";
-import { Link } from "react-router-dom";
 import DeleteEvent from "./delete_event";
+import { Link, withRouter } from "react-router-dom";
+
 class ArtistShow extends React.Component {
   // constructor(props){
   //   super(props)
@@ -65,4 +66,4 @@ class ArtistShow extends React.Component {
     );
   }
 }
-export default ArtistShow;
+export default withRouter(ArtistShow);

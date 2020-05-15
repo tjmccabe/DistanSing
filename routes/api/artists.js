@@ -68,12 +68,15 @@ router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (
     if (error) {
       res.json({ error: error });
     } else {
-      if (req.file) {
-        imageLocation = req.file.location;
-      }
+
       Artist.findById(req.params.id)
         .then((artist) => {
-          let updatedArtist = Object.assign(artist, req.user, { imageurl: imageLocation });
+          if (req.file) {
+            imageLocation = req.file.location;
+          } else {
+            imageLocation = artist.imageurl;
+          }
+          let updatedArtist = Object.assign(artist, req.body, { imageurl: imageLocation });
           updatedArtist.save().then((artist) => res.json(artist));
         })
         .catch((errors) =>

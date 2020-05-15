@@ -5,13 +5,7 @@ import ArtistGenreField from './artist_genre_field';
 export default class ArtistEditForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      artistname: '',
-      genre: '',
-      bio: '',
-      imageurl: '',
-      imagefile: null
-    }
+    this.state = this.props.artist;
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,6 +35,7 @@ export default class ArtistEditForm extends React.Component {
     e.preventDefault();
     const data = this.prepareForm();
     this.props.updateArtist(data);
+    this.props.history.push(`/artists/${this.props.artist._id}`)
   }
 
   prepareForm() {
@@ -58,28 +53,66 @@ export default class ArtistEditForm extends React.Component {
   }
 
   render() {
+    if (!this.state) return null;
     const { artistname, genre, bio, imageurl } = this.state;
     const { artist } = this.props;
     if (!artist) return null; 
     // console.log(this.state)
     // console.log(this.props)
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <ImageUpload setImageFile={this.setImageFile} imageurl={imageurl} />
-        </div>
-        <div>
-          <label>Artist/Band Name
-            <input type="text" value={artistname} onChange={this.handleInput("artistname")}/>
-          </label>
-          <ArtistGenreField genre={genre} handleInput={this.handleInput} />
-          <label>Bio
-            <textarea value={bio} onChange={this.handleInput("bio")} placeholder="Tell the world about yourself"/>
-          </label>
-        </div>
-        <button>Save Changes</button>
-        <div onClick={this.handleCancel}>Cancel</div>
-      </form>
+      <div className="artist-edit">
+        <form 
+          className="artist-edit-form"
+          onSubmit={this.handleSubmit}
+        >
+          <div className="artist-edit-left">
+            <ImageUpload 
+              classNames={["image-upload-container", "image-upload", "image-upload-btn"]}
+              setImageFile={this.setImageFile} 
+              imageurl={imageurl} />
+          </div>
+
+          <div className="artist-edit-right">
+            
+            <div>
+              <input 
+                type="text" 
+                className="artist-edit-name"
+                value={artistname} 
+                disabled
+              />            
+            </div>
+            
+            <div>
+              <ArtistGenreField genre={genre} handleInput={this.handleInput} />
+            </div>
+
+            <div>
+              <label>Bio:
+                <textarea
+                  className="artist-edit-bio" 
+                  value={bio} 
+                  onChange={this.handleInput("bio")} 
+                  placeholder="Tell the world about yourself"/>
+              </label>
+            </div>
+
+            <div className="artist-edit-footer">
+              <button
+                className="artist-edit-save"
+              >Save Changes</button>
+
+              <button 
+                className="artist-edit-cancel"
+                onClick={this.handleCancel}
+              >Cancel</button>
+
+            </div>
+
+          </div>
+        </form>
+        
+      </div>
     )
   }
 }

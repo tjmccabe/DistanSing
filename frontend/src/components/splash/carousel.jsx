@@ -22,7 +22,8 @@ const CarouselItem = ({stream, artists, linkToEventShow}) => {
   const fullDate = date.getTime() < (new Date()).getTime() ? (
     `Started at ${hr}:${("0" + min).slice(-2)}`
   ) : (
-      `${month}/${day} at ${hr}:${("0" + min).slice(-2)}`
+      // `${month}/${day} at ${hr}:${("0" + min).slice(-2)}`
+      `${month}/${day}, ${ (hr % 12) === 0 ? "12" : hr % 12 }:${min < 10 ? `0${min}` : min} ${ hr > 11 ? "PM" : "AM" }`
   )
 
   return(
