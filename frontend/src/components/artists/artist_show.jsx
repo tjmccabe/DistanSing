@@ -18,7 +18,6 @@ class ArtistShow extends React.Component {
     if (!artist) return null;
     const temp_text = 
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-    const DeleteButton = deleteEvent ? <button onClick={this.handleDelete} >Try Me</button> : null;
     const ArtistEvents =
       artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
         <div className="artist-event-index-container">
@@ -26,7 +25,13 @@ class ArtistShow extends React.Component {
           <div className="show-item-container">
             {Object.values(artist.artistEvents).map((event, idx) => (
               <div key={idx}>
-                <DeleteEvent event={event} fetchArtist={fetchArtist} deleteEvent={deleteEvent}/>
+                {owner ? (
+                  <DeleteEvent
+                    event={event}
+                    fetchArtist={fetchArtist}
+                    deleteEvent={deleteEvent}
+                  />
+                ) : null}
                 <ShowEventItem
                   event={event}
                   owner={owner}
