@@ -27,6 +27,11 @@ class NavBar extends React.Component {
     }
   }
 
+  logoutRedirect() {
+    this.props.logout();
+    this.props.history.push('/')
+  }
+
   render() {
     const { loggedIn, current, loggedInAsUser, openModal } = this.props;
     const name = loggedInAsUser && current ? current.username : loggedIn && current ? current.artistname : null;
@@ -64,7 +69,7 @@ class NavBar extends React.Component {
     const Logout = loggedIn ? (
       <div
         className="nav-bar-button logout-button"
-        onClick={this.props.logout}
+        onClick={() => this.logoutRedirect()}
       >
         <button className="nav-bar-filter">
           Log Out

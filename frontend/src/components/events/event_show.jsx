@@ -56,7 +56,7 @@ class EventShow extends React.Component {
 
   render() {
     const { artist, event, currentId, hasTicket } = this.props;
-    if (!event) return null;
+    if (!event || !artist) return null;
     const date = new Date(event.date);
     const isTime = date.getTime() < (new Date()).getTime() ? true : false;
 
@@ -70,7 +70,13 @@ class EventShow extends React.Component {
           <FontAwesomeIcon icon={faCheck} /> Bought
         </div >
       </div >
-    ) : !currentId ? (null) : event.price === 0 ? (
+    ) : !currentId ? (
+        <div className="event-show-buy">
+          <div className="event-show-buynow">
+            Log in to reserve ticket
+          </div>
+        </div >
+    ) : event.price === 0 ? (
       <div className = "event-show-buy">
         <div className = "event-show-buynow">
           <FontAwesomeIcon icon = { faTicketAlt }/> Reserve Ticket

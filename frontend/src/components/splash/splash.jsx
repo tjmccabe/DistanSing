@@ -15,6 +15,11 @@ class Splash extends React.Component {
     this.props.fetchArtists()
   }
 
+  componentDidUpdate() {
+    if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
+    if (Object.values(this.props.events) < 8) this.props.fetchEvents()
+  }
+
   shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -24,7 +29,10 @@ class Splash extends React.Component {
   }
 
   getLiveStreams() {
-    if (!this.props.events) return null;
+    // if (Object.values(this.props.events) < 6) {
+    //   this.props.fetchEvents()
+    //   return null;
+    // }
     let now = (new Date()).getTime()
 
     let liveStreams = this.props.events.filter(event => {
@@ -40,7 +48,10 @@ class Splash extends React.Component {
   }
 
   getUpcomingStreams() {
-    if (!this.props.events) return null;
+    // if (Object.values(this.props.events) < 6) {
+    //   this.props.fetchEvents()
+    //   return null;
+    // }
     let now = (new Date()).getTime()
     
     let soonStreams = this.props.events.filter(event => {
@@ -55,8 +66,11 @@ class Splash extends React.Component {
   }
 
   getTrendingArtists() {
-    if (!this.props.artists) return null;
-    let shuffled = this.shuffle(this.props.artists).slice(0,6)
+    // if (Object.values(this.props.artists) < 8) {
+    //   this.props.fetchArtists()
+    //   return null;
+    // }
+    let shuffled = this.shuffle(this.props.artists).slice(0,8)
 
     return shuffled[0] ? <ArtistFeature artists={shuffled} linkToArtistShow={this.linkToArtistShow} /> : null
   }
@@ -105,14 +119,14 @@ class Splash extends React.Component {
     new Flickity(soony, {
       draggable: false,
       wrapAround: true,
-      groupCells: 4
+      groupCells: 3
     })};
 
     if (livey) {
       new Flickity(livey, {
         draggable: false,
         wrapAround: true,
-        groupCells: 4
+        groupCells: 3
       })};
 
       const Placeholder = (LiveNow || StreamingSoon) ? null : (

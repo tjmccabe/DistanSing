@@ -12,11 +12,12 @@
   font-size: 22px;
   padding: 15px;
   font-weight: bold;
+  margin: 20px 0;
 }
 
 .splash-body {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   box-sizing: border-box;
 }
 
@@ -44,18 +45,20 @@
 
 .stream-carousel {
   padding: 10px 40px 10px;
-  margin-bottom: 50px;
-  width: 95%;
+  margin-bottom: 75px;
+  width: 100%;
   box-sizing: border-box;
   align-self: center;
 }
 
 .carousel-item {
   box-sizing: border-box;
-  height: 150px;
-  width: 24%;
+  background-size: cover;
+  background-position: 50%;
+  height: 200px;
+  width: 29%;
   border-radius: 8px;
-  margin: .4%;
+  margin: .7%;
 }
 
 .carousel-item-filter {
@@ -67,15 +70,17 @@
   overflow: hidden;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, .45);
+  background-color: rgba(255, 255, 255, .75);
   background-size: cover;
   background-position: 50%;
   width: 100%;
   height: 100%;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .carousel-item-filter:hover {
-  background-color: rgba(255, 255, 255, .25);
+  background-color: rgba(255, 255, 255, .45);
   cursor: pointer;
 }
 
@@ -117,6 +122,8 @@
   font-weight: bold;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, .45);
+  background-size: cover;
+  background-position: 50%;
   padding: 10px;
   width: 100%;
   height: 100%;
