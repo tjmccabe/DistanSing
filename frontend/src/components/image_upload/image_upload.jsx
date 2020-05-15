@@ -5,7 +5,7 @@ export default class ImageUpload extends React.Component {
       super(props);
       this.state = {
         imageFile: null,
-        imageUrl: "",
+        imageUrl: this.props.imageurl,
       };
       this.handleImageInput = this.handleImageInput.bind(this);
       this.handleUploadClick = this.handleUploadClick.bind(this);
@@ -35,10 +35,11 @@ export default class ImageUpload extends React.Component {
     }
 
     render() {
-      console.log(this.state);
+      const classes = this.props.classNames
       return (
-        <div>
+        <div className={classes[0]}>
           <img
+            className={classes[1]}
             src={this.state.imageUrl}
             alt="distansing-img-upload"
             width="200"
@@ -50,7 +51,9 @@ export default class ImageUpload extends React.Component {
             type="file"
             onChange={this.handleImageInput}
           />
-          <button onClick={this.handleUploadClick}>
+          <button 
+            className={classes[2]}
+            onClick={this.handleUploadClick}>
             Upload Image
           </button>
         </div>

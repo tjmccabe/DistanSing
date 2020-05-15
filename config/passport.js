@@ -10,7 +10,6 @@ options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = keys.secretOrKey;
 
 
-
 module.exports = passport => {
   passport.use('user-rule', new JwtStrategy(options, (jwt_payload, done) => {
     User.findById(jwt_payload.id)
@@ -34,3 +33,5 @@ module.exports = passport => {
       .catch(err => console.log(err));
   }));
 };
+
+

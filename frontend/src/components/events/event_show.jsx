@@ -8,7 +8,6 @@ import UserStreamShow from '../streams/user_stream_show';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +15,7 @@ class EventShow extends React.Component {
       streaming: false
     }
     this.startStreaming = this.startStreaming.bind(this);
+    this.buyTicket = this.buyTicket.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +41,10 @@ class EventShow extends React.Component {
   startStreaming() {
     if (this.timer) clearInterval(this.timer);
     this.setState({ streaming: true });
+  }
+
+  buyTicket() {
+    this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
   }
 
   showStream() {
@@ -114,6 +118,17 @@ class EventShow extends React.Component {
             </div>
             <div className="event-show-countdown">
               <Countdown artist={artist} date={date} hasTicket={hasTicket}/>
+            </div>
+            <div 
+              onClick={this.buyTicket}
+              className="event-show-buy"
+            >
+              <div className="event-show-buynow">
+                <FontAwesomeIcon icon={faShoppingCart}/> Buy Now
+              </div>
+              <div className="event-show-price">
+                $ {event.price.toFixed(2)}
+              </div>
             </div>
             {BuyButton}
           </div>

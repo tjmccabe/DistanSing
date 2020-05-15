@@ -17,7 +17,12 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  events: {
+    type: Map,
+    default: {}
+  },
+
 })
 
 module.exports = User = mongoose.model('User', UserSchema);
