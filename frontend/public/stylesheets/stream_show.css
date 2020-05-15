@@ -14,14 +14,14 @@
 }
 
 #start-streaming, #stop-streaming {
-  padding: 10px;
-  width: 250px;
+  padding: 10px 20px;
   background-color: red;
   color: white;
   border: none;
   border-radius: 3px;
   margin: 20px 0;
   font-size: 22px;
+  font-family: 'Hind Gunter', sans-serif;
   font-weight: bold;
 }
 
@@ -52,15 +52,13 @@
 }
 
 #get-outta-here {
-  padding: 10px;
-  /* width: 250px; */
+  padding: 5px 10px;
   background-color: red;
   color: white;
   border: none;
   border-radius: 3px;
   margin: 5px 0;
   font-size: 14px;
-  /* font-weight: bold; */
 }
 
 #get-outta-here:hover {

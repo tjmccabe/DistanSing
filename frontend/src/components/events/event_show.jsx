@@ -72,8 +72,14 @@ class EventShow extends React.Component {
     const date = new Date(event.date);
     const isTime = date.getTime() < (new Date()).getTime() ? true : false;
     const hasTicket = currentUserPurchase ? currentUserPurchase.events[event._id] : false;
+
     const StartStreamButton = (currentId === artist._id && isTime) ? (
-      <button onClick={this.startStreaming}>START STREAMING TO YOUR FANS</button>
+      <button
+        onClick={this.startStreaming}
+        id="start-streaming-event-show"
+      >
+        Click Here to Go LIVE
+      </button>
     ) : null;
     
     const BuyButton = hasTicket ? (

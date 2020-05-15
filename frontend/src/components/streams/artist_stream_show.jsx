@@ -33,9 +33,11 @@ class ArtistStreamShow extends React.Component {
       // this.peer.destroy()
     }
     this.socket.close()
-    this.localstream.getTracks().forEach(track => {
-      track.stop();
-    });
+    if (this.localstream) {
+      this.localstream.getTracks().forEach(track => {
+        track.stop();
+      });
+    }
   }
 
   getMedia(callbacks) {
@@ -98,9 +100,9 @@ class ArtistStreamShow extends React.Component {
       // this.peer.destroy()
     }
     this.socket.close()
-    this.localstream.getTracks().forEach(track => {
+    if (this.localstream) {this.localstream.getTracks().forEach(track => {
       track.stop();
-    });
+    });}
     this.props.history.push(`/artists/${this.props.event.artist}`)
   }
 
