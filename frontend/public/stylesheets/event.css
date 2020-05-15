@@ -175,10 +175,6 @@
   font-size: 24px;
 }
 
-.event-show-upcoming {
-  display: flex;
-}
-
 .event-show-main {
   display: flex;
   justify-content: center;
@@ -216,6 +212,12 @@
 
 .event-show-upcoming {
   display: flex;
+  justify-content: center;
+}
+
+.event-upcoming-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 40px 40px 0px 40px;
   background: #F2F2F2;
