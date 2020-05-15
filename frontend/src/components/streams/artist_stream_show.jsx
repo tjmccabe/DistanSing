@@ -13,7 +13,7 @@ class ArtistStreamShow extends React.Component {
     // Local variables
     this.socket = io();
 
-    this.connections = new Set;
+    this.connections = new Set();
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);

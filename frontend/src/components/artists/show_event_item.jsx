@@ -2,10 +2,6 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 
 class ShowEventItem extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     const { event } = this.props;

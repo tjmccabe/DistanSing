@@ -22,7 +22,7 @@ class ArtistShow extends React.Component {
     const ArtistEvents =
       artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
         <div className="artist-event-index-container">
-          <h1>{artist.artistname}'s upcoming events:</h1>
+          <h1>Upcoming events from {artist.artistname}:</h1>
           <div className="show-item-container">
             {Object.values(artist.artistEvents).map((event, idx) => (
               <div key={idx}>
