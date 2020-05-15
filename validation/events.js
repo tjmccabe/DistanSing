@@ -16,18 +16,18 @@ module.exports = validateEventInput = (data) => {
     errors.date = "You must enter a date";
   }
 
-  Validator.validDate = str => {
-    let date = Date.parse(str);
-    let today = new Date()
-    if (isNaN(date) || date.getTime() < today.getTime() || str.split('T')[0].split(' ').length < 3) {
-      return false;
-    }
-    return true;
-  }
+  // Validator.validDate = str => {
+  //   let date = Date.parse(str);
+  //   let today = new Date()
+  //   if (isNaN(date) || date.getTime() < today.getTime() || str.split('T')[0].split(' ').length < 3) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
-  if (Validator.validDate(data.date)) {
-    errors.date = "You must enter a valid date"
-  }
+  // if (Validator.validDate(data.date)) {
+  //   errors.date = "You must enter a valid date"
+  // }
 
   return {
     errors,

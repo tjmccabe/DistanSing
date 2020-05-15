@@ -45,17 +45,19 @@ export default class EventCreateForm extends React.Component {
     const data = this.prepareForm();
     this.props.createEvent(data)
       .then(event => {
-        if (event._id) {
-          this.props.history.push(`/events/${event._id}`)
+        debugger
+        if (event.event.data._id) {
+          this.props.history.push(`/events/${event.event.data._id}`)
         }
       })
+      .catch(err => console.log(err))
   }
 
   prepareForm() {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
-    let date = month + ' ' + day + ' ' + year;
-    let datetime = date + "T" + time;
+    let date = this.formatDate(month, day, year);
+    let datetime = date + "T" + this.formatTime(time);
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
     formData.append("name", name);
@@ -81,14 +83,17 @@ export default class EventCreateForm extends React.Component {
     return price => this.setState({ price })
   }
 
-  formatDate(date) {
-    const d = new Date(date)
-    let day = '' + d.getDate();
-    let year = d.getFullYear();
-    let month = '' + (d.getMonth() + 1);
+  formatDate(month, day, year) {
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
     return [year, month, day].join('-');
+  }
+
+  formatTime(time) {
+    let [hours, minutes] = time.split(':'); 
+    if (hours.length > 2) hours = hours[0] + hours[1];
+    if (hours.length < 2) hours = hours = '0' + hours;
+    return [hours, minutes].join(':');
   }
 
   renderErrors() {
@@ -132,7 +137,7 @@ export default class EventCreateForm extends React.Component {
                 <select defaultValue={"Month"} onChange={this.handleInput("month")}>
                   <option disabled value="Month">Month</option>
                   {this.MONTHS.map((month, idx) =>
-                    <option key={idx} value={month}>{month}</option>
+                    <option key={idx} value={idx+1}>{month}</option>
                   )}
                 </select>
                 <select defaultValue="Day" onChange={this.handleInput("day")}>
