@@ -8,16 +8,27 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: null
+      searchResults: null,
+      openDropdown: false
     }
     this.handleInput = this.handleInput.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
+  }
+
+  closeDropdown() {
+    this.setState({ openDropdown: false })
+    window.removeEventListener('click', this.closeDropdown)
   }
 
   handleInput(e) {
     if (e.target.value === '') {
-      this.setState({ searchResults: null })
+      this.setState({ openDropdown: false });
+      window.removeEventListener('mousedown', this.closeDropdown)
     } else {
-      this.search(e.target.value);
+      this.search(e.target.value)
+        .then(this.setState({ openDropdown: true }), () =>
+          window.addEventListener('mousedown', this.closeDropdown)
+        )
     }
   }
 
@@ -48,17 +59,23 @@ class SearchBar extends React.Component {
         <div
           key={object._id}
           className="search-dropdown-item"
-          onClick={() => this.props.history.push(`/${string}/${object._id}`)}>
+          onClick={() => {
+            this.setState({ openDropdown: false }, () => {
+              const searchBar = document.querySelector(".search-input");
+              searchBar.value = '';
+              this.props.history.push(`/${string}/${object._id}`);
+            })
+          }}>
           {object[name]}
         </div>
       )
     } else {
-      return <div>No results</div>;
+      return <div className="no-results">No results</div>;
     }
   }
 
   render() {
-    const { searchResults } = this.state;
+    const { searchResults, openDropdown } = this.state;
     return (
       <div className="search-bar-container">
         <input 
@@ -66,7 +83,7 @@ class SearchBar extends React.Component {
           type="text" 
           onChange={this.handleInput} 
           placeholder="Search" />
-        { searchResults && (searchResults.artists || searchResults.events) ?  
+        { openDropdown && searchResults ?  
           <div className="search-dropdown">
             <div className="search-artists">Artist Results</div>
             {this.showFiveResults(searchResults.artists, 'artists', 'artistname')}
