@@ -15,9 +15,12 @@ class Splash extends React.Component {
     this.props.fetchArtists()
   }
 
-  componentDidUpdate() {
-    if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
-    if (Object.values(this.props.events) < 8) this.props.fetchEvents()
+  componentDidUpdate(prevProps) {
+    // if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
+    // if (Object.values(this.props.events) < 8) this.props.fetchEvents()
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
   }
 
   shuffle(arr) {

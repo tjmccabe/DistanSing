@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {withRouter} from 'react-router-dom'
 import Splash from "./splash";
 import { fetchEvents } from "../../actions/event_actions"
 import { fetchArtists, fetchArtist } from "../../actions/artist_actions"
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchArtist: artistId => dispatch(fetchArtist(artistId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Splash);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Splash));

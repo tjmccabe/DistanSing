@@ -56,11 +56,11 @@ class EventShow extends React.Component {
   }
 
   showStream() {
-    const { artist, currentId } = this.props;
+    const { artist, currentId, event } = this.props;
     if (artist._id === currentId) {
-      return <ArtistStreamShowContainer />
+      return <ArtistStreamShowContainer artist={artist}/>
     } else if (currentId) {  // NEED TO CHECK IF THEY HAVE A TICKET
-      return <UserStreamShow />
+      return <UserStreamShow artist={artist} event={event}/>
     } else {
       return null
     }
@@ -72,8 +72,14 @@ class EventShow extends React.Component {
     const date = new Date(event.date);
     const isTime = date.getTime() < (new Date()).getTime() ? true : false;
     const hasTicket = currentUserPurchase ? currentUserPurchase.events[event._id] : false;
+
     const StartStreamButton = (currentId === artist._id && isTime) ? (
-      <button onClick={this.startStreaming}>START STREAMING TO YOUR FANS</button>
+      <button
+        onClick={this.startStreaming}
+        id="start-streaming-event-show"
+      >
+        Click Here to Go LIVE
+      </button>
     ) : null;
     
     const BuyButton = hasTicket ? (
@@ -87,7 +93,7 @@ class EventShow extends React.Component {
         <div className="event-show-buynow">Log in to reserve ticket</div>
       </div>
     ) : event.price === 0 ? (
-      <div className="event-show-buy">
+      <div onClick={this.buyTicket} className="event-show-buy">
         <div className="event-show-buynow">
           <FontAwesomeIcon icon={faTicketAlt} /> Reserve Ticket
         </div>
