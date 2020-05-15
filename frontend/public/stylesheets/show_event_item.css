@@ -11,7 +11,7 @@
   min-width: 700px;
 }
 
-.show-item figure {
+.show-item figure img {
   width: 200px;
   min-width: 200px;
   height: 120px;
@@ -39,6 +39,7 @@
 }
 
 .item-text p {
+  margin-top: 10px;
   max-width: 800px;
   width: 100%;
   height: 78px;
