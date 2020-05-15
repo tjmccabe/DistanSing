@@ -33,7 +33,7 @@ class SearchIndex extends React.Component {
     const { searchResults } = this.state;
     if (!searchResults) return null;
     return (
-      <div>
+      <div className="">
         <h1>All results for: {match.params.fragment}</h1>
         <h2>Artists</h2>
         <div>
