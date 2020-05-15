@@ -1,13 +1,14 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 class ShowEventItem extends React.Component {
-  
+    
 
   render(){
     const {event} = this.props
     console.log(event)
     return (
-      <div className="show-item">
+      <div className="show-item" onClick={() => this.props.history.push(`/events/${event._id}`)}>
         <figure></figure>
         <div className='item-details'>
           <div className="item-text">
@@ -21,4 +22,4 @@ class ShowEventItem extends React.Component {
   }
 }
 
-export default ShowEventItem;
+export default withRouter(ShowEventItem);
