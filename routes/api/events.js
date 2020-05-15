@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 });
 
 router.post('/search', (req, res) => {
-  Event.find({ name: { '$regex': `^${req.body.fragment}.*` , $options: '-i' } })
+  Event.find({ name: { '$regex': `.*${req.body.fragment}.*` , $options: '-i' } })
     .then(events => res.json(events))
 })
 
