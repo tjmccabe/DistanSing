@@ -57,7 +57,7 @@ class UserStreamShow extends React.Component {
   render() {
     return this.state.playing ? (
       <div>
-        <video id="rVideo" controls muted autoPlay={true} ></video>
+        <video id="rVideo" controls autoPlay={true} ></video>
       </div>
     ) : (
       <button onClick={this.startPlaying}>LET'S FUCKING GET IT</button>

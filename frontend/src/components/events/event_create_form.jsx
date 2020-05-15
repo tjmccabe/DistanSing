@@ -50,7 +50,6 @@ export default class EventCreateForm extends React.Component {
     const formData = new FormData();
     let { name, description, price, date, time, imagefile } = this.state;
     date = this.formatDate(date);
-    time = this.formatTime(time);
     let datetime = date + "T" + time;
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);

@@ -25,7 +25,7 @@ class EventShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     clearInterval(this.timer)
-    if (this.props.event.streaming && !this.state.streaming) {
+    if (this.props.event && this.props.event.streaming && !this.state.streaming) {
       this.startStreaming()
       return
     }
