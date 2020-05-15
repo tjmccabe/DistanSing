@@ -50,6 +50,7 @@ class UserStreamShow extends React.Component {
         alert(`An error has occurred: ${err}`);
         console.log(err);
       })
+  
     });
   }
 

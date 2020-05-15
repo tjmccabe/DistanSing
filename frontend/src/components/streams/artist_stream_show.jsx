@@ -18,6 +18,10 @@ class ArtistStreamShow extends React.Component {
     this.recStream = this.recStream.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchEvent(this.props.eventId)
+  }
+
   getMedia(callbacks) {
     navigator.getUserMedia =
       navigator.getUserMedia ||
@@ -40,6 +44,11 @@ class ArtistStreamShow extends React.Component {
         success: (stream) => {
           this.localstream = stream;
           this.recStream(stream, "lVideo");
+          const formData = new FormData()
+          formData.append('id', this.props.eventId);
+          formData.append('streaming', true);
+          // debugger
+          this.props.updateEvent(formData)
         },
         error: (err) => {
           alert("cannot access your camera");
@@ -62,6 +71,7 @@ class ArtistStreamShow extends React.Component {
         peer.connect(userId);
       })
     });
+    setTimeout(() => this.props.updateEvent({ id: this.props.eventId, streaming: false }), 300000)
   }
 
   render() {

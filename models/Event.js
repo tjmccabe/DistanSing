@@ -25,6 +25,10 @@ const EventSchema = new Schema({
   price: {
     type: Number,
     required: true,
+  },
+  streaming: {
+    type: Boolean,
+    default: false
   }
 });
 

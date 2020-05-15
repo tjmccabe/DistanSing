@@ -32,10 +32,17 @@ const CarouselItem = ({stream, artists, linkToEventShow}) => {
       onClick={() => linkToEventShow(stream)}
     >
       <div className="carousel-item-filter">
-        <div>{stream.name}</div>
-        {artistName}
-        <div>{fullDate}</div>
-        <div>{price}</div>
+        <div>
+          {stream.name}
+        </div>
+        <div className="lightened">
+          {artistName}
+        </div>
+        <div>
+          {fullDate}
+          <br/>
+          {price}
+        </div>
       </div>
     </li>
   )

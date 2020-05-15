@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     event: state.entities.events[ownProps.match.params.id],
     artist,
-    currentId
+    currentId,
+    hasTicket: !!currentId // NEED TO CHANGE
   }
 };
 
