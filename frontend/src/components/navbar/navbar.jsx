@@ -90,9 +90,9 @@ class NavBar extends React.Component {
         <div className="nav-container" id="navbar">
           <div className="nav-bar-left">
             <Link to="/" className="nav-logo">
-              <div className="nav-logo-img">
+              {/* <div className="nav-logo-img">
                 Image Here
-              </div>
+              </div> */}
               <div className="nav-logo-name">
                 DistanSing
               </div>
