@@ -131,7 +131,10 @@ class EventShow extends React.Component {
           <div className="event-show-main">
             <div className="event-show-main-container">
               <div className="event-show-pic" onClick={this.showArtist}>
-                <img src={artist.imageurl} alt={artist.artistname} />
+                <img 
+                  src={artist.imageurl} 
+                  alt={artist.artistname} 
+                />
               </div>
               <div className="event-show-body">
                 {/* <div className="event-show-artistname" onClick={this.props.history.push(`/artists/${artist._id}`)}> */}

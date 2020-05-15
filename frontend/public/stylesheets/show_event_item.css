@@ -11,6 +11,10 @@
   min-width: 700px;
 }
 
+.show-item:hover{
+  cursor: pointer;
+}
+
 .show-item figure img {
   width: 200px;
   min-width: 200px;
