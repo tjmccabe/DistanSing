@@ -10,13 +10,13 @@ const mapStateToProps = (state, ownProps) => {
   let currentId = state.session.artist ? state.session.artist._id : state.session.user ? state.session.user._id : null;
   let currentUserPurchase = state.session.user ? state.entities.users[state.session.user._id] : null
   let event = state.entities.events[ownProps.match.params.id]
-  const isTime = !event ? null : (new Date(event.date)).getTime() < (new Date()).getTime() ? true : false;
+  const startingSoon = !event ? null : (new Date(event.date)).getTime() < (new Date()).getTime() + 1000000 ? true : false;
   return {
     event,
     artist,
     currentId,
     currentUserPurchase,
-    isTime
+    startingSoon
     // hasTicket: !!currentId // NEED TO CHANGE
   }
 };
