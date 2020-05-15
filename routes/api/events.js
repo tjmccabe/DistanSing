@@ -77,11 +77,13 @@ router.patch("/:id", passport.authenticate("artist-rule", { session: false }), (
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
-    if (req.file) {
-      imageLocation = req.file.location;
-    }
     Event.findById(req.params.id)
-      .then((event) => {
+    .then((event) => {
+        if (req.file) {
+          imageLocation = req.file.location;
+        } else {
+          imageLocation = event.imageurl;
+        }
         if (req.user._id.toString() === event.artist.toString()) {
           let updatedEvent = Object.assign(event, req.body, { imageurl: imageLocation });
           console.log(updatedEvent)
