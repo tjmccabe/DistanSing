@@ -1,12 +1,13 @@
 import React from 'react';
 import io from 'socket.io-client';
 import Peer from 'peerjs';
+import {withRouter} from 'react-router-dom'
 
 class UserStreamShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: false,
+      // playing: false,
       video: ''
     };
     // Local variables
@@ -15,6 +16,15 @@ class UserStreamShow extends React.Component {
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
     this.recStream = this.recStream.bind(this);
+    this.startPlaying();
+  }
+
+  componentWillUnmount() {
+    if (this.peer) {
+      this.peer.disconnect()
+      this.peer.destroy()
+    }
+    this.socket.close()
   }
 
   recStream(stream, elementId) {
@@ -24,45 +34,67 @@ class UserStreamShow extends React.Component {
   }
 
   startPlaying() {
-    this.setState({ playing: true }, () => {
+    const peer = new Peer()
+    this.peer = peer
 
-      const peer = new Peer()
+    peer.on("open", () => {
+      this.socket.emit("userId", peer.id);
+    })
 
-      peer.on("open", () => {
-        this.socket.emit("userId", peer.id);
+    peer.on("connection", connection => {
+      peer.connect(connection.peer);
+      connection.on("data", data => {
+        console.log(data);
       })
-  
-      peer.on("connection", connection => {
-        peer.connect(connection.peer);
-        connection.on("data", data => {
-          console.log(data);
-        })
+    })
+    
+    peer.on("call", call => {
+      call.answer();
+      call.on("stream", stream => {
+        this.recStream(stream, "rVideo")
       })
-      
-      peer.on("call", call => {
-        call.answer();
-        call.on("stream", stream => {
-          this.recStream(stream, "rVideo")
-        })
-      })
+    })
 
-      peer.on("error", err => {
-        alert(`An error has occurred: ${err}`);
-        console.log(err);
-      })
-  
-    });
+    peer.on("error", err => {
+      alert(`An error has occurred: ${err}`);
+      console.log(err);
+    })
   }
 
   render() {
-    return this.state.playing ? (
-      <div>
-        <video id="rVideo" controls autoPlay={true} ></video>
-      </div>
-    ) : (
-      <button onClick={this.startPlaying}>LET'S FUCKING GET IT</button>
-    );
+    const {event, artist} = this.props
+
+    const DescriptionBlock = event.description ? (
+      <div className="stream-description">{event.description}</div>
+    ) : null
+
+    const ChatPlaceholder = null;
+
+    return(
+      <div className="stream-container">
+        <div className="stream-title">
+          <div>
+            Welcome to {event.name}!
+          </div>
+          <div>
+            Presented by {artist.artistname}
+          </div>
+        </div>
+        <div className="stream-content">
+          <video id="rVideo" controls autoPlay={true} muted></video>
+          {ChatPlaceholder}
+        </div>
+        {DescriptionBlock}
+        <div className="technical-difficulties">
+          <div>
+            Stream not showing? Try refreshing or
+          </div>
+          <button id="get-outta-here" onClick={() => this.props.history.push(`/artists/${event.artist}`)}>
+            Head back to {artist.artistname}'s profile
+          </button>
+        </div>
+      </div>)
   }
 }
 
-export default UserStreamShow;
+export default withRouter(UserStreamShow);

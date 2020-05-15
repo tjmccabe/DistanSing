@@ -1,0 +1,74 @@
+.stream-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 80px);
+  margin-top: 15px;
+}
+
+.lets-fucking-get-it {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#start-streaming, #stop-streaming {
+  padding: 10px;
+  width: 250px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#start-streaming:hover, #stop-streaming:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, .75);
+}
+
+.stream-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.5em;
+  margin-bottom: 10px;
+}
+
+.stream-description {
+  margin: 20px 0 40px;
+}
+
+.technical-difficulties {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+#get-outta-here {
+  padding: 10px;
+  /* width: 250px; */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin: 5px 0;
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+#get-outta-here:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, .75);
+}
+
+#rVideo, #lVideo {
+  height: 500px;
+  max-width: 750px;
+}
