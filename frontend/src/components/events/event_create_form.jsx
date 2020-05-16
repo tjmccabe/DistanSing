@@ -62,7 +62,6 @@ export default class EventCreateForm extends React.Component {
     let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time));
     
     if (process.env.NODE_ENV === "production") {
-      debugger
       date = new Date(
         date.getUTCFullYear(),
         date.getUTCMonth(),
@@ -72,7 +71,6 @@ export default class EventCreateForm extends React.Component {
         date.getUTCSeconds()
       ).toISOString();
     } else {
-      debugger
       date = date.toISOString();
     }
 
