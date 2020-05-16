@@ -59,20 +59,20 @@ export default class EventCreateForm extends React.Component {
   prepareForm() {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
-    let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time) );
+    let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time).toString());
     
-    if (process.env.NODE_ENV === "production") {
-      date = new Date(
-        date.getUTCFullYear(),
-        date.getUTCMonth(),
-        date.getUTCDate(),
-        date.getUTCHours(),
-        date.getUTCMinutes(),
-        date.getUTCSeconds()
-      ).toString();
-    } else {
-      date = date.toString();
-    }
+    // if (process.env.NODE_ENV === "production") {
+    //   date = new Date(
+    //     date.getUTCFullYear(),
+    //     date.getUTCMonth(),
+    //     date.getUTCDate(),
+    //     date.getUTCHours(),
+    //     date.getUTCMinutes(),
+    //     date.getUTCSeconds()
+    //   ).toString();
+    // } else {
+    //   date = date.toString();
+    // }
 
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
