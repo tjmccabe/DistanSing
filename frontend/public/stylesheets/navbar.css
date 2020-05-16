@@ -70,10 +70,10 @@
   border-radius: 3px;
   height: 32px;
   background-color: #F2F2F2;
-  color: #7486F0;
 }
 
 .nav-bar-button button {
+  color: #3D5A80;
   background-color: inherit;
   height: 100%;
   width: 100%;

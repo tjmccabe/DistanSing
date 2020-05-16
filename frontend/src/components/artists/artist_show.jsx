@@ -2,6 +2,9 @@ import React from "react";
 import ShowEventItem from "./show_event_item";
 import DeleteEvent from "./delete_event";
 import { Link, withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faPencilAlt, faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+
 
 class ArtistShow extends React.Component {
   // constructor(props){
@@ -12,13 +15,10 @@ class ArtistShow extends React.Component {
     this.props.fetchArtist(this.props.match.params.id);
   }
 
-  
-
   render() {
     const { artist, owner, deleteEvent, fetchArtist } = this.props;
     if (!artist) return null;
-    const temp_text = 
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
     const ArtistEvents =
       artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
         <div className="artist-event-index-container">
@@ -69,6 +69,8 @@ class ArtistShow extends React.Component {
 
     return (
       <div className="artist-show-container">
+        <FontAwesomeIcon icon={faEdit} />
+        <FontAwesomeIcon icon={faPlus} />
         {OwnerActions}
         <div className="artist-bio-container">
           <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
@@ -76,7 +78,7 @@ class ArtistShow extends React.Component {
           </div>
           <div className="artist-bio">
             <h1>{artist.artistname}</h1>
-            <p className="artist-bio-text">{temp_text}</p>
+            <p className="artist-bio-text">{artist.bio}</p>
           </div>
         </div>
         {ArtistEvents}

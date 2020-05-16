@@ -95,11 +95,12 @@
 }
 
 .artist-bio-text {
-  width: 100%;
+  min-width: 400px;
   margin: 10px 0 0 20px;
   line-height: 1.4em;
   font-size: 20px;
   height: 7em;
+  width: 100%;
   overflow: auto;
   padding-right: 10px;
   box-sizing: border-box;
