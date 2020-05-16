@@ -10,6 +10,27 @@ class SearchDropdown extends React.Component {
     window.removeEventListener('click', this.props.closeDropdown)
   }
 
+  formatDate(fullDate) {
+    const months = {
+      "01": "Jan",
+      "02": "Feb",
+      "03": "Mar",
+      "04": "Apr",
+      "05": "May",
+      "06": "Jun",
+      "07": "Jul",
+      "08": "Aug",
+      "09": "Sep",
+      "10": "Oct",
+      "11": "Nov",
+      "12": "Dec",
+    };
+    let date = new Date(fullDate);
+    let splitDate = date.toString().split(' ');
+    let dateString = splitDate[1] + ' ' + splitDate[3];
+    return dateString;
+  }
+
   showFiveResults(objects, string, name) {
     if (objects.length > 0) {
       return objects.slice(0, 5).map((object) =>
@@ -22,7 +43,16 @@ class SearchDropdown extends React.Component {
             searchBar.value = '';
             this.props.history.push(`/${string}/${object._id}`);
           }}>
-          {object[name]}
+          <div className="search-item-content">
+            <img className="search-item-image" src={object.imageurl} alt=""/>
+            <div className="search-item-info">
+              <div>{object[name]}</div>
+              { string === "artists" ?
+                <div>{object.genre}</div>
+                : <div>{this.formatDate((object.date).toString())}</div>
+              }
+            </div>
+          </div>
         </div>
       )
     } else {

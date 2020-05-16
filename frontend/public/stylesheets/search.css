@@ -35,6 +35,27 @@
   margin: 8px;
 }
 
+.search-dropdown-item {
+  width: 100%;
+}
+
+.search-item-content {
+  display: flex;
+}
+
+.search-item-image {
+  width: 50px;
+  height: 50px;
+}
+
+.search-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 15px;
+}
+
 .search-dropdown-item:hover, .index-search-link:hover {
   opacity: 0.5;
 }
@@ -44,9 +65,14 @@
   font-weight: 900;
 }
 
+.search-artists {
+  margin-top: 15px;
+}
+
 .search-events {
+  margin-top: 10px;
   border-top: 2px solid lightgrey;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .index-search-link {

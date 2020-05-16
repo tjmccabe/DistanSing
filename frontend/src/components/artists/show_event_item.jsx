@@ -19,7 +19,6 @@ class ShowEventItem extends React.Component {
       "11": "Nov",
       "12": "Dec",
     };
-    console.log(event)
     const month = months[event.date.slice(5, 7)];
     const day = new Date(event.date).getDate();
     const year = new Date(event.date).getFullYear();
