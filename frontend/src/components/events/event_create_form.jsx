@@ -13,16 +13,16 @@ export default class EventCreateForm extends React.Component {
       name: "",
       description: "",
       price: "0.00",
-      month: "",
-      day: "",
-      year: "",
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate(),
+      year: new Date().getFullYear(),
       time: time,
       imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/default_event_image.jpg",
       imagefile: null
     }
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     this.DAYS = [...Array(31).keys()].map(num => num + 1);
-    this.YEARS = [...Array(20).keys()].map(num => num + parseInt(date.getFullYear()));
+    this.YEARS = [...Array(5).keys()].map(num => num + parseInt(date.getFullYear()));
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,27 +42,44 @@ export default class EventCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const data = this.prepareForm();
-    this.props.createEvent(data)
-      .then(event => {
-        if (event.event.data._id) {
-          this.props.history.push(`/events/${event.event.data._id}`)
-        }
-      })
-      .catch(err => console.log(err))
+    if (this.props.loggedIn) {
+      const data = this.prepareForm();
+      this.props.createEvent(data)
+        .then(event => {
+          if (event.event.data._id) {
+            this.props.history.push(`/events/${event.event.data._id}`)
+          }
+        })
+        .catch(err => console.log(err))
+    } else {
+      this.props.openModal("artistLogin");
+    }
   }
 
   prepareForm() {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
-    let date = this.formatDate(month, day, year);
-    let datetime = date + "T" + this.formatTime(time);
+    let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time).toString());
+    
+    // if (process.env.NODE_ENV === "production") {
+    //   date = new Date(
+    //     date.getUTCFullYear(),
+    //     date.getUTCMonth(),
+    //     date.getUTCDate(),
+    //     date.getUTCHours(),
+    //     date.getUTCMinutes(),
+    //     date.getUTCSeconds()
+    //   ).toString();
+    // } else {
+    //   date = date.toString();
+    // }
+
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
     formData.append("name", name);
     formData.append("description", description);
     formData.append("price", price);
-    formData.append("date", datetime);
+    formData.append("date", date);
     return formData;
   }
 
@@ -83,8 +100,8 @@ export default class EventCreateForm extends React.Component {
   }
 
   formatDate(month, day, year) {
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    if (month < 10) month = '0' + month;
+    if (day < 10) day = '0' + day;
     return [year, month, day].join('-');
   }
 
@@ -111,7 +128,7 @@ export default class EventCreateForm extends React.Component {
   }
 
   render() {
-    const { name, description, price, time, imageurl } = this.state;
+    const { name, month, day, year, description, price, time, imageurl } = this.state;
     const ErrorList = this.renderErrors();
     return (
       <div className="event-create-page">
@@ -133,20 +150,20 @@ export default class EventCreateForm extends React.Component {
                 </div>
               </div>
               <div className="event-date">
-                <select defaultValue={"Month"} onChange={this.handleInput("month")}>
-                  <option disabled value="Month">Month</option>
+                <select defaultValue={month} onChange={this.handleInput("month")}>
+                  {/* <option disabled value="Month">Month</option> */}
                   {this.MONTHS.map((month, idx) =>
                     <option key={idx} value={idx+1}>{month}</option>
                   )}
                 </select>
-                <select defaultValue="Day" onChange={this.handleInput("day")}>
-                  <option disabled value="Day">Day</option>
+                <select defaultValue={day} onChange={this.handleInput("day")}>
+                  {/* <option disabled value="Day">Day</option> */}
                   {this.DAYS.map((day, idx) =>
                     <option key={idx} value={day}>{day}</option>
                   )}
                 </select>
-                <select defaultValue="Year" onChange={this.handleInput("year")}>
-                  <option disabled value="Year">Year</option>
+                <select defaultValue={year} onChange={this.handleInput("year")}>
+                  {/* <option disabled value="Year">Year</option> */}
                   {this.YEARS.map((year, idx) =>
                     <option key={idx} value={year}>{year}</option>
                   )}
