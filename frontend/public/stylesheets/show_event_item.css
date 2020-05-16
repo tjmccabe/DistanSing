@@ -1,7 +1,3 @@
-.show-items-container {
-  height: 600px;
-}
-
 .show-item-container {
   display: flex;
 }

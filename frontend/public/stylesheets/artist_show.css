@@ -4,8 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   box-sizing: border-box;
+  height: 100%;
 }
 
 /* Owner Actions */
@@ -108,12 +109,7 @@
 
 .artist-event-index {
   display: flex;
-  flex-direction: center;
-}
-
-.artist-event-index-container {
-  height: 300px;
-  margin: 0px 100px;
+  flex-direction: column;
 }
 
 .artist-event-index-container h1 {
