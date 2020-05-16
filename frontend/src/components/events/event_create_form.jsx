@@ -42,27 +42,55 @@ export default class EventCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const data = this.prepareForm();
-    this.props.createEvent(data)
-      .then(event => {
-        if (event.event.data._id) {
-          this.props.history.push(`/events/${event.event.data._id}`)
-        }
-      })
-      .catch(err => console.log(err))
+    if (this.props.loggedIn) {
+      const data = this.prepareForm();
+      this.props.createEvent(data)
+        .then(event => {
+          if (event.event.data._id) {
+            this.props.history.push(`/events/${event.event.data._id}`)
+          }
+        })
+        .catch(err => console.log(err))
+    } else {
+      this.props.openModal("artistLogin");
+    }
   }
 
   prepareForm() {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
-    let date = this.formatDate(month, day, year);
-    let datetime = date + "T" + this.formatTime(time);
+    let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time));
+
+    if (process.env.NODE_ENV !== "production") {
+      date = new Date(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate(),
+        date.getUTCHours(),
+        date.getUTCMinutes(),
+        date.getUTCSeconds()
+      ).toISOString();
+    } else {
+      date = date.toISOString();
+    }
+
+    // let convertedDate = new Date(
+    //   date.getUTCFullYear(),
+    //   date.getUTCMonth(),
+    //   date.getUTCDate(),
+    //   date.getUTCHours(),
+    //   date.getUTCMinutes(),
+    //   date.getUTCSeconds()
+    // ).toISOString();
+
+
     price = parseFloat(price.replace("$", ""));
+    debugger
     if (imagefile) formData.append("imagefile", imagefile);
     formData.append("name", name);
     formData.append("description", description);
     formData.append("price", price);
-    formData.append("date", datetime);
+    formData.append("date", date);
     return formData;
   }
 
@@ -83,8 +111,8 @@ export default class EventCreateForm extends React.Component {
   }
 
   formatDate(month, day, year) {
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    if (month < 10) month = '0' + month;
+    if (day < 10) day = '0' + day;
     return [year, month, day].join('-');
   }
 
