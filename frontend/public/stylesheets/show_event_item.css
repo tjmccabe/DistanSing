@@ -1,5 +1,9 @@
-.show-item-container {
+.show-items-container {
   height: 600px;
+}
+
+.show-item-container {
+  display: flex;
 }
 
 .show-item {
@@ -8,7 +12,8 @@
   border-radius: 30px;
   margin: 30px 0px;
   display: flex;
-  min-width: 700px;
+  min-width: 884px;
+  width: 100%;
 }
 
 .show-item:hover{
