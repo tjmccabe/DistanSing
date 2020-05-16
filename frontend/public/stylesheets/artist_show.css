@@ -1,36 +1,88 @@
 /* Artist Show Container */
 
 .artist-show-container {
-  padding-top: 40px;
-  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
+
+/* Owner Actions */
+
+.owner-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 70px 0px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1250px;
+}
+
+.owner-actions a {
+  margin: 10px 15px 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.artist-show-filter {
+  box-sizing: border-box;
+  padding: 10px 15px 6px;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-show-filter:hover {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+#edit-artist-link {
+  background-color: gray;
+  font-weight: normal;
+}
+
+#create-event-link {
+  background-color: rgb(0, 109, 0);
+}
+
 /* Artist Bio Container */
 
 .artist-bio-container {
   display: flex;
+  justify-content: center;
   height: 250px;
-  margin-top: 25px;
-  margin-left: 100px;
-  min-width: 1000px;
-  
+  min-width: 600px;
+  max-width: 1000px;
+  margin: 50px 20px 20px;
+  box-sizing: border-box;
+  padding-right: 20px;
 }
 
 
-.artist-bio-container img {
-  height: 220px;
-  width: 300px;
-  min-width: 200px;
-  object-fit: cover;
-  border: 2px solid gray;
-  border-radius: 70px;
+.artist-pic {
+  box-sizing: border-box;
+  height: 200px;
+  min-width: 220px;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.artist-pic-filter {
+  background-color: rgba(0, 0, 0, .08);
+  border-radius: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 .artist-bio {
   height: 200px;
-  width: 100%;
   min-width: 120px;
   margin-left: 20px;
-  margin-right: 100px;
   box-sizing: border-box;
 }
 
@@ -38,17 +90,17 @@
     font-family: 'Abril Fatface';
     font-size: 35px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .artist-bio-text {
-  width: 85%;
-  margin: 10px 0px 0px 20px;
-  line-height: 1.5em;
+  width: 100%;
+  margin: 10px 0 0 20px;
+  line-height: 1.4em;
   font-size: 20px;
-  height: 150px;
+  height: 7em;
   overflow: auto;
-  padding-right: 15px;
+  padding-right: 10px;
   box-sizing: border-box;
 }
 

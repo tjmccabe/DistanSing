@@ -42,25 +42,43 @@ class ArtistShow extends React.Component {
           </div>
         </div>
       ) : null;
+    
     const EditArtist =
       owner ? (
-        <Link to={`/artists/${this.props.match.params.id}/edit`}>Edit</Link>
+        <Link id="edit-artist-link" to={`/artists/${this.props.match.params.id}/edit`}>
+          <div className="artist-show-filter">
+            Edit Artist Info
+          </div>
+        </Link>
       ) : null;
     const CreateEvent =
       owner ? (
-        <Link to='/events/create'>Create Event</Link>
+        <Link id="create-event-link" to='/events/create'>
+          <div className="artist-show-filter">
+            Create Event
+          </div>
+        </Link>
       ) : null;
+
+    const OwnerActions = owner ? (
+      <div className="owner-actions">
+        {EditArtist}
+        {CreateEvent}
+      </div>
+    ) : null;
+
     return (
       <div className="artist-show-container">
+        {OwnerActions}
         <div className="artist-bio-container">
-          <img src={`${artist.imageurl}`} alt="" />
+          <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
+            <div className="artist-pic-filter"></div>
+          </div>
           <div className="artist-bio">
             <h1>{artist.artistname}</h1>
             <p className="artist-bio-text">{temp_text}</p>
           </div>
         </div>
-        {EditArtist}
-        {CreateEvent}
         {ArtistEvents}
       </div>
     );

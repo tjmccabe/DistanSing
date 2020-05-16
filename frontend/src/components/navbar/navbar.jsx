@@ -12,6 +12,12 @@ class NavBar extends React.Component {
     this.throttled.cancel();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   listenForScroll() {
     this.throttled = throttle(200, () => check_if_scrolled());
     document.addEventListener("scroll", this.throttled)
@@ -79,11 +85,10 @@ class NavBar extends React.Component {
     ) : null;
 
     const Welcome = loggedInAsUser && current ? (
-          <Link to={`/users/${id}`}>Welcome, {name}!</Link>
-        ) : loggedInAsArtist && current ? (
-          <Link to={`/artists/${id}`}>Welcome, {name}!</Link>
-        )
-      : null;
+      <Link className="welcome-text" to={`/users/${id}`}>Welcome, {name}!</Link>
+    ) : loggedInAsArtist && current ? (
+      <Link className="welcome-text" to={`/artists/${id}`}>Welcome, {name}!</Link>
+    ) : null;
 
     return (
       <header className="nav-bar">

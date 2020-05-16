@@ -29,9 +29,9 @@ class ShowEventItem extends React.Component {
         className="show-item"
         onClick={() => this.props.history.push(`/events/${event._id}`)}
       >
-        <figure>
-          <img src={event.imageurl} alt="" />
-        </figure>
+        <div className="event-pic" style={{ backgroundImage: `url(${event.imageurl})` }}>
+          <div className="event-pic-filter"></div>
+        </div>
         <div className="item-details">
           <div className="item-text">
             <h4>{event.name}</h4>

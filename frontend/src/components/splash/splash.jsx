@@ -18,9 +18,6 @@ class Splash extends React.Component {
   componentDidUpdate(prevProps) {
     // if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
     // if (Object.values(this.props.events) < 8) this.props.fetchEvents()
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      window.scrollTo(0, 0);
-    }
   }
 
   shuffle(arr) {
@@ -42,7 +39,6 @@ class Splash extends React.Component {
       const date = (new Date(event.date)).getTime();
       // return (date < now && date > (now-3600000))
       return (date > now)
-      // maybe refactor if streaming gives us more info about live streams
     })
 
     let shuffled = this.shuffle(liveStreams)
@@ -84,8 +80,6 @@ class Splash extends React.Component {
   }
 
   linkToEventShow(event) {
-    // this.props.fetchArtist(artist._id)
-    //   .then(() => this.props.history.push(`/artists/${artist._id}`))
     this.props.history.push(`/events/${event._id}`)
   }
 
@@ -119,10 +113,10 @@ class Splash extends React.Component {
     let livey = document.getElementById('live-carousel')
 
     if (soony) {
-    new Flickity(soony, {
-      draggable: false,
-      wrapAround: true,
-      groupCells: 3
+      new Flickity(soony, {
+        draggable: false,
+        wrapAround: true,
+        groupCells: 3
     })};
 
     if (livey) {
@@ -130,13 +124,13 @@ class Splash extends React.Component {
         draggable: false,
         wrapAround: true,
         groupCells: 3
-      })};
+    })};
 
-      const Placeholder = (LiveNow || StreamingSoon) ? null : (
-        <div>Looks like it's pretty quiet around here.<br/> Sign up as an artist and start streaming today!</div>
-      )
-      
-      return(
+    const Placeholder = (LiveNow || StreamingSoon) ? null : (
+      <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
+    )
+    
+    return(
       <div className='splash'>
         <div className="splash-header">
           <h2 className="site-heading">

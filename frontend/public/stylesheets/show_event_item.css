@@ -24,6 +24,26 @@
   margin: 30px 40px;
 }
 
+.event-pic {
+  box-sizing: border-box;
+  width: 150px;
+  min-width: 150px;
+  background-position: 50%;
+  background-size: cover;
+  height: 110px;
+  border: none;
+  border-radius: 10px;
+  margin: 30px 40px;
+}
+
+.event-pic-filter {
+  background-color: rgba(0, 0, 0, .08);
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
 .item-details {
   display: flex;
   width: 80%;

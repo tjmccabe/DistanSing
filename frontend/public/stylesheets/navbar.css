@@ -10,8 +10,7 @@
   align-items: center;
   box-sizing: border-box;
   height: 60px;
-  background: #B3BEFF;
-  background: #506CF0;
+  background: #3D5A80;
   color: white;
   position: fixed;
   width: 100%;
@@ -21,7 +20,6 @@
 
 .nav-container.scrolled {
   box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  background-color: #7486F0;
 }
 
 .nav-bar-left, .nav-bar-right, .nav-logo {
@@ -62,4 +60,8 @@
 .nav-bar-filter:hover {
   background-color: rgba(0, 0, 0, .1);
   cursor: pointer;
+}
+
+.welcome-text {
+  padding: 4px 5px 0;
 }
