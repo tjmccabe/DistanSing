@@ -10,6 +10,7 @@ import EventCreateContainer from './events/event_create_container';
 import ArtistEditFormContainer from './artists/artist_edit_form_container';
 import UserShowContainer from "./users/user_show_container";
 import SearchIndex from "./search/search_index";
+import Footer from "./footer/footer";
 
 const App = () => (
   <div>
@@ -24,6 +25,7 @@ const App = () => (
       <Route path="/users/:id" component={UserShowContainer} />
       <Route path="/search/:fragment" component={SearchIndex} />
     </Switch>
+    <Footer />
   </div>
 );
 

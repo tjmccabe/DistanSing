@@ -24,7 +24,7 @@ const ArtistSchema = new Schema({
   },
   imageurl: {
     type: String,
-    default: 'https://distansing-dev.s3-us-west-1.amazonaws.com/default_artist_image.jpg'
+    default: 'https://distansing-dev.s3-us-west-1.amazonaws.com/default_artist_image_mask_on.jpg'
   },
   genre: {
     type: String,
