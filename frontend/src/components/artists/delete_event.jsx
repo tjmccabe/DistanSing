@@ -16,8 +16,10 @@ class DeleteEvent extends React.Component {
 
   render() {
     return (
-      <div onClick={this.handleDelete}>
-          <button><GoTrashcan/></button>
+      <div className='delete-button-container' onClick={this.handleDelete}>
+        <div className='delete-button'>
+          <GoTrashcan />
+        </div>
       </div>
     )
   }
