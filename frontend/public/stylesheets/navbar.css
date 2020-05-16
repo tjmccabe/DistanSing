@@ -53,6 +53,7 @@
 }
 
 .nav-bar-about:hover {
+  cursor: pointer;
   color: #FD5E60;
 }
 
