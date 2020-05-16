@@ -49,15 +49,15 @@
 }
 
 .nav-bar-about {
-  margin: 5px 0px 0px 15px;
+  margin: 5px 0px 0px 25px;
 }
 
 .nav-bar-about:hover {
-  color: #7486F0;
+  color: #FD5E60;
 }
 
 .nav-bar-welcome:hover {
-  color: #7486F0;
+  color: #FD5E60;
 }
 .nav-bar-button {
   display: flex;
