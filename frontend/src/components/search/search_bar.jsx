@@ -74,7 +74,7 @@ class SearchBar extends React.Component {
           type="text" 
           onChange={this.handleInput} 
           onKeyPress={this.handleEnter}
-          placeholder="Search" />
+          placeholder="Search for artists and events" />
         { openDropdown && searchResults ?  
           <SearchDropdown 
             fragment={fragment}
