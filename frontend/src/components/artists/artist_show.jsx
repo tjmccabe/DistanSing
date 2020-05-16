@@ -23,9 +23,13 @@ class ArtistShow extends React.Component {
       artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
         <div className="artist-event-index-container">
           <h1>Upcoming events from {artist.artistname}:</h1>
-          <div className="show-item-container">
+          <div className="show-items-container">
             {Object.values(artist.artistEvents).map((event, idx) => (
-              <div key={idx}>
+              <div className='show-item-container' key={idx}>
+                <ShowEventItem
+                  event={event}
+                  owner={owner}
+                  />
                 {owner ? (
                   <DeleteEvent
                     event={event}
@@ -33,10 +37,6 @@ class ArtistShow extends React.Component {
                     deleteEvent={deleteEvent}
                   />
                 ) : null}
-                <ShowEventItem
-                  event={event}
-                  owner={owner}
-                />
               </div>
             ))}
           </div>
