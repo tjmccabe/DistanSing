@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { throttle } from 'throttle-debounce'
 import SearchBar from '../search/search_bar';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 
 class NavBar extends React.Component {
   componentDidMount() {
@@ -78,12 +80,18 @@ class NavBar extends React.Component {
       </div>
     ) : null;
 
-    const Welcome = loggedInAsUser && current ? (
-          <Link to={`/users/${id}`}>Welcome, {name}!</Link>
-        ) : loggedInAsArtist && current ? (
-          <Link to={`/artists/${id}`}>Welcome, {name}!</Link>
-        )
-      : null;
+    const Welcome =
+      loggedInAsUser && current ? (
+        <Link to={`/users/${id}`}>
+          <FontAwesomeIcon icon={faUserCircle} />
+          <div className="nav-bar-username">{name}</div>
+        </Link>
+      ) : loggedInAsArtist && current ? (
+        <Link to={`/artists/${id}`}>
+          <FontAwesomeIcon icon={faUserCircle} />
+          <div className="nav-bar-username">{name}</div>
+        </Link>
+      ) : null;
 
     return (
       <header className="nav-bar">

@@ -29,6 +29,19 @@
   align-items: center;
 }
 
+.nav-bar-right svg {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.nav-bar-username {
+  margin-top: 5px;
+}
+.nav-bar-right a {
+  display: flex;
+  align-items: center;
+}
+
 .nav-logo-img {
   margin-right: 5px;
   display: flex;
