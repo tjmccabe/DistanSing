@@ -13,16 +13,16 @@ export default class EventCreateForm extends React.Component {
       name: "",
       description: "",
       price: "0.00",
-      month: "",
-      day: "",
-      year: "",
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate(),
+      year: new Date().getFullYear(),
       time: time,
       imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/default_event_image.jpg",
       imagefile: null
     }
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     this.DAYS = [...Array(31).keys()].map(num => num + 1);
-    this.YEARS = [...Array(20).keys()].map(num => num + parseInt(date.getFullYear()));
+    this.YEARS = [...Array(5).keys()].map(num => num + parseInt(date.getFullYear()));
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -111,7 +111,7 @@ export default class EventCreateForm extends React.Component {
   }
 
   render() {
-    const { name, description, price, time, imageurl } = this.state;
+    const { name, month, day, year, description, price, time, imageurl } = this.state;
     const ErrorList = this.renderErrors();
     return (
       <div className="event-create-page">
@@ -133,20 +133,20 @@ export default class EventCreateForm extends React.Component {
                 </div>
               </div>
               <div className="event-date">
-                <select defaultValue={"Month"} onChange={this.handleInput("month")}>
-                  <option disabled value="Month">Month</option>
+                <select defaultValue={month} onChange={this.handleInput("month")}>
+                  {/* <option disabled value="Month">Month</option> */}
                   {this.MONTHS.map((month, idx) =>
                     <option key={idx} value={idx+1}>{month}</option>
                   )}
                 </select>
-                <select defaultValue="Day" onChange={this.handleInput("day")}>
-                  <option disabled value="Day">Day</option>
+                <select defaultValue={day} onChange={this.handleInput("day")}>
+                  {/* <option disabled value="Day">Day</option> */}
                   {this.DAYS.map((day, idx) =>
                     <option key={idx} value={day}>{day}</option>
                   )}
                 </select>
-                <select defaultValue="Year" onChange={this.handleInput("year")}>
-                  <option disabled value="Year">Year</option>
+                <select defaultValue={year} onChange={this.handleInput("year")}>
+                  {/* <option disabled value="Year">Year</option> */}
                   {this.YEARS.map((year, idx) =>
                     <option key={idx} value={year}>{year}</option>
                   )}
