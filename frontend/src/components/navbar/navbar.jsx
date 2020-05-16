@@ -2,6 +2,9 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { throttle } from 'throttle-debounce'
 import SearchBar from '../search/search_bar';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { animateScroll } from "react-scroll";
 
 class NavBar extends React.Component {
   componentDidMount() {
@@ -78,25 +81,33 @@ class NavBar extends React.Component {
       </div>
     ) : null;
 
-    const Welcome = loggedInAsUser && current ? (
-          <Link to={`/users/${id}`}>Welcome, {name}!</Link>
-        ) : loggedInAsArtist && current ? (
-          <Link to={`/artists/${id}`}>Welcome, {name}!</Link>
-        )
-      : null;
+    const Welcome =
+      loggedInAsUser && current ? (
+        <Link to={`/users/${id}`} className="nav-bar-welcome">
+          <FontAwesomeIcon icon={faUserCircle} />
+          <div className="nav-bar-username">{name}</div>
+        </Link>
+
+      ) : loggedInAsArtist && current ? (
+        <Link to={`/artists/${id}`} className="nav-bar-welcome">
+          <FontAwesomeIcon icon={faUserCircle} />
+          <div className="nav-bar-username">{name}</div>
+        </Link>
+      ) : null;
 
     return (
       <header className="nav-bar">
         <div className="nav-container" id="navbar">
           <div className="nav-bar-left">
             <Link to="/" className="nav-logo">
-              {/* <div className="nav-logo-img">
-                Image Here
-              </div> */}
               <div className="nav-logo-name">
                 DistanSing
               </div>
             </Link>
+            <Link 
+              className="nav-bar-about"
+              onClick={() => animateScroll.scrollToBottom()}
+            > About The Creators </Link>
           </div>
           <SearchBar />
           <div className="nav-bar-right">
