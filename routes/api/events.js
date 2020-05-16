@@ -51,13 +51,14 @@ router.post("/", passport.authenticate("artist-rule", { session: false }), (req,
     }
     // console.log(req.body)
     // console.log('---------')
-    // console.log(req.user)
+    const default_image = req.user.imageurl
+    console.log(req.user)
     const newEvent = new Event({
       name: req.body.name,
       date: req.body.date,
       description: req.body.description,
       price: req.body.price,
-      imageurl: imageLocation,
+      imageurl: imageLocation ? imageLocation : default_image,
       artist: req.user,
     });
     newEvent.save()

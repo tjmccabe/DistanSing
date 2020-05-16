@@ -29,8 +29,16 @@
   align-items: center;
 }
 
-.nav-logo-img {
+.nav-bar-right svg {
+  font-size: 24px;
   margin-right: 5px;
+}
+
+.nav-bar-username {
+  margin-top: 5px;
+}
+
+.nav-bar-right a {
   display: flex;
   align-items: center;
 }
@@ -40,6 +48,17 @@
   font-family: 'Lobster', cursive;
 }
 
+.nav-bar-about {
+  margin: 5px 0px 0px 25px;
+}
+
+.nav-bar-about:hover {
+  color: #FD5E60;
+}
+
+.nav-bar-welcome:hover {
+  color: #FD5E60;
+}
 .nav-bar-button {
   display: flex;
   margin-left: 10px;
