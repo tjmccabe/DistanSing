@@ -39,8 +39,8 @@ class ShowEventItem extends React.Component {
             <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
             <p>{event.description}</p>
           </div>
-          <span>{event.price.toFixed(2)}</span>
         </div>
+        <div className="show-item-price">{event.price.toFixed(2)}</div>
       </div>
     );
   }

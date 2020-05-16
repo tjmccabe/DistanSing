@@ -4,11 +4,12 @@
 
 .show-item {
   background-color: white;
-  height: 180px;
-  border-radius: 30px;
+  height: 120px;
+  border-radius: 10px;
   margin: 30px 0px;
   display: flex;
-  min-width: 884px;
+  align-items: center;
+  width: 600px;
   width: 100%;
 }
 
@@ -16,14 +17,14 @@
   cursor: pointer;
 }
 
-.show-item figure img {
+/* .show-item figure img {
   width: 200px;
   min-width: 200px;
   height: 120px;
   border: 2px solid black;
   border-radius: 20px;
   margin: 30px 40px;
-}
+} */
 
 .event-pic {
   box-sizing: border-box;

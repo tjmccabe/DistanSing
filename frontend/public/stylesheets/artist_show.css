@@ -35,9 +35,28 @@
   height: 100%;
 }
 
+.artist-show-button-filter {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+}
+
 .artist-show-filter:hover {
   background-color: rgba(0, 0, 0, .1);
   cursor: pointer;
+}
+
+.artist-show-button-filter:hover {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+.needs-padding {
+  padding: 10px 10px 6px;
 }
 
 #edit-artist-link {
@@ -108,17 +127,16 @@
 
 /* Artist Event Index Container */
 
-.artist-event-index {
+.artist-event-index-container {
   display: flex;
   flex-direction: column;
 }
 
 .artist-event-index-container h1 {
   display: flex;
-  justify-content: baseline;
   font-weight: 600;
   align-items: center;
-  font-size: 22px;
+  font-size: 20px;
   height: 30px;
   width: 100%;
 }

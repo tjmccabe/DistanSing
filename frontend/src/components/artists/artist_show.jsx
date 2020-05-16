@@ -3,7 +3,7 @@ import ShowEventItem from "./show_event_item";
 import DeleteEvent from "./delete_event";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faPencilAlt, faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 class ArtistShow extends React.Component {
@@ -46,16 +46,22 @@ class ArtistShow extends React.Component {
     const EditArtist =
       owner ? (
         <Link id="edit-artist-link" to={`/artists/${this.props.match.params.id}/edit`}>
-          <div className="artist-show-filter">
-            Edit Artist Info
+          <div className="artist-show-button-filter">
+            <FontAwesomeIcon icon={faEdit} /> 
+            <div className="needs-padding">
+              Edit Artist Info
+            </div>
           </div>
         </Link>
       ) : null;
     const CreateEvent =
       owner ? (
         <Link id="create-event-link" to='/events/create'>
-          <div className="artist-show-filter">
-            Create Event
+          <div className="artist-show-button-filter">
+            <FontAwesomeIcon icon={faPlus} />
+            <div className="needs-padding">
+              Create Event
+            </div>
           </div>
         </Link>
       ) : null;
@@ -69,8 +75,6 @@ class ArtistShow extends React.Component {
 
     return (
       <div className="artist-show-container">
-        <FontAwesomeIcon icon={faEdit} />
-        <FontAwesomeIcon icon={faPlus} />
         {OwnerActions}
         <div className="artist-bio-container">
           <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
