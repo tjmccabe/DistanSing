@@ -60,8 +60,9 @@ export default class EventCreateForm extends React.Component {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
     let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time));
-
-    if (process.env.NODE_ENV !== "production") {
+    
+    if (process.env.NODE_ENV === "production") {
+      debugger
       date = new Date(
         date.getUTCFullYear(),
         date.getUTCMonth(),
@@ -71,21 +72,11 @@ export default class EventCreateForm extends React.Component {
         date.getUTCSeconds()
       ).toISOString();
     } else {
+      debugger
       date = date.toISOString();
     }
 
-    // let convertedDate = new Date(
-    //   date.getUTCFullYear(),
-    //   date.getUTCMonth(),
-    //   date.getUTCDate(),
-    //   date.getUTCHours(),
-    //   date.getUTCMinutes(),
-    //   date.getUTCSeconds()
-    // ).toISOString();
-
-
     price = parseFloat(price.replace("$", ""));
-    debugger
     if (imagefile) formData.append("imagefile", imagefile);
     formData.append("name", name);
     formData.append("description", description);
