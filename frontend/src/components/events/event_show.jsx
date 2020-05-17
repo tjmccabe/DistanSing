@@ -29,7 +29,7 @@ class EventShow extends React.Component {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
-    if (!this.props.startingSoon) return;
+    if (!this.props.startingSoon || this.props.artist._id === this.props.currentId) return;
     if (this.props.event && this.props.event.streaming && !this.state.streaming) {
       this.startStreaming()
       return
@@ -72,7 +72,7 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { artist, event, currentId, currentUserPurchase } = this.props;
+    const { artist, event, currentId, currentUserPurchase, loggedInAsArtist } = this.props;
     if (!event || !artist) return null;
     const date = new Date(event.date);
     const isTime = date.getTime() < (new Date()).getTime() ? true : false;
@@ -83,6 +83,8 @@ class EventShow extends React.Component {
         onClick={this.startStreaming}
         id="start-streaming-event-show"
       >
+        It's showtime!
+        <br/>
         Click Here to Go LIVE
       </button>
     ) : null;
@@ -95,7 +97,10 @@ class EventShow extends React.Component {
       </div>
     ) : !currentId ? (
       <div className="event-show-buy">
-        <div className="event-show-buynow">Log in to reserve ticket</div>
+        <div className="event-show-buynow">Log in as a User<br/>to reserve a ticket</div>
+      </div>
+    ) : loggedInAsArtist ? (
+      <div>
       </div>
     ) : event.price === 0 ? (
       <div onClick={this.buyTicket} className="event-show-buy">
@@ -113,6 +118,8 @@ class EventShow extends React.Component {
       </div>
     );
 
+    const CalendarElement = isTime ? null : <Calendar value={date} />
+
     // console.log(currentId)
     // console.log(artist._id)
     // console.log(artist.artistname)
@@ -124,13 +131,18 @@ class EventShow extends React.Component {
     return (
       <div className="event-show">
         <div className="event-show-container">
-          {StartStreamButton}
           <div className="event-show-header">
             <div className="event-show-calendar">
-              <Calendar value={date} />
+              {CalendarElement}
             </div>
             <div className="event-show-countdown">
-              <Countdown artist={artist} date={date} hasTicket={hasTicket} />
+              <Countdown
+                artist={artist}
+                currentId={currentId}
+                date={date}
+                hasTicket={hasTicket}
+                StartStreamButton={StartStreamButton}
+              />
             </div>
             {BuyButton}
           </div>
