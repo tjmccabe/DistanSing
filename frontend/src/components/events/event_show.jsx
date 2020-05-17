@@ -96,8 +96,7 @@ class EventShow extends React.Component {
         <div className="event-show-buynow" >Log in as a User<br/>to reserve a ticket</div>
       </div>
     ) : loggedInAsArtist ? (
-      <div>
-      </div>
+        <div className="fake-buy-button"></div>
     ) : event.price === 0 ? (
       <div onClick={this.buyTicket} className="event-show-buy">
         <div className="event-show-buynow">

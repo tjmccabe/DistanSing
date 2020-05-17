@@ -16,6 +16,10 @@
   width: 350px;
 }
 
+.fake-buy-button {
+  width: 100px;
+}
+
 .event-show-header {
   display: flex;
   align-items: center;
