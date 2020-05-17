@@ -20,6 +20,14 @@ a:visited {
   color: inherit
 }
 
+a:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

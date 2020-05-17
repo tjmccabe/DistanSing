@@ -29,17 +29,15 @@ class ShowEventItem extends React.Component {
         className="show-item"
         onClick={() => this.props.history.push(`/events/${event._id}`)}
       >
-        <figure>
-          <img src={event.imageurl} alt="" />
-        </figure>
-        <div className="item-details">
-          <div className="item-text">
-            <h4>{event.name}</h4>
-            <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
-            <p>{event.description}</p>
-          </div>
-          <span>{event.price.toFixed(2)}</span>
+        <div className="event-pic" style={{ backgroundImage: `url(${event.imageurl})` }}>
+          <div className="event-pic-filter"></div>
         </div>
+        <div className="item-details">
+          <h4>{event.name}</h4>
+          <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
+          <p>{event.description}</p>
+        </div>
+        <div className="show-item-price">{event.price.toFixed(2)}</div>
       </div>
     );
   }

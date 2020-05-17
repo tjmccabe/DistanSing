@@ -15,6 +15,12 @@ class NavBar extends React.Component {
     this.throttled.cancel();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   listenForScroll() {
     this.throttled = throttle(200, () => check_if_scrolled());
     document.addEventListener("scroll", this.throttled)
@@ -107,7 +113,9 @@ class NavBar extends React.Component {
             <div 
               className="nav-bar-about"
               onClick={() => animateScroll.scrollToBottom()}
-            > About The Creators </div>
+            >
+              Creator Info
+            </div>
           </div>
           <SearchBar />
           <div className="nav-bar-right">

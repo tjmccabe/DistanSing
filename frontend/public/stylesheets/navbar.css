@@ -10,8 +10,7 @@
   align-items: center;
   box-sizing: border-box;
   height: 60px;
-  background: #B3BEFF;
-  background: #506CF0;
+  background: #3D5A80;
   color: white;
   position: fixed;
   width: 100%;
@@ -21,7 +20,6 @@
 
 .nav-container.scrolled {
   box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  background-color: #7486F0;
 }
 
 .nav-bar-left, .nav-bar-right, .nav-logo {
@@ -46,30 +44,38 @@
 .nav-logo-name {
   font-size: 28px;
   font-family: 'Lobster', cursive;
+  margin-left: 10px;
 }
 
 .nav-bar-about {
+  cursor: pointer;
   margin: 5px 0px 0px 25px;
 }
 
 .nav-bar-about:hover {
+  color: rgb(221, 221, 221);
+}
+
+.nav-bar-welcome {
+  color: rgb(255, 255, 255);
+  margin-right: 10px;
   cursor: pointer;
-  color: #FD5E60;
 }
 
 .nav-bar-welcome:hover {
-  color: #FD5E60;
+  color: rgb(221, 221, 221);
 }
+
 .nav-bar-button {
   display: flex;
   margin-left: 10px;
   border-radius: 3px;
   height: 32px;
   background-color: #F2F2F2;
-  color: #7486F0;
 }
 
 .nav-bar-button button {
+  color: #3D5A80;
   background-color: inherit;
   height: 100%;
   width: 100%;
@@ -82,4 +88,8 @@
 .nav-bar-filter:hover {
   background-color: rgba(0, 0, 0, .1);
   cursor: pointer;
+}
+
+.welcome-text {
+  padding: 4px 5px 0;
 }

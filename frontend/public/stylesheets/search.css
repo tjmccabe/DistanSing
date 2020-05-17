@@ -1,6 +1,8 @@
 .search-bar-container {
   width: 35%;
   position: relative;
+  box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
 .search-icon {
@@ -22,6 +24,7 @@
 }
 
 .search-dropdown {
+  box-sizing: border-box;
   width: 100%;
   position: absolute;
   top: 115%;
@@ -29,6 +32,9 @@
   background-color: white;
   color: black;
   border-radius: 3px;
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .search-dropdown-item, .search-artists, .search-events, .no-results, .index-search-link  {
@@ -37,6 +43,7 @@
 
 .search-dropdown-item {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .search-item-content {
@@ -54,6 +61,7 @@
   justify-content: center;
   align-items: flex-start;
   margin-left: 15px;
+  box-sizing: border-box;
 }
 
 .search-dropdown-item:hover, .index-search-link:hover {
