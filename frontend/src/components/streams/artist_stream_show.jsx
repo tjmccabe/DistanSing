@@ -1,7 +1,8 @@
 import React from 'react';
 import io from 'socket.io-client';
 import Peer from 'peerjs';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import LiveChatContainer from './live_chat_container';
 
 class ArtistStreamShow extends React.Component {
   constructor(props) {
@@ -109,8 +110,6 @@ class ArtistStreamShow extends React.Component {
   render() {
     const { event, artist } = this.props
 
-    const ChatPlaceholder = null;
-
     return this.state.playing ? (
       <div className="stream-container">
         <div className="stream-title">
@@ -123,7 +122,7 @@ class ArtistStreamShow extends React.Component {
         </div>
         <div className="stream-content">
           <video id="lVideo" controls muted autoPlay={true} ></video>
-          {ChatPlaceholder}
+          <LiveChatContainer socket={this.socket}/>
         </div>
         <button id="stop-streaming" onClick={this.stopPlaying}>Stop Streaming</button>
       </div>
