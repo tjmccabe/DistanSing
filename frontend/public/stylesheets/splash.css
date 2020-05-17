@@ -148,6 +148,7 @@
   position: relative;
   width: 80%;
   height: 100%;
+  float: left;
 }
 
 .featured-stream-content:hover {
@@ -171,13 +172,13 @@
 
 .featured-stream-text > h2:first-child {
   font-size: 30px;
-  height: 40px;
-  line-height: 50px;
+  min-height: 40px;
+  padding-top: 15px;
 }
 
 .featured-stream-text > h2:nth-child(2) {
-  height: 20px;
-  line-height: 25px;
+  height: 25px;
+  line-height: 20px;
 }
 
 .featured-stream-text > h2 {

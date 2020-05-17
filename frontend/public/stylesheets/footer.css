@@ -13,7 +13,6 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  /* padding: 20px; */
   margin: 20px;
 }
 
@@ -28,6 +27,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 15px;
+  width: 80%;
 }
 
 .foot-pic {
@@ -42,15 +42,21 @@
   align-items: center;
 }
 
+.footer-git-logo:hover, .footer-li-logo:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
 .footer-git-logo {
   width: 24px;
   height: 24px;
-  margin: 0 5px;
+  z-index: 1000;
 }
 
 .footer-li-logo {
   width: 30px;
   height: 30px;
+  
 }
 
 .footer-site-info {
