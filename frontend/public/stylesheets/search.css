@@ -18,9 +18,13 @@
   margin: 5px;
   font-size: 14px;
   border: 2px solid #e5e5e5;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
   text-indent: 5.15%;
+}
+
+.search-input:focus {
+  outline: none;
 }
 
 .search-dropdown {
