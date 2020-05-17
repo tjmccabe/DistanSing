@@ -4,11 +4,6 @@ const Footer = () => {
   const us = ["TJ McCabe", "Darrick Yong", "Danny Huang", "Glen Park"]
   return (
     <div className="footer">
-      {/* <div className="footer-border">
-        <div className="footer-line"></div>
-        <div className="footer-distansing">DistanSing Logo here</div>
-        <div className="footer-line"></div>
-      </div> */}
       <div className="footer-about">
         {us.map((engineer, idx) => 
           <div key={idx} className="footer-item-container">
@@ -22,6 +17,13 @@ const Footer = () => {
             </div>
           </div>
         )}
+      </div>
+      <div className="footer-site-info">
+        <div className="footer-site-info-left">
+          <div className="footer-info-logo">DistanSing</div>
+          <div className="footer-info-text">By using this site, you agree to our Terms of Service (the only term being please do not hack us!)</div>
+        </div>
+        <div className="footer-info-copyright">&#169; Kunsole Lawg Studios 2020</div>
       </div>
     </div>
   )
