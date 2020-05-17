@@ -49,11 +49,7 @@ class EventShow extends React.Component {
   }
 
   buyTicket() {
-    if (this.props.currentUserPurchase) {
-      this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
-    } else {
-      window.alert("You are an artist. You should be performing, not attending other artists' events.")
-    }
+    this.props.updateUser({ id: this.props.currentId, events: this.props.match.params.id })
   }
 
   showArtist() {
@@ -97,7 +93,7 @@ class EventShow extends React.Component {
       </div>
     ) : !currentId ? (
       <div className="event-show-buy">
-        <div className="event-show-buynow">Log in as a User<br/>to reserve a ticket</div>
+        <div className="event-show-buynow" >Log in as a User<br/>to reserve a ticket</div>
       </div>
     ) : loggedInAsArtist ? (
       <div>
@@ -118,12 +114,8 @@ class EventShow extends React.Component {
       </div>
     );
 
-    const CalendarElement = isTime ? null : <Calendar value={date} />
+    const CalendarElement = isTime ? <div className="fake-calendar"></div> : <Calendar value={date} />
 
-    // console.log(currentId)
-    // console.log(artist._id)
-    // console.log(artist.artistname)
-    // console.log(this.state)
     if (this.state.streaming && currentId === artist._id) return this.showStream()
 
     if (this.state.streaming && hasTicket) return this.showStream()
@@ -156,7 +148,6 @@ class EventShow extends React.Component {
                 />
               </div>
               <div className="event-show-body">
-                {/* <div className="event-show-artistname" onClick={this.props.history.push(`/artists/${artist._id}`)}> */}
                 <div className="event-show-artistname">{artist.artistname}</div>
                 <div className="event-show-name">{event.name}</div>
                 <div className="event-show-description">
