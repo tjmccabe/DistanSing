@@ -87,10 +87,10 @@ class Countdown extends React.Component {
       </div>
     ) : (
       <div className="countdown-timer">
-        <div className="countdown-timer-header">Time remaining until LIVE:</div>
+        <div className="countdown-timer-header">This event goes LIVE in:</div>
         <div className="countdown-time">
-          <div className="countdown-time-days">
-            <div className="countdown-days-value">
+          <div className="countdown-time-days countdown-time-time">
+            <div className="countdown-days-value time-value">
               <div className="test">
                 {` ${days < 100 ? (days < 10 ? `00${days}` : `0${days}`) : days}`}
               </div>
@@ -98,22 +98,22 @@ class Countdown extends React.Component {
             <div className="countdown-time-text">day(s)</div>
           </div>
 
-          <div className="countdown-time-hours">
-            <div className="countdown-hours-value">
+          <div className="countdown-time-hours countdown-time-time">
+            <div className="countdown-hours-value time-value">
               {`${hours < 10 ? `0${hours}` : hours}`}
             </div>
             <div className="countdown-time-text">hour(s)</div>
           </div>
 
-          <div className="countdown-time-minutes">
-            <div className="countdown-minutes-value">
+          <div className="countdown-time-minutes countdown-time-time">
+            <div className="countdown-minutes-value time-value">
               {`${minutes < 10 ? `0${minutes}` : minutes}`}
             </div>
             <div className="countdown-time-text">minute(s)</div>
           </div>
 
-          <div className="countdown-time-seconds">
-            <div className="countdown-seconds-value">
+          <div className="countdown-time-seconds countdown-time-time">
+            <div className="countdown-seconds-value time-value">
               {`${seconds < 10 ? `0${seconds}` : seconds}`}
             </div>
             <div className="countdown-time-text">second(s)</div>
