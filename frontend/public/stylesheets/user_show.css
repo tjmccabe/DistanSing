@@ -84,6 +84,7 @@
 /* User Event Index Container */
 
 .user-event-index-container {
+  min-width: 600px;
   display: flex;
   flex-direction: column;
 }

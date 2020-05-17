@@ -16,17 +16,25 @@ class ArtistShow extends React.Component {
     const { artist, owner, deleteEvent, fetchArtist } = this.props;
     if (!artist) return null;
 
+    // this function gets all an artist's future events and sorts them by soonest
+    const OnlyUpcoming = artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
+      Object.values(artist.artistEvents).filter(ev => (
+        new Date(ev.date).getTime() > new Date().getTime()
+      ))
+        .sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    ) : []
+
     const ArtistEvents =
-      artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
+      OnlyUpcoming[0] ? (
         <div className="artist-event-index-container">
-          <h1>Upcoming events from {artist.artistname}:</h1>
+          <h1>All upcoming events from {artist.artistname}:</h1>
           <div className="show-items-container">
-            {Object.values(artist.artistEvents).map((event, idx) => (
+            {OnlyUpcoming.map((event, idx) => (
               <div className='show-item-container' key={idx}>
                 <ShowEventItem
                   event={event}
                   owner={owner}
-                  />
+                />
                 {owner ? (
                   <DeleteEvent
                     event={event}

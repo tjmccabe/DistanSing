@@ -88,7 +88,7 @@ class EventShow extends React.Component {
     const BuyButton = hasTicket ? (
       <div className="event-show-buy">
         <div className="event-show-buynow">
-          <FontAwesomeIcon icon={faCheck} /> Bought
+          <FontAwesomeIcon icon={faCheck} /> Ticket Reserved
         </div>
       </div>
     ) : !currentId ? (
@@ -164,19 +164,20 @@ class EventShow extends React.Component {
                 </div>
               </div>
 
-            </div>
+              <div className="event-show-upcoming">
+                <div className="event-upcoming-container">
+                  <h1>
+                    {`Upcoming events by ${artist.artistname}:`}
+                  </h1>
+                  <EventIndexContainer artist={artist}/>
+                </div>
+              </div>
+            
 
+            </div>
           </div>
 
 
-          <div className="event-show-upcoming">
-            <div className="event-upcoming-container">
-              <h1>
-                {`Upcoming events by ${artist.artistname}`}
-              </h1>
-              <EventIndexContainer artist={artist}/>
-            </div>
-          </div>
         </div>
       </div>
     );

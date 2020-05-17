@@ -127,6 +127,7 @@
 /* Artist Event Index Container */
 
 .artist-event-index-container {
+  min-width: 600px;
   display: flex;
   flex-direction: column;
 }
