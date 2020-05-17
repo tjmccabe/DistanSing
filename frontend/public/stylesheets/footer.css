@@ -1,5 +1,7 @@
 .footer {
   background-color: white;
+  position: relative;
+  bottom: 0;
 }
 
 /* .footer-border {

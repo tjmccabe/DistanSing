@@ -116,7 +116,7 @@ router.post("/register", (req, res) => {
 
                 jwt.sign(payload,
                   keys.secretOrKey,
-                  { expiresIn: 3600 },
+                  { expiresIn: '24h' },
                   (err, token) => {
                     res.json({
                       artist,
@@ -157,7 +157,7 @@ router.post('/login', (req, res) => {
             jwt.sign(
               payload,
               keys.secretOrKey,
-              { expiresIn: 3600 },
+              { expiresIn: '24h' },
               (err, token) => {
                 res.json({
                   artist,
