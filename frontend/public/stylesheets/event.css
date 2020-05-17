@@ -27,7 +27,7 @@
   width: 100%;
   height: 100%;
   min-height: calc(90vh - 60px);
-  background-color: rgba(245, 245, 245, .97);
+  background-color: rgba(245, 245, 245, .87);
 }
 
 .event-show-container {
@@ -189,9 +189,13 @@
 }
 
 .event-show-body {
+  /* background-color: rgb(255, 255, 255); */
   height: 200px;
+  /* width: 100%; */
   min-width: 120px;
-  margin-left: 20px;
+  margin-left: 15px;
+  padding: 0 15px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
