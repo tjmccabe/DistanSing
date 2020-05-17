@@ -55,6 +55,7 @@ export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
   localStorage.removeItem('user');
   localStorage.removeItem('artist');
+  localStorage.removeItem("artistId");
   APIUtil.setAuthToken(false);
   dispatch(receiveLogout());
 };

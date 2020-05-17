@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import {demo} from "./demos";
 
 class LoginForm extends React.Component {
@@ -26,6 +27,13 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
+      .then(() => {
+        const { formType } = this.props
+        const artistId = localStorage.getItem("artistId")
+        if (formType === "artistLogin") {
+          this.props.history.push(`/artists/${artistId}`)
+        }
+    })
   }
 
   renderErrors() {
@@ -46,7 +54,11 @@ class LoginForm extends React.Component {
   demoSubmit() {
     if (this.demoing) return;
     this.demoing = true;
-    demo(this.props.formType, this.props.login)
+    demo(this.props.formType, this.props.login)  // this is not a promise...
+        const { formType } = this.props;
+        if (formType === "artistLogin"){
+          setTimeout(() => this.props.history.push(`/artists/5ebefa97637d975b670f121a`), 2000)
+        }
   }
 
   render() {
@@ -129,4 +141,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

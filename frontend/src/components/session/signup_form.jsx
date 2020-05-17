@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -32,6 +34,13 @@ class SignupForm extends React.Component {
     return e => {
       e.preventDefault();
       this.props.signup(this.state)
+      .then(() => {
+        const { formType } = this.props;
+        const artistId = localStorage.getItem("artistId");
+        if (formType === "artistSignup") {
+          this.props.history.push(`/artists/${artistId}`);
+        }
+      });
     }
   }
 
@@ -128,4 +137,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
