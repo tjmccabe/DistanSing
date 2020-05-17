@@ -7,10 +7,7 @@ import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 class ArtistShow extends React.Component {
-  // constructor(props){
-  //   super(props)
 
-  // }
   componentDidMount() {
     this.props.fetchArtist(this.props.match.params.id);
   }
@@ -19,17 +16,25 @@ class ArtistShow extends React.Component {
     const { artist, owner, deleteEvent, fetchArtist } = this.props;
     if (!artist) return null;
 
+    // this function gets all an artist's future events and sorts them by soonest
+    const OnlyUpcoming = artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
+      Object.values(artist.artistEvents).filter(ev => (
+        new Date(ev.date).getTime() > new Date().getTime() - 86400000
+      ))
+        .sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    ) : []
+
     const ArtistEvents =
-      artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
+      OnlyUpcoming[0] ? (
         <div className="artist-event-index-container">
-          <h1>Upcoming events from {artist.artistname}:</h1>
+          <h1>Recent and upcoming events from {artist.artistname}:</h1>
           <div className="show-items-container">
-            {Object.values(artist.artistEvents).map((event, idx) => (
+            {OnlyUpcoming.map((event, idx) => (
               <div className='show-item-container' key={idx}>
                 <ShowEventItem
                   event={event}
                   owner={owner}
-                  />
+                />
                 {owner ? (
                   <DeleteEvent
                     event={event}
@@ -41,7 +46,12 @@ class ArtistShow extends React.Component {
             ))}
           </div>
         </div>
-      ) : null;
+      ) : (
+        <div className="artist-event-index-container">
+          <h1>No recent/upcoming events</h1>
+            <div className="show-items-container"></div>
+        </div>
+      );
     
     const EditArtist =
       owner ? (
@@ -73,6 +83,15 @@ class ArtistShow extends React.Component {
       </div>
     ) : null;
 
+    const Instructions = `Welcome to DistanSing! You can search for events from 
+      the navbar or visit an Artist's profile or an event page to see a list of 
+      that Artist's upcoming events. Feel free to attend any live events going 
+      on now after logging in as a User, or log in as an Artist and host your own!`
+
+    const Information = artist.email === 'demo@artist.com' ? (
+      <p className="user-bio-text">{Instructions}</p>
+    ) : <p className="artist-bio-text">{artist.bio}</p>
+
     return (
       <div className="artist-show-container">
         {OwnerActions}
@@ -82,7 +101,7 @@ class ArtistShow extends React.Component {
           </div>
           <div className="artist-bio">
             <h1>{artist.artistname}</h1>
-            <p className="artist-bio-text">{artist.bio}</p>
+            {Information}
           </div>
         </div>
         {ArtistEvents}

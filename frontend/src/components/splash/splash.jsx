@@ -60,7 +60,7 @@ class Splash extends React.Component {
       return (date > now)
     })
 
-    let shuffled = this.shuffle(soonStreams)
+    let shuffled = this.shuffle(soonStreams).slice(0,18)
 
     return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null
   }

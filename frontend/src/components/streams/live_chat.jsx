@@ -9,6 +9,7 @@ export default class LiveChat extends React.Component {
     }
     this.socket = this.props.socket;
     this.handleInput = this.handleInput.bind(this);
+    this.handleEmoji = this.handleEmoji.bind(this);
     this.handleSend = this.handleSend.bind(this);  
   }
 
@@ -32,6 +33,10 @@ export default class LiveChat extends React.Component {
     this.setState({ draft: e.target.value })
   }
 
+  handleEmoji(e) {
+    let newMsg = this.state.draft + e.target.innerText;
+    this.setState({ draft: newMsg });
+  }
 
   render() {
     const { messages } = this.state;
@@ -40,21 +45,47 @@ export default class LiveChat extends React.Component {
         <div id="messages-container">
           {messages.map((payload, idx) => {
             return (
-              <div key={idx}>
-                <div>{payload.name}:</div>
-                <div>{payload.message}</div>
+              <div 
+                className="stream-message"
+                key={idx}
+              >
+                <div className="stream-name">{`${payload.name}:`}</div>
+                <div className="stream-msg">{payload.message}</div>
               </div>
             )
           })}
         </div>
-        <form onSubmit={this.handleSend}>
-          <input
-            onChange={this.handleInput} 
-            value={this.state.draft} 
-            id="message-field" 
-            type="text"/>
-          <button>Send</button>
+        <form 
+          onSubmit={this.handleSend}
+          className="stream-chat"
+        >
+          <div className="stream-chat-container">
+            <input
+              onChange={this.handleInput} 
+              value={this.state.draft} 
+              placeholder="Send a message"
+              id="message-field" 
+              type="text"/>
+            <button>Send</button>
+          </div>
         </form>
+        <div className="stream-emojis">
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😀
+          </div>
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😟
+          </div>
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😍
+          </div>
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            👍🏼
+          </div>
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            👎🏼
+          </div>
+        </div>
       </div>
     )
   }

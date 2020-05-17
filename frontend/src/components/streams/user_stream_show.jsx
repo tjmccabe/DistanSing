@@ -80,8 +80,12 @@ class UserStreamShow extends React.Component {
           </div>
         </div>
         <div className="stream-content">
-          <video id="rVideo" controls autoPlay={true} muted></video>
-          <LiveChatContainer socket={this.socket} />
+          <div className="stream-video-player">
+            <video id="rVideo" controls autoPlay={true} muted></video>
+          </div>
+          <div>
+            <LiveChatContainer socket={this.socket} />
+          </div>
         </div>
         {DescriptionBlock}
         <div className="technical-difficulties">
