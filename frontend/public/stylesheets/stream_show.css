@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: flex-start;
   height: calc(100vh - 80px);
-  margin-top: 15px;
 }
 
 .lets-fucking-get-it {
@@ -14,6 +13,9 @@
 }
 
 #start-streaming, #stop-streaming {
+  position: absolute;
+  left: 200px;
+  top: 65px;
   padding: 10px 20px;
   background-color: red;
   color: white;
@@ -30,6 +32,14 @@
   background-color: rgba(255, 0, 0, .75);
 }
 
+.stream-header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 15px 0px;
+}
+
 .stream-title {
   display: flex;
   flex-direction: column;
@@ -37,7 +47,6 @@
   font-size: 22px;
   font-weight: bold;
   line-height: 1.5em;
-  margin-bottom: 10px;
 }
 
 .stream-description {
@@ -66,7 +75,76 @@
   background-color: rgba(255, 0, 0, .75);
 }
 
+
+.stream-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  width: 100%;
+}
+.stream-video-player {
+  width: calc(100vw - 350px);
+}
+
 #rVideo, #lVideo {
-  height: 500px;
-  max-width: 750px;
+  height: calc(100% - 100px);
+  width: 100%;
+}
+
+.stream-chat-box {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  min-height: calc(100vh - 180px);
+  border: 1px solid black;
+}
+
+#messages-container {
+  height: 650px;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  border: 1px solid red;
+}
+
+.stream-message {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.stream-name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.stream-chat {
+  width: 100%;
+  
+}
+
+.stream-chat-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+
+#message-field {
+  width: 160px;
+  height: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0px;
+}
+
+.stream-chat-container button {
+  height: 28px;
+  border-radius: 10px;
+}
+.stream-emojis {
+  display: flex;
+  justify-content: space-around;
 }
