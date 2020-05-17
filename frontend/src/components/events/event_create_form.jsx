@@ -17,7 +17,7 @@ export default class EventCreateForm extends React.Component {
       day: new Date().getDate(),
       year: new Date().getFullYear(),
       time: time,
-      imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/default_event_image.jpg",
+      imageurl: this.props.artist ? this.props.artist.imageurl : null,
       imagefile: null
     }
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -32,6 +32,17 @@ export default class EventCreateForm extends React.Component {
     this.handlePrice = this.handlePrice.bind(this);
   }
 
+  componentDidMount() {
+    if (!this.props.artist && this.props.loggedInArtist) {
+      this.props.fetchArtist(this.props.loggedInArtist.id)
+        .then(() => this.setState({ imageurl: this.props.artist.imageurl }))
+      return;
+    }
+    if (!this.props.artist) {
+      this.props.history.push('/');
+    }
+  }
+
   handleInput(type) {
     return e => this.setState({ [type]: e.target.value })
   }
@@ -42,38 +53,20 @@ export default class EventCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.loggedIn) {
-      const data = this.prepareForm();
-      this.props.createEvent(data)
-        .then(event => {
-          if (event.event.data._id) {
-            this.props.history.push(`/events/${event.event.data._id}`)
-          }
-        })
-        .catch(err => console.log(err))
-    } else {
-      this.props.openModal("artistLogin");
-    }
+    const data = this.prepareForm();
+    this.props.createEvent(data)
+      .then(event => {
+        if (event.event.data._id) {
+          this.props.history.push(`/events/${event.event.data._id}`)
+        }
+      })
+      .catch(err => err)
   }
 
   prepareForm() {
     const formData = new FormData();
     let { name, description, price, day, month, year, time, imagefile } = this.state;
     let date = new Date(this.formatDate(month, day, year) + "T" + this.formatTime(time).toString());
-    
-    // if (process.env.NODE_ENV === "production") {
-    //   date = new Date(
-    //     date.getUTCFullYear(),
-    //     date.getUTCMonth(),
-    //     date.getUTCDate(),
-    //     date.getUTCHours(),
-    //     date.getUTCMinutes(),
-    //     date.getUTCSeconds()
-    //   ).toString();
-    // } else {
-    //   date = date.toString();
-    // }
-
     price = parseFloat(price.replace("$", ""));
     if (imagefile) formData.append("imagefile", imagefile);
     formData.append("name", name);
@@ -130,6 +123,7 @@ export default class EventCreateForm extends React.Component {
   render() {
     const { name, month, day, year, description, price, time, imageurl } = this.state;
     const ErrorList = this.renderErrors();
+    if (!this.props.artist) return null;
     return (
       <div className="event-create-page">
         <form className="event-create-form" onSubmit={this.handleSubmit}>
