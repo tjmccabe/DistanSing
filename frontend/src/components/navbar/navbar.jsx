@@ -110,10 +110,12 @@ class NavBar extends React.Component {
                 DistanSing
               </div>
             </Link>
-            <Link 
+            <div 
               className="nav-bar-about"
               onClick={() => animateScroll.scrollToBottom()}
-            >Creator Info</Link>
+            >
+              Creator Info
+            </div>
           </div>
           <SearchBar />
           <div className="nav-bar-right">

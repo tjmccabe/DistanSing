@@ -15,17 +15,19 @@ import Footer from "./footer/footer";
 const App = () => (
   <div>
     <Modal />
-    <NavBarContainer />
-    <Switch>
-      <Route exact path="/" component={SplashContainer} />
-      <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
-      <Route path="/artists/:id" component={ArtistShowContainer} />
-      <Route path="/events/create" component={EventCreateContainer} />
-      <Route path="/events/:id" component={EventShowContainer} />
-      <Route path="/users/:id" component={UserShowContainer} />
-      <Route path="/search/:fragment" component={SearchIndex} />
-    </Switch>
-    <Footer />
+    <div id="app">
+      <NavBarContainer />
+        <Switch>
+          <Route exact path="/" component={SplashContainer} />
+          <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
+          <Route path="/artists/:id" component={ArtistShowContainer} />
+          <Route path="/events/create" component={EventCreateContainer} />
+          <Route path="/events/:id" component={EventShowContainer} />
+          <Route path="/users/:id" component={UserShowContainer} />
+          <Route path="/search/:fragment" component={SearchIndex} />
+        </Switch>
+      <Footer />
+    </div>
   </div>
 );
 

@@ -48,6 +48,7 @@
 }
 
 .nav-bar-about {
+  cursor: pointer;
   margin: 5px 0px 0px 25px;
 }
 
@@ -58,6 +59,7 @@
 .nav-bar-welcome {
   color: rgb(255, 255, 255);
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .nav-bar-welcome:hover {
