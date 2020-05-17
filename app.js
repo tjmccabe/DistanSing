@@ -46,6 +46,9 @@ io.on("connection", (socket) => {
     io.sockets.emit("requestArtistConnect", userId);
   })
 
+  socket.on("chat", (message, name) => {
+    io.sockets.emit("chat", message, name);
+  })
 }); 
 
 // --------------------------

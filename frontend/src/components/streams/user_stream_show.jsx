@@ -2,6 +2,7 @@ import React from 'react';
 import io from 'socket.io-client';
 import Peer from 'peerjs';
 import {withRouter} from 'react-router-dom'
+import LiveChatContainer from './live_chat_container';
 
 class UserStreamShow extends React.Component {
   constructor(props) {
@@ -68,8 +69,6 @@ class UserStreamShow extends React.Component {
       <div className="stream-description">{event.description}</div>
     ) : null
 
-    const ChatPlaceholder = null;
-
     return(
       <div className="stream-container">
         <div className="stream-title">
@@ -82,7 +81,7 @@ class UserStreamShow extends React.Component {
         </div>
         <div className="stream-content">
           <video id="rVideo" controls autoPlay={true} muted></video>
-          {ChatPlaceholder}
+          <LiveChatContainer socket={this.socket} />
         </div>
         {DescriptionBlock}
         <div className="technical-difficulties">
