@@ -112,24 +112,31 @@ class ArtistStreamShow extends React.Component {
 
     return this.state.playing ? (
       <div className="stream-container">
-        <div className="stream-title">
-          <div>
-            You're livestreaming {event.name}!
-          </div>
-          <div>
-            Thanks, {artist.artistname}
-          </div>
+        <div className="stream-header">
+          <button id="stop-streaming" onClick={this.stopPlaying}>
+            Stop Streaming
+          </button>
+
+          <div className="stream-title">
+            <div>You're livestreaming {event.name}!</div>
+            <div>Thank you, {artist.artistname}</div>
+          </div> 
         </div>
         <div className="stream-content">
-          <video id="lVideo" controls muted autoPlay={true} ></video>
-          <LiveChatContainer socket={this.socket}/>
+          <div className="stream-video-player">
+            <video id="lVideo" controls muted autoPlay={true}></video>
+          </div>
+          <div>
+            <LiveChatContainer socket={this.socket} />
+          </div>
         </div>
-        <button id="stop-streaming" onClick={this.stopPlaying}>Stop Streaming</button>
       </div>
     ) : (
       <div className="stream-container">
         <div className="lets-fucking-get-it">
-          <button id="start-streaming" onClick={this.startPlaying}>Start Streaming!</button>
+          <button id="start-streaming" onClick={this.startPlaying}>
+            Start Streaming!
+          </button>
           <div>(Only click when you are ready to begin your event)</div>
         </div>
       </div>
