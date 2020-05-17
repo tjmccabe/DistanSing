@@ -19,7 +19,7 @@ class ArtistShow extends React.Component {
     // this function gets all an artist's future events and sorts them by soonest
     const OnlyUpcoming = artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
       Object.values(artist.artistEvents).filter(ev => (
-        new Date(ev.date).getTime() > new Date().getTime()
+        new Date(ev.date).getTime() > new Date().getTime() - 86400000
       ))
         .sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     ) : []
@@ -27,7 +27,7 @@ class ArtistShow extends React.Component {
     const ArtistEvents =
       OnlyUpcoming[0] ? (
         <div className="artist-event-index-container">
-          <h1>All upcoming events from {artist.artistname}:</h1>
+          <h1>Recent and upcoming events from {artist.artistname}:</h1>
           <div className="show-items-container">
             {OnlyUpcoming.map((event, idx) => (
               <div className='show-item-container' key={idx}>
@@ -48,7 +48,7 @@ class ArtistShow extends React.Component {
         </div>
       ) : (
         <div className="artist-event-index-container">
-          <h1>No upcoming events</h1>
+          <h1>No recent/upcoming events</h1>
             <div className="show-items-container"></div>
         </div>
       );
