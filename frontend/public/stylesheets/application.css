@@ -30,6 +30,7 @@ button:hover {
 
 ::-webkit-scrollbar {
   width: 5px;
+  padding: 1px;
 }
 
 ::-webkit-scrollbar-thumb {

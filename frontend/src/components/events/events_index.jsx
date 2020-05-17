@@ -8,10 +8,21 @@ class EventsIndex extends React.Component {
 
   render() {
     const { events } = this.props;
+
+    // this function gets all future events, sorts them by soonest,
+    // and takes only the first 5
+    const OnlyUpcoming = events[0] ? (
+      events.filter(ev => (
+        new Date(ev.date).getTime() > new Date().getTime()
+      ))
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .slice(0, 5)
+    ) : null
+
     return (
       <div className="event-index-container">
         <div className="event-index">
-          {events.map( event => {
+          {OnlyUpcoming.map( event => {
             return (
               <ShowEventItem 
                 key={event._id}

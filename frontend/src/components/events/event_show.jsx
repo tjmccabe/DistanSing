@@ -88,7 +88,7 @@ class EventShow extends React.Component {
     const BuyButton = hasTicket ? (
       <div className="event-show-buy">
         <div className="event-show-buynow">
-          <FontAwesomeIcon icon={faCheck} /> Bought
+          <FontAwesomeIcon icon={faCheck} /> Ticket Reserved
         </div>
       </div>
     ) : !currentId ? (
@@ -96,8 +96,7 @@ class EventShow extends React.Component {
         <div className="event-show-buynow" >Log in as a User<br/>to reserve a ticket</div>
       </div>
     ) : loggedInAsArtist ? (
-      <div>
-      </div>
+        <div className="fake-buy-button"></div>
     ) : event.price === 0 ? (
       <div onClick={this.buyTicket} className="event-show-buy">
         <div className="event-show-buynow">
@@ -123,49 +122,62 @@ class EventShow extends React.Component {
     return (
       <div className="event-show">
         <div className="event-show-container">
-          <div className="event-show-header">
-            <div className="event-show-calendar">
-              {CalendarElement}
-            </div>
-            <div className="event-show-countdown">
-              <Countdown
-                artist={artist}
-                currentId={currentId}
-                date={date}
-                hasTicket={hasTicket}
-                StartStreamButton={StartStreamButton}
-              />
-            </div>
-            {BuyButton}
-          </div>
-
-          <div className="event-show-main">
-            <div className="event-show-main-container">
-              <div className="event-show-pic" onClick={this.showArtist}>
-                <img 
-                  src={artist.imageurl} 
-                  alt={artist.artistname} 
-                />
+          <div
+            className="background-test"
+            style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname}`}}
+          >
+            <div className="background-test-filter">
+          
+              <div className="event-show-main">
+                <div className="event-show-main-container">
+                  <div className="event-show-pic" onClick={this.showArtist}>
+                    <div className="event-show-pic"
+                      style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname }` }}
+                      onClick={this.showArtist}
+                    >
+                      <div className="event-show-pic-filter"></div>
+                    </div>
+                  </div>
+                  <div className="event-show-body">
+                    <h1 className="event-show-name">{event.name}</h1>
+                    <div className="event-show-artistname">Presented by {artist.artistname}</div>
+                    <div className="event-show-description">
+                      {event.description}
+                    </div>
+                  </div>
+                </div>
+                  {BuyButton}
               </div>
-              <div className="event-show-body">
-                <div className="event-show-artistname">{artist.artistname}</div>
-                <div className="event-show-name">{event.name}</div>
-                <div className="event-show-description">
-                  {event.description}
+
+              <div className="event-show-header">
+                <div className="event-show-calendar">
+                  {CalendarElement}
+                </div>
+                <div className="event-show-countdown">
+                  <Countdown
+                    artist={artist}
+                    currentId={currentId}
+                    date={date}
+                    hasTicket={hasTicket}
+                    StartStreamButton={StartStreamButton}
+                  />
                 </div>
               </div>
+
+              <div className="event-show-upcoming">
+                <div className="event-upcoming-container">
+                  <h1>
+                    {`Upcoming events by ${artist.artistname}:`}
+                  </h1>
+                  <EventIndexContainer artist={artist}/>
+                </div>
+              </div>
+            
+
             </div>
           </div>
 
-          <div className="event-show-upcoming">
-            <div className="event-upcoming-container">
-              <h1>
-                {`Upcoming events by ${artist.artistname}`}
-              </h1>
-              <EventIndexContainer artist={artist}/>
-            </div>
 
-            </div>
         </div>
       </div>
     );

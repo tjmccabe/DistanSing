@@ -22,7 +22,6 @@ const UserSchema = new Schema({
     type: Map,
     default: {}
   },
-
 })
 
 module.exports = User = mongoose.model('User', UserSchema);
