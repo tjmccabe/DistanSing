@@ -16,7 +16,8 @@ const App = () => (
   <div>
     <Modal />
     <div id="app">
-      <NavBarContainer />
+      <div>
+        <NavBarContainer />
         <Switch>
           <Route exact path="/" component={SplashContainer} />
           <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/users/:id" component={UserShowContainer} />
           <Route path="/search/:fragment" component={SearchIndex} />
         </Switch>
+      </div>
       <Footer />
     </div>
   </div>
