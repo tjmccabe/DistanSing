@@ -7,10 +7,7 @@ import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 class ArtistShow extends React.Component {
-  // constructor(props){
-  //   super(props)
 
-  // }
   componentDidMount() {
     this.props.fetchArtist(this.props.match.params.id);
   }
@@ -41,7 +38,12 @@ class ArtistShow extends React.Component {
             ))}
           </div>
         </div>
-      ) : null;
+      ) : (
+        <div className="artist-event-index-container">
+          <h1>No upcoming events</h1>
+            <div className="show-items-container"></div>
+        </div>
+      );
     
     const EditArtist =
       owner ? (
@@ -73,6 +75,15 @@ class ArtistShow extends React.Component {
       </div>
     ) : null;
 
+    const Instructions = `Welcome to DistanSing! You can search for events from 
+      the navbar or visit an Artist's profile or an event page to see a list of 
+      that Artist's upcoming events. Feel free to attend any live events going 
+      on now after logging in as a User, or log in as an Artist and host your own!`
+
+    const Information = artist.email === 'demo@artist.com' ? (
+      <p className="user-bio-text">{Instructions}</p>
+    ) : <p className="artist-bio-text">{artist.bio}</p>
+
     return (
       <div className="artist-show-container">
         {OwnerActions}
@@ -82,7 +93,7 @@ class ArtistShow extends React.Component {
           </div>
           <div className="artist-bio">
             <h1>{artist.artistname}</h1>
-            <p className="artist-bio-text">{artist.bio}</p>
+            {Information}
           </div>
         </div>
         {ArtistEvents}
