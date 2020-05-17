@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from './carousel.jsx';
 import ArtistFeature from './artist_feature.jsx';
 import Flickity from 'flickity';
+import FeaturedStream from './featured_stream';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -80,6 +81,7 @@ class Splash extends React.Component {
   }
 
   linkToEventShow(event) {
+    console.log(event);
     this.props.history.push(`/events/${event._id}`)
   }
 
@@ -142,7 +144,7 @@ class Splash extends React.Component {
         </div>
         <div className="splash-body">
           <div className="event-category-container">
-            {Placeholder}
+            <FeaturedStream />
             {LiveNow}
             {StreamingSoon}
           </div>
