@@ -10,8 +10,8 @@ const Footer = () => {
         <div className="footer-line"></div>
       </div> */}
       <div className="footer-about">
-        {us.map(engineer => 
-          <div className="footer-item-container">
+        {us.map((engineer, idx) => 
+          <div key={idx} className="footer-item-container">
             <img className="foot-pic" src="https://distansing-dev.s3-us-west-1.amazonaws.com/tj.png" alt="" />
             <div className="footer-item-content">
               <div>{engineer}</div>
