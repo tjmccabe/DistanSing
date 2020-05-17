@@ -34,11 +34,9 @@ class ShowEventItem extends React.Component {
           <div className="event-pic-filter"></div>
         </div>
         <div className="item-details">
-          <div className="item-text">
-            <h4>{event.name}</h4>
-            <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
-            <p>{event.description}</p>
-          </div>
+          <h4>{event.name}</h4>
+          <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
+          <p>{event.description}</p>
         </div>
         <div className="show-item-price">{event.price.toFixed(2)}</div>
       </div>

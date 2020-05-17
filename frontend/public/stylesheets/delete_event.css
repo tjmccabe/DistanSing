@@ -1,6 +1,6 @@
 .delete-button-container {
   align-self: center;
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 .delete-button {
@@ -10,7 +10,7 @@
   opacity: 0.5;
   display: flex;
   justify-content: center;
-  border-radius: 30px;
+  border-radius: 50%;
   transition: all 0.3s;
 }
 
