@@ -19,6 +19,10 @@ class NavBar extends React.Component {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
+    if (!prevProps.artist && this.props.artist) {
+      console.log(this.props.artist)
+      this.props.history.push(`/artists/${this.props.artist._id}`);
+    }
   }
 
   listenForScroll() {
