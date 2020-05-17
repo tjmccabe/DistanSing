@@ -124,7 +124,10 @@ class EventShow extends React.Component {
         <div className="event-show-container">
           <div
             className="background-test"
-            style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname}`}}
+            style={{
+              backgroundImage: `url("https://distansing-dev.s3-us-west-1.amazonaws.com/big-crowd.jpg")`,
+              alt: `${artist.artistname}`
+            }}
           >
             <div className="background-test-filter">
           
