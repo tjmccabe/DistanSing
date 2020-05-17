@@ -119,12 +119,12 @@ class ArtistStreamShow extends React.Component {
 
           <div className="stream-title">
             <div>You're livestreaming {event.name}!</div>
-            <div>Thanks, {artist.artistname}</div>
+            <div>Thank you, {artist.artistname}</div>
           </div> 
         </div>
         <div className="stream-content">
           <div className="stream-video-player">
-            <video id="lVideo" muted autoPlay={true}></video>
+            <video id="lVideo" controls muted autoPlay={true}></video>
           </div>
           <div>
             <LiveChatContainer socket={this.socket} />

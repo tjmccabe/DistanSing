@@ -12,7 +12,8 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
+  margin: 20px;
 }
 
 .footer-item-container {

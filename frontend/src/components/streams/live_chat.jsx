@@ -9,6 +9,7 @@ export default class LiveChat extends React.Component {
     }
     this.socket = this.props.socket;
     this.handleInput = this.handleInput.bind(this);
+    this.handleEmoji = this.handleEmoji.bind(this);
     this.handleSend = this.handleSend.bind(this);  
   }
 
@@ -30,6 +31,11 @@ export default class LiveChat extends React.Component {
 
   handleInput(e) {
     this.setState({ draft: e.target.value })
+  }
+
+  handleEmoji(e) {
+    let newMsg = this.state.draft + e.target.innerText;
+    this.setState({ draft: newMsg });
   }
 
   render() {
@@ -64,17 +70,20 @@ export default class LiveChat extends React.Component {
           </div>
         </form>
         <div className="stream-emojis">
-          <div>
-            :)
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😀
           </div>
-          <div>
-            :(
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😟
           </div>
-          <div>
-            {`<3`}
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            😍
           </div>
-          <div>
-            :thumbsup
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            👍🏼
+          </div>
+          <div onClick={this.handleEmoji} className="stream-emoji">
+            👎🏼
           </div>
         </div>
       </div>
