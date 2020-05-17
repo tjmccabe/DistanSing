@@ -34,7 +34,7 @@ class SearchIndex extends React.Component {
     if (!searchResults) return null;
     return (
       <div className="search-results-container">
-        <h1 className="search-results-header">All results for: <span className="search-fragment">{match.params.fragment}</span></h1>
+        <h1 className="search-results-header">All results for: <span className="search-fragment">"{match.params.fragment}"</span></h1>
         <h2>Artists</h2>
         { searchResults.artists.length > 0 ? 
           <div className="search-artists-results">
