@@ -45,14 +45,14 @@ function seed() {
     let artist = new Artist({
       artistname: `${artistname}`,
       email: `${email}`,
-      password: `$${password}`,
-      bio: `$${bio}`,
+      password: `${password}`,
+      bio: `${bio}`,
       imageurl: `${imageurl}`,
       genre: `${genre}`
     });
     console.log(artist);
     artists.push(artist)
-    // Artist.collection.insertOne(artist)
+    Artist.collection.insertOne(artist)
   }
    
   for (let i = 0; i < 1; i++) {
@@ -62,7 +62,7 @@ function seed() {
     let name = `See ${artistname} LIVE!`;
     // let name = `${artistname} 2020 Virtual Tour!`;
     // let name = `Join ${solo} at the ${adj} Palooza `
-    let date = faker.date.between("2020-05-16", "2020-05-17");
+    let date = faker.date.between("2020-05-18", "2020-05-19");
     const months = {
       "01": "Jan",
       "02": "Feb",
@@ -86,7 +86,7 @@ function seed() {
       min: 10,
       max: 50,
     });
-    let imageurl = faker.image.imageUrl();
+    let imageurl = `${faker.image.nightlife()}?random=${Date.now()}`;
 
 
     
@@ -99,7 +99,7 @@ function seed() {
       imageurl: imageurl
     });
     console.log(event)
-    // Event.collection.insertOne(event)
+    Event.collection.insertOne(event)
   }
   console.log('finished seeding')
 }
