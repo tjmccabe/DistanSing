@@ -34,13 +34,6 @@ class SignupForm extends React.Component {
     return e => {
       e.preventDefault();
       this.props.signup(this.state)
-      .then(() => {
-        const { formType } = this.props;
-        const artistId = localStorage.getItem("artistId");
-        if (formType === "artistSignup") {
-          this.props.history.push(`/artists/${artistId}`);
-        }
-      });
     }
   }
 

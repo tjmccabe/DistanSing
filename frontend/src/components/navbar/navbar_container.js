@@ -13,13 +13,15 @@ const mapStateToProps = (state, ownProps) => {
     : loggedInAsArtist && state.entities.artists[state.session.artist.id] ? 
       state.entities.artists[state.session.artist.id]
   : null;
+  const artist = state.session.artist
 
   return {
     user: state.entities.user,
     loggedIn: (loggedInAsUser || loggedInAsArtist),
     loggedInAsUser,
     loggedInAsArtist,
-    current
+    current,
+    artist
 }};
 
 const mapDispatchToProps = (dispatch) => ({

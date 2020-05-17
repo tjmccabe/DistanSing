@@ -28,7 +28,6 @@ export const signupArtist = formArtist => dispatch => (
     const decoded = jwt_decode(token);
     const artistCopy = Object.assign({}, res.data.artist, decoded)
     delete artistCopy['password']
-    localStorage.setItem("artistId", artistCopy.id);
     dispatch(receiveCurrentArtist(artistCopy))
   })
   .catch(err => {
@@ -44,7 +43,6 @@ export const loginArtist = artist => dispatch => (
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
     const artistCopy = Object.assign({}, res.data.artist, decoded)
-    localStorage.setItem("artistId", artistCopy.id);
     delete artistCopy['password']
     dispatch(receiveCurrentArtist(artistCopy))
   })
