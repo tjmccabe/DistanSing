@@ -2,10 +2,7 @@
   display: flex;
   justify-content: center;
   background: #F2F2F2;
-
-  /* background: #506CF0; */
   min-height: 100vh;
-  /* background-image: linear-gradient(to top right, #4ECDC4, #FFE66D); */
 }
 
 .event-show-container {
@@ -13,6 +10,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.fake-calendar {
+  width: 350px;
 }
 
 .event-show-header {
@@ -102,19 +103,11 @@
   text-align: center;
   font-size: 50px;
   background: #3D5A80;
-  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
   border-radius: 10px;
 }
-
-/* .test {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-} */
 
 .countdown-hours-value {
   height: 60px;
@@ -122,7 +115,6 @@
   text-align: center;
   font-size: 50px;
   background: #3D5A80;
-  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -135,7 +127,6 @@
   text-align: center;
   font-size: 50px;
   background: #3D5A80;
-  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -148,7 +139,6 @@
   text-align: center;
   font-size: 50px;
   background: #3D5A80;
-  /* background: #B3BEFF; */
   color: white;
   line-height: 75px;
   padding: 5px 20px;
@@ -156,19 +146,12 @@
   }
 
 .event-show-buy {
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: space-between;
-  align-items: center; */
   height: fit-content;
   min-width: 110px;
-  /* background: #7A9E9F; */
   background: rgb(255, 69, 72);
   color: #FFFFFF;
   padding: 10px 15px 5px;
   border-radius: 5px;
-  /* position: relative; */
-  /* top: 100px; */
   box-sizing: border-box;
   align-self: flex-start;
   text-align: center;
@@ -203,7 +186,8 @@
 .event-show-pic > img {
   height: 200px;
   width: 200px;
-  border: 1px solid black;
+  border-radius: 20px;
+  border: none;
   text-align: center;
 }
 
