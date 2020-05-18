@@ -18,6 +18,7 @@ class ArtistStreamShow extends React.Component {
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
+    this.endEvent = this.endEvent.bind(this);
     this.stopPlaying = this.stopPlaying.bind(this);
     this.getMedia = this.getMedia.bind(this);
     this.recStream = this.recStream.bind(this);
@@ -28,17 +29,7 @@ class ArtistStreamShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.connections.forEach(conn => {conn.close()})
-    if (this.peer) {
-      this.peer.disconnect()
-      // this.peer.destroy()
-    }
-    this.socket.close()
-    if (this.localstream) {
-      this.localstream.getTracks().forEach(track => {
-        track.stop();
-      });
-    }
+    this.stopPlaying()
   }
 
   getMedia(callbacks) {
@@ -94,27 +85,35 @@ class ArtistStreamShow extends React.Component {
     setTimeout(() => this.props.updateEvent({ id: this.props.eventId, streaming: false }), 300000)
   }
 
+  endEvent() {
+    const formData = new FormData()
+    formData.append('id', this.props.eventId);
+    formData.append('streaming', false);
+    formData.append('over', true);
+    this.props.updateEvent(formData)
+    this.stopPlaying()
+    this.props.history.push(`/artists/${this.props.event.artist}`)
+  }
+
   stopPlaying() {
     this.connections.forEach(conn => { conn.close() })
     if (this.peer) {
       this.peer.disconnect()
-      // this.peer.destroy()
     }
     this.socket.close()
     if (this.localstream) {this.localstream.getTracks().forEach(track => {
       track.stop();
     });}
-    this.props.history.push(`/artists/${this.props.event.artist}`)
   }
 
   render() {
     const { event, artist } = this.props
 
     return this.state.playing ? (
-      <div className="stream-container">
+      <div className="streaming-container">
         <div className="stream-header">
-          <button id="stop-streaming" onClick={this.stopPlaying}>
-            Stop Streaming
+          <button id="stop-streaming" onClick={this.endEvent}>
+            End Event
           </button>
 
           <div className="stream-title">
@@ -123,12 +122,8 @@ class ArtistStreamShow extends React.Component {
           </div> 
         </div>
         <div className="stream-content">
-          <div className="stream-video-player">
             <video id="lVideo" controls muted autoPlay={true}></video>
-          </div>
-          <div>
             <LiveChatContainer socket={this.socket} />
-          </div>
         </div>
       </div>
     ) : (

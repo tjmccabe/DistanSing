@@ -2,20 +2,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  height: calc(100vh - 80px);
+  justify-content: center;
+  /* height: calc(100vh - 80px); */
 }
 
 .lets-fucking-get-it {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
+  height: 200px;
+}
+
+.streaming-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
 }
 
 #start-streaming, #stop-streaming {
-  position: absolute;
-  left: 10%;
-  top: 85px;
+  /* position: absolute; */
+  /* left: 10%; */
+  /* top: 85px; */
   padding: 10px 20px;
   background-color: red;
   color: white;
@@ -24,6 +36,8 @@
   font-size: 22px;
   font-family: 'Hind Gunter', sans-serif;
   font-weight: bold;
+  /* height: fit-content; */
+  /* width: fit-content; */
 }
 
 #start-streaming:hover, #stop-streaming:hover {
@@ -33,23 +47,42 @@
 
 .stream-header {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  border-bottom: 1px solid black;
-  padding: 15px 0px;
+  border-bottom: 1px solid slategray;
+  padding: 15px 25px;
 }
 
 .stream-title {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   font-size: 22px;
   font-weight: bold;
   line-height: 1.5em;
 }
 
+.user-stream-title {
+  width: 100%;
+  padding: 15px 25px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.5em;
+  border-bottom: 1px solid slategray;
+}
+
 .stream-description {
-  margin: 20px 0 40px;
+  width: 100%;
+  border-top: 1px solid slategray;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 30px 0;
+  text-align: center;
 }
 
 .technical-difficulties {
@@ -57,6 +90,8 @@
   flex-direction: column;
   align-items: center;
   font-size: 14px;
+  border-top: 1px solid gray;
+  padding: 30px;
 }
 
 #get-outta-here {
@@ -65,7 +100,7 @@
   color: white;
   border: none;
   border-radius: 3px;
-  margin: 5px 0;
+  margin-top: 10px;
   font-size: 14px;
 }
 
@@ -79,51 +114,66 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  align-items: top;
+  /* align-items: top; */
   width: 100%;
-  height: 100%;
-  max-height: calc(100vh - 60px);
+  /* height: 100%; */
+  /* max-height: 700px; */
+  /* max-height: calc(100vh - 60px); */
 }
 
 .stream-video-player {
-  background: white;
-  width: calc(100vw - 350px);
+  /* background: black;
+  max-width: calc(100% - 350px);
+  max-height: 100%; */
 }
 
 #rVideo, #lVideo {
-  background: black;
-  height: calc(100% - 200px);
-  width: 100%;
+  background: gray;
+  width: 800px;
+  min-width: 300px;
+  max-height: 600px;
+  margin: auto;
+  box-sizing: border-box;
 }
 
 .stream-chat-box {
+  background-color: rgb(185, 185, 185);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 350px;
-  height: 100%;
+  width: 450px;
+  min-width: 300px;
+  height: 650px;
+  margin: 10px 20px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 3px solid slategray;
 }
 
 #messages-container {
-  height: 650px;
+  height: 100%;
   padding: 10px;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-y: auto;
+  /* overflow-x: scroll; */
+  background-color: rgb(215, 215, 215);
 }
 
 .stream-message {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .stream-name {
   font-weight: bold;
   margin-right: 5px;
+  font-size: 14px;
 }
 
 .stream-chat {
   width: 100%;
+  border-top: 2px solid slategray;
 }
 
 .stream-chat-container {
@@ -134,17 +184,18 @@
 }
 
 #message-field {
+  font-size: 14px;
   width: 75%;
   height: 20px;
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
-  margin: 10px 0px;
+  margin: 8px 0 15px;
 }
 
 .stream-chat-container button {
   height: 28px;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 .stream-emojis {
   display: flex;

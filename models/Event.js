@@ -29,6 +29,10 @@ const EventSchema = new Schema({
   streaming: {
     type: Boolean,
     default: false
+  },
+  over: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -85,7 +85,9 @@ class EventShow extends React.Component {
       </button>
     ) : null;
     
-    const BuyButton = hasTicket ? (
+    const BuyButton = event.over ? (
+      <div className="fake-buy-button"></div>
+    ) : hasTicket ? (
       <div className="event-show-buy">
         <div className="event-show-buynow">
           <FontAwesomeIcon icon={faCheck} /> Ticket Reserved
@@ -113,7 +115,11 @@ class EventShow extends React.Component {
       </div>
     );
 
-    const CalendarElement = isTime ? <div className="fake-calendar"></div> : <Calendar value={date} />
+    const CalendarElement = isTime ? (
+      <div className="fake-calendar"></div>
+    ) : (
+      <Calendar value={date} />
+    )
 
     if (this.state.streaming && currentId === artist._id) return this.showStream()
 
@@ -163,6 +169,7 @@ class EventShow extends React.Component {
                     date={date}
                     hasTicket={hasTicket}
                     StartStreamButton={StartStreamButton}
+                    isOver={event.over}
                   />
                 </div>
               </div>
