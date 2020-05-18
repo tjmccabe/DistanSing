@@ -82,7 +82,7 @@ class ArtistStreamShow extends React.Component {
         peer.connect(userId);
       })
     });
-    setTimeout(() => this.props.updateEvent({ id: this.props.eventId, streaming: false }), 300000)
+    setTimeout(() => this.endEvent(), 18000000)
   }
 
   endEvent() {

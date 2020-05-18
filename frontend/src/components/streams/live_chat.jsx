@@ -11,20 +11,27 @@ export default class LiveChat extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleEmoji = this.handleEmoji.bind(this);
     this.handleSend = this.handleSend.bind(this);  
+    this.scroll = this.scroll.bind(this);  
   }
 
   componentDidMount() {
-    this.socket.on("chat", (message, name) => {
-      const newMessages = this.state.messages.concat({ message, name })
-      this.setState({ messages: newMessages }, () => this.scroll());
-    })
     this.messageField = document.getElementById("message-field")
     this.messageBox = document.getElementById("messages-container")
+    this.socket.on("chat", (message, name) => {
+      const newMessages = this.state.messages.concat({ message, name })
+      let cb = this.messageBox.scrollTop + this.messageBox.clientHeight === this.messageBox.scrollHeight ? (
+        this.scroll
+      ) : null
+
+      this.setState({ messages: newMessages }, cb);
+    })
   }
 
   scroll() {
     // logic to autoscroll to the bottom, but only if a user is already at the 
     // bottom of the chat window
+    // debugger
+    this.messageBox.scrollTop = this.messageBox.scrollHeight;
   }
 
   handleSend(e) {
@@ -79,19 +86,19 @@ export default class LiveChat extends React.Component {
         </form>
         <div className="stream-emojis">
           <div onClick={this.handleEmoji} className="stream-emoji">
-            😀
+            <span role="img" aria-label="smiley">😀</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            😟
+            <span role="img" aria-label="worried">😟</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            😍
+            <span role="img" aria-label="heart-eyes">😍</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            👍🏼
+            <span role="img" aria-label="thumbs-up">👍🏼</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            👎🏼
+            <span role="img" aria-label="thumbs-down">👎🏼</span>
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ class UserStreamShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // playing: false,
       video: ''
     };
     // Local variables
@@ -67,7 +66,7 @@ class UserStreamShow extends React.Component {
 
     const DescriptionBlock = event.description ? (
       <div className="stream-description">Event description: "{event.description}"</div>
-    ) : null
+    ) : <div className="stream-description">Enjoy the show!</div>
 
     return(
       <div className="streaming-container">

@@ -152,7 +152,7 @@
 
 #messages-container {
   height: 100%;
-  padding: 10px;
+  padding: 10px 10px 5px;
   overflow-y: auto;
   /* overflow-x: scroll; */
   background-color: rgb(215, 215, 215);
