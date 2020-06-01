@@ -16,7 +16,7 @@ class SearchDropdown extends React.Component {
     let dateString = splitDate[1] + ' ' + splitDate[3];
     return dateString;
   }
-
+  
   showFiveResults(objects, string, name) {
     if (objects.length > 0) {
       return objects.slice(0, 5).map((object) =>

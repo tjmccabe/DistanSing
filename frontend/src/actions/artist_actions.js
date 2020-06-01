@@ -20,7 +20,7 @@ export const fetchArtist = (artistId) => (dispatch) => (
 
 export const fetchArtists = () => (dispatch) => {
   return ArtistAPIUtil.getArtists()
-    .then((artists) => {dispatch(receiveArtists(artists))})
+    .then((artists) => dispatch(receiveArtists(artists)))
     .catch((err) => console.log(err))
 };
 

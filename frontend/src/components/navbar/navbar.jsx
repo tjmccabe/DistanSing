@@ -50,6 +50,14 @@ class NavBar extends React.Component {
     const { loggedIn, current, loggedInAsUser, openModal, loggedInAsArtist } = this.props;
     const name = loggedInAsUser && current ? current.username : loggedIn && current ? current.artistname : null;
     const id = loggedIn && current ? current._id : null;
+    const Tutorial = (
+      <div 
+        className="nav-bar-tutorial"
+        onClick={() => openModal("tutorial")}
+      >
+        Tutorial
+      </div>
+    )
     const ArtistLogin = loggedIn ? null : (
       <div
         className="nav-bar-button artist-login-button"
@@ -120,6 +128,7 @@ class NavBar extends React.Component {
             >
               Creator Info
             </div>
+            {Tutorial}
           </div>
           <SearchBar />
           <div className="nav-bar-right">
