@@ -145,7 +145,7 @@ class Splash extends React.Component {
         <div className="splash-body">
           <div className="event-category-container">
             <FeaturedStream />
-            {LiveNow}
+            {/* {LiveNow} */}
             {StreamingSoon}
           </div>
           <div className="random-artist-container">
