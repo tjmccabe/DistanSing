@@ -12,14 +12,14 @@ class Splash extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvents()
     this.props.fetchArtists()
+      .then(() => this.props.fetchEvents())
   }
 
-  componentDidUpdate(prevProps) {
+  // componentDidUpdate(prevProps) {
     // if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
     // if (Object.values(this.props.events) < 8) this.props.fetchEvents()
-  }
+  // }
 
   shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -29,23 +29,23 @@ class Splash extends React.Component {
     return arr;
   }
 
-  getLiveStreams() {
-    if (Object.values(this.props.events).length < 6) {
-      this.props.fetchEvents()
-      return null;
-    }
-    let now = (new Date()).getTime()
+  // getLiveStreams() {
+  //   if (Object.values(this.props.events).length < 6) {
+  //     this.props.fetchEvents()
+  //     return null;
+  //   }
+  //   let now = (new Date()).getTime()
 
-    let liveStreams = this.props.events.filter(event => {
-      const date = (new Date(event.date)).getTime();
-      // return (date < now && date > (now-3600000))
-      return (date > now)
-    })
+  //   let liveStreams = this.props.events.filter(event => {
+  //     const date = (new Date(event.date)).getTime();
+  //     // return (date < now && date > (now-3600000))
+  //     return (date > now)
+  //   })
 
-    let shuffled = this.shuffle(liveStreams)
+  //   let shuffled = this.shuffle(liveStreams)
 
-    return shuffled[0] ? <Carousel streams={shuffled} type="live" linkToEventShow={this.linkToEventShow} /> : null
-  }
+  //   return shuffled[0] ? <Carousel streams={shuffled} type="live" linkToEventShow={this.linkToEventShow} /> : null
+  // }
 
   getUpcomingStreams() {
     if (Object.values(this.props.events).length < 6) {
@@ -59,10 +59,9 @@ class Splash extends React.Component {
       // return (date > now && date < (now + 86400000))
       return (date > now)
     })
-
     let shuffled = this.shuffle(soonStreams).slice(0,18)
 
-    return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null
+    return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null;
   }
 
   getTrendingArtists() {
@@ -81,21 +80,21 @@ class Splash extends React.Component {
   }
 
   linkToEventShow(event) {
-    console.log(event);
+    // console.log(event);
     this.props.history.push(`/events/${event._id}`)
   }
 
   render() {
-    this.lives = this.lives ? this.lives : this.getLiveStreams()
+    // this.lives = this.lives ? this.lives : this.getLiveStreams()
     this.soons = this.soons ? this.soons : this.getUpcomingStreams()
     this.randos = this.randos ? this.randos : this.getTrendingArtists()
 
-    const LiveNow = this.lives ? (
-      <div className="stream-carousel-container" id="live-now">
-        <h3>LIVE</h3>
-        {this.lives}
-      </div>
-    ) : null;
+    // const LiveNow = this.lives ? (
+    //   <div className="stream-carousel-container" id="live-now">
+    //     <h3>LIVE</h3>
+    //     {this.lives}
+    //   </div>
+    // ) : null;
 
     const StreamingSoon = this.soons ? (
       <div className="stream-carousel-container" id="streaming-soon">
@@ -112,7 +111,7 @@ class Splash extends React.Component {
     ): null;
 
     let soony = document.getElementById('soon-carousel')
-    let livey = document.getElementById('live-carousel')
+    // let livey = document.getElementById('live-carousel')
 
     if (soony) {
       new Flickity(soony, {
@@ -121,16 +120,16 @@ class Splash extends React.Component {
         groupCells: 3
     })};
 
-    if (livey) {
-      new Flickity(livey, {
-        draggable: false,
-        wrapAround: true,
-        groupCells: 3
-    })};
+    // if (livey) {
+    //   new Flickity(livey, {
+    //     draggable: false,
+    //     wrapAround: true,
+    //     groupCells: 3
+    // })};
 
-    const Placeholder = (LiveNow || StreamingSoon) ? null : (
-      <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
-    )
+    // const Placeholder = (LiveNow || StreamingSoon) ? null : (
+    //   <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
+    // )
     
     return(
       <div className='splash'>
