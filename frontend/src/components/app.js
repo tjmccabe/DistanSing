@@ -12,6 +12,7 @@ import UserShowContainer from "./users/user_show_container";
 import SearchIndex from "./search/search_index";
 import Footer from "./footer/footer";
 import Favicon from "react-favicon";
+
 const App = () => (
   <div>
     <Favicon url="http://icons.iconarchive.com/icons/sonya/swarm/128/Microphone-icon.png" />

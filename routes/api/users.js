@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const validateRegisterInput = require('../../validation/user_register')
 const validateLoginInput = require('../../validation/user_login')
 const passport = require('passport');
+const imageUpload = require('../../util/image_upload_util');
 
 router.get("/test", (req, res) => {
   res.json({ msg: "This is the user route" });
@@ -65,15 +66,33 @@ router.patch(
   "/:id",
   passport.authenticate("user-rule", { session: false }),
   (req, res) => {
-    User.findById(req.params.id)
-    .then((user) => {
-      let updatedUser = Object.assign(user);
-      updatedUser.events.set(req.body.events, true);
-      updatedUser.save().then((user) => res.json(user));
-      })
-      .catch((errors) =>
-        res.status(404).json({ nouserfound: "No user found with that ID" })
-      );
+    let imageLocation;
+    imageUpload(req, res, (error) => {
+      if (error) {
+        res.json({ error: error });
+      } else { 
+        User.findById(req.params.id)
+        .then((user) => {
+          if (req.file) {
+            imageLocation = req.file.location;
+          } else {
+            imageLocation = user.imageurl;
+          }
+          let updatedUser = Object.assign(user, req.body, { imageurl: imageLocation });
+          console.log(updatedUser)
+          if (req.body.events) {
+            updatedUser.events.set(req.body.events, true);
+          }
+          updatedUser.save().then((user) => res.json(user));
+          })
+          .catch((errors) => {
+            res.status(404).json({ nouserfound: "No user found with that ID" })
+            console.log(errors)
+          }
+          );
+        }
+      }
+    )
   }
 );
 
