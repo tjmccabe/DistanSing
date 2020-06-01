@@ -15,7 +15,7 @@ const ArtistFeatureItem = ({artist, linkToArtistShow}) => {
     >
       <div className="artist-feature-item-filter">
         <div>{artist.artistname}</div>
-        <div>{genre}</div>
+        <p>{genre}</p>
       </div>
     </li>
   )
