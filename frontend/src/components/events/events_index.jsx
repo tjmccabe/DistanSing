@@ -8,10 +8,14 @@ class EventsIndex extends React.Component {
 
   render() {
     const { events } = this.props;
+    const upcomingEvents = events.filter( ev => (
+      new Date(ev.date).getTime() > new Date().getTime()
+    ))
+
     return (
       <div className="event-index-container">
         <div className="event-index">
-          {events.map( event => {
+          {upcomingEvents.map( event => {
             return (
               <ShowEventItem 
                 key={event._id}
