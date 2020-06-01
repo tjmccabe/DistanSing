@@ -13,7 +13,7 @@ export const updateUser = (user) => {
 };
 
 export const updateUserImage = data => {
-  return axios.patch(`/api/users/${data.get('id')}`, data, {
+  return axios.patch(`/api/users/${data.get('id')}/image`, data, {
     headers: {
       'accept': 'application/json',
       'Accept-Language': 'en-US,en;q=0.8',

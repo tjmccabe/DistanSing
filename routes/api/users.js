@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.patch(
-  "/:id",
+  "/:id/image",
   passport.authenticate("user-rule", { session: false }),
   (req, res) => {
     let imageLocation;
@@ -78,21 +78,33 @@ router.patch(
           } else {
             imageLocation = user.imageurl;
           }
+          console.log(user)
           let updatedUser = Object.assign(user, req.body, { imageurl: imageLocation });
-          console.log(updatedUser)
-          if (req.body.events) {
-            updatedUser.events.set(req.body.events, true);
-          }
-          updatedUser.save().then((user) => res.json(user));
-          })
-          .catch((errors) => {
-            res.status(404).json({ nouserfound: "No user found with that ID" })
-            console.log(errors)
-          }
-          );
-        }
+          updatedUser.save()
+            .then((user) => res.json(user))
+            .catch((errors) => {
+              res.status(404).json({ nouserfound: "No user found with that ID" })
+              console.log(errors)
+            });
+        })
       }
-    )
+    })
+  }
+);
+
+router.patch(
+  "/:id",
+  passport.authenticate("user-rule", { session: false }),
+  (req, res) => {
+    User.findById(req.params.id)
+      .then((user) => {
+        let updatedUser = Object.assign(user);
+        updatedUser.events.set(req.body.events, true);
+        updatedUser.save().then((user) => res.json(user));
+      })
+      .catch((errors) =>
+        res.status(404).json({ nouserfound: "No user found with that ID" })
+      );
   }
 );
 

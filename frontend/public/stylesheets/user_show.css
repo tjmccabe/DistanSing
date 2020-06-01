@@ -127,11 +127,16 @@
 
 .user-event-toggle {
   display: flex;
+  justify-content: flex-start;
 }
 
 .user-event-toggle h2 {
   font-size: 18px;
-  margin-right: 20px;
+  text-align: center;
+  border-top: 1.2px ridge grey;
+  border-left: 1.2px ridge grey;
+  border-right: 1.2px ridge grey;
+  bod
 }
 
 .user-event-toggle h2:hover {
@@ -141,12 +146,23 @@
 
 .upcoming-events-tab, .past-events-tab {
   background-color: rgb(235, 235, 235);
-  height: 30px;
-  line-height: 35px;
-  padding: 0 5px;
+  width: 110px;
+  height: 50px;
+  line-height: 55px;
 }
 
 .tab-selected {
   background-color: #3D5A80;
+  color: white;
+}
+
+.show-items-container {
+  background-color: #3D5A80;
+  padding: 20px 30px 20px 0; 
+  border-radius: 0 5px 5px 5px;
+}
+
+.show-items-container > h1 {
+  margin: 20px 30px;
   color: white;
 }

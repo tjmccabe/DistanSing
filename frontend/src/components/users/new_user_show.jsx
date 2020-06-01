@@ -24,12 +24,12 @@ class UserShow extends React.Component {
   }
 
   handleUserEdit(e) {
-    const { user, updateUser } = this.props;
+    const { user, updateUserImage } = this.props;
     const imagefile = e.target.files[0];
     const formData = new FormData();
     if (imagefile) formData.append('imagefile', imagefile);
     formData.append('id', user._id);
-    updateUser(formData);
+    updateUserImage(formData);
   }
 
   handleUpcoming(e) {
