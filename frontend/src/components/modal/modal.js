@@ -52,9 +52,7 @@ function Modal({ modal, closeModal, loggedIn, openModal }) {
       break;
     case "tutorial":
       component = (
-        <Tutorial
-          closeMoodal={closeModal}
-        />
+        <Tutorial/>
       )
       break;
     default:

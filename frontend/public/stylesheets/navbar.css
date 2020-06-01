@@ -49,10 +49,19 @@
 
 .nav-bar-about {
   cursor: pointer;
-  margin: 5px 0px 0px 25px;
+  margin: 5px 0px 0px 15px;
 }
 
 .nav-bar-about:hover {
+  color: rgb(221, 221, 221);
+}
+
+.nav-bar-tutorial {
+  cursor: pointer;
+  margin: 5px 0px 0px 15px;
+}
+
+.nav-bar-tutorial:hover {
   color: rgb(221, 221, 221);
 }
 
