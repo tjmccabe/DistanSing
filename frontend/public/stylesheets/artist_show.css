@@ -140,3 +140,17 @@
   height: 30px;
   width: 100%;
 }
+
+.artist-event-toggle {
+  display: flex;
+}
+
+.artist-event-toggle h2 {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.artist-event-toggle h2:hover {
+  cursor: pointer;
+  color: #3D5A80;
+}

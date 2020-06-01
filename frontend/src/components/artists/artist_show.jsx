@@ -7,6 +7,12 @@ import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 class ArtistShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      upcoming: true,
+    }
+  }
 
   componentDidMount() {
     this.props.fetchArtist(this.props.match.params.id);
@@ -19,17 +25,33 @@ class ArtistShow extends React.Component {
     // this function gets all an artist's future events and sorts them by soonest
     const OnlyUpcoming = artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
       Object.values(artist.artistEvents).filter(ev => (
-        new Date(ev.date).getTime() > new Date().getTime() - 86400000
+        new Date(ev.date).getTime() > new Date().getTime()
       ))
         .sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    ) : []
+
+    const Past = artist.artistEvents && Object.values(artist.artistEvents)[0] ? (
+      Object.values(artist.artistEvents).filter(ev => (
+        new Date(ev.date).getTime() < new Date().getTime()
+      ))
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     ) : []
 
     const ArtistEvents =
       OnlyUpcoming[0] ? (
         <div className="artist-event-index-container">
-          <h1>Recent and upcoming events from {artist.artistname}:</h1>
+          <h1>Events from {artist.artistname}:</h1>
+          <div className="artist-event-toggle">
+            <h2 onClick={() => this.setState({ upcoming: true })}>
+              Upcoming
+            </h2>
+            <h2 onClick={() => this.setState({ upcoming: false })}>
+              Past
+            </h2>
+          </div>
           <div className="show-items-container">
-            {OnlyUpcoming.map((event, idx) => (
+            {this.state.upcoming ? (
+              OnlyUpcoming.map((event, idx) => (
               <div className='show-item-container' key={idx}>
                 <ShowEventItem
                   event={event}
@@ -43,7 +65,16 @@ class ArtistShow extends React.Component {
                   />
                 ) : null}
               </div>
-            ))}
+            ))) : (
+              Past.map((event, idx) => (
+                <div className='show-item-container' key={idx}>
+                  <ShowEventItem
+                    event={event}
+                    owner={owner}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
       ) : (
