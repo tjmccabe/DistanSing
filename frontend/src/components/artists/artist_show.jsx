@@ -38,7 +38,6 @@ class ArtistShow extends React.Component {
     ) : []
 
     const ArtistEvents =
-      OnlyUpcoming[0] ? (
         <div className="artist-event-index-container">
           <h1>Events from {artist.artistname}:</h1>
           <div className="artist-event-toggle">
@@ -51,38 +50,39 @@ class ArtistShow extends React.Component {
           </div>
           <div className="show-items-container">
             {this.state.upcoming ? (
-              OnlyUpcoming.map((event, idx) => (
-              <div className='show-item-container' key={idx}>
-                <ShowEventItem
-                  event={event}
-                  owner={owner}
-                />
-                {owner ? (
-                  <DeleteEvent
+              OnlyUpcoming[0] ? (
+                OnlyUpcoming.map((event, idx) => (
+                <div className='show-item-container' key={idx}>
+                  <ShowEventItem
                     event={event}
-                    fetchArtist={fetchArtist}
-                    deleteEvent={deleteEvent}
+                    owner={owner}
                   />
-                ) : null}
-              </div>
-            ))) : (
-              Past.map((event, idx) => (
+                  {owner ? (
+                    <DeleteEvent
+                      event={event}
+                      fetchArtist={fetchArtist}
+                      deleteEvent={deleteEvent}
+                    />
+                  ) : null}
+                </div>
+              ))) : (
+                <h1>There are no upcoming events</h1>
+              )
+            ) : (
+              Past[0] ? (
+                Past.map((event, idx) => (
                 <div className='show-item-container' key={idx}>
                   <ShowEventItem
                     event={event}
                     owner={owner}
                   />
                 </div>
-              ))
+              ))) : (
+                <h1>There are no past events</h1>
+              )
             )}
           </div>
         </div>
-      ) : (
-        <div className="artist-event-index-container">
-          <h1>No recent/upcoming events</h1>
-            <div className="show-items-container"></div>
-        </div>
-      );
     
     const EditArtist =
       owner ? (

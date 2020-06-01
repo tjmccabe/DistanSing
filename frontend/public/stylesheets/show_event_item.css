@@ -13,6 +13,10 @@
   margin-bottom: 20px;
 }
 
+.show-items-container h1 {
+  margin: 20px 0px 0px 5px;
+}
+
 .show-item {
   background-color: white;
   height: 124px;
