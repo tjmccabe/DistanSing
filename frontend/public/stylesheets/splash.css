@@ -8,7 +8,6 @@
   font-size: 23px;
   padding: 15px;
   font-weight: bold;
-  margin: 20px 0;
 }
 
 .splash-body {
@@ -22,7 +21,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-left: 40px;
-  align-self: left
+  align-self: left;
 }
 
 #live-now h3 {
@@ -55,6 +54,12 @@
   width: 29%;
   border-radius: 8px;
   margin: .7%;
+  box-shadow: 0px 0px 5px 1px rgb(203, 203, 203);
+  transition: 0.4s;
+}
+
+.carousel-item:hover {
+  transform: scale(1.04);
 }
 
 .carousel-item-filter {
@@ -92,6 +97,13 @@
   max-width: 500px;
   align-items: flex-start;
   justify-content: center;
+  background-color: white;
+  height: fit-content;
+  border-radius: 30px;
+}
+
+#trending-artists {
+  padding-top: 30px;
 }
 
 .artist-feature {
@@ -111,6 +123,12 @@
   margin-bottom: 40px;
   height: 120px;
   border-radius: 3px;
+  box-shadow: 0px 0px 5px 1px rgb(203, 203, 203);
+  transition: 0.4s;
+}
+
+.artist-feature-item:hover {
+  transform: scale(1.04);
 }
 
 .artist-feature-item-filter {
@@ -130,13 +148,18 @@
   cursor: pointer;
 }
 
+.artist-feature-item-filter p {
+  font-size: 12px;
+  color: black;
+  font-style: italic;
+  font-weight: 500;
+}
+
 
 .featured-stream-container {
   box-sizing: border-box;
   width: 100%;
-  height: 350px;
   padding: 0 30px;
-  margin-bottom: 90px;
 }
 
 .featured-stream-container > h1 {
@@ -144,19 +167,30 @@
   margin-bottom: 20px;
   color: red;
   font-weight: bold;
+  padding-top: 30px;
+}
+
+.featured-parent {
+  width: 100%;
+  display: flex;
+  height: 350px;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 .featured-stream-content {
   position: relative;
-  width: 80%;
+  width: 100%;
+  max-width: 900px;
+  min-width: 500px;
   height: 100%;
-  float: left;
-  transform: translateX(15%);
+  transition: 0.4s;
 }
 
 .featured-stream-content:hover {
   cursor: pointer;
   opacity: 0.8;
+  transform: scale(1.02);
 }
 
 .featured-stream-img {
@@ -164,6 +198,7 @@
   height: 100%;
   object-fit: cover;
   object-position: bottom;
+  border-radius: 5px;
 }
 
 .featured-stream-text {
@@ -184,6 +219,7 @@
 .featured-stream-text > h2:nth-child(2) {
   height: 25px;
   line-height: 20px;
+  font-size: 20px;
 }
 
 .featured-stream-text > h2 {
@@ -196,6 +232,7 @@
 }
 
 .featured-stream-text > span {
-  margin-top: 20px;
+  margin-top: 5px;
   font-size: 20px;
+  color: white;
 }

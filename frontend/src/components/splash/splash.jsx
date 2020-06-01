@@ -138,9 +138,6 @@ class Splash extends React.Component {
           <h2 className="site-heading">
             Welcome To DistanSing, where we're all only 6 beats apart
           </h2>
-          <h2 className="site-heading">
-            Check out what's happening!
-          </h2>
         </div>
         <div className="splash-body">
           <div className="event-category-container">

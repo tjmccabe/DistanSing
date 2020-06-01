@@ -18,22 +18,26 @@ class FeaturedStream extends React.Component {
     const artist = { artistname: "The Demo Artists" };
     return (
       <div
-        className="featured-stream-container" 
-        onClick={() => this.props.history.push("/")}>
+        className="featured-stream-container"
+        onClick={() => this.props.history.push("/")}
+      >
         <h1>Featured Live Stream</h1>
-        <div className="featured-stream-content">
-          <img 
-            className="featured-stream-img"
-            src={event.imageurl} 
-            alt="featured-live-stream"/>
-          <div className="featured-stream-text">
-            <h2>{event.name}</h2>
-            <h2>{artist.artistname}</h2>
-            <span>${event.price}</span>
+        <div className="featured-parent">
+          <div className="featured-stream-content">
+            <img
+              className="featured-stream-img"
+              src={event.imageurl}
+              alt="featured-live-stream"
+            />
+            <div className="featured-stream-text">
+              <h2>{event.name}</h2>
+              <h2>{artist.artistname}</h2>
+              <span>${event.price}</span>
+            </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
