@@ -30,7 +30,7 @@ class Splash extends React.Component {
   }
 
   getLiveStreams() {
-    if (Object.values(this.props.events).length < 6) {
+    if (Object.values(this.props.events).length === 0) {
       this.props.fetchEvents()
       return null;
     }
@@ -48,7 +48,7 @@ class Splash extends React.Component {
   }
 
   getUpcomingStreams() {
-    if (Object.values(this.props.events).length < 6) {
+    if (Object.values(this.props.events).length === 0) {
       this.props.fetchEvents()
       return null;
     }
@@ -66,7 +66,7 @@ class Splash extends React.Component {
   }
 
   getTrendingArtists() {
-    if (Object.values(this.props.artists).length < 8) {
+    if (Object.values(this.props.artists).length === 0) {
       this.props.fetchArtists()
       return null;
     }
@@ -128,9 +128,9 @@ class Splash extends React.Component {
         groupCells: 3
     })};
 
-    const Placeholder = (LiveNow || StreamingSoon) ? null : (
-      <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
-    )
+    // const Placeholder = (LiveNow || StreamingSoon) ? null : (
+    //   <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
+    // )
     
     return(
       <div className='splash'>

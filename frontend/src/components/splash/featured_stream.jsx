@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class FeaturedStream extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   formatDate(fullDate) {
     let date = new Date(fullDate);
@@ -19,7 +19,8 @@ class FeaturedStream extends React.Component {
     return (
       <div
         className="featured-stream-container" 
-        onClick={() => this.props.history.push("/")}>
+        // onClick={() => this.props.history.push("/")}
+      >
         <h1>Featured Live Stream</h1>
         <div className="featured-stream-content">
           <img 

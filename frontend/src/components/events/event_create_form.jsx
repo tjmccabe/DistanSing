@@ -20,8 +20,11 @@ export default class EventCreateForm extends React.Component {
       imageurl: this.props.artist ? this.props.artist.imageurl : null,
       imagefile: null
     }
+
+    this.getDays = this.getDays.bind(this);
+
     this.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    this.DAYS = [...Array(31).keys()].map(num => num + 1);
+    this.DAYS = this.getDays();
     this.YEARS = [...Array(5).keys()].map(num => num + parseInt(date.getFullYear()));
     this.handleInput = this.handleInput.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -44,7 +47,8 @@ export default class EventCreateForm extends React.Component {
   }
 
   handleInput(type) {
-    return e => this.setState({ [type]: e.target.value })
+    this.DAYS = this.getDays();
+    return e => this.setState({ [type]: e.target.value });
   }
 
   setImageFile(imagefile) {
@@ -90,6 +94,19 @@ export default class EventCreateForm extends React.Component {
 
   handlePrice() {
     return price => this.setState({ price })
+  }
+
+  getDays() {
+    let mo = parseInt(this.state.month);
+    if (mo === 2 && this.state.year % 4 === 0) {
+      return [...Array(29).keys()].map(num => num + 1)
+    } else if (mo === 2) {
+      return [...Array(28).keys()].map(num => num + 1)
+    } else if (mo === 4 || mo === 6 || mo === 9 || mo === 11) {
+      return [...Array(30).keys()].map(num => num + 1)
+    } else {
+      return [...Array(31).keys()].map(num => num + 1)
+    }
   }
 
   formatDate(month, day, year) {
