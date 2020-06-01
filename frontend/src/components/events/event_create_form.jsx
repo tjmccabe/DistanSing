@@ -143,53 +143,67 @@ export default class EventCreateForm extends React.Component {
     if (!this.props.artist) return null;
     return (
       <div className="event-create-page">
-        <form className="event-create-form" onSubmit={this.handleSubmit}>
-          <h1 className="event-create-header">Your fans are waiting...</h1>
-          <div className="event-create-container">
-            <div className="event-create-left">
-              <ImageUpload 
-                setImageFile={this.setImageFile} 
-                imageurl={imageurl} 
-                classNames={["image-upload-container", "image-upload", "image-upload-btn"]}/>
-            </div>
-            <div className="event-create-right">
-              <div className="event-inputs-container">
-                <input className="event-name-field" type="text" value={name} onChange={this.handleInput("name")} placeholder="Event Name" />
-                <div className="event-price-container">
-                  <span className="event-price-label">Price</span>
-                  <CurrencyInput className="event-price-field" onChange={this.handlePrice()} value={price} prefix="$"/>
+        <div
+          className="background-test-form"
+          style={{
+            backgroundImage: `url("https://distansing-dev.s3-us-west-1.amazonaws.com/big-crowd.jpg")`
+          }}
+        >
+
+          <div className="background-test-form-filter">
+
+
+          <form className="event-create-form" onSubmit={this.handleSubmit}>
+            <h1 className="event-create-header">Your fans are waiting...</h1>
+            <div className="event-create-container">
+              <div className="event-create-left">
+                <ImageUpload 
+                  setImageFile={this.setImageFile} 
+                  imageurl={imageurl} 
+                  classNames={["image-upload-container", "image-upload", "image-upload-btn"]}
+                />
+                <div className="image-disclaimer">If no image is uploaded, this<br/>will default to your artist image</div>
+              </div>
+              <div className="event-create-right">
+                <div className="event-inputs-container">
+                  <input className="event-name-field" type="text" value={name} onChange={this.handleInput("name")} placeholder="Event Name" />
+                  <div className="event-price-container">
+                    <div className="event-price-label">Price:</div>
+                    <CurrencyInput className="event-price-field" onChange={this.handlePrice()} value={price} prefix="$"/>
+                  </div>
+                </div>
+                <div className="event-date">
+                  <select defaultValue={month} onChange={this.handleInput("month")}>
+                    {/* <option disabled value="Month">Month</option> */}
+                    {this.MONTHS.map((month, idx) =>
+                      <option key={idx} value={idx+1}>{month}</option>
+                    )}
+                  </select>
+                  <select defaultValue={day} onChange={this.handleInput("day")}>
+                    {/* <option disabled value="Day">Day</option> */}
+                    {this.DAYS.map((day, idx) =>
+                      <option key={idx} value={day}>{day}</option>
+                    )}
+                  </select>
+                  <select defaultValue={year} onChange={this.handleInput("year")}>
+                    {/* <option disabled value="Year">Year</option> */}
+                    {this.YEARS.map((year, idx) =>
+                      <option key={idx} value={year}>{year}</option>
+                    )}
+                  </select>
+                  <TimePicker className="" value={time} onChange={this.handleTime()} disableClock clearIcon={null} />
+                </div>
+                <textarea className="event-description-field" value={description} onChange={this.handleInput("description")} placeholder="Tell your fans about the event" />
+                {ErrorList}
+                <div className="event-create-btns">
+                  <button className="event-cancel-btn" onClick={this.handleCancel}>Cancel</button>
+                  <button className="event-create-btn">Create Event</button>
                 </div>
               </div>
-              <div className="event-date">
-                <select defaultValue={month} onChange={this.handleInput("month")}>
-                  {/* <option disabled value="Month">Month</option> */}
-                  {this.MONTHS.map((month, idx) =>
-                    <option key={idx} value={idx+1}>{month}</option>
-                  )}
-                </select>
-                <select defaultValue={day} onChange={this.handleInput("day")}>
-                  {/* <option disabled value="Day">Day</option> */}
-                  {this.DAYS.map((day, idx) =>
-                    <option key={idx} value={day}>{day}</option>
-                  )}
-                </select>
-                <select defaultValue={year} onChange={this.handleInput("year")}>
-                  {/* <option disabled value="Year">Year</option> */}
-                  {this.YEARS.map((year, idx) =>
-                    <option key={idx} value={year}>{year}</option>
-                  )}
-                </select>
-                <TimePicker className="" value={time} onChange={this.handleTime()} disableClock clearIcon={null} />
-              </div>
-              <textarea className="event-description-field" value={description} onChange={this.handleInput("description")} placeholder="Tell your fans about the event" />
-              {ErrorList}
-              <div className="event-create-btns">
-                <button className="event-create-btn">Create Event</button>
-                <button className="event-cancel-btn" onClick={this.handleCancel}>Cancel</button>
-              </div>
             </div>
+          </form>
           </div>
-        </form>
+        </div>
       </div>
     )
   }

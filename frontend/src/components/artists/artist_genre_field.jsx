@@ -24,7 +24,7 @@ export default class ArtistGenreField extends React.Component {
     const { genre, handleInput } = this.props;
     return (
       <label>Genre: 
-        <select defaultValue='None' onChange={this.toggleCustomGenre}>
+        <select className="genre-select" defaultValue='None' onChange={this.toggleCustomGenre}>
           {this.GENRES.map((genre, idx) => (
             <option key={idx} value={genre}>{genre}</option>
           ))}
