@@ -95,7 +95,7 @@ class EventShow extends React.Component {
       </div>
     ) : !currentId ? (
       <div className="event-show-buy">
-        <div className="event-show-buynow" >Log in as a User<br/>to reserve a ticket</div>
+        <div onClick={() => this.props.openModal("userLogin")}className="event-show-buynow" >Log in as a User<br/>to reserve a ticket</div>
       </div>
     ) : loggedInAsArtist ? (
         <div className="fake-buy-button"></div>
