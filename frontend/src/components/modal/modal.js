@@ -5,6 +5,7 @@ import ArtistLoginContainer from "../session/artist_login_container";
 import ArtistSignupContainer from "../session/artist_signup_container";
 import UserLoginContainer from "../session/user_login_container";
 import UserSignupContainer from "../session/user_signup_container";
+import Tutorial from "../tutorial/tutorial";
 
 function Modal({ modal, closeModal, loggedIn, openModal }) {
 
@@ -46,6 +47,13 @@ function Modal({ modal, closeModal, loggedIn, openModal }) {
           loggedIn={loggedIn}
           closeModal={closeModal}
           openModal={openModal}
+        />
+      )
+      break;
+    case "tutorial":
+      component = (
+        <Tutorial
+          closeMoodal={closeModal}
         />
       )
       break;
