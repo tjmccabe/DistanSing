@@ -60,7 +60,7 @@ export const fetchEvent = (eventId) => (dispatch) =>
 export const createEvent = (event) => (dispatch) => 
   EventApiUtil.createEvent(event)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => dispatch(receiveEventErrors(["This operation was unsuccessful. Please make sure all fields are filled out try again."])));
+    .catch((err) => dispatch(receiveEventErrors(["Operation unsuccessful - Event must have a title"])));
 
 export const updateEvent = (event) => (dispatch) =>
   EventApiUtil.updateEvent(event)

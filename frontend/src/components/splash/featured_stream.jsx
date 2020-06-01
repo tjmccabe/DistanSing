@@ -16,7 +16,8 @@ class FeaturedStream extends React.Component {
     return (
       <div
         className="featured-stream-container" 
-        onClick={() => this.props.history.push("/")}>
+        // onClick={() => this.props.history.push("/")}
+      >
         <h1>Featured Live Stream</h1>
         <div className="featured-stream-content">
           <img 

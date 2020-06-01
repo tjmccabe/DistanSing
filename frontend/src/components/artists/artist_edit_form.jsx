@@ -59,57 +59,62 @@ export default class ArtistEditForm extends React.Component {
     if (!artist) return null; 
     return (
       <div className="artist-edit">
-        <form 
-          className="artist-edit-form"
-          onSubmit={this.handleSubmit}
+        <div
+          className="background-test-form"
+          style={{
+            backgroundImage: `url("https://distansing-dev.s3-us-west-1.amazonaws.com/big-crowd.jpg")`
+          }}
         >
-          <div className="artist-edit-left">
-            <ImageUpload 
-              classNames={["image-upload-container", "image-upload", "image-upload-btn"]}
-              setImageFile={this.setImageFile} 
-              imageurl={imageurl} />
+
+          <div className="background-test-form-filter">
+            <form 
+              className="artist-edit-form"
+              onSubmit={this.handleSubmit}
+            >
+              <div className="artist-edit-container">
+
+                <div className="artist-edit-left">
+                  <ImageUpload 
+                    classNames={["image-upload-container", "image-upload", "image-upload-btn"]}
+                    setImageFile={this.setImageFile} 
+                    imageurl={imageurl}
+                  />
+                  <div className="artist-image-disclaimer">If no image is uploaded, this will<br />default to the above mask image</div>
+                </div>
+
+                <div className="artist-edit-right">
+                  
+                  <div className="artist-edit-name">       
+                      {artistname} 
+                  </div>
+                  
+                  <div>
+                    <ArtistGenreField genre={genre} handleInput={this.handleInput} />
+                  </div>
+
+                    <textarea
+                      className="artist-edit-bio" 
+                      value={bio} 
+                      onChange={this.handleInput("bio")} 
+                      placeholder="Tell the world about yourself"
+                    />
+
+                  <div className="artist-edit-footer">
+                    <button 
+                      className="artist-edit-cancel"
+                      onClick={this.handleCancel}
+                    >Cancel</button>
+
+                    <button
+                      className="artist-edit-save"
+                    >Save Changes</button>
+                  </div>
+
+                </div>
+              </div>
+            </form>
           </div>
-
-          <div className="artist-edit-right">
-            
-            <div>
-              <input 
-                type="text" 
-                className="artist-edit-name"
-                value={artistname} 
-                disabled
-              />            
-            </div>
-            
-            <div>
-              <ArtistGenreField genre={genre} handleInput={this.handleInput} />
-            </div>
-
-            <div>
-              <label>Bio:
-                <textarea
-                  className="artist-edit-bio" 
-                  value={bio} 
-                  onChange={this.handleInput("bio")} 
-                  placeholder="Tell the world about yourself"/>
-              </label>
-            </div>
-
-            <div className="artist-edit-footer">
-              <button
-                className="artist-edit-save"
-              >Save Changes</button>
-
-              <button 
-                className="artist-edit-cancel"
-                onClick={this.handleCancel}
-              >Cancel</button>
-
-            </div>
-
-          </div>
-        </form>
-        
+        </div>
       </div>
     )
   }
