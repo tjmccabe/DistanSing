@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     type: Map,
     default: {}
   },
+  imageurl: {
+    type: String,
+    default: 'https://distansing-dev.s3-us-west-1.amazonaws.com/default_artist_image_mask_on.jpg'
+  }
 })
 
 module.exports = User = mongoose.model('User', UserSchema);

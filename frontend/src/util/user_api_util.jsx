@@ -11,3 +11,13 @@ export const getUser = (id) => {
 export const updateUser = (user) => {
   return axios.patch(`/api/users/${user.id}`, user);
 };
+
+export const updateUserImage = data => {
+  return axios.patch(`/api/users/${data.get('id')}/image`, data, {
+    headers: {
+      'accept': 'application/json',
+      'Accept-Language': 'en-US,en;q=0.8',
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    }
+  })
+}
