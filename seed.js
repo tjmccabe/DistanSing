@@ -7,15 +7,15 @@ const Artist = require("./models/Artist");
 
 const db = require("./config/keys").mongoURI;
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch((err) => console.log(err));
+.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log("Connected to MongoDB successfully"))
+.catch((err) => console.log(err));
 
 function seed() {
   const artists = [];
   
   
-  console.log('please seed')
+  console.log('Scheduled Seeding Started')
   // for (let i = 0; i < 20; i++) {
   //   let username = faker.internet.userName();
   //   let email = faker.internet.email();
@@ -28,13 +28,11 @@ function seed() {
   //   console.log(user)
   //   User.collection.insertOne(user);
   // }
-    let group = faker.name.title();
-    // let artistname = `The ${group}s`;
+
+
+  for (let i = 0; i < 6; i++) {
     let solo = faker.name.findName();
     let artistname = `${solo}`;
-  for (let i = 0; i < 1; i++) {
-    // let solo = faker.name.findName();
-    // let artistname = `The ${group}s`;
     let email = faker.internet.email();
     let password = faker.internet.password();
     let genres = ['None', 'Custom', 'Alternative Rock', 'Ambient', 'Classical', 'Country', 'Dance & EDM', 'Dancehall', 'Deep House', 'Disco', 'Drum & Bass', 'Dubstep', 'Electronic', 'Folk & Singer-Songwriter', 'Hip-hop & Rap', 'House', 'Indie', 'Jazz & Blues', 'Latin', 'Metal', 'Piano', 'Pop', 'R&B & Soul', 'Reggae', 'Reggaeton', 'Rock', 'Soundtrack', 'Techno', 'Trance', 'Trap', 'Triphop', 'World'];
@@ -55,52 +53,42 @@ function seed() {
     Artist.collection.insertOne(artist)
   }
    
-  for (let i = 0; i < 1; i++) {
-    // Adjectives
-    let adj = faker.commerce.productAdjective();
-    let group = faker.name.title();
-    let name = `See ${artistname} LIVE!`;
-    // let name = `${artistname} 2020 Virtual Tour!`;
-    // let name = `Join ${solo} at the ${adj} Palooza `
-    let date = faker.date.between("2020-05-18", "2020-05-19");
-    const months = {
-      "01": "Jan",
-      "02": "Feb",
-      "03": "Mar",
-      "04": "Apr",
-      "05": "May",
-      "06": "Jun",
-      "07": "Jul",
-      "08": "Aug",
-      "09": "Sep",
-      "10": "Oct",
-      "11": "Nov",
-      "12": "Dec",
-    };
-    const month = date.toString().slice(4, 7);
-    const day = date.getDate()
+  for (let i = 0; i < 16; i++) {
+    let artist = _.sample(artists);
+    let artistId = artist._id;
+    let artistname = artist.artistname;
+    let adjectives = ["Awesome", "Insane", "Poppin", "Lit", "Once-In-A-Lifetime"]
+    let events = ["Palooza", "Party", "Celebration", "Jamboree", "Festival"]
+    let adj = _.sample(adjectives);
+    let event_name = _.sample(events);
+    let name = `Join ${artistname} at the ${adj} ${event_name}`
+    const current_date = new Date
+    const month = current_date.getMonth() + 1
+    const day = current_date.getDate() + 7
+    const year = current_date.getFullYear()
+    let date = faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    );
+    const month_name = date.toString().slice(4, 7);
 
-    let description = `Check out ${artistname} streaming to you live on ${month} ${day}th. Get your ticket now and come back to the event page at start time to tune in live!`
-    let artist = _.sample(artists)._id;
+    let description = `Check out ${artistname} streaming to you live on ${month_name} ${day}th. Get your ticket now and come back to the event page at start time to tune in live!`
     let price = faker.random.number({
       min: 10,
       max: 50,
     });
-    let imageurl = `${faker.image.nightlife()}?random=${Date.now()}`;
+    // let imageurl = `${faker.image.nightlife()}?random=${Date.now()}`;
 
-
-    
     let event = new Event({
       name: `${name}`,
       description: `${description}`,
       date: `$${date}`,
-      artist: artist,
+      artist: artistId,
       price: price,
-      imageurl: imageurl
     });
     console.log(event)
     Event.collection.insertOne(event)
   }
-  console.log('finished seeding')
+  console.log('Scheduled Seeding has finished')
 }
-seed();
+module.exports = seed;

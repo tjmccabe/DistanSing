@@ -10,6 +10,8 @@ const events = require('./routes/api/events');
 const path = require('path');
 const httpserver = require("http").createServer(app); //app is an http server
 const io = require("socket.io")(httpserver);
+const cron = require("node-cron");
+const seed = require("./seed");
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -27,7 +29,10 @@ app.use(passport.initialize());
 require('./config/passport')(passport)
 
 // app.get("/", (req, res) => res.send("Now, we are TJ and The Bois"));
-
+cron.schedule("30 12 * * 7", () => {
+  console.log("Cron Scheduler is starting")
+  seed();
+});
 // Socket IO Configuration
 app.use(express.static('public'));
 app.get('/stream', (req, res) => {
