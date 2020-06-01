@@ -16,8 +16,10 @@
 }
 
 .tutorial h1 {
+  color: #3D5A80;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-align: center;
   padding-bottom: 10px
 }
