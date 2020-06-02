@@ -121,29 +121,38 @@ class UserShow extends React.Component {
     const memberSince = monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear()
     return (
       <div className="user-show-container">
-        <div className="user-content-container">
-          <div className="user-bio">  
-            <div className="user-pic-container">
-              <div
-                className="user-pic"
-                style={{ backgroundImage: `url(${user.imageurl})` }}
-              >
-                <div className="user-pic-filter"></div>
+        <div
+          className="background-artist-show"
+          style={{
+            backgroundImage: `url("https://distansing-dev.s3-us-west-1.amazonaws.com/john-matychuk-gUK3lA3K7Yo-unsplash.jpg")`,
+          }}
+        >
+          <div className="background-artist-show-filter">
+            <div className="user-content-container">
+              <div className="user-bio">  
+                <div className="user-pic-container">
+                  <div
+                    className="user-pic"
+                    style={{ backgroundImage: `url(${user.imageurl})` }}
+                  >
+                    <div className="user-pic-filter"></div>
+                  </div>
+                  <button
+                    className="user-pic-edit-btn"
+                    onClick={this.handleUploadClick}>
+                    <FontAwesomeIcon icon={faCamera} /> Update Image
+                  </button>
+                  <input
+                    className="hidden-upload"
+                    hidden type="file"
+                    onChange={this.handleUserEdit} />
+                </div>
+                <h1>{user.username}</h1>
+                <div className="user-bio-text">Member since {memberSince}</div> 
               </div>
-              <button
-                className="user-pic-edit-btn"
-                onClick={this.handleUploadClick}>
-                <FontAwesomeIcon icon={faCamera} /> Update Image
-              </button>
-              <input
-                className="hidden-upload"
-                hidden type="file"
-                onChange={this.handleUserEdit} />
+              {UserEvents}
             </div>
-            <h1>{user.username}</h1>
-            <p className="user-bio-text">Member since {memberSince}</p> 
           </div>
-          {UserEvents}
         </div>
       </div>
     );

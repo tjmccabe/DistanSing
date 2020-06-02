@@ -1,6 +1,6 @@
 import React from "react";
 import ShowEventItem from "./show_event_item";
-import DeleteEvent from "./delete_event";
+// import DeleteEvent from "./delete_event";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -127,17 +127,26 @@ class ArtistShow extends React.Component {
 
     return (
       <div className="artist-show-container">
-        {OwnerActions}
-        <div className="artist-bio-container">
-          <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
-            <div className="artist-pic-filter"></div>
-          </div>
-          <div className="artist-bio">
-            <h1>{artist.artistname}</h1>
-            {Information}
+        <div
+          className="background-artist-show"
+          style={{
+            backgroundImage: `url("https://distansing-dev.s3-us-west-1.amazonaws.com/john-matychuk-gUK3lA3K7Yo-unsplash.jpg")`,
+          }}
+        >
+          <div className="background-artist-show-filter">
+            {OwnerActions}
+            <div className="artist-bio-container">
+              <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
+                <div className="artist-pic-filter"></div>
+              </div>
+              <div className="artist-bio">
+                <h1>{artist.artistname}</h1>
+                {Information}
+              </div>
+            </div>
+            {ArtistEvents}
           </div>
         </div>
-        {ArtistEvents}
       </div>
     );
   }
