@@ -35,7 +35,7 @@ const CarouselItem = ({stream, artists, linkToEventShow}) => {
       <div className="carousel-item-filter">
         <div>{stream.name}</div>
         <div className="carousel-item-description">
-          <p>{artistName}</p>
+          <span>{artistName}</span>
           <div className="carousel-item-detail">
             <span>{fullDate}</span>
             <span>{price}</span>
