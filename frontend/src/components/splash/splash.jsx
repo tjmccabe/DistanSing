@@ -17,8 +17,8 @@ class Splash extends React.Component {
   }
 
   // componentDidUpdate(prevProps) {
-    // if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
-    // if (Object.values(this.props.events) < 8) this.props.fetchEvents()
+  //   if (Object.values(this.props.artists) < 8) this.props.fetchArtists()
+  //   if (Object.values(this.props.events) < 8) this.props.fetchEvents()
   // }
 
   shuffle(arr) {
@@ -48,7 +48,7 @@ class Splash extends React.Component {
   // }
 
   getUpcomingStreams() {
-    if (Object.values(this.props.events).length === 0) {
+    if (Object.values(this.props.events).length < 8) {
       this.props.fetchEvents()
       return null;
     }
@@ -65,7 +65,7 @@ class Splash extends React.Component {
   }
 
   getTrendingArtists() {
-    if (Object.values(this.props.artists).length === 0) {
+    if (Object.values(this.props.artists).length < 6) {
       this.props.fetchArtists()
       return null;
     }
