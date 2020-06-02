@@ -91,4 +91,5 @@ function seed() {
   }
   console.log('Scheduled Seeding has finished')
 }
+seed();
 module.exports = seed;
