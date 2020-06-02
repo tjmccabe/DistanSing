@@ -20,7 +20,7 @@ const Footer = () => {
     }
   }
   return (
-    <div className="footer">
+    <div className="footer" id="footer">
       <div className="footer-about">
         {Object.keys(us).map((engineer, idx) => 
           <div key={idx} className="footer-item-container">
