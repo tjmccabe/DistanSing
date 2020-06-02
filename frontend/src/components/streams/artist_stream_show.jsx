@@ -65,10 +65,22 @@ class ArtistStreamShow extends React.Component {
         },
       });
       
-      const peer = new Peer()
+      const peer = new Peer(
+      //   "4321", {
+      //   host: "localhost",
+      //   port: 9000,
+      //   iceServers: [
+      //     { urls: "stun:stun.l.google.com:19302" },
+      //     { urls: "stun:stun1.l.google.com:19302" },
+      //     { urls: "stun:stun2.l.google.com:19302" },
+      //   ],
+      //   // path: "/peer",
+      // }
+      );
       this.peer = peer
   
       peer.on("connection", connection => {
+        console.log("this succeeded")
         peer.call(connection.peer, this.localstream);
         this.connections.add(connection)
       })
@@ -80,6 +92,9 @@ class ArtistStreamShow extends React.Component {
       
       this.socket.on("requestArtistConnect", userId => {
         peer.connect(userId);
+
+        console.log("this is the artist side")
+        console.log(userId)
       })
     });
     setTimeout(() => this.endEvent(), 18000000)
