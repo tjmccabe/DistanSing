@@ -20,9 +20,7 @@ const Footer = () => {
     }
   }
   return (
-    <div className="footer">
-      {/* <div className="footer-about"></div> */}
-      {/* <div className="footer-site-info"> */}
+    <div className="footer" id="footer">
         <div className="footer-site-info-left">
           <div className="footer-info-logo">DistanSing</div>
           {Object.keys(us).map((engineer, idx) => (
@@ -53,8 +51,6 @@ const Footer = () => {
               </div>
             </div>
           ))}
-
-        {/* </div> */}
         <div className="footer-info-copyright">
           &#169; Kunsole Lawg Studios 2020
         </div>
