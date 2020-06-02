@@ -57,7 +57,7 @@ class UserStreamShow extends React.Component {
       console.log("user connected")
       peer.connect(connection.peer);
       connection.on("data", data => {
-        console.log(data);
+        // console.log(data);
       })
     })
     

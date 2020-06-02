@@ -44,7 +44,8 @@ mongoose
   // app.use("/peerjs", peerServer);
 app.use(passport.initialize());
 require('./config/passport')(passport)
-// app.get("/", (req, res) => res.send("Now, we are TJ and The Bois"));
+
+
 cron.schedule("30 12 * * 7", () => {
   seed();
 });
