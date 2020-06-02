@@ -189,13 +189,14 @@
   align-self: center;
   margin-top: 20px;
   background-color: white;
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   opacity: 0.5;
   display: flex;
   justify-content: center;
   border-radius: 50%;
   transition: all 0.3s;
+  position: relative;
 }
 
 .delete-button:hover {
@@ -205,6 +206,7 @@
 
 .delete-button:active {
   opacity: 0.4;
+  top: 1px;
 }
 
 .delete-button svg {
