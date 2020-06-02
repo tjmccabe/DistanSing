@@ -139,17 +139,18 @@ class EventShow extends React.Component {
           
               <div className="event-show-main">
                 <div className="event-show-main-container">
-                  <div className="event-show-pic" onClick={this.showArtist}>
+                  <div className="event-show-pic">
                     <div className="event-show-pic"
                       style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname }` }}
-                      onClick={this.showArtist}
                     >
                       <div className="event-show-pic-filter"></div>
                     </div>
                   </div>
                   <div className="event-show-body">
                     <h1 className="event-show-name">{event.name}</h1>
-                    <div className="event-show-artistname">Presented by {artist.artistname}</div>
+                    <div className="event-show-artistname">
+                      Presented by <span className="event-artistname-link" onClick={this.showArtist}>{artist.artistname}</span>
+                    </div>
                     <div className="event-show-description">
                       {event.description}
                     </div>
