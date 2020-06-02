@@ -80,7 +80,6 @@ class Splash extends React.Component {
   }
 
   linkToEventShow(event) {
-    // console.log(event);
     this.props.history.push(`/events/${event._id}`)
   }
 

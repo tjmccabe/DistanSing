@@ -47,11 +47,9 @@ router.get("/:id", (req, res) => {
       Event.find({ "_id": { $in: keys }})
         .then( events => {
           let payload = Object.assign({}, user._doc);
-          // console.log(payload);
           let userEvents = {};
           events.map(event => userEvents[event._id] = event);
           payload["userEvents"] = userEvents;
-          // console.log(payload);
           res.json(payload);    
         })
     })
@@ -78,13 +76,11 @@ router.patch(
           } else {
             imageLocation = user.imageurl;
           }
-          console.log(user)
           let updatedUser = Object.assign(user, req.body, { imageurl: imageLocation });
           updatedUser.save()
             .then((user) => res.json(user))
             .catch((errors) => {
               res.status(404).json({ nouserfound: "No user found with that ID" })
-              console.log(errors)
             });
         })
       }

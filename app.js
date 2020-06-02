@@ -28,9 +28,8 @@ mongoose
 app.use(passport.initialize());
 require('./config/passport')(passport)
 
-// app.get("/", (req, res) => res.send("Now, we are TJ and The Bois"));
+
 cron.schedule("30 12 * * 7", () => {
-  console.log("Cron Scheduler is starting")
   seed();
 });
 // Socket IO Configuration

@@ -15,7 +15,6 @@ function seed() {
   const artists = [];
   
   
-  console.log('Scheduled Seeding Started')
   // for (let i = 0; i < 20; i++) {
   //   let username = faker.internet.userName();
   //   let email = faker.internet.email();
@@ -29,8 +28,8 @@ function seed() {
   //   User.collection.insertOne(user);
   // }
 
-
   for (let i = 0; i < 6; i++) {
+    let imageurl = faker.image.avatar();
     let solo = faker.name.findName();
     let artistname = `${solo}`;
     let email = faker.internet.email();
@@ -38,7 +37,6 @@ function seed() {
     let genres = ['None', 'Custom', 'Alternative Rock', 'Ambient', 'Classical', 'Country', 'Dance & EDM', 'Dancehall', 'Deep House', 'Disco', 'Drum & Bass', 'Dubstep', 'Electronic', 'Folk & Singer-Songwriter', 'Hip-hop & Rap', 'House', 'Indie', 'Jazz & Blues', 'Latin', 'Metal', 'Piano', 'Pop', 'R&B & Soul', 'Reggae', 'Reggaeton', 'Rock', 'Soundtrack', 'Techno', 'Trance', 'Trap', 'Triphop', 'World'];
     let genre = _.sample(genres);
     let bio = `Hello from ${artistname}! Consider this page your portal for some of the best ${genre} music around. We’re super excited to be a part of the DistanSing family, and we’re stoked you can finally experience our live music from the comfort of your own home during this challenging time. Check out the events below!`
-    let imageurl = faker.image.avatar();
     
     let artist = new Artist({
       artistname: `${artistname}`,
@@ -48,7 +46,6 @@ function seed() {
       imageurl: `${imageurl}`,
       genre: `${genre}`
     });
-    console.log(artist);
     artists.push(artist)
     Artist.collection.insertOne(artist)
   }
@@ -85,11 +82,9 @@ function seed() {
       date: `$${date}`,
       artist: artistId,
       price: price,
+      imageurl: artist.imageurl
     });
-    console.log(event)
     Event.collection.insertOne(event)
   }
-  console.log('Scheduled Seeding has finished')
 }
-seed();
 module.exports = seed;
