@@ -46,6 +46,15 @@ class NavBar extends React.Component {
     this.props.history.push('/')
   }
 
+  creatorHighlight() {
+    animateScroll.scrollToBottom();
+    let footer = document.getElementById("footer");
+    footer.classList.add("highlight");
+    setTimeout(() => {
+      footer.classList.remove("highlight")
+    }, 600)
+  }
+
   render() {
     const { loggedIn, current, loggedInAsUser, openModal, loggedInAsArtist } = this.props;
     const name = loggedInAsUser && current ? current.username : loggedIn && current ? current.artistname : null;
@@ -124,9 +133,9 @@ class NavBar extends React.Component {
             </Link>
             <div 
               className="nav-bar-about"
-              onClick={() => animateScroll.scrollToBottom()}
+              onClick={() => this.creatorHighlight()}
             >
-              Creator Info
+              Creators
             </div>
             {Tutorial}
           </div>

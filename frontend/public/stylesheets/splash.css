@@ -11,15 +11,15 @@
   background-attachment: fixed;
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 221.25px);
+  min-height: calc(100vh - 180px);
 }
 
 .background-splash-filter {
-  min-height: calc(100vh - 221.25px);
+  min-height: calc(100vh - 180px);
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-color: rgba(245, 245, 245, );
+  background-color: rgba(245, 245, 245, 0.1);
 }
 
 .site-heading {
@@ -34,6 +34,7 @@
   display: flex;
   justify-content: space-evenly;
   box-sizing: border-box;
+  padding: 0 15px 0 0;
 }
 
 .splash-body h3 {
@@ -61,7 +62,7 @@
 
 .stream-carousel {
   padding: 10px 40px 10px;
-  margin-bottom: 75px;
+  margin-bottom: 60px;
   width: 100%;
   box-sizing: border-box;
   align-self: center;
@@ -101,7 +102,7 @@
   font-size: 20px;
 }
 
-.carousel-item-description p {
+.carousel-item-description span {
   font-size: 18px;
 }
 
@@ -213,7 +214,7 @@
 
 .featured-stream-content {
   position: relative;
-  width: 100%;
+  width: 80%;
   max-width: 900px;
   min-width: 500px;
   height: 100%;

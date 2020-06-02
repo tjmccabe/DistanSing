@@ -7,6 +7,11 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  transition: 0.2s
+}
+
+.footer.highlight {
+  background-color: rgb(218, 248, 255);
 }
 
 .footer-about {
@@ -77,8 +82,10 @@
 
 .footer-site-info-left {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
   align-items: center;
+  height: 120px;
 }
  
 .footer-info-logo {
