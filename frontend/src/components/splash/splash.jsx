@@ -98,7 +98,7 @@ class Splash extends React.Component {
 
     const StreamingSoon = this.soons ? (
       <div className="stream-carousel-container" id="streaming-soon">
-        <h3>Streaming Soon...</h3>
+        <h3>Streaming Soon!</h3>
         {this.soons}
       </div>
     ) : null;
@@ -131,25 +131,32 @@ class Splash extends React.Component {
     //   <div>Looks like it's pretty quiet around here.<br/><br/> Sign up as an artist and start streaming today!</div>
     // )
     
-    return(
-      <div className='splash'>
-        <div className="splash-header">
-          <h2 className="site-heading">
-            Welcome To DistanSing, where we're all only 6 beats apart
-          </h2>
-        </div>
-        <div className="splash-body">
-          <div className="event-category-container">
-            <FeaturedStream />
-            {/* {LiveNow} */}
-            {StreamingSoon}
-          </div>
-          <div className="random-artist-container">
-            {TrendingArtists}
+    return (
+      <div className="splash">
+        <div
+          className="background-splash"
+          style={{
+            backgroundImage: `url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80")`,
+          }}
+        >
+          <div className="background-splash-filter">
+            <div className="splash-header">
+              {/* <h2 className="site-heading">
+                Welcome To DistanSing, where we're all only 6 beats apart
+              </h2> */}
+            </div>
+            <div className="splash-body">
+              <div className="event-category-container">
+                <FeaturedStream />
+                {/* {LiveNow} */}
+                {StreamingSoon}
+              </div>
+              <div className="random-artist-container">{TrendingArtists}</div>
+            </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
