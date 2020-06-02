@@ -212,6 +212,16 @@
   font-weight: bold;
 }
 
+.event-artistname-link {
+  color: #3D5A80;
+  text-decoration: underline;
+  font-size: 22px;
+}
+
+.event-artistname-link:hover {
+  cursor: pointer;
+}
+
 .event-show-description {
   min-width: 400px;
   margin: 10px 0 0 20px;
