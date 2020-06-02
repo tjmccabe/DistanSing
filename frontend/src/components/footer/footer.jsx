@@ -9,7 +9,7 @@ const Footer = () => {
     },
     "Darrick Yong": {
       github: "https://github.com/darrickyong",
-      linkedin: "https://www.linkedin.com/in/darrickyong/"
+      linkedin: "https://www.linkedin.com/in/darrickyong/",
       pic: ""
     },
     "Danny Huang": {
