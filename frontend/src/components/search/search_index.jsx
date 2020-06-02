@@ -51,7 +51,7 @@ class SearchIndex extends React.Component {
               >
                 <div className="artist-feature-item-filter">
                   <div>{artist.artistname}</div>
-                  <div>{artist.genre === "None" ? null : artist.genre}</div>
+                  <p>{artist.genre === "None" ? null : artist.genre}</p>
                 </div>
             </div>
             )}
