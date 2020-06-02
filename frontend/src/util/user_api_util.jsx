@@ -21,3 +21,7 @@ export const updateUserImage = data => {
     }
   })
 }
+
+export const deleteEvent = user => {
+  return axios.patch(`/api/users/${user.id}/deleteEvent`, user);
+}

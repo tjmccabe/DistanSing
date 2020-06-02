@@ -47,11 +47,9 @@ router.get("/:id", (req, res) => {
       Event.find({ "_id": { $in: keys }})
         .then( events => {
           let payload = Object.assign({}, user._doc);
-          // console.log(payload);
           let userEvents = {};
           events.map(event => userEvents[event._id] = event);
           payload["userEvents"] = userEvents;
-          // console.log(payload);
           res.json(payload);    
         })
     })
@@ -107,6 +105,22 @@ router.patch(
       );
   }
 );
+
+router.patch(
+  "/:id/deleteEvent",
+  passport.authenticate("user-rule", { session: false }),
+  (req, res) => {
+    User.findById(req.params.id)
+      .then((user) => {
+        let updatedUser = Object.assign(user);
+        updatedUser.events.delete(req.body.events);
+        updatedUser.save().then((user) => res.json(user));
+      })
+      .catch((errors) => 
+        res.status(404).json({ nouserfound: "No user found with that ID" })
+      );
+  }
+)
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);

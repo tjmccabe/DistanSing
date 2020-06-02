@@ -50,7 +50,7 @@
 .footer-git-logo {
   width: 24px;
   height: 24px;
-  z-index: 1000;
+  z-index: 5;
   position: relative;
 }
 
