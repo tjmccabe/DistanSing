@@ -14,8 +14,7 @@ mongoose
 function seed() {
   const artists = [];
   
-  
-  console.log('Scheduled Seeding Started')
+
   // for (let i = 0; i < 20; i++) {
   //   let username = faker.internet.userName();
   //   let email = faker.internet.email();
@@ -25,7 +24,6 @@ function seed() {
   //     email: `${email}`,
   //     password: `$${password}`,
   //   });
-  //   console.log(user)
   //   User.collection.insertOne(user);
   // }
 
@@ -48,7 +46,6 @@ function seed() {
       imageurl: `${imageurl}`,
       genre: `${genre}`
     });
-    console.log(artist);
     artists.push(artist)
     Artist.collection.insertOne(artist)
   }
@@ -85,11 +82,10 @@ function seed() {
       date: `$${date}`,
       artist: artistId,
       price: price,
+      imageurl: artist.imageurl
     });
-    console.log(event)
     Event.collection.insertOne(event)
   }
-  console.log('Scheduled Seeding has finished')
 }
 seed();
 module.exports = seed;
