@@ -8,7 +8,6 @@ const initialState = null
 export default function (state = initialState, action) {
   switch (action.type) {
     case RECEIVE_CURRENT_ARTIST:
-      // console.log(action)
       return action.currentArtist
     case RECEIVE_LOGOUT:
       return null

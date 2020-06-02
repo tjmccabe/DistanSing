@@ -56,7 +56,6 @@ router.get("/:id", (req, res) => {
         })
       })
     .catch((errors) => {
-      console.log(errors)
       res.status(404).json({ noartistfound: "This artist show page is under construction" })
     });
 });
