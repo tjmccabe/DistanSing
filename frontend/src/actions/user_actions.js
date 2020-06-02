@@ -31,3 +31,8 @@ export const updateUserImage = user => dispatch =>
   UserAPIUtil.updateUserImage(user)
     .then(user => dispatch(receiveUser(user)))
     .catch(err => console.log(err));
+
+export const deleteEvent = user => dispatch => 
+  UserAPIUtil.deleteEvent(user)
+    .then(user => dispatch(receiveUser(user)))
+    .catch(err => console.log(err))

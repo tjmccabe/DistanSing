@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUser, updateUserImage } from "../../actions/user_actions";
+import { fetchUser, updateUserImage, deleteEvent } from "../../actions/user_actions";
 import { fetchEvents } from "../../actions/event_actions";
 import NewUserShow from "./new_user_show";
 
@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents()),
   fetchUser: id => dispatch(fetchUser(id)),
-  updateUserImage: user => dispatch(updateUserImage(user))
+  updateUserImage: user => dispatch(updateUserImage(user)),
+  deleteEvent: user => dispatch(deleteEvent(user))
 })
 
 export default connect(
