@@ -26,27 +26,24 @@ const CarouselItem = ({stream, artists, linkToEventShow}) => {
       `${month}/${day}, ${ (hr % 12) === 0 ? "12" : hr % 12 }:${min < 10 ? `0${min}` : min} ${ hr > 11 ? "PM" : "AM" }`
   )
 
-  return(
+  return (
     <li
       className="carousel-item"
       style={bkg}
       onClick={() => linkToEventShow(stream)}
     >
       <div className="carousel-item-filter">
-        <div>
-          {stream.name}
-        </div>
-        <div className="lightened">
-          {artistName}
-        </div>
-        <div>
-          {fullDate}
-          <br/>
-          {price}
+        <div>{stream.name}</div>
+        <div className="carousel-item-description">
+          <span>{artistName}</span>
+          <div className="carousel-item-detail">
+            <span>{fullDate}</span>
+            <span>{price}</span>
+          </div>
         </div>
       </div>
     </li>
-  )
+  );
 }
 
 const mSTP = (state, ownProps) => ({

@@ -9,17 +9,25 @@ class ShowEventItem extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+
+
   handleClick(e) {
-    const { event, deleteEvent, fetchArtist } = this.props;
+    const { user, owner, event, deleteEvent, fetchArtist, fetchUser } = this.props;
     if(e.target.closest('.delete-button')) {
-      deleteEvent(event._id).then(() => fetchArtist(event.artist))
+      if (owner) {
+        deleteEvent(event._id).then(() => fetchArtist(event.artist))
+      } else {
+        // debugger
+        deleteEvent({ id: user._id, events: event._id })
+          .then(() => fetchUser(user._id))
+      }
     } else {
       this.props.history.push(`/events/${event._id}`)
     }
   }
 
   render() {
-    const { event, owner } = this.props;
+    const { event, owner, user } = this.props;
     const months = {
       "01": "Jan",
       "02": "Feb",
@@ -56,6 +64,15 @@ class ShowEventItem extends React.Component {
           <div className="show-item-price">{event.price.toFixed(2)}</div>
           {owner ? (
             <GoTrashcan className="delete-button"/>
+          ) : user ? (
+            <button
+              className="delete-button"
+              // onClick={() => {
+              //   deleteEvent({ id: user._id, events: event._id })
+              // }}
+            >
+              Refund
+            </button>
           ) : null }
         </div>
       </div>

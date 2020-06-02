@@ -1,8 +1,7 @@
 import React from "react";
 import ShowEventItem from "../artists/show_event_item";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -19,17 +18,23 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.user && this.props.user && (this.props.user.id !== prevProps.user.id)) {
+      this.props.fetchUser(this.props.match.params.id)
+    }
+  }
+
   handleUploadClick() {
     document.querySelector('.hidden-upload').click();
   }
 
   handleUserEdit(e) {
-    const { user, updateUserImage } = this.props;
+    const { user, updateUserImage, fetchUser } = this.props;
     const imagefile = e.target.files[0];
     const formData = new FormData();
     if (imagefile) formData.append('imagefile', imagefile);
     formData.append('id', user._id);
-    updateUserImage(formData);
+    updateUserImage(formData).then(() => fetchUser(user._id));
   }
 
   handleUpcoming(e) {
@@ -45,7 +50,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, deleteEvent, fetchUser } = this.props;
     if (!user) return null;
 
     const OnlyUpcoming = user.userEvents && Object.values(user.userEvents)[0] ? (
@@ -56,7 +61,7 @@ class UserShow extends React.Component {
     ) : []
 
     const Past = user.userEvents && Object.values(user.userEvents)[0] ? (
-      Object.values(user.userEvents).filter(ev => (
+      Object.values(user.events).filter(ev => (
         new Date(ev.date).getTime() < new Date().getTime()
       ))
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
@@ -77,6 +82,7 @@ class UserShow extends React.Component {
             Past
             </h2>
         </div>
+        <div className="user-event-divider"></div>
         <div className="show-items-container">
           {this.state.upcoming ? (
             OnlyUpcoming[0] ? (
@@ -84,7 +90,11 @@ class UserShow extends React.Component {
                 <div className='show-item-container' key={idx}>
                   <ShowEventItem
                     event={event}
+                    deleteEvent={deleteEvent}
+                    user={user}
+                    fetchUser={fetchUser}
                   />
+
                 </div>
               ))) : (
                 <h1>No upcoming events. Reserve a ticket today!</h1>
@@ -109,32 +119,32 @@ class UserShow extends React.Component {
     ];
     const newDate = new Date(user.date)
     const memberSince = monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear()
-
     return (
       <div className="user-show-container">
-        <div className="user-bio-container">
-          <div className="user-pic-container">
-            <div 
-              className="user-pic" 
-              style={{ backgroundImage: `url(${user.imageurl})` }}
+        <div className="user-content-container">
+          <div className="user-bio">  
+            <div className="user-pic-container">
+              <div
+                className="user-pic"
+                style={{ backgroundImage: `url(${user.imageurl})` }}
               >
-              <div className="user-pic-filter"></div>
+                <div className="user-pic-filter"></div>
+              </div>
+              <button
+                className="user-pic-edit-btn"
+                onClick={this.handleUploadClick}>
+                <FontAwesomeIcon icon={faCamera} /> Update Image
+              </button>
+              <input
+                className="hidden-upload"
+                hidden type="file"
+                onChange={this.handleUserEdit} />
             </div>
-            <button 
-              className="user-pic-edit-btn"
-              onClick={this.handleUploadClick}>Update Image
-            </button>
-            <input 
-              className="hidden-upload"
-              hidden type="file" 
-              onChange={this.handleUserEdit}/>
-          </div>
-          <div className="user-bio">
             <h1>{user.username}</h1>
-            <p className="user-bio-text">Member since {memberSince}</p>          
+            <p className="user-bio-text">Member since {memberSince}</p> 
           </div>
+          {UserEvents}
         </div>
-        {UserEvents}
       </div>
     );
   }

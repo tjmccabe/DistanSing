@@ -3,41 +3,41 @@
 .user-show-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-  height: 100%;
-  margin-left: 60px;
-}
-
-.user-actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 70px 0px;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 1250px;
-}
-
-.user-actions a {
-  margin: 10px 15px 0;
-  color: white;
-  font-weight: bold;
-  border-radius: 3px;
-  box-sizing: border-box;
-}
-
-/* User Bio Container */
-
-.user-bio-container {
-  display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  height: 150px;
-  max-width: 800px;
-  min-width: 200px;
-  margin: 50px 0 20px 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 550px;
+}
+
+.user-content-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
   padding-right: 20px;
+}
+
+.user-bio {
+  width: 40%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-bio h1 {
+  font-family: 'Abril Fatface';
+  font-size: 35px;
+  margin: 20px;
+}
+
+.user-bio-text {
+  font-size: 15px;
+  color: grey;
 }
 
 .user-pic-container {
@@ -46,8 +46,8 @@
 
 .user-pic {
   box-sizing: border-box;
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   min-width: 100px;
   background-position: 50%;
   background-size: cover;
@@ -73,13 +73,15 @@
 .user-pic-edit-btn {
   display: none;
   position: absolute;
-  top: 60%;
-  left: 2.5%;
+  top: 70%;
+  left: 30%;
   font-size: 12px;
-  font-weight: bold;
   border-radius: 3px;
   box-sizing: border-box;
   cursor: pointer;
+  background-color: white;
+  opacity: 0.8;
+  border: 1px solid black;
 }
 
 .user-pic-edit-btn:focus {
@@ -90,29 +92,15 @@
   display: inline;
 }
 
-.user-bio {
-  min-width: 120px;
-  margin-left: 20px;
-  box-sizing: border-box;
-}
-
-.user-bio h1 {
-  font-family: 'Abril Fatface';
-  font-size: 35px;
-  margin-bottom: 20px;
-}
-
-.user-bio-text {
-  font-size: 15px;
-  color: grey;
-}
 
 /* User Event Index Container */
 
 .user-event-index-container {
-  min-width: 600px;
+  width: 60%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
 }
 
 .user-event-index-container h1 {
@@ -138,9 +126,17 @@
   border-right: 1.2px ridge grey;
 }
 
+.user-event-toggle h2:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.user-event-toggle h2:nth-child(2) {
+  border-radius: 0 5px 0 0;
+}
+
 .user-event-toggle h2:hover {
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .upcoming-events-tab, .past-events-tab {
@@ -154,14 +150,35 @@
   background-color: #3D5A80;
   color: white;
 }
-/* 
-.show-items-container {
+
+.user-event-divider {
+  height: 30px;
   background-color: #3D5A80;
-  padding: 20px 30px 20px 0; 
-  border-radius: 0 5px 5px 5px;
+  border-radius: 0 5px 0 0;
 }
 
-.show-items-container > h1 {
-  margin: 20px 30px;
-  color: white;
-} */
+.show-items-container {
+  background-color: #3D5A80;
+  border-radius: 0 0 5px 5px;
+  height: 100%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.show-items-container::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+.show-item-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.refund-btn {
+  position: absolute;
+  right: 18%;
+  height: 30px;
+  line-height: 25px;
+  margin-left: 20px;
+}
