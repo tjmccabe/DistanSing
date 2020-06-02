@@ -1,10 +1,25 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
+import { GoTrashcan } from "react-icons/go";
+
 
 class ShowEventItem extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    const { event, deleteEvent, fetchArtist } = this.props;
+    if(e.target.closest('.delete-button')) {
+      deleteEvent(event._id).then(() => fetchArtist(event.artist))
+    } else {
+      this.props.history.push(`/events/${event._id}`)
+    }
+  }
 
   render() {
-    const { event } = this.props;
+    const { event, owner } = this.props;
     const months = {
       "01": "Jan",
       "02": "Feb",
@@ -27,7 +42,7 @@ class ShowEventItem extends React.Component {
     return (
       <div
         className="show-item"
-        onClick={() => this.props.history.push(`/events/${event._id}`)}
+        onClick={this.handleClick}
       >
         <div className="event-pic" style={{ backgroundImage: `url(${event.imageurl})` }}>
           <div className="event-pic-filter"></div>
@@ -37,7 +52,12 @@ class ShowEventItem extends React.Component {
           <div>{month} {day}, {year}, {(hour % 12) === 0 ? 12 : hour % 12}:{minute < 10 ? `0${minute}` : minute}{hour > 11 ? "PM" : "AM"}</div>
           <p>{event.description}</p>
         </div>
-        <div className="show-item-price">{event.price.toFixed(2)}</div>
+        <div className="show-item-right">
+          <div className="show-item-price">{event.price.toFixed(2)}</div>
+          {owner ? (
+            <GoTrashcan className="delete-button"/>
+          ) : null }
+        </div>
       </div>
     );
   }

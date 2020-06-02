@@ -136,7 +136,6 @@
   border-top: 1.2px ridge grey;
   border-left: 1.2px ridge grey;
   border-right: 1.2px ridge grey;
-  bod
 }
 
 .user-event-toggle h2:hover {
@@ -155,7 +154,7 @@
   background-color: #3D5A80;
   color: white;
 }
-
+/* 
 .show-items-container {
   background-color: #3D5A80;
   padding: 20px 30px 20px 0; 
@@ -165,4 +164,4 @@
 .show-items-container > h1 {
   margin: 20px 30px;
   color: white;
-}
+} */
