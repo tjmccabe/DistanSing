@@ -32,7 +32,7 @@ const Footer = () => {
             <div key={idx} className="footer-item-container">
               <img
                 className="foot-pic"
-                src="https://distansing-dev.s3-us-west-1.amazonaws.com/tj.png"
+                src={us[engineer].pic}
                 alt=""
               />
               <div className="footer-item-content">

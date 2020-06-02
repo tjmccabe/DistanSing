@@ -25,10 +25,10 @@ class SearchBar extends React.Component {
 
   handleInput(e) {
     if (e.target.value === '') {
-      this.setState({ openDropdown: false });
+      this.setState({ openDropdown: false, fragment: '' });
     } else {
       this.search(e.target.value)
-        .then(this.setState({ openDropdown: true }))
+        .then(this.setState({ openDropdown: true, fragment: e.target.value }))
     }
     this.setState({ fragment: e.target.value })
   }
@@ -46,7 +46,9 @@ class SearchBar extends React.Component {
 
   handleSearchSubmit() {
     this.closeDropdown();
-    this.props.history.push(`/search/${this.state.fragment}`);
+    if (this.state.fragment !== '') {
+      this.props.history.push(`/search/${this.state.fragment}`);
+    }
   }
 
   search = async function (fragment) {
