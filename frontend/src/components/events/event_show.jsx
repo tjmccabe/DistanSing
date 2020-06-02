@@ -143,7 +143,6 @@ class EventShow extends React.Component {
                     <div className="event-show-pic"
                       style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname }` }}
                     >
-                      <div className="event-show-pic-filter"></div>
                     </div>
                   </div>
                   <div className="event-show-body">

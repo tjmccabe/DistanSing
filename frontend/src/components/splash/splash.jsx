@@ -48,10 +48,6 @@ class Splash extends React.Component {
   // }
 
   getUpcomingStreams() {
-    if (Object.values(this.props.events).length < 8) {
-      this.props.fetchEvents()
-      return null;
-    }
     let now = (new Date()).getTime()
     
     let soonStreams = this.props.events.filter(event => {
@@ -59,6 +55,10 @@ class Splash extends React.Component {
       // return (date > now && date < (now + 86400000))
       return (date > now)
     })
+    if ((soonStreams).length < 3) {
+      this.props.fetchEvents()
+      return null;
+    }
     let shuffled = this.shuffle(soonStreams).slice(0,18)
 
     return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null;
