@@ -34,14 +34,27 @@ class UserStreamShow extends React.Component {
   }
 
   startPlaying() {
-    const peer = new Peer()
+    const peer = new Peer(
+    //   "1234", {
+    //   host: "localhost",
+    //   port: 9000,
+    //   iceServers: [
+    //     { urls: "stun:stun.l.google.com:19302" },
+    //     { urls: "stun:stun1.l.google.com:19302" },
+    //     { urls: "stun:stun2.l.google.com:19302" },
+    //   ],
+    //   // path: "/peer",
+    // }
+    );
     this.peer = peer
 
     peer.on("open", () => {
+      console.log(peer.id)
       this.socket.emit("userId", peer.id);
     })
 
     peer.on("connection", connection => {
+      console.log("user connected")
       peer.connect(connection.peer);
       connection.on("data", data => {
         // console.log(data);

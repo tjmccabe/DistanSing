@@ -1,5 +1,5 @@
 .footer {
-  background-color: white;
+  background-color: #3D5A80;
   position: relative;
   bottom: 0;
   display: flex;
@@ -7,7 +7,8 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  transition: 0.2s
+  transition: 0.2s;
+  color: white;
 }
 
 .footer.highlight {
@@ -43,8 +44,10 @@
 
 .footer-icons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
   align-items: center;
+  margin-top: 5px;
 }
 
 .footer-git-logo {
@@ -52,12 +55,15 @@
   height: 24px;
   z-index: 5;
   position: relative;
+  color: white;
 }
 
 .footer-li-logo {
   width: 30px;
   height: 30px;
   position: relative;
+  color: white;
+  margin-left: 10px;
 }
 
 .footer-git-logo:hover, .footer-li-logo:hover {
