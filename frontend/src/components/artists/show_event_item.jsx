@@ -13,7 +13,7 @@ class ShowEventItem extends React.Component {
 
   handleClick(e) {
     const { user, owner, event, deleteEvent, fetchArtist, fetchUser } = this.props;
-    if(e.target.closest('.delete-button')) {
+    if(e.target.closest('.delete-button') || e.target.closest('.refund-button')) {
       if (owner) {
         deleteEvent(event._id).then(() => fetchArtist(event.artist))
       } else {
@@ -65,14 +65,7 @@ class ShowEventItem extends React.Component {
           {owner ? (
             <GoTrashcan className="delete-button"/>
           ) : user ? (
-            <button
-              className="delete-button"
-              // onClick={() => {
-              //   deleteEvent({ id: user._id, events: event._id })
-              // }}
-            >
-              Refund
-            </button>
+            <button className="refund-button">Refund</button>
           ) : null }
         </div>
       </div>

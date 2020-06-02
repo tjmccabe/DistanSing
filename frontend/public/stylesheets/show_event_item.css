@@ -1,8 +1,68 @@
+.event-index-container {
+  width: 700px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.event-index-container h1 {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  font-size: 25px;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.event-toggle {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.event-toggle h2 {
+  font-size: 18px;
+  text-align: center;
+  border-top: 1.2px ridge grey;
+  border-left: 1.2px ridge grey;
+  border-right: 1.2px ridge grey;
+}
+
+.event-toggle h2:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.event-toggle h2:nth-child(2) {
+  border-radius: 0 5px 0 0;
+}
+
+.event-toggle h2:hover {
+  cursor: pointer;
+}
+
+.upcoming-events-tab,
+.past-events-tab {
+  background-color: rgb(235, 235, 235);
+  padding: 15px;
+  min-width: 100px;
+  border-radius: 10px;
+}
+
+.tab-selected {
+  background-color: #3D5A80;
+  color: white;
+}
+
+
+
 .show-item-container {
   display: flex;
   width: 100%;
   padding: 0 15px;
   box-sizing: border-box;
+  align-items: center;
+  position: relative;
 }
 
 .show-items-container {
@@ -14,16 +74,22 @@
   background-color: #3D5A80;
   border-radius: 0px 5px 5px 5px;
   padding: 10px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.show-items-container::-webkit-scrollbar-thumb {
+  background-color: white;
 }
 
 .show-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
   background-color: white;
-  height: 124px;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px;
-  display: flex;
-  align-items: center;
   box-sizing: border-box;
   max-width: 700px;
   width: 100%;
@@ -40,15 +106,6 @@
   box-shadow: none;
   top: 1px;
 }
-
-/* .show-item figure img {
-  width: 200px;
-  min-width: 200px;
-  height: 120px;
-  border: 2px solid black;
-  border-radius: 20px;
-  margin: 30px 40px;
-} */
 
 .event-pic {
   box-sizing: border-box;
@@ -71,14 +128,14 @@
 }
 
 .item-details {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 100%;
-  align-items: flex-start;
   justify-content: space-between;
-  padding: 7px 5px
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 60%;
+  height: 100%;
+  padding: 7px 5px;
 }
 
 .item-details h4 {
@@ -114,4 +171,28 @@
   content:"$";
 }
 
+.delete-button {
+  align-self: center;
+  margin-top: 20px;
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
 
+.delete-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.delete-button:active {
+  opacity: 0.4;
+}
+
+.delete-button svg {
+  align-self: center;
+}

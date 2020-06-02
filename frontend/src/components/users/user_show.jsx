@@ -68,9 +68,9 @@ class UserShow extends React.Component {
     ) : []
 
     const UserEvents =
-      <div className="user-event-index-container">
+      <div className="event-index-container">
         <h1>Your Events</h1>
-        <div className="user-event-toggle">
+        <div className="event-toggle">
           <h2 
             className="upcoming-events-tab tab-selected"
             onClick={e => this.handleUpcoming(e)}>
@@ -82,7 +82,6 @@ class UserShow extends React.Component {
             Past
             </h2>
         </div>
-        <div className="user-event-divider"></div>
         <div className="show-items-container">
           {this.state.upcoming ? (
             OnlyUpcoming[0] ? (
@@ -121,7 +120,7 @@ class UserShow extends React.Component {
     const memberSince = monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear()
     return (
       <div className="user-show-container">
-        <div className="user-content-container">
+        <div className="user-show-main">
           <div className="user-bio">  
             <div className="user-pic-container">
               <div

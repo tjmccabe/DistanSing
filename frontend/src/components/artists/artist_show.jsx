@@ -1,10 +1,8 @@
 import React from "react";
 import ShowEventItem from "./show_event_item";
-import DeleteEvent from "./delete_event";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
-
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -16,6 +14,18 @@ class ArtistShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchArtist(this.props.match.params.id);
+  }
+
+  handleUpcoming(e) {
+    this.setState({ upcoming: true });
+    e.currentTarget.classList.add('tab-selected');
+    document.querySelector('.past-events-tab').classList.remove('tab-selected');
+  }
+
+  handlePast(e) {
+    this.setState({ upcoming: false });
+    e.currentTarget.classList.add('tab-selected');
+    document.querySelector('.upcoming-events-tab').classList.remove('tab-selected');
   }
 
   render() {
@@ -38,13 +48,19 @@ class ArtistShow extends React.Component {
     ) : []
 
     const ArtistEvents =
-        <div className="artist-event-index-container">
+        <div className="event-index-container">
           <h1>Events from {artist.artistname}:</h1>
-          <div className="artist-event-toggle">
-            <h2 onClick={() => this.setState({ upcoming: true })}>
+          <div className="event-toggle">
+            <h2 
+              className="upcoming-events-tab tab-selected"
+              onClick={e => this.handleUpcoming(e)}
+            >
               Upcoming
             </h2>
-            <h2 onClick={() => this.setState({ upcoming: false })}>
+            <h2 
+              className="past-events-tab"
+              onClick={e => this.handlePast(e)}
+            >
               Past
             </h2>
           </div>
@@ -59,16 +75,9 @@ class ArtistShow extends React.Component {
                     deleteEvent={deleteEvent}
                     fetchArtist={fetchArtist}
                   />
-                  {/* {owner ? (
-                    <DeleteEvent
-                      event={event}
-                      fetchArtist={fetchArtist}
-                      deleteEvent={deleteEvent}
-                    />
-                  ) : null} */}
                 </div>
               ))) : (
-                <h1>There are no upcoming events</h1>
+                <h1>You have no upcoming events.</h1>
               )
             ) : (
               Past[0] ? (
@@ -80,7 +89,7 @@ class ArtistShow extends React.Component {
                   />
                 </div>
               ))) : (
-                <h1>There are no past events</h1>
+                <h1>You have not hosted any events.</h1>
               )
             )}
           </div>
@@ -122,22 +131,25 @@ class ArtistShow extends React.Component {
       on now after logging in as a User, or log in as an Artist and host your own!`
 
     const Information = artist.email === 'demo@artist.com' ? (
-      <p className="user-bio-text">{Instructions}</p>
+      <p className="artist-bio-text">{Instructions}</p>
     ) : <p className="artist-bio-text">{artist.bio}</p>
 
     return (
       <div className="artist-show-container">
         {OwnerActions}
-        <div className="artist-bio-container">
-          <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
-            <div className="artist-pic-filter"></div>
+        <div className="artist-show-main">
+          <div className="artist-bio-container">
+            <div className="artist-pic" style={{ backgroundImage: `url(${artist.imageurl})`}}>
+              <div className="artist-pic-filter"></div>
+            </div>
+            <div className="artist-bio">
+              <h1>{artist.artistname}</h1>
+              {Information}
+            </div>
           </div>
-          <div className="artist-bio">
-            <h1>{artist.artistname}</h1>
-            {Information}
-          </div>
+          {ArtistEvents}
+
         </div>
-        {ArtistEvents}
       </div>
     );
   }
