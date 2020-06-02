@@ -18,24 +18,23 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   debugger
-  //   if ((this.props.user && prevProps.user) || (this.props.user.id !== prevProps.user.id)) {
-  //     this.props.fetchUser(this.props.match.params.id)
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.user && this.props.user && (this.props.user.id !== prevProps.user.id)) {
+      this.props.fetchUser(this.props.match.params.id)
+    }
+  }
 
   handleUploadClick() {
     document.querySelector('.hidden-upload').click();
   }
 
   handleUserEdit(e) {
-    const { user, updateUserImage } = this.props;
+    const { user, updateUserImage, fetchUser } = this.props;
     const imagefile = e.target.files[0];
     const formData = new FormData();
     if (imagefile) formData.append('imagefile', imagefile);
     formData.append('id', user._id);
-    updateUserImage(formData);
+    updateUserImage(formData).then(() => fetchUser(user._id));
   }
 
   handleUpcoming(e) {
@@ -51,7 +50,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, deleteEvent } = this.props;
+    const { user, deleteEvent, fetchUser } = this.props;
     if (!user) return null;
 
     const OnlyUpcoming = user.userEvents && Object.values(user.userEvents)[0] ? (
@@ -91,15 +90,11 @@ class UserShow extends React.Component {
                 <div className='show-item-container' key={idx}>
                   <ShowEventItem
                     event={event}
+                    deleteEvent={deleteEvent}
+                    user={user}
+                    fetchUser={fetchUser}
                   />
-                  <button
-                    className="refund-btn"
-                    onClick={() => {
-                      deleteEvent({ id: user._id, events: event._id })
-                    }}
-                  >
-                    Refund
-                 </button>
+
                 </div>
               ))) : (
                 <h1>No upcoming events. Reserve a ticket today!</h1>

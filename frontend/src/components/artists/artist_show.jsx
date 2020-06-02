@@ -56,14 +56,16 @@ class ArtistShow extends React.Component {
                   <ShowEventItem
                     event={event}
                     owner={owner}
+                    deleteEvent={deleteEvent}
+                    fetchArtist={fetchArtist}
                   />
-                  {owner ? (
+                  {/* {owner ? (
                     <DeleteEvent
                       event={event}
                       fetchArtist={fetchArtist}
                       deleteEvent={deleteEvent}
                     />
-                  ) : null}
+                  ) : null} */}
                 </div>
               ))) : (
                 <h1>There are no upcoming events</h1>

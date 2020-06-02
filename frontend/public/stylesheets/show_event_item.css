@@ -11,10 +11,9 @@
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 20px;
-}
-
-.show-items-container h1 {
-  margin: 20px 0px 0px 5px;
+  background-color: #3D5A80;
+  border-radius: 0px 5px 5px 5px;
+  padding: 10px;
 }
 
 .show-item {
@@ -96,11 +95,19 @@
   overflow: hidden;
 }
 
+.show-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
 .show-item-price {
   align-self: flex-start;
   font-size: 20px;
   font-weight: 600;
-  margin: 10px 10px 0 0
+  margin: 15px 10px 0px 0px;
 }
 
 .show-item-price::before {

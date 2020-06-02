@@ -112,12 +112,17 @@ router.patch(
   (req, res) => {
     User.findById(req.params.id)
       .then((user) => {
+        console.log(req.body);
         let updatedUser = Object.assign(user);
         updatedUser.events.delete(req.body.events);
+        console.log(updatedUser);
         updatedUser.save().then((user) => res.json(user));
       })
-      .catch((errors) => 
+      .catch((errors) => {
+        console.log(errors);
         res.status(404).json({ nouserfound: "No user found with that ID" })
+      }
+      
       );
   }
 )

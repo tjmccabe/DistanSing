@@ -169,14 +169,6 @@
   background-color: white;
 }
 
-.show-items-container > h1 {
-  box-sizing: border-box;
-  margin-top: 20px;
-  color: white;
-  padding-left: 30px;
-  margin-left: 0;
-}
-
 .show-item-container {
   display: flex;
   align-items: center;

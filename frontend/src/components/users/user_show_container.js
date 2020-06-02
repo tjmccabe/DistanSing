@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { fetchUser, updateUserImage, deleteEvent } from "../../actions/user_actions";
 import { fetchEvents } from "../../actions/event_actions";
-import NewUserShow from "./new_user_show";
+import UserShow from "./user_show";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
   return({
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   deleteEvent: user => dispatch(deleteEvent(user))
 })
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NewUserShow);
+)(UserShow));
