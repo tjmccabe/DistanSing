@@ -16,6 +16,17 @@ class ArtistStreamShow extends React.Component {
     this.socket = io();
 
     this.connections = new Set();
+
+    this.peerOptions = process.env.NODE_ENV === 'production' ? {
+      secure: true,
+      host: 'distansing.herokuapp.com',
+      port: 443,
+    } : {
+      // secure: true,
+      // host: '/',
+      // port: 9000,
+      debug: 3
+    };
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
@@ -71,6 +82,7 @@ class ArtistStreamShow extends React.Component {
       });
       
       const peer = new Peer(
+        this.props.artist._id, this.peerOptions
       //   "4321", {
       //   host: "localhost",
       //   port: 9000,

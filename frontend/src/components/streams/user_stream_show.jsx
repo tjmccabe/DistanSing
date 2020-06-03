@@ -13,6 +13,17 @@ class UserStreamShow extends React.Component {
     // Local variables
     // this.socket = io('http://localhost:9000');
     this.socket = io();
+
+    this.peerOptions = process.env.NODE_ENV === 'production' ? {
+      secure: true,
+      host: 'distansing.herokuapp.com',
+      port: 443,
+    } : {
+      // secure: true,
+      // host: '/',
+      // port: 9000,
+      debug: 3
+    };
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
@@ -21,11 +32,11 @@ class UserStreamShow extends React.Component {
   }
 
   componentDidMount() {
-    const vid = document.querySelector('#rVideo');
-    vid.addEventListener('canplay', e => {
-      e.target.play()
-      setTimeout(() => e.target.play(), 2000)
-    })
+    // const vid = document.querySelector('#rVideo');
+    // vid.addEventListener('canplay', e => {
+      // e.target.play()
+      // setTimeout(() => e.target.play(), 2000)
+    // })
   }
 
   componentWillUnmount() {
@@ -44,6 +55,7 @@ class UserStreamShow extends React.Component {
 
   startPlaying() {
     const peer = new Peer(
+      this.props.currentId, this.peerOptions
     //   "1234", {
     //   host: "localhost",
     //   port: 9000,

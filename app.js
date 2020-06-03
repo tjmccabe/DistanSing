@@ -25,6 +25,13 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
 }
+
+const server = app.listen(9000);
+const peerServer = ExpressPeerServer(server, {
+  path: '/myapp'
+});
+app.use('/peerjs', peerServer);
+
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -35,13 +42,13 @@ mongoose
 // const peerServer = ExpressPeerServer(httpserver, {
 //   debug: true,
 //   proxied: true,
-//   // path: "/peer",
+//   path: "/peer",
 //   allow_discovery: true,
 //   debug: true,
 //   // generateClientId: customGenerationFunction,
 // });
 
-  // app.use("/peerjs", peerServer);
+//   app.use("/peerjs", peerServer);
 app.use(passport.initialize());
 require('./config/passport')(passport)
 
@@ -77,5 +84,5 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/artists', artists);
 app.use('/api/events', events);
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 6000;
 httpserver.listen(port, () => console.log(`Server is running on port ${port}`));
