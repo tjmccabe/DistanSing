@@ -19,8 +19,6 @@ class UserStreamShow extends React.Component {
         ? {
             secure: true,
             host: "https://distansingpeerserver.herokuapp.com/",
-            port: "",
-            path: "",
           }
         : {
             // secure: true,
