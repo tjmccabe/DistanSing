@@ -25,7 +25,6 @@ class SearchBar extends React.Component {
   }
 
   handleInput(e) {
-    console.log(e.target.value)
     if (e.target.value === '') {
       this.setState({ openDropdown: false, fragment: '', searchResults: null });
     } else {
@@ -60,7 +59,6 @@ class SearchBar extends React.Component {
         axios.post("/api/events/search", { fragment })
           .then(res => {
             results.events = res.data;
-            console.log(results);
             this.setState({ searchResults: results })
           })
       })

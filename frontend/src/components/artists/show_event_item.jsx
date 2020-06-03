@@ -17,7 +17,6 @@ class ShowEventItem extends React.Component {
       if (owner) {
         deleteEvent(event._id).then(() => fetchArtist(event.artist))
       } else {
-        // debugger
         deleteEvent({ id: user._id, events: event._id })
           .then(() => fetchUser(user._id))
       }

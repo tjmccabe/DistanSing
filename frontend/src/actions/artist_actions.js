@@ -15,15 +15,13 @@ const receiveArtists = (artists) => ({
 export const fetchArtist = (artistId) => (dispatch) => (
   ArtistAPIUtil.getArtist(artistId)
   .then((payload) => {dispatch(receiveArtist(payload))})
-  .catch((err) => console.log(err))
 );
 
 export const fetchArtists = () => (dispatch) => {
   return ArtistAPIUtil.getArtists()
     .then((artists) => dispatch(receiveArtists(artists)))
-    .catch((err) => console.log(err))
 };
 
 export const updateArtist = (artist) => (dispatch) =>
-  ArtistAPIUtil.updateArtist(artist).then((artist) =>
-    dispatch(receiveArtist(artist))).catch((err) => console.log(err))
+  ArtistAPIUtil.updateArtist(artist)
+    .then((artist) => dispatch(receiveArtist(artist)))
