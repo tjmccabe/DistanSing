@@ -57,7 +57,7 @@ class EventShow extends React.Component {
     if (artist.id === currentId) {
       return <ArtistStreamShowContainer artist={artist} event={event} featured={true} />
     } else if (currentId) {  
-      return <UserStreamShow artist={artist} event={event} />
+      return <UserStreamShow artist={artist} event={event} currentId={currentId}/>
     } else {
       return null
     }

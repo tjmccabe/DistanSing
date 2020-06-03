@@ -25,8 +25,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
 }
-// app.options("localhost:9000/peerjs/myapp", cors());
-// app.use(cors());
 
 const server = app.listen(9000);
 const peerServer = ExpressPeerServer(server, {
@@ -34,6 +32,9 @@ const peerServer = ExpressPeerServer(server, {
   allow_discovery: true,
 });
 app.use('/peerjs', peerServer);
+
+// app.options("localhost:9000/peerjs/myapp", cors());
+// app.use(cors());
 
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
