@@ -153,7 +153,6 @@ class ArtistShow extends React.Component {
           }}
         >
           <div className="background-artist-show-filter">
-            {OwnerActions}
              <div className="artist-show-main">
               <div className="artist-bio-fixed">
                 <div className="artist-bio-container">
@@ -162,6 +161,7 @@ class ArtistShow extends React.Component {
                   </div>
                   <div className="artist-bio">
                     <h1>{artist.artistname}</h1>
+                    {OwnerActions}
                     {Information}
                   </div>
                 </div>
