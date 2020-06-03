@@ -9,6 +9,7 @@
   box-sizing: border-box;
   transition: 0.2s;
   color: white;
+  width: 100%;
 }
 
 .footer.highlight {
@@ -89,6 +90,7 @@
 .footer-site-info-left {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
   height: 120px;

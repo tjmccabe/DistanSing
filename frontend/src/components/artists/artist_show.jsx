@@ -79,7 +79,7 @@ class ArtistShow extends React.Component {
                 </div>
               ))) : (
                 <div className="no-events">
-                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg"/>
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
                   <h2>There are no upcoming events.</h2>
                 </div>
                 
@@ -95,7 +95,7 @@ class ArtistShow extends React.Component {
                 </div>
               ))) : (
                 <div className="no-events">
-                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" />
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
                   <h2>There are no past events.</h2>
                 </div>
               )

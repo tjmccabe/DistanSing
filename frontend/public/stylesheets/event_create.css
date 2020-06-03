@@ -29,7 +29,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(245, 245, 245, .2);
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .event-create-form {
@@ -37,9 +37,9 @@
   flex-direction: column;
   margin: 0 0 60px;
   padding: 25px 30px 20px;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(92, 92, 92);
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 4px;
   min-width: 700px;
   width: 80%;
   max-width: 900px;
@@ -48,6 +48,7 @@
 .event-create-header {
   font-size: 20px;
   font-style: italic;
+  color: white;
 }
 
 .event-create-container {
@@ -72,18 +73,18 @@
 
 .event-date > select {
   height: 30px;
-  background-color: white;
-  border: 2px solid #e5e5e5;
+  border: 2px solid #999999;
   border-radius: 3px;
   font-size: 16px;
   font-family: 'Hind Guntur';
   margin-right: 8px;
+  background-color: lightgray;
 }
 
 .react-time-picker {
   margin-left: 10px;
   height: 30px;
-  background-color: white;
+  background-color: lightgray;
 }
 
 .event-create-right {
@@ -106,8 +107,9 @@
   height: 25px;
   font-size: 16px;
   padding: 5px 10px;
-  border: 2px solid #e5e5e5;
+  border: 2px solid #999999;
   border-radius: 2px;
+  background-color: lightgray;
 }
 
 .event-name-field {
@@ -124,11 +126,13 @@
   height: 80%;
   font-size: 18px;
   margin-right: 10px;
+  color: white;
 }
 
 .event-price-field {
   width: 70px;
   height: 100%;
+  background-color: lightgray;
 }
 
 .event-description-field {
@@ -137,10 +141,11 @@
   height: 150px;
   font-size: 14px;
   padding: 10px;
-  border: 2px solid #e5e5e5;
+  border: 2px solid #999999;
   border-radius: 2px;
   margin-top: 5px;
   resize: none;
+  background-color: lightgray;
 }
 
 .event-create-btns {
@@ -180,6 +185,7 @@
   margin-right: 10px;
   border: none;
   background: rgb(214, 214, 214);
+  color: rgb(133, 133, 133);
 }
 
 
@@ -200,7 +206,7 @@
 }
 
 .image-upload-btn {
-  border: 1px solid #c5c5c5;
+  border: 1px solid #999999;
   border-radius: 2px;
   padding: 3px 5px;
   background-color: rgb(221, 221, 221);
@@ -209,7 +215,7 @@
 .image-disclaimer {
   text-align: center;
   font-size: 12px;
-  color: gray;
+  color: darkgray;
   line-height: 1.3em;
 }
 
