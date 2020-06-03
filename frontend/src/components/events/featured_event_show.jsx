@@ -133,11 +133,12 @@ class EventShow extends React.Component {
 
               <div className="event-show-main">
                 <div className="event-show-main-container">
-                  <div className="event-show-pic">
+                  <div className="pic-contain">
                     <div className="event-show-pic"
-                      style={{ backgroundImage: `url(${artist.imageurl})`, alt: `${artist.artistname}` }}
+                      style={{ backgroundImage: `url(${event.imageurl})`, alt: `${event.name}` }}
                     >
-                      <div className="event-show-pic-filter"></div>
+                      <div className="event-show-pic-filter">
+                      </div>
                     </div>
                   </div>
                   <div className="event-show-body">
