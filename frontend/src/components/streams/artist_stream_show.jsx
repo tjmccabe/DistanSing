@@ -13,7 +13,7 @@ class ArtistStreamShow extends React.Component {
     };
     // Local variables
     // this.socket = io('http://localhost:9000');
-    this.socket = io();
+    this.socket = io({ transports: ['polling'] });
 
     this.connections = new Set();
 

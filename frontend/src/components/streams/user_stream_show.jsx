@@ -12,7 +12,7 @@ class UserStreamShow extends React.Component {
     };
     // Local variables
     // this.socket = io('http://localhost:9000');
-    this.socket = io();
+    this.socket = io({ transports: ['polling'] });
 
     this.peerOptions =
       process.env.NODE_ENV === "production"
