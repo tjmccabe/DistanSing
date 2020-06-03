@@ -47,6 +47,7 @@ class ShowEventItem extends React.Component {
     const year = new Date(event.date).getFullYear();
     const hour = new Date(event.date).getHours();
     const minute = new Date(event.date).getMinutes();
+
     return (
       <div
         className="show-item"

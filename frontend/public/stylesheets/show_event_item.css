@@ -212,3 +212,24 @@
 .delete-button svg {
   align-self: center;
 }
+
+.no-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  color: lightgray;
+}
+
+.no-events h2 {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 20px
+}
+
+.no-events img{
+  height: 100px;
+  width: 100px;
+  margin-bottom: 30px;
+  opacity: 75%;
+}

@@ -47,6 +47,7 @@ class ArtistShow extends React.Component {
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     ) : []
 
+
     const ArtistEvents =
         <div className="event-index-container">
           <h1>Events from {artist.artistname}:</h1>
@@ -77,7 +78,11 @@ class ArtistShow extends React.Component {
                   />
                 </div>
               ))) : (
-                <h1>You have no upcoming events.</h1>
+                <div className="no-events">
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg"/>
+                  <h2>There are no upcoming events.</h2>
+                </div>
+                
               )
             ) : (
               Past[0] ? (
@@ -89,7 +94,10 @@ class ArtistShow extends React.Component {
                   />
                 </div>
               ))) : (
-                <h1>You have not hosted any events.</h1>
+                <div className="no-events">
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" />
+                  <h2>There are no past events.</h2>
+                </div>
               )
             )}
           </div>
