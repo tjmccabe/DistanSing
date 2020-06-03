@@ -17,16 +17,18 @@ const cors = require("cors");
 const customGenerationFunction = () =>
   (Math.random().toString(36) + "0000000000000000000").substr(2, 16);
 
-
+let server;
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
   app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
+  server = app.listen(443);
+} else {
+  server = app.listen(9000);
 }
 
-const server = app.listen(9000);
 const peerServer = ExpressPeerServer(server, {
   path: '/myapp',
   allow_discovery: true,
