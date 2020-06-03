@@ -15,7 +15,7 @@ class Splash extends React.Component {
 
   componentDidMount() {
     this.props.fetchArtists()
-      .then(() => this.props.fetchEvents())
+      // .then(() => this.props.fetchEvents())
 
     if (this.soons) {
       let soony = document.getElementById('soon-carousel')
