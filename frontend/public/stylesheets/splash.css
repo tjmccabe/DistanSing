@@ -270,6 +270,10 @@
 }
 
 .featured-stream-text span {
+  background-color: darkgreen;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+  padding: 8px 10px 0;
   margin-bottom: 10px;
   font-size: 26px;
   color: white;
