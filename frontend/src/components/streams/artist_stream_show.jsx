@@ -22,7 +22,7 @@ class ArtistStreamShow extends React.Component {
         ? {
             secure: true,
             host: "distansing.herokuapp.com",
-            port: 9000,
+            port: "",
             path: '/peerjs',
           }
         : {
