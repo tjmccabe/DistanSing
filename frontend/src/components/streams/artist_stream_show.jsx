@@ -21,7 +21,7 @@ class ArtistStreamShow extends React.Component {
       process.env.NODE_ENV === "production"
         ? {
             secure: true,
-            host: "https://distansingpeerserver.herokuapp.com",
+            host: "distansingpeerserver.herokuapp.com",
             port: ""
           }
         : {
