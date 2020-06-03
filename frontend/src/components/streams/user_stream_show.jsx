@@ -18,9 +18,9 @@ class UserStreamShow extends React.Component {
       process.env.NODE_ENV === "production"
         ? {
             secure: true,
-            host: "distansing.herokuapp.com",
+            host: "https://distansingpeerserver.herokuapp.com/",
             port: "",
-            path: '/peerjs',
+            path: '/',
           }
         : {
             // secure: true,
