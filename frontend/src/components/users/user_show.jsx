@@ -97,7 +97,7 @@ class UserShow extends React.Component {
                 </div>
               ))) : (
                 <div className="no-events">
-                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" />
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
                   <h2>No upcoming events. Reserve a ticket today!</h2>
                 </div>
               )
@@ -111,7 +111,7 @@ class UserShow extends React.Component {
                   </div>
                 ))) : (
                 <div className="no-events">
-                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" />
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
                   <h2>You haven't attended any events.</h2>
                 </div>
                 )
