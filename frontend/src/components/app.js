@@ -16,7 +16,7 @@ import Favicon from "react-favicon";
 
 const App = () => (
   <div>
-    <Favicon url="http://icons.iconarchive.com/icons/sonya/swarm/128/Microphone-icon.png" />
+    <Favicon url="https://icons.iconarchive.com/icons/sonya/swarm/128/Microphone-icon.png" />
     <Modal />
     <div id="app">
       <div>

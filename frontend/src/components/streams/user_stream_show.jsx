@@ -11,7 +11,8 @@ class UserStreamShow extends React.Component {
       video: ''
     };
     // Local variables
-    this.socket = io('http://localhost:9000');
+    // this.socket = io('http://localhost:9000');
+    this.socket = io();
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);

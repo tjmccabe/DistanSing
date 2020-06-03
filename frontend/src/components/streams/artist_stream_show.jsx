@@ -12,7 +12,8 @@ class ArtistStreamShow extends React.Component {
       video: ''
     };
     // Local variables
-    this.socket = io('http://localhost:9000');
+    // this.socket = io('http://localhost:9000');
+    this.socket = io();
 
     this.connections = new Set();
     
