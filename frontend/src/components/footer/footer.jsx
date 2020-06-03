@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   const us = { 
@@ -31,25 +32,27 @@ const Footer = () => {
             <div key={idx} className="footer-item-container">
               <img
                 className="foot-pic"
-                src="https://distansing-dev.s3-us-west-1.amazonaws.com/tj.png"
+                src={us[engineer].pic}
                 alt=""
               />
               <div className="footer-item-content">
                 <div>{engineer}</div>
                 <div className="footer-icons">
                   <a href={us[engineer].github}>
-                    <img
+                    <FaGithub className="footer-git-logo"/>
+                    {/* <img
                       className="footer-git-logo"
                       src="https://distansing-dev.s3-us-west-1.amazonaws.com/git_og.png"
                       alt=""
-                    />
+                    /> */}
                   </a>
                   <a href={us[engineer].linkedin}>
-                    <img
+                    <FaLinkedin className="footer-li-logo"/>
+                    {/* <img
                       className="footer-li-logo"
                       src="https://distansing-dev.s3-us-west-1.amazonaws.com/linked_in_icon.png"
                       alt=""
-                    />
+                    /> */}
                   </a>
                 </div>
               </div>

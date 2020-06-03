@@ -1,36 +1,69 @@
 /* User Show Container */
 
 .user-show-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
   height: 100%;
+}
+
+.background-user-show {
+  box-sizing: border-box;
+  background-position: 50%;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 180px);
+}
+
+.background-user-show-filter {
+  min-height: calc(100vh - 180px);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  width: 100vw;
 }
 
 .user-show-main {
   display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0px 20px;
   margin-top: 50px;
 }
 
+.user-bio-fixed {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 500px;
+}
+
 .user-bio {
+  width: 500px;
+  top: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
-  height: 250px;
   box-sizing: border-box;
+  position: fixed;
 }
 
 .user-bio h1 {
   font-family: 'Abril Fatface';
   font-size: 35px;
   margin: 20px;
+  color: white;
 }
 
 .user-bio-text {
-  font-size: 15px;
-  color: grey;
+  line-height: 1.4em;
+  font-size: 20px;
+  height: 7em;
+  overflow: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+  color: white;
 }
 
 .user-pic-container {

@@ -10,6 +10,7 @@ import EventCreateContainer from './events/event_create_container';
 import ArtistEditFormContainer from './artists/artist_edit_form_container';
 import UserShowContainer from "./users/user_show_container";
 import SearchIndex from "./search/search_index";
+import FeaturedShowContainer from "./events/featured_show_container";
 import Footer from "./footer/footer";
 import Favicon from "react-favicon";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
           <Route path="/artists/:id" component={ArtistShowContainer} />
           <Route path="/events/create" component={EventCreateContainer} />
+          <Route path="/events/featured" component={FeaturedShowContainer}></Route>
           <Route path="/events/:id" component={EventShowContainer} />
           <Route path="/users/:id" component={UserShowContainer} />
           <Route path="/search/:fragment" component={SearchIndex} />

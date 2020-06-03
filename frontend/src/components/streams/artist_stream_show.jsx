@@ -25,7 +25,9 @@ class ArtistStreamShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvent(this.props.eventId)
+    if (!this.props.featured) {
+      this.props.fetchEvent(this.props.eventId)
+    }
   }
 
   componentWillUnmount() {
@@ -57,7 +59,9 @@ class ArtistStreamShow extends React.Component {
           const formData = new FormData()
           formData.append('id', this.props.eventId);
           formData.append('streaming', true);
-          this.props.updateEvent(formData)
+          if (!this.props.featured) {
+            this.props.updateEvent(formData)
+          }
         },
         error: (err) => {
           alert("cannot access your camera");
@@ -65,10 +69,22 @@ class ArtistStreamShow extends React.Component {
         },
       });
       
-      const peer = new Peer()
+      const peer = new Peer(
+      //   "4321", {
+      //   host: "localhost",
+      //   port: 9000,
+      //   iceServers: [
+      //     { urls: "stun:stun.l.google.com:19302" },
+      //     { urls: "stun:stun1.l.google.com:19302" },
+      //     { urls: "stun:stun2.l.google.com:19302" },
+      //   ],
+      //   // path: "/peer",
+      // }
+      );
       this.peer = peer
   
       peer.on("connection", connection => {
+        console.log("this succeeded")
         peer.call(connection.peer, this.localstream);
         this.connections.add(connection)
       })
@@ -80,9 +96,14 @@ class ArtistStreamShow extends React.Component {
       
       this.socket.on("requestArtistConnect", userId => {
         peer.connect(userId);
+
+        console.log("this is the artist side")
+        console.log(userId)
       })
     });
-    setTimeout(() => this.endEvent(), 18000000)
+    if (!this.props.featured) {
+      setTimeout(() => this.endEvent(), 18000000)
+    }
   }
 
   endEvent() {
