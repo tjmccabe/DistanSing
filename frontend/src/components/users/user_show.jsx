@@ -58,15 +58,14 @@ class UserShow extends React.Component {
         new Date(ev.date).getTime() > new Date().getTime()
       ))
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    ) : [];
+    ) : []
 
     const Past = user.userEvents && Object.values(user.userEvents)[0] ? (
       Object.values(user.userEvents).filter(ev => {
-  
         return new Date(ev.date).getTime() < new Date().getTime()
       })
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-      ) : [];
+      ) : []
 
     const UserEvents =
       <div className="event-index-container">
