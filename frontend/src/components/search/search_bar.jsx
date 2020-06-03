@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
 
   handleEnter(e) {
     if (e.key === 'Enter') {
-      if (this.props.history.location.pathname.slice(0, 7) === '/search') {
+      if (this.props.history.location.pathname.slice(0, 7) === '/search' && this.state.fragment !== '') {
         this.handleSearchSubmit();
         window.location.reload();
       } else {
