@@ -23,13 +23,13 @@ class ArtistStreamShow extends React.Component {
             secure: true,
             host: "distansing.herokuapp.com",
             port: 443,
-            path: '/peerjs/myapp',
+            path: '/peerjs',
           }
         : {
             // secure: true,
             host: "localhost",
             port: 9000,
-            path: '/peerjs/myapp',
+            path: '/peerjs',
             ssl: {
               key: "",
               cert: "",
@@ -91,7 +91,7 @@ class ArtistStreamShow extends React.Component {
       });
       
       const peer = new Peer(
-        this.props.artist._id, this.peerOptions
+        this.peerOptions
       //   "4321", {
       //   host: "localhost",
       //   port: 9000,

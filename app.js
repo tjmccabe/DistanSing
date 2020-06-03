@@ -24,13 +24,12 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
-  server = app.listen(443);
+  server = app.listen(process.env.PORT);
 } else {
   server = app.listen(9000);
 }
 
 const peerServer = ExpressPeerServer(server, {
-  path: '/myapp',
   allow_discovery: true,
 });
 app.use('/peerjs', peerServer);
