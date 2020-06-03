@@ -31,7 +31,7 @@
 .owner-actions {
   display: flex;
   justify-content: space-between;
-  padding: 40px 70px 0px;
+  padding: 10px 70px 0px;
   box-sizing: border-box;
   width: 100%;
   max-width: 1250px;
@@ -116,7 +116,7 @@
   flex-direction: column;
   align-items: center;
   width: 500px;
-  top: 25%;
+  top: 20%;
   box-sizing: border-box;
   position: fixed;
   color: white;
@@ -158,7 +158,7 @@
 .artist-bio-text {
   min-width: 400px;
   font-size: 20px;
-  width: 75%;
+  width: 100%;
   padding: 10px 10px;
   overflow: auto;
   box-sizing: border-box;
