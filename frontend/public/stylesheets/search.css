@@ -93,6 +93,7 @@
 }
 
 .search-dropdown-item:hover, .index-search-link:hover {
+  cursor: pointer;
   opacity: 0.5;
 }
 
@@ -144,6 +145,11 @@
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
+  color: white
+}
+
+.search-events-results {
+  color: white;
 }
 
 .artist-search-item {

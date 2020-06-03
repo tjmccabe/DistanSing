@@ -174,19 +174,6 @@
   border-radius: 15px;
 }
 
-.event-show-pic-filter {
-  background-color: rgba(0, 0, 0, .08);
-  border-radius: 15px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-}
-
-.event-show-pic-filter:hover {
-  background-color: rgba(0, 0, 0, .15);
-  cursor: pointer;
-}
-
 .event-show-body {
   height: 200px;
   min-width: 120px;

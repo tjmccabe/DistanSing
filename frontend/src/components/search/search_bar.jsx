@@ -4,6 +4,7 @@ import SearchDropdown from './search_dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from 'react-router-dom';
+import { debounce } from 'throttle-debounce';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -20,17 +21,17 @@ class SearchBar extends React.Component {
   }
 
   closeDropdown() {
-    this.setState({ openDropdown: false });
+    this.setState({ openDropdown: false, fragment: '', searchResults: null });
   }
 
   handleInput(e) {
+    console.log(e.target.value)
     if (e.target.value === '') {
-      this.setState({ openDropdown: false, fragment: '' });
+      this.setState({ openDropdown: false, fragment: '', searchResults: null });
     } else {
-      this.search(e.target.value)
-        .then(this.setState({ openDropdown: true, fragment: e.target.value }))
+      this.search(e.target.value);
+      this.setState({ fragment: e.target.value, openDropdown: true })
     }
-    this.setState({ fragment: e.target.value })
   }
 
   handleEnter(e) {
@@ -40,7 +41,7 @@ class SearchBar extends React.Component {
         window.location.reload();
       } else {
         this.handleSearchSubmit();
-      }    
+      }
     }
   }
 
@@ -51,7 +52,7 @@ class SearchBar extends React.Component {
     }
   }
 
-  search = async function (fragment) {
+  search = debounce(200, async function (fragment) {
     let results = {};
     axios.post("/api/artists/search", { fragment })
       .then(res => {
@@ -59,10 +60,11 @@ class SearchBar extends React.Component {
         axios.post("/api/events/search", { fragment })
           .then(res => {
             results.events = res.data;
+            console.log(results);
             this.setState({ searchResults: results })
           })
       })
-  }
+  })
 
   render() {
     const { fragment, searchResults, openDropdown } = this.state;
