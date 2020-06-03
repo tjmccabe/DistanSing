@@ -30,7 +30,6 @@ export default class LiveChat extends React.Component {
   scroll() {
     // logic to autoscroll to the bottom, but only if a user is already at the 
     // bottom of the chat window
-    // debugger
     this.messageBox.scrollTop = this.messageBox.scrollHeight;
   }
 
