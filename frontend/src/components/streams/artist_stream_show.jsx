@@ -17,16 +17,25 @@ class ArtistStreamShow extends React.Component {
 
     this.connections = new Set();
 
-    this.peerOptions = process.env.NODE_ENV === 'production' ? {
-      secure: true,
-      host: 'distansing.herokuapp.com',
-      port: 443,
-    } : {
-      // secure: true,
-      // host: '/',
-      // port: 9000,
-      debug: 3
-    };
+    this.peerOptions =
+      process.env.NODE_ENV === "production"
+        ? {
+            secure: true,
+            host: "distansing.herokuapp.com",
+            port: 443,
+          }
+        : {
+            // secure: true,
+            host: "localhost",
+            port: 9000,
+            path: '/peerjs/myapp',
+            ssl: {
+              key: "",
+              cert: "",
+            },
+            proxied: true,
+            debug: 3,
+          };
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
