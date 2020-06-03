@@ -27,7 +27,7 @@
   width: 100%;
   height: 100%;
   min-height: calc(90vh - 60px);
-  background-color: rgba(245, 245, 245, .87);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .event-show-container {
@@ -44,10 +44,23 @@
   margin: 0 0 40px;
 }
 
+.event-show-calendar {
+  position: relative;
+}
+
 .react-calendar {
   zoom: 0.6;
   border-radius: 10px;
   padding: 10px;
+}
+
+.calendar-filter {
+  position: absolute;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .event-show-countdown {
@@ -55,6 +68,7 @@
   justify-content: center;
   width: 500px;
   margin: 0 50px;
+  color: lightgray;
 }
 
 .countdown-live-now {
@@ -165,22 +179,42 @@
   justify-content: flex-start;
 }
 
+.pic-contain {
+  width: 300px;
+  max-height: 250px;
+  /* height: min-content; */
+}
+
 .event-show-pic {
   box-sizing: border-box;
-  height: 200px;
-  min-width: 220px;
+  /* height: fit-content; */
+  /* min-height: 150px; */
+  /* min-width: 150px; */
+  height: 100%;
+  /* width: auto; */
+  /* max-height: 220px; */
+  /* min-width: 300px; */
   background-position: 50%;
   background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 15px;
 }
 
+.event-show-pic-filter {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .event-show-body {
-  height: 200px;
+  height: 250px;
   min-width: 120px;
   margin-left: 15px;
   padding: 0 15px;
   border-radius: 5px;
   box-sizing: border-box;
+  color: lightgray;
 }
 
 .event-show-name {
@@ -196,7 +230,7 @@
 }
 
 .event-artistname-link {
-  color: #3D5A80;
+  color: lightgray;
   text-decoration: underline;
   font-size: 22px;
 }
@@ -245,6 +279,7 @@
   font-size: 20px;
   height: 30px;
   width: 100%;
+  color: lightgray;
 }
 
 #start-streaming-event-show {
@@ -283,4 +318,8 @@
   font-size: 50px;
   font-weight: bold;
   color: #3D5A80;
+}
+
+.event-show-upcoming .show-item {
+  background-color: lightgray;
 }
