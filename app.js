@@ -25,10 +25,13 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
 }
+// app.options("localhost:9000/peerjs/myapp", cors());
+// app.use(cors());
 
 const server = app.listen(9000);
 const peerServer = ExpressPeerServer(server, {
-  path: '/myapp'
+  path: '/myapp',
+  allow_discovery: true,
 });
 app.use('/peerjs', peerServer);
 
@@ -38,7 +41,7 @@ mongoose
   .catch((err) => console.log(err));
 
 
-// app.use(cors());
+
 // const peerServer = ExpressPeerServer(httpserver, {
 //   debug: true,
 //   proxied: true,

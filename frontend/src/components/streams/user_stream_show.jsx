@@ -14,16 +14,25 @@ class UserStreamShow extends React.Component {
     // this.socket = io('http://localhost:9000');
     this.socket = io();
 
-    this.peerOptions = process.env.NODE_ENV === 'production' ? {
-      secure: true,
-      host: 'distansing.herokuapp.com',
-      port: 443,
-    } : {
-      // secure: true,
-      // host: '/',
-      // port: 9000,
-      debug: 3
-    };
+    this.peerOptions =
+      process.env.NODE_ENV === "production"
+        ? {
+            secure: true,
+            host: "distansing.herokuapp.com",
+            port: 443,
+          }
+        : {
+            // secure: true,
+            host: "localhost",
+            port: 9000,
+            path:'/peerjs/myapp',
+            ssl: {
+              key: "",
+              cert: "",
+            },
+            proxied: true,
+            debug: 3,
+          };
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
@@ -34,8 +43,8 @@ class UserStreamShow extends React.Component {
   componentDidMount() {
     // const vid = document.querySelector('#rVideo');
     // vid.addEventListener('canplay', e => {
-      // e.target.play()
-      // setTimeout(() => e.target.play(), 2000)
+    //   e.target.play()
+    //   setTimeout(() => e.target.play(), 2000)
     // })
   }
 
@@ -114,7 +123,7 @@ class UserStreamShow extends React.Component {
           </div>
         </div>
         <div className="stream-content">
-          <video id="rVideo" controls muted={false} autoPlay={true}></video>
+          <video id="rVideo" controls muted={true} autoPlay={true}></video>
           <LiveChatContainer socket={this.socket} />
         </div>
         {DescriptionBlock}

@@ -112,7 +112,7 @@ function seed() {
   let Quaranchella = new Event({
     name: "Quaranchella",
     description:
-      "The Quaranchella Valley Music and Arts Festival is an weekly music and arts festival held on the world's greatest virtual concert site based out of San Francisco, California. It was co-founded by Danny Huang, Glen Park, Darrick Yong, and TJ McCabe and has stood a monument to their humble beginnings ever since.",
+      "The Quaranchella Valley Music and Arts Festival is a weekly music and arts festival held on the world's greatest virtual concert site based out of San Francisco, California. It was co-founded by Danny Huang, Glen Park, Darrick Yong, and TJ McCabe and has stood a monument to their humble beginnings ever since.",
     date: faker.date.between(
       `${year}-0${month}-${day}`,
       `${year}-0${month}-${day + 1}`
