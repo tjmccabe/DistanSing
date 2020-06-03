@@ -25,7 +25,9 @@ class ArtistStreamShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvent(this.props.eventId)
+    if (!this.props.featured) {
+      this.props.fetchEvent(this.props.eventId)
+    }
   }
 
   componentWillUnmount() {
@@ -57,7 +59,9 @@ class ArtistStreamShow extends React.Component {
           const formData = new FormData()
           formData.append('id', this.props.eventId);
           formData.append('streaming', true);
-          this.props.updateEvent(formData)
+          if (!this.props.featured) {
+            this.props.updateEvent(formData)
+          }
         },
         error: (err) => {
           alert("cannot access your camera");
@@ -97,7 +101,9 @@ class ArtistStreamShow extends React.Component {
         // console.log(userId)
       })
     });
-    setTimeout(() => this.endEvent(), 18000000)
+    if (!this.props.featured) {
+      setTimeout(() => this.endEvent(), 18000000)
+    }
   }
 
   endEvent() {

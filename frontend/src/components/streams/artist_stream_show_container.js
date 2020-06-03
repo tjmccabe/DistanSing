@@ -5,7 +5,7 @@ import ArtistStreamShow from './artist_stream_show';
 
 const mSTP = (state, ownProps) => ({
   eventId: ownProps.match.params.id,
-  event: state.entities.events[ownProps.match.params.id]
+  event: ownProps.event || state.entities.events[ownProps.match.params.id]
 })
 
 const mDTP = (dispatch) => ({
