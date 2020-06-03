@@ -70,8 +70,8 @@ class UserStreamShow extends React.Component {
     })
 
     peer.on("error", err => {
-      alert(`User error has occurred: ${err}`);
-      console.log(err);
+      // alert(`User error has occurred: ${err}`);
+      console.log(`User error has occurred: ${err}`);
     })
   }
 

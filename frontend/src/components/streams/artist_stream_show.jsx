@@ -86,8 +86,8 @@ class ArtistStreamShow extends React.Component {
       })
   
       peer.on("error", err => {
-        alert(`Artist error has occurred: ${err}`);
-        console.log(err);
+        // alert(`Artist error has occurred: ${err}`);
+        console.log(`Artist error has occurred: ${err}`);
       })
       
       this.socket.on("requestArtistConnect", userId => {
