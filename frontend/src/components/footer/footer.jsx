@@ -40,19 +40,9 @@ const Footer = () => {
                 <div className="footer-icons">
                   <a href={us[engineer].github}>
                     <FaGithub className="footer-git-logo"/>
-                    {/* <img
-                      className="footer-git-logo"
-                      src="https://distansing-dev.s3-us-west-1.amazonaws.com/git_og.png"
-                      alt=""
-                    /> */}
                   </a>
                   <a href={us[engineer].linkedin}>
                     <FaLinkedin className="footer-li-logo"/>
-                    {/* <img
-                      className="footer-li-logo"
-                      src="https://distansing-dev.s3-us-west-1.amazonaws.com/linked_in_icon.png"
-                      alt=""
-                    /> */}
                   </a>
                 </div>
               </div>
