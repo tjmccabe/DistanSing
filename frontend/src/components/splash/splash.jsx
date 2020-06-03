@@ -9,11 +9,25 @@ class Splash extends React.Component {
     super(props);
     this.linkToArtistShow = this.linkToArtistShow.bind(this);
     this.linkToEventShow = this.linkToEventShow.bind(this);
+    this.artistTries = 0;
+    this.eventTries = 0;
   }
 
   componentDidMount() {
     this.props.fetchArtists()
-      .then(() => this.props.fetchEvents())
+      // .then(() => this.props.fetchEvents())
+
+    if (this.soons) {
+      let soony = document.getElementById('soon-carousel')
+
+      if (soony) {
+        new Flickity(soony, {
+          draggable: false,
+          wrapAround: true,
+          groupCells: 3
+        })
+      };
+    }
   }
 
   // componentDidUpdate(prevProps) {
@@ -56,17 +70,23 @@ class Splash extends React.Component {
       return (date > now)
     })
     if ((soonStreams).length < 3) {
-      this.props.fetchEvents()
+      if (this.eventTries < 2) {
+        this.props.fetchEvents()
+        this.eventTries++;
+      }
       return null;
     }
     let shuffled = this.shuffle(soonStreams).slice(0,18)
 
-    return shuffled[0] ? <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} /> : null;
+    return <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} />;
   }
 
   getTrendingArtists() {
     if (Object.values(this.props.artists).length < 6) {
-      this.props.fetchArtists()
+      if (this.ArtistTries < 2) {
+        this.props.fetchArtists()
+        this.ArtistTries++;
+      }
       return null;
     }
     let shuffled = this.shuffle(this.props.artists).slice(0,8)

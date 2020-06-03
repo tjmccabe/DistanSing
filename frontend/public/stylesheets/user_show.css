@@ -1,13 +1,6 @@
 /* User Show Container */
 
 .user-show-container {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 550px; */
   height: 100%;
 }
 
@@ -27,30 +20,33 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  /* display: flex; */
-  /* flex-direction: column; */
   align-items: center;
   width: 100vw;
-  /* height: 550px; */
 }
 
-.user-content-container {
+.user-show-main {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
   width: 100%;
-  box-sizing: border-box;
-  padding-right: 20px;
+  padding: 0px 20px;
+  margin-top: 50px;
+}
+
+.user-bio-fixed {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 500px;
 }
 
 .user-bio {
-  width: 40%;
-  box-sizing: border-box;
+  width: 500px;
+  top: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  position: fixed;
 }
 
 .user-bio h1 {
@@ -120,97 +116,4 @@
 
 .visible {
   display: inline;
-}
-
-
-/* User Event Index Container */
-
-.user-event-index-container {
-  width: 60%;
-  max-height: 600px;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-}
-
-.user-event-index-container h1 {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  font-size: 25px;
-  height: 30px;
-  width: 100%;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.user-event-toggle {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.user-event-toggle h2 {
-  font-size: 18px;
-  text-align: center;
-  border-top: 1.2px ridge grey;
-  border-left: 1.2px ridge grey;
-  border-right: 1.2px ridge grey;
-}
-
-.user-event-toggle h2:first-child {
-  border-radius: 5px 0 0 0;
-}
-
-.user-event-toggle h2:nth-child(2) {
-  border-radius: 0 5px 0 0;
-}
-
-.user-event-toggle h2:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.upcoming-events-tab, .past-events-tab {
-  background-color: rgb(235, 235, 235);
-  width: 110px;
-  height: 50px;
-  line-height: 55px;
-}
-
-.tab-selected {
-  background-color: #3D5A80;
-  color: white;
-}
-
-.user-event-divider {
-  height: 30px;
-  background-color: #3D5A80;
-  border-radius: 0 5px 0 0;
-}
-
-.show-items-container {
-  background-color: #3D5A80;
-  border-radius: 0 0 5px 5px;
-  height: 100%;
-  overflow-y: scroll;
-  box-sizing: border-box;
-}
-
-.show-items-container::-webkit-scrollbar-thumb {
-  background-color: white;
-}
-
-.show-item-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.refund-btn {
-  position: absolute;
-  right: 18%;
-  height: 30px;
-  line-height: 25px;
-  margin-left: 20px;
 }

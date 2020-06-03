@@ -29,7 +29,7 @@ class EventShow extends React.Component {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
-    if (!this.props.startingSoon || this.props.artist._id === this.props.currentId) return;
+    if (!this.props.startingSoon) return;
     if (this.props.event && this.props.event.streaming && !this.state.streaming) {
       this.startStreaming()
       return

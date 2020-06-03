@@ -68,9 +68,9 @@ class UserShow extends React.Component {
     ) : []
 
     const UserEvents =
-      <div className="user-event-index-container">
+      <div className="event-index-container">
         <h1>Your Events</h1>
-        <div className="user-event-toggle">
+        <div className="event-toggle">
           <h2 
             className="upcoming-events-tab tab-selected"
             onClick={e => this.handleUpcoming(e)}>
@@ -82,7 +82,6 @@ class UserShow extends React.Component {
             Past
             </h2>
         </div>
-        <div className="user-event-divider"></div>
         <div className="show-items-container">
           {this.state.upcoming ? (
             OnlyUpcoming[0] ? (
@@ -97,7 +96,10 @@ class UserShow extends React.Component {
 
                 </div>
               ))) : (
-                <h1>No upcoming events. Reserve a ticket today!</h1>
+                <div className="no-events">
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
+                  <h2>No upcoming events. Reserve a ticket today!</h2>
+                </div>
               )
           ) : (
               Past[0] ? (
@@ -108,7 +110,10 @@ class UserShow extends React.Component {
                     />
                   </div>
                 ))) : (
-                  <h1>You haven't attended any events.</h1>
+                <div className="no-events">
+                  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/guitar+(1).svg" alt="guitar-svg"/>
+                  <h2>You haven't attended any events.</h2>
+                </div>
                 )
             )}
         </div>
@@ -128,27 +133,30 @@ class UserShow extends React.Component {
           }}
         >
           <div className="background-artist-show-filter">
-            <div className="user-content-container">
-              <div className="user-bio">  
-                <div className="user-pic-container">
-                  <div
-                    className="user-pic"
-                    style={{ backgroundImage: `url(${user.imageurl})` }}
-                  >
-                    <div className="user-pic-filter"></div>
+            <div className="user-show-main">
+              <div className="user-bio-fixed">
+                <div className="user-bio">  
+                  <div className="user-pic-container">
+                    <div
+                      className="user-pic"
+                      style={{ backgroundImage: `url(${user.imageurl})` }}
+                    >
+                      <div className="user-pic-filter"></div>
+                    </div>
+                    <button
+                      className="user-pic-edit-btn"
+                      onClick={this.handleUploadClick}>
+                      <FontAwesomeIcon icon={faCamera} /> Update Image
+                    </button>
+                    <input
+                      className="hidden-upload"
+                      hidden type="file"
+                      onChange={this.handleUserEdit} />
                   </div>
-                  <button
-                    className="user-pic-edit-btn"
-                    onClick={this.handleUploadClick}>
-                    <FontAwesomeIcon icon={faCamera} /> Update Image
-                  </button>
-                  <input
-                    className="hidden-upload"
-                    hidden type="file"
-                    onChange={this.handleUserEdit} />
+                  <h1>{user.username}</h1>
+                  <div className="user-bio-text">Member since {memberSince}</div> 
                 </div>
-                <h1>{user.username}</h1>
-                <div className="user-bio-text">Member since {memberSince}</div> 
+
               </div>
               {UserEvents}
             </div>

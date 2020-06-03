@@ -214,8 +214,8 @@
 
 .featured-stream-content {
   position: relative;
-  width: 80%;
-  max-width: 900px;
+  width: 75%;
+  max-width: 690px;
   min-width: 500px;
   height: 100%;
   transition: 0.4s;
