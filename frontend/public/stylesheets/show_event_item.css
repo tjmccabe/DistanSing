@@ -1,6 +1,7 @@
 .event-index-container {
   width: 700px;
   height: 100%;
+  min-height: 620px;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
