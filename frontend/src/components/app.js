@@ -26,7 +26,7 @@ const App = () => (
           <Route path="/artists/:id/edit" component={ArtistEditFormContainer} />
           <Route path="/artists/:id" component={ArtistShowContainer} />
           <Route path="/events/create" component={EventCreateContainer} />
-          <Route path="/events/5ed6fb0a53f31b4146dda754" component={FeaturedShowContainer}></Route>
+          <Route path="/events/5ed7347c41adb24b89847ddd" component={FeaturedShowContainer}></Route>
           <Route path="/events/:id" component={EventShowContainer} />
           <Route path="/users/:id" component={UserShowContainer} />
           <Route path="/search/:fragment" component={SearchIndex} />
