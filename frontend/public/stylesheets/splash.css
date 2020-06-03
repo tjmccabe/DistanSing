@@ -278,6 +278,8 @@
   font-size: 26px;
   color: white;
   font-weight: bold;
+  height: 35px;
+  line-height: 25px;
 }
 
 .featured-stream-text-right {
