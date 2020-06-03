@@ -12,7 +12,7 @@ class ArtistStreamShow extends React.Component {
       video: ''
     };
     // Local variables
-    this.socket = io();
+    this.socket = io('http://localhost:9000');
 
     this.connections = new Set();
     
@@ -80,21 +80,21 @@ class ArtistStreamShow extends React.Component {
       this.peer = peer
   
       peer.on("connection", connection => {
-        console.log("this succeeded")
+        console.log("Artist received connection. Making call.")
         peer.call(connection.peer, this.localstream);
         this.connections.add(connection)
       })
   
       peer.on("error", err => {
-        alert(`An error has occurred: ${err}`);
+        alert(`Artist error has occurred: ${err}`);
         console.log(err);
       })
       
       this.socket.on("requestArtistConnect", userId => {
         peer.connect(userId);
 
-        console.log("this is the artist side")
-        console.log(userId)
+        console.log("artist received user's request to connect " + userId)
+        // console.log(userId)
       })
     });
     setTimeout(() => this.endEvent(), 18000000)

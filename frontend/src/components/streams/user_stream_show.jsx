@@ -11,7 +11,7 @@ class UserStreamShow extends React.Component {
       video: ''
     };
     // Local variables
-    this.socket = io();
+    this.socket = io('http://localhost:9000');
     
     // Bound functions
     this.startPlaying = this.startPlaying.bind(this);
@@ -49,19 +49,20 @@ class UserStreamShow extends React.Component {
     this.peer = peer
 
     peer.on("open", () => {
-      console.log(peer.id)
+      console.log("user has opened " + peer.id)
       this.socket.emit("userId", peer.id);
     })
 
     peer.on("connection", connection => {
-      console.log("user connected")
+      console.log("User received connection to artist")
       peer.connect(connection.peer);
-      connection.on("data", data => {
+      // connection.on("data", data => {
         // console.log(data);
-      })
+      // })
     })
     
     peer.on("call", call => {
+      console.log("User received call. Answering.")
       call.answer();
       call.on("stream", stream => {
         this.recStream(stream, "rVideo")
@@ -69,7 +70,7 @@ class UserStreamShow extends React.Component {
     })
 
     peer.on("error", err => {
-      alert(`An error has occurred: ${err}`);
+      alert(`User error has occurred: ${err}`);
       console.log(err);
     })
   }
