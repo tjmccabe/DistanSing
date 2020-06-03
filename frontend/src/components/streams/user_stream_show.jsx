@@ -19,6 +19,14 @@ class UserStreamShow extends React.Component {
     this.startPlaying();
   }
 
+  componentDidMount() {
+    const vid = document.querySelector('#rVideo');
+    vid.addEventListener('canplay', e => {
+      e.target.play()
+      setTimeout(() => e.target.play(), 2000)
+    })
+  }
+
   componentWillUnmount() {
     if (this.peer) {
       this.peer.disconnect()
@@ -93,7 +101,7 @@ class UserStreamShow extends React.Component {
           </div>
         </div>
         <div className="stream-content">
-          <video id="rVideo" controls muted={false} autoPlay={true} ></video>
+          <video id="rVideo" controls muted={false} autoPlay={true}></video>
           <LiveChatContainer socket={this.socket} />
         </div>
         {DescriptionBlock}

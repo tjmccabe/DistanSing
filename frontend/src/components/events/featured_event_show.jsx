@@ -13,37 +13,36 @@ class EventShow extends React.Component {
     super(props);
     this.state = {
       streaming: false,
-      renderTrigger: false
+      isTime: false
     }
-    // this.startStreaming = this.startStreaming.bind(this);
     this.showArtist = this.showArtist.bind(this);
     this.buyTicket = this.buyTicket.bind(this);
+    this.startStreaming = this.startStreaming.bind(this);
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ streaming: true }), 20000)
+    const { artist, currentId } = this.props;
+    setTimeout(() => {
+      if (artist.id !== currentId && currentId) {
+        this.setState({ streaming: true })
+      }
+      this.setState({ isTime: true })
+    }, 10000)
   }
 
   componentDidUpdate(prevProps) {
-    // clearInterval(this.timer)
     if (this.props.location.pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
-    // if (!this.props.startingSoon || this.props.artist.id === this.props.currentId) return;
-    // if (this.props.event && this.props.event.streaming && !this.state.streaming) {
-    //   this.startStreaming()
-    //   return
-    // }
-    // if (this.props.event && !this.state.streaming) {
-    //   let renderTrigger = (this.state.renderTrigger ? false : true);
-    //   this.timer = setInterval(() => this.setState({ renderTrigger }), 5000)
-    // }
+    if (this.props.event && this.props.event.streaming && !this.state.streaming) {
+      this.startStreaming()
+      return
+    }
   }
 
-  // startStreaming() {
-  //   if (this.timer) clearInterval(this.timer);
-  //   this.setState({ streaming: true });
-  // }
+  startStreaming() {
+    this.setState({ streaming: true });
+  }
 
   buyTicket() {
     this.props.updateUser({ id: this.props.currentId, events: this.props.event.id })
@@ -68,15 +67,14 @@ class EventShow extends React.Component {
     const { artist, event, currentId, currentUserPurchase, loggedInAsArtist } = this.props;
     if (!event || !artist) return null;
     const date = new Date(event.date);
-    const isTime = date.getTime() < (new Date()).getTime() ? true : false;
     const hasTicket = currentUserPurchase ? currentUserPurchase.events[event.id] : false;
-    const StartStreamButton = (currentId === artist.id && isTime) ? (
+    const StartStreamButton = (currentId === artist.id && this.state.isTime) ? (
       <button
         onClick={this.startStreaming}
         id="start-streaming-event-show"
       >
         It's showtime!
-        <br />
+        <br/>
         Click Here to Go LIVE
       </button>
     ) : null;
@@ -103,22 +101,22 @@ class EventShow extends React.Component {
         <div className="event-show-price">(Free)</div>
       </div>
     ) : (
-                <div onClick={this.buyTicket} className="event-show-buy">
-                  <div className="event-show-buynow">
-                    <FontAwesomeIcon icon={faShoppingCart} /> Buy Now
+      <div onClick={this.buyTicket} className="event-show-buy">
+        <div className="event-show-buynow">
+          <FontAwesomeIcon icon={faShoppingCart} /> Buy Now
         </div>
-                  <div className="event-show-price">$ {event.price.toFixed(2)}</div>
-                </div>
-              );
+        <div className="event-show-price">$ {event.price.toFixed(2)}</div>
+      </div>
+    );
 
-    const CalendarElement = isTime ? (
+    const CalendarElement = this.state.isTime ? (
       <div className="fake-calendar"></div>
     ) : (
-        <Calendar value={date} />
+      <Calendar value={date} />
       )
 
     if (this.state.streaming && currentId === artist.id) return this.showStream()
-
+    
     if (this.state.streaming && hasTicket) return this.showStream()
 
     return (
@@ -166,11 +164,10 @@ class EventShow extends React.Component {
                     date={date}
                     hasTicket={hasTicket}
                     StartStreamButton={StartStreamButton}
-                    isOver={event.over}
+                    isOver={false}
                   />
                 </div>
               </div>
-
               <div className="event-show-upcoming">
                 <div className="event-upcoming-container">
                   <h1>

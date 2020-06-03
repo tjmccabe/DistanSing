@@ -11,7 +11,7 @@ class FeaturedStream extends React.Component {
   }
 
   render() {
-    const event = { name: "Inside Lands Music Festival!", date: "2020-05-17T20:00:00.000Z", imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/inside_lands_banner.jpg"  };
+    const event = { id: '5ed6fb0a53f31b4146dda754', name: "Inside Lands Music Festival!", date: "2020-05-17T20:00:00.000Z", imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/inside_lands_banner.jpg"  };
     const artist = { artistname: "DJ Sanitizzy" };
     return (
       <div
@@ -21,7 +21,7 @@ class FeaturedStream extends React.Component {
         <div className="featured-parent">
           <div 
             className="featured-stream-content"
-            onClick={() => this.props.history.push("/events/featured")}
+            onClick={() => this.props.history.push(`/events/${event.id}`)}
           >
             <img
               className="featured-stream-img"
@@ -30,8 +30,10 @@ class FeaturedStream extends React.Component {
             />
             <div className="featured-stream-text">
               <h2>{event.name}</h2>
-              <h2>{artist.artistname}</h2>
-              <span>Free</span>
+              <div className="featured-stream-text-right">
+                <span>Free</span>
+                <h2>{artist.artistname}</h2>
+              </div>
             </div>
           </div>
         </div>

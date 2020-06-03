@@ -111,7 +111,9 @@ class ArtistStreamShow extends React.Component {
     formData.append('id', this.props.eventId);
     formData.append('streaming', false);
     formData.append('over', true);
-    this.props.updateEvent(formData)
+    if (!this.props.featured) {
+      this.props.updateEvent(formData)
+    }
     this.stopPlaying()
     this.props.history.push(`/artists/${this.props.event.artist}`)
   }

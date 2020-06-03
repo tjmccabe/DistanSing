@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   height: 200px;
+  color: white;
 }
 
 .streaming-container {
@@ -62,6 +63,7 @@
   font-size: 22px;
   font-weight: bold;
   line-height: 1.5em;
+  color: white;
 }
 
 .user-stream-title {
