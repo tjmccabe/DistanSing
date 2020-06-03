@@ -11,7 +11,7 @@ class FeaturedStream extends React.Component {
   }
 
   render() {
-    const event = { id: '5ed7347c41adb24b89847ddd', name: "Inside Lands Music Festival!", date: "2020-05-17T20:00:00.000Z", imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/inside_lands_banner.jpg" };
+    const event = { id: '5ed744590740f350e8ccb2e0', name: "Inside Lands Music Festival!", date: "2020-05-17T20:00:00.000Z", imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/inside_lands_banner.jpg" };
     const artist = { artistname: "DJ Sanitizzy" };
     return (
       <div
