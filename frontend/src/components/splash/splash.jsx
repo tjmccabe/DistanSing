@@ -69,7 +69,7 @@ class Splash extends React.Component {
       // return (date > now && date < (now + 86400000))
       return (date > now)
     })
-    if ((soonStreams).length < 3) {
+    if ((soonStreams).length < 4) {
       if (this.eventTries < 2) {
         this.props.fetchEvents()
         this.eventTries++;
