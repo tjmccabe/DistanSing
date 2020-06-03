@@ -91,6 +91,8 @@ class ArtistShow extends React.Component {
                   <ShowEventItem
                     event={event}
                     owner={owner}
+                    deleteEvent={deleteEvent}
+                    fetchArtist={fetchArtist}
                   />
                 </div>
               ))) : (

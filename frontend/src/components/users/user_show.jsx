@@ -58,14 +58,15 @@ class UserShow extends React.Component {
         new Date(ev.date).getTime() > new Date().getTime()
       ))
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    ) : []
+    ) : [];
 
     const Past = user.userEvents && Object.values(user.userEvents)[0] ? (
-      Object.values(user.events).filter(ev => (
-        new Date(ev.date).getTime() < new Date().getTime()
-      ))
-        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    ) : []
+      Object.values(user.userEvents).filter(ev => {
+  
+        return new Date(ev.date).getTime() < new Date().getTime()
+      })
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+      ) : [];
 
     const UserEvents =
       <div className="event-index-container">
@@ -75,12 +76,12 @@ class UserShow extends React.Component {
             className="upcoming-events-tab tab-selected"
             onClick={e => this.handleUpcoming(e)}>
             Upcoming
-            </h2>
+          </h2>
           <h2 
             className="past-events-tab"
             onClick={e => this.handlePast(e)}>
             Past
-            </h2>
+          </h2>
         </div>
         <div className="show-items-container">
           {this.state.upcoming ? (
