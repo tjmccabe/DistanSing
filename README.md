@@ -33,6 +33,7 @@ As a user, feel free to browse and discover events that peak your interest. Log 
 </p>
 DistanSing allows artists to live stream their event using only a webcam, or just a mobile device!
 <br>
+
 Live streaming is achieved through Peer.js. When an artist starts streaming, the `startPlaying()` function runs and the `stopPlaying()` function executes when the artist ends the event.
 
 ```
