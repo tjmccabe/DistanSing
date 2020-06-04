@@ -27,7 +27,7 @@ class EventShow extends React.Component {
         this.setState({ streaming: true })
       }
       this.setState({ isTime: true })
-    }, 10000)
+    }, 15000)
   }
 
   componentDidUpdate(prevProps) {
@@ -57,7 +57,7 @@ class EventShow extends React.Component {
     if (artist.id === currentId) {
       return <ArtistStreamShowContainer artist={artist} event={event} featured={true} />
     } else if (currentId) {  
-      return <UserStreamShow artist={artist} event={event} currentId={currentId}/>
+      return <UserStreamShow artist={artist} event={event} currentId={currentId} />
     } else {
       return null
     }
