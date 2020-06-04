@@ -5,15 +5,16 @@ View the [live site](https://distansing.herokuapp.com).
   <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/splash.png" width="1200">
 </p>
 DistanSing is a virtual-event hosting app developed during the COVID-19 pandemic as a solution for artists/bands to continue catering to their fans/audience. It was implemented using the following technologies:
+
 + **Frontend**: React.js, Redux
 + **Backend**: MongoDB, Express.js
 + **Others**: JavaScript, Node.js, Socket.io, PeerJS, Amazon S3
 
 ## Table of Contents
-+ Event CRUD
-+ Live Streaming
-+ Live Chat
-+ Dynamic Search
++ [Event CRUD](https://github.com/tjmccabe/DistanSing#events)
++ [Live Streaming](https://github.com/tjmccabe/DistanSing#live-streaming)
++ [Live Chat](https://github.com/tjmccabe/DistanSing#live-chat)
++ [Dynamic Search](https://github.com/tjmccabe/DistanSing#dynamic-search)
 
 ## Events
 ### Artists
@@ -31,7 +32,7 @@ As a user, feel free to browse and discover events that peak your interest. Log 
   <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/live_stream.png" width="600">
 </p>
 DistanSing allows artists to live stream their event using only a webcam, or just a mobile device!
-
+<br>
 Live streaming is achieved through Peer.js. When an artist starts streaming, the `startPlaying()` function runs and the `stopPlaying()` function executes when the artist ends the event.
 
 ```
@@ -102,7 +103,15 @@ Interact with artist or your fans during an event using our real-time chat. Use 
 Search artists or events using the search bar for quick navigation! See the first five artists/events that match, or view all results!
 
 ## Contact
-+ TJ McCabe:
-+ Darrick Yong:
-+ Danny Huang:
++ TJ McCabe: 
+[Github](https://github.com/tjmccabe/) 
+[LinkedIn](https://www.linkedin.com/in/tj-mccabe/)
++ Darrick Yong: 
+[Github](https://github.com/darrickyong/) 
+[LinkedIn](https://www.linkedin.com/in/darrickyong/)
++ Danny Huang: 
+[Github](https://github.com/DannyRH27) 
+[LinkedIn](https://www.linkedin.com/in/dannyrhuang/)
 + Glen Park: 
+[Github](https://github.com/glenpark00) 
+[LinkedIn](https://www.linkedin.com/in/glen-park-20ab961a9/)
