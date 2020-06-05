@@ -29,7 +29,7 @@ As a user, feel free to browse and discover events that peak your interest. Log 
 
 ## Live Streaming
 <p align="center">
-  <img src="https://distansing-dev.s3-us-west-1.amazonaws.com/live_stream.png" width="600">
+  <img src="misc/OG Zack.gif" width="600">
 </p>
 DistanSing allows artists to live stream their event using only a webcam, or just a mobile device!
 <br>
