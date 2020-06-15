@@ -4,7 +4,7 @@ export const RECEIVE_ARTISTS = "RECEIVE_ARTISTS";
 
 const receiveArtist = (payload) => ({
   type: RECEIVE_ARTIST,
-  payload,
+  payload
 });
 
 const receiveArtists = (artists) => ({
