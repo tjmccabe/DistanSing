@@ -85,8 +85,8 @@ class ArtistStreamShow extends React.Component {
           }
         },
         error: (err) => {
-          console.log(err)
-          alert("cannot access your camera");
+          // console.log(err)
+          alert("Cannot access your camera");
         },
       });
       

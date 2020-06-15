@@ -88,16 +88,16 @@ export default class LiveChat extends React.Component {
             <span role="img" aria-label="smiley">😀</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            <span role="img" aria-label="worried">😟</span>
+            <span role="img" aria-label="worried">😍</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            <span role="img" aria-label="heart-eyes">😍</span>
+            <span role="img" aria-label="heart-eyes">🔥</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            <span role="img" aria-label="thumbs-up">👍🏼</span>
+            <span role="img" aria-label="thumbs-up">🤘</span>
           </div>
           <div onClick={this.handleEmoji} className="stream-emoji">
-            <span role="img" aria-label="thumbs-down">👎🏼</span>
+            <span role="img" aria-label="thumbs-down">👍</span>
           </div>
         </div>
       </div>
