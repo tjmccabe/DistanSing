@@ -67,27 +67,34 @@ app.get('/stream', (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "public", "index.html"));
 } )
 io.on("connection", (socket) => {
-  // callback function after connection is made to the client
-  // console.log("User has connected");
-  // recieves a stream event, then sends the data to other sockets
-  socket.on("stream", (data) => {
-    io.sockets.emit("stream", data);
+  
+  socket.on("room", (room) => {
+    // console.log(room)
+    socket.join(room);
+    
+      // callback function after connection is made to the client
+      // console.log("User has connected");
+      // recieves a stream event, then sends the data to other sockets
+      socket.on("stream", (data) => {
+        io.to(room).emit("stream", data);
+      });
+      socket.on("userId", (userId) => {
+        io.to(room).emit("requestArtistConnect", userId);
+      });
+      socket.on("chat", (message, name) => {
+        io.to(room).emit("chat", message, name);
+      });
+      socket.on("viewerCount", (count) => {
+        io.to(room).emit("newVC", count);
+      });
+      socket.on("stoppedViewing", () => {
+        io.to(room).emit("VC--");
+      });
+      socket.on("startedViewing", () => {
+        io.to(room).emit("VC++");
+      });
   });
-  socket.on("userId", (userId) => {
-    io.sockets.emit("requestArtistConnect", userId);
-  });
-  socket.on("chat", (message, name) => {
-    io.sockets.emit("chat", message, name);
-  });
-  socket.on("viewerCount", (count) => {
-    io.sockets.emit("newVC", count);
-  });
-  socket.on("stoppedViewing", () => {
-    io.sockets.emit("VC--");
-  });
-  socket.on("startedViewing", () => {
-    io.sockets.emit("VC++");
-  });
+
 });
 // --------------------------
 app.use(bodyParser.urlencoded({

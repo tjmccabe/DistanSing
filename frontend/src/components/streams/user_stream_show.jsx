@@ -15,6 +15,10 @@ class UserStreamShow extends React.Component {
     // this.socket = io('http://localhost:9000');
     this.socket = io({ transports: ['polling'] });
 
+    this.socket.on('connect', () => {
+      this.socket.emit('room', this.props.event._id);
+    });
+
     this.socket.on("newVC", (viewerCount) => {
       this.setState({ viewerCount: viewerCount });
     })
