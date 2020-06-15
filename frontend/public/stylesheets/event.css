@@ -72,18 +72,19 @@
 }
 
 .countdown-live-now {
-  font-size: 100px;
+  font-size: 70px;
   font-weight: 900;
   text-align: center;
   animation:live 1s infinite;
+  white-space: pre-wrap;
 }
 
 @keyframes live{
-  0%{ color: #3D5A80 }
-  25%{ color: rgba(61, 90, 128, 0.836) }
-  50%{ color: rgba(61, 90, 128, 0.685) }
-  75%{ color: rgba(61, 90, 128, 0.466)}
-  100%{ color: rgba(61, 90, 128, 0.253) }
+  0%{ color: rgb(90, 138, 201) }
+  25%{ color: rgba(90, 138, 201, 0.9) }
+  50%{ color: rgba(90, 138, 201, 0.685) }
+  75%{ color: rgba(90, 138, 201, 0.466)}
+  100%{ color: rgba(90, 138, 201, 0.253) }
 }
 
 .countdown-timer {
@@ -263,6 +264,13 @@
   /* background: #F2F2F2; */
 }
 
+.event-index-none {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  padding-top: 100px;
+}
+
 .event-index-item {
   height: 40px;
   width: 500px;
@@ -314,7 +322,7 @@
 .over-text {
   font-size: 50px;
   font-weight: bold;
-  color: #3D5A80;
+  color: rgb(91, 140, 204);
 }
 
 .event-show-upcoming .show-item {
