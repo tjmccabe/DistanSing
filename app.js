@@ -79,6 +79,15 @@ io.on("connection", (socket) => {
   socket.on("chat", (message, name) => {
     io.sockets.emit("chat", message, name);
   });
+  socket.on("viewerCount", (count) => {
+    io.sockets.emit("newVC", count);
+  });
+  socket.on("stoppedViewing", () => {
+    io.sockets.emit("VC--");
+  });
+  socket.on("startedViewing", () => {
+    io.sockets.emit("VC++");
+  });
 });
 // --------------------------
 app.use(bodyParser.urlencoded({

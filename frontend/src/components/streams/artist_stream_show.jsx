@@ -9,7 +9,8 @@ class ArtistStreamShow extends React.Component {
     super(props);
     this.state = {
       playing: false,
-      video: ''
+      video: '',
+      viewerCount: 0
     };
     // Local variables
     // this.socket = io('http://localhost:9000');
@@ -34,7 +35,7 @@ class ArtistStreamShow extends React.Component {
               cert: "",
             },
             proxied: true,
-            debug: 3,
+            // debug: 3,
           };
     
     // Bound functions
@@ -109,6 +110,7 @@ class ArtistStreamShow extends React.Component {
         // console.log("Artist received connection. Making call.")
         peer.call(connection.peer, this.localstream);
         this.connections.add(connection)
+        console.log(peer.connections)
       })
   
       peer.on("error", err => {
@@ -121,6 +123,20 @@ class ArtistStreamShow extends React.Component {
         // console.log("artist received user's request to connect " + userId)
         // console.log(userId)
       })
+
+      this.socket.on("VC--", () => {
+        this.setState({ viewerCount: this.state.viewerCount - 1 }, () => {
+          this.socket.emit("viewerCount", this.state.viewerCount);
+        })
+      })
+
+      this.socket.on("VC++", () => {
+        let atLeast1 = Math.max(1, this.state.viewerCount + 1)
+        this.setState({ viewerCount: atLeast1 }, () => {
+          this.socket.emit("viewerCount", this.state.viewerCount);
+        })
+      })
+
     });
     if (!this.props.featured) {
       setTimeout(() => this.endEvent(), 18000000)
@@ -159,6 +175,7 @@ class ArtistStreamShow extends React.Component {
           <button id="stop-streaming" onClick={this.endEvent}>
             End Event
           </button>
+          <div className="viewer-count">Total Viewers: {this.state.viewerCount}</div>
 
           <div className="stream-title">
             <div>You're livestreaming {event.name}!</div>
