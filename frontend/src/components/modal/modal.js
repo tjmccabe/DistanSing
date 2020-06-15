@@ -5,7 +5,7 @@ import ArtistLoginContainer from "../session/artist_login_container";
 import ArtistSignupContainer from "../session/artist_signup_container";
 import UserLoginContainer from "../session/user_login_container";
 import UserSignupContainer from "../session/user_signup_container";
-import Tutorial from "../tutorial/tutorial";
+import TutorialContainer from "../tutorial/tutorial_container";
 
 function Modal({ modal, closeModal, loggedIn, openModal }) {
 
@@ -52,7 +52,7 @@ function Modal({ modal, closeModal, loggedIn, openModal }) {
       break;
     case "tutorial":
       component = (
-        <Tutorial/>
+        <TutorialContainer/>
       )
       break;
     default:

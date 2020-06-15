@@ -1,6 +1,7 @@
-.tutorial {
+.tutorial-modal {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   width: 60vw;
   background-color: lightgray;
   border-radius: 5px;
@@ -9,9 +10,35 @@
   box-sizing: border-box;
 }
 
+.tutorial-intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.tutorial-intro ul {
+  padding: 15px 0px 0px 15px;
+}
+
+.tutorial-intro li {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.tutorial-intro div {
+  min-width: 60px;
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+.tutorial {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
 .artist-tutorial,
 .user-tutorial {
-  padding: 10px 10px 10px 20px;
+  padding: 10px 10px 0px 20px;
   width: 50%;
 }
 
@@ -31,4 +58,12 @@
 
 .tutorial li {
   padding: 5px 0px 5px 2px;
+}
+
+.tutorial a {
+  text-decoration: underline;
+}
+
+.tutorial a:hover {
+  color: #3D5A80;
 }
