@@ -61,8 +61,33 @@
   margin: 5px 0px 0px 15px;
 }
 
-.nav-bar-tutorial:hover {
+.nav-bar-tutorial:hover, 
+.tutorial-first-visit:hover {
   color: rgb(221, 221, 221);
+}
+
+.tutorial-first-visit {
+  position: absolute;
+  background: rgb(148, 148, 148);
+  color: white;
+  border-radius: 7px;
+  width: 150px;
+  opacity: 0.8;
+  top: 13px;
+  left: 300px;
+  padding: 10px 0px 3px 10px;
+  /* margin: 10px 0px 0px 5px; */
+}
+
+.tutorial-first-visit:before {
+  position: absolute;
+  left: -9px;
+  top: 8px;
+  display: inline-block;
+  border-top: 9px solid transparent;
+  border-right: 9px solid rgb(148, 148, 148);
+  border-bottom: 9px solid transparent;
+  content: "";
 }
 
 .nav-bar-welcome {
