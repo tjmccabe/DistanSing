@@ -48,6 +48,72 @@ function seed() {
   //   artists.push(artist)
   //   Artist.collection.insertOne(artist)
   // }
+  let CXCW = new Event({
+    name: "Couch By Couchwest Festival",
+    description:
+      "Couch by Couchwest is an annual conglomeration of social distancing, human welfare, and music festivals organized jointly by DistanSing Corporation. It launched in 2020 in order to showcase the frontend skills of its organizers.",
+    date: faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    ),
+    artist: "5ed72c0810435f4933a2a981",
+    price: 30,
+    imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/SXSW.png",
+  });
+  let EDC = new Event({
+    name: "Electric DistanSing Carnival",
+    description:
+      "Electric DistanSing Carnival, commonly known as EDC, is the largest virtual electronic dance music festival in the world. The annual flagship event is now held weekly, put on by The Demo Artists.",
+    date: faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    ),
+    artist: "5ed7247de51f52f959016c5e",
+    price: 50,
+    imageurl:
+      "https://distansing-dev.s3-us-west-1.amazonaws.com/ElectricDaisyLogo-1024x463.png",
+  });
+  let Quaranchella = new Event({
+    name: "Quaranchella",
+    description:
+      "The Quaranchella Valley Music and Arts Festival is a weekly music and arts festival held on the world's greatest virtual concert site based out of San Francisco, California. It was co-founded by Danny Huang, Glen Park, Darrick Yong, and TJ McCabe and has stood a monument to their humble beginnings ever since.",
+    date: faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    ),
+    artist: "5ed72c0810435f4933a2a981",
+    price: 40,
+    imageurl:
+      "https://distansing-dev.s3-us-west-1.amazonaws.com/Quaranchella.jpg",
+  });
+  let CageCoach = new Event({
+    name: "CageCoach Festival",
+    description:
+      "The Cagecoach Festival is one of the biggest country music festivals in the world, taking place weekly on the DistanSing webapp. It is both a celebration of country music and software engineering skills.",
+    date: faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    ),
+    artist: "5ed7247de51f52f959016c5e",
+    price: 35,
+    imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/Cagecoach.png",
+  });
+  let EZ = new Event({
+    name: "Electric Zoom Festival",
+    description:
+      "Electric Zoom is a weekly electronic music festival held virtually on the DistanSing webapp. The festival represents all genres of electronic music, bringing top international DJs and live acts from multiple countries to four stages.",
+    date: faker.date.between(
+      `${year}-0${month}-${day}`,
+      `${year}-0${month}-${day + 1}`
+    ),
+    artist: "5ed7247de51f52f959016c5e",
+    price: 45,
+    imageurl:
+      "https://distansing-dev.s3-us-west-1.amazonaws.com/electriczoom.png",
+  });
+  let splash_seeds = [CXCW, EZ, CageCoach, EDC, Quaranchella]
+  Event.collection.insert(splash_seeds)
+
 
   const current_date = new Date
   const month = current_date.getMonth() + 1
@@ -95,70 +161,6 @@ function seed() {
     Event.collection.insertOne(event)
   }
 
-  let CXCW = new Event({
-    name: "Couch By Couchwest Festival",
-    description:
-      "Couch by Couchwest is an annual conglomeration of social distancing, human welfare, and music festivals organized jointly by DistanSing Corporation. It launched in 2020 in order to showcase the frontend skills of its organizers.",
-    date: faker.date.between(
-      `${year}-0${month}-${day}`,
-      `${year}-0${month}-${day + 1}`
-    ),
-    artist: "5ed72c0810435f4933a2a981",
-    price: 130,
-    imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/SXSW.png",
-  });
-  let EDC = new Event({
-    name: "Electric DistanSing Carnival",
-    description:
-      "Electric DistanSing Carnival, commonly known as EDC, is the largest virtual electronic dance music festival in the world. The annual flagship event is now held weekly, put on by The Demo Artists.",
-    date: faker.date.between(
-      `${year}-0${month}-${day}`,
-      `${year}-0${month}-${day + 1}`
-    ),
-    artist: "5ed7247de51f52f959016c5e",
-    price: 350,
-    imageurl:
-      "https://distansing-dev.s3-us-west-1.amazonaws.com/ElectricDaisyLogo-1024x463.png",
-  });
-  let Quaranchella = new Event({
-    name: "Quaranchella",
-    description:
-      "The Quaranchella Valley Music and Arts Festival is a weekly music and arts festival held on the world's greatest virtual concert site based out of San Francisco, California. It was co-founded by Danny Huang, Glen Park, Darrick Yong, and TJ McCabe and has stood a monument to their humble beginnings ever since.",
-    date: faker.date.between(
-      `${year}-0${month}-${day}`,
-      `${year}-0${month}-${day + 1}`
-    ),
-    artist: "5ed72c0810435f4933a2a981",
-    price: 400,
-    imageurl:
-      "https://distansing-dev.s3-us-west-1.amazonaws.com/Quaranchella.jpg",
-  });
-  let CageCoach = new Event({
-    name: "CageCoach Festival",
-    description:
-      "The Cagecoach Festival is one of the biggest country music festivals in the world, taking place weekly on the DistanSing webapp. It is both a celebration of country music and software engineering skills.",
-    date: faker.date.between(
-      `${year}-0${month}-${day}`,
-      `${year}-0${month}-${day + 1}`
-    ),
-    artist: "5ed7247de51f52f959016c5e",
-    price: 300,
-    imageurl: "https://distansing-dev.s3-us-west-1.amazonaws.com/Cagecoach.png",
-  });
-  let EZ = new Event({
-    name: "Electric Zoom Festival",
-    description:
-      "Electric Zoom is a weekly electronic music festival held virtually on the DistanSing webapp. The festival represents all genres of electronic music, bringing top international DJs and live acts from multiple countries to four stages.",
-    date: faker.date.between(
-      `${year}-0${month}-${day}`,
-      `${year}-0${month}-${day + 1}`
-    ),
-    artist: "5ed7247de51f52f959016c5e",
-    price: 240,
-    imageurl:
-      "https://distansing-dev.s3-us-west-1.amazonaws.com/electriczoom.png",
-  });
-  let splash_seeds = [CXCW, EZ, CageCoach, EDC, Quaranchella]
-  Event.collection.insert(splash_seeds)
+
 }
 module.exports = seed;

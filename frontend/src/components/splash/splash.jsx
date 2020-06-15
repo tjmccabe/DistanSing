@@ -76,9 +76,11 @@ class Splash extends React.Component {
       }
       return null;
     }
-    let shuffled = this.shuffle(soonStreams).slice(0,18)
 
-    return <Carousel streams={shuffled} type="soon" linkToEventShow={this.linkToEventShow} />;
+    // let shuffled = this.shuffle(soonStreams).slice(0,18)
+    let upcoming = Object.values(soonStreams).sort()
+    // console.log(shuffled)
+    return <Carousel streams={upcoming} type="soon" linkToEventShow={this.linkToEventShow} />;
   }
 
   getTrendingArtists() {
