@@ -78,12 +78,12 @@ class UserStreamShow extends React.Component {
     this.peer = peer
 
     peer.on("open", () => {
-      console.log("user has opened " + peer.id)
+      // console.log("user has opened " + peer.id)
       this.socket.emit("userId", peer.id);
     })
 
     peer.on("connection", connection => {
-      console.log("User received connection to artist")
+      // console.log("User received connection to artist")
       peer.connect(connection.peer);
       // connection.on("data", data => {
         // console.log(data);
@@ -91,7 +91,7 @@ class UserStreamShow extends React.Component {
     })
     
     peer.on("call", call => {
-      console.log("User received call. Answering.")
+      // console.log("User received call. Answering.")
       call.answer();
       call.on("stream", stream => {
         this.recStream(stream, "rVideo")

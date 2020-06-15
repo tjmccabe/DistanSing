@@ -13,9 +13,9 @@ const io = require("socket.io")(httpserver);
 const cron = require("node-cron");
 const seed = require("./seed");
 const { ExpressPeerServer } = require("peer");
-const cors = require("cors");
-const customGenerationFunction = () =>
-  (Math.random().toString(36) + "0000000000000000000").substr(2, 16);
+// const cors = require("cors");
+// const customGenerationFunction = () =>
+//   (Math.random().toString(36) + "0000000000000000000").substr(2, 16);
 
 
 let server;
@@ -68,7 +68,7 @@ app.get('/stream', (req, res) => {
 } )
 io.on("connection", (socket) => {
   // callback function after connection is made to the client
-  console.log("User has connected");
+  // console.log("User has connected");
   // recieves a stream event, then sends the data to other sockets
   socket.on("stream", (data) => {
     io.sockets.emit("stream", data);

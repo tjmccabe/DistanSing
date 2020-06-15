@@ -85,6 +85,7 @@ class ArtistStreamShow extends React.Component {
           }
         },
         error: (err) => {
+          console.log(err)
           alert("cannot access your camera");
         },
       });
@@ -105,7 +106,7 @@ class ArtistStreamShow extends React.Component {
       this.peer = peer
   
       peer.on("connection", connection => {
-        console.log("Artist received connection. Making call.")
+        // console.log("Artist received connection. Making call.")
         peer.call(connection.peer, this.localstream);
         this.connections.add(connection)
       })
@@ -118,7 +119,7 @@ class ArtistStreamShow extends React.Component {
       this.socket.on("requestArtistConnect", userId => {
         peer.connect(userId);
 
-        console.log("artist received user's request to connect " + userId)
+        // console.log("artist received user's request to connect " + userId)
         // console.log(userId)
       })
     });
