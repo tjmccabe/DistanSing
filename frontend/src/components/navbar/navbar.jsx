@@ -7,6 +7,12 @@ import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { animateScroll } from "react-scroll";
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstVisit: true,
+    }
+  }
   componentDidMount() {
     this.listenForScroll()
   }
@@ -61,9 +67,16 @@ class NavBar extends React.Component {
     const Tutorial = (
       <div 
         className="nav-bar-tutorial"
-        onClick={() => openModal("tutorial")}
+        onClick={() => {
+          this.setState({firstVisit: false});
+          openModal("tutorial")}}
       >
         Tutorial
+        {this.state.firstVisit ? (
+          <div className="tutorial-first-visit"> 
+            If this is your first time on our site, click here to begin.
+          </div>
+        ): null}
       </div>
     )
     const ArtistLogin = loggedIn ? null : (
