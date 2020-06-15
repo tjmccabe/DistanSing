@@ -16,6 +16,10 @@ class ArtistStreamShow extends React.Component {
     // this.socket = io('http://localhost:9000');
     this.socket = io({ transports: ['polling'] });
 
+    this.socket.on('connect', () => {
+      this.socket.emit('room', this.props.eventId);
+    });
+
     this.connections = new Set();
 
     this.peerOptions =
@@ -73,6 +77,7 @@ class ArtistStreamShow extends React.Component {
   }
 
   startPlaying() {
+    console.log(this.socket)
     this.setState({ playing: true }, () => {
       this.getMedia({
         success: (stream) => {

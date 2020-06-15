@@ -99,7 +99,7 @@ class Splash extends React.Component {
       trending.push(this.props.artists[splashArtistsIds[i]])
     }
     // let shuffled = this.shuffle(this.props.artists).slice(0,8)
-    console.log(trending)
+    // console.log(trending)
 
     return trending[0] ? <ArtistFeature artists={trending} linkToArtistShow={this.linkToArtistShow} /> : null
   }
