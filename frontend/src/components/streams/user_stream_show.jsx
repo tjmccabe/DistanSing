@@ -8,8 +8,8 @@ class UserStreamShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      video: '',
       viewerCount: 0,
+      video: false
     };
     // Local variables
     // this.socket = io('http://localhost:9000');
@@ -70,6 +70,9 @@ class UserStreamShow extends React.Component {
   }
 
   recStream(stream, elementId) {
+    if (stream) {
+      this.setState({ video: true });
+    }
     const video = document.getElementById(elementId);
     video.srcObject = stream;
     window.peerStream = stream;
@@ -129,6 +132,11 @@ class UserStreamShow extends React.Component {
       <div className="stream-description">Event description: "{event.description}"</div>
     ) : <div className="stream-description">Enjoy the show!</div>
 
+    const VideoContent = this.state.video ? <video id="rVideo" controls muted={true} autoPlay={true}></video> 
+      : <div className="stream-video-error">
+          <div>The artists's stream has been interrupted, please try refreshing the page in a moment</div>
+        </div>
+
     return(
       <div className="streaming-container">
         <div className="user-stream-title">
@@ -143,7 +151,7 @@ class UserStreamShow extends React.Component {
           <div className="viewer-count">Total Viewers: {this.state.viewerCount}</div>
         </div>
         <div className="stream-content">
-          <video id="rVideo" controls muted={true} autoPlay={true}></video>
+          {VideoContent}
           <LiveChatContainer socket={this.socket} />
         </div>
         {DescriptionBlock}
