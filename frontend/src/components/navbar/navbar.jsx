@@ -13,8 +13,10 @@ class NavBar extends React.Component {
       firstVisit: true,
     }
   }
+
   componentDidMount() {
     this.listenForScroll()
+    document.addEventListener("click", () => this.setState({firstVisit: false}))
   }
 
   componentWillUnmount() {
@@ -67,9 +69,7 @@ class NavBar extends React.Component {
     const Tutorial = (
       <div 
         className="nav-bar-tutorial"
-        onClick={() => {
-          this.setState({firstVisit: false});
-          openModal("tutorial")}}
+        onClick={() => {openModal("tutorial")}}
       >
         Tutorial
         {this.state.firstVisit ? (
