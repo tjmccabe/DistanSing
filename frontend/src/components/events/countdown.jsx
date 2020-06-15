@@ -75,7 +75,7 @@ class Countdown extends React.Component {
     const { days, hours, minutes, seconds } = this.state;
     const { hasTicket, StartStreamButton, artist, currentId, isOver } = this.props
 
-    const flashyText = hasTicket ? "Waiting for Artist" : "Live Now!"
+    const flashyText = hasTicket ? "Waiting for Artist" : 'Live Now!\nLog in to reserve a ticket'
 
     const topMiddle = isOver ? (
       <div className="over-text">This event has ended</div>

@@ -12,6 +12,14 @@ class EventsIndex extends React.Component {
       new Date(ev.date).getTime() > new Date().getTime()
     ))
 
+    if (!upcomingEvents.length) return (
+      <div className="event-index-container">
+        <div className="event-index-none">
+          (No upcoming events at this time)
+        </div>
+      </div>
+    )
+
     return (
       <div className="event-index-container">
         <div className="event-index">
