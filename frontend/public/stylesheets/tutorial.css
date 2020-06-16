@@ -13,6 +13,8 @@
 .tutorial-intro {
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #aaa;
 }
 
 .tutorial-intro ul {
@@ -34,11 +36,16 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  padding-top: 30px;
+}
+.artist-tutorial {
+  border-right: 1px solid #aaa;
 }
 
 .artist-tutorial,
 .user-tutorial {
-  padding: 10px 10px 0px 20px;
+  padding: 10px 0px 10px 20px;
+  margin-right: 10px;
   width: 50%;
 }
 
