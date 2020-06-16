@@ -176,13 +176,18 @@ video::-webkit-media-controls-current-time-display { display: none }
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 20px;
+}
+
+.stream-msg {
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .stream-name {
   font-weight: bold;
   margin-right: 5px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .stream-chat {
@@ -198,7 +203,7 @@ video::-webkit-media-controls-current-time-display { display: none }
 }
 
 #message-field {
-  font-size: 14px;
+  font-size: 18px;
   width: 75%;
   height: 20px;
   padding: 5px 10px;
