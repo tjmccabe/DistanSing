@@ -115,7 +115,7 @@ router.post("/register", (req, res) => {
 
                 jwt.sign(payload,
                   keys.secretOrKey,
-                  { expiresIn: '365d' },
+                  { expiresIn: '1d' },
                   (err, token) => {
                     res.json({
                       artist,
@@ -153,18 +153,33 @@ router.post('/login', (req, res) => {
           if (isMatch) {
             const payload = { id: artist.id, email: artist.email };
 
-            jwt.sign(
-              payload,
-              keys.secretOrKey,
-              { expiresIn: '365d' },
-              (err, token) => {
-                res.json({
-                  artist,
-                  success: true,
-                  token: 'Bearer ' + token
-                });
-              }
-            );
+            if (artist.id === '5ed72c0810435f4933a2a981') {
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: '365d' },
+                (err, token) => {
+                  res.json({
+                    artist,
+                    success: true,
+                    token: 'Bearer ' + token
+                  });
+                }
+              );
+            } else {
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: '1d' },
+                (err, token) => {
+                  res.json({
+                    artist,
+                    success: true,
+                    token: 'Bearer ' + token
+                  });
+                }
+              );
+            }
           } else {
             errors.password = 'Incorrect password'
             return res.status(400).json(errors);
