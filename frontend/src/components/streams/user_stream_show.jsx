@@ -138,7 +138,7 @@ class UserStreamShow extends React.Component {
 
     const VideoContent = this.state.video ? <video id="rVideo" controls muted={true} autoPlay={true}></video> 
       : <div className="stream-video-error">
-          <div>The artists's stream has been interrupted, please try refreshing the page in a moment</div>
+          <div>Syncing with Artist. If your event has not started in 10 seconds, please try refreshing.</div>
         </div>
 
     return(
