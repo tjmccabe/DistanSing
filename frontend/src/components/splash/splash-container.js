@@ -6,7 +6,8 @@ import { fetchArtists, fetchArtist } from "../../actions/artist_actions"
 
 const mapStateToProps = (state, ownProps) => ({
   events: Object.values(state.entities.events),
-  artists: Object.values(state.entities.artists)
+  artists: Object.values(state.entities.artists),
+  trendingArtists: state.entities.artists
 });
 
 const mapDispatchToProps = (dispatch) => ({
