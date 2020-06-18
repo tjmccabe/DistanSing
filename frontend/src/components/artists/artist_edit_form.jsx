@@ -40,11 +40,12 @@ export default class ArtistEditForm extends React.Component {
 
   prepareForm() {
     const formData = new FormData();
-    const { artistname, bio, imagefile } = this.state;
+    const { artistname, bio, imagefile, genre } = this.state;
     if (imagefile) formData.append('imagefile', imagefile);
     formData.append('id', this.props.artist._id);
     formData.append('artistname', artistname);
     formData.append('bio', bio);
+    formData.append('genre', genre);
     return formData;
   }
 
