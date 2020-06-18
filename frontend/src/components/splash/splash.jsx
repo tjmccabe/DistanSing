@@ -84,22 +84,28 @@ class Splash extends React.Component {
   }
 
   getTrendingArtists() {
-    if (Object.values(this.props.artists).length < 6) {
+    if (Object.keys(this.props.artists).length < 6) {
       if (this.ArtistTries < 2) {
         this.props.fetchArtists()
         this.ArtistTries++;
       }
       return null;
     }
-
-    let splashArtistsIds = ["65", "67", "20", "52", "45", "9", "32", "60"];
+    let splashArtistsIds = 
+      ["5ed72c0810435f4933a2a981", 
+        "5ed7247de51f52f959016c5e", 
+        "5edcddc8e983d90017165915", 
+        "5ed743f92449e20ea0502176", 
+        "5ed7446ed226eb0efe0eb32d", 
+        "5ee61848a600800017efa967", 
+        "5ed7479065cc90109a241221", 
+        "5ed7436eb759170e19d357ba"];
     let trending = [];
     
     for (let i = 0; i < splashArtistsIds.length; i++) {
-      trending.push(this.props.artists[splashArtistsIds[i]])
+      trending.push(this.props.trendingArtists[splashArtistsIds[i]])
     }
     // let shuffled = this.shuffle(this.props.artists).slice(0,8)
-    // console.log(trending)
 
     return trending[0] ? <ArtistFeature artists={trending} linkToArtistShow={this.linkToArtistShow} /> : null
   }
