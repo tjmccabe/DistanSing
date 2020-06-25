@@ -38,10 +38,10 @@ const Footer = () => {
               <div className="footer-item-content">
                 <div>{engineer}</div>
                 <div className="footer-icons">
-                  <a href={us[engineer].github}>
+                  <a href={us[engineer].github} target="_blank">
                     <FaGithub className="footer-git-logo"/>
                   </a>
-                  <a href={us[engineer].linkedin}>
+                  <a href={us[engineer].linkedin} target="_blank">
                     <FaLinkedin className="footer-li-logo"/>
                   </a>
                 </div>
