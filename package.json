@@ -40,7 +40,7 @@
     "url": "^0.11.0",
     "validate": "^5.1.0",
     "validate.js": "^0.13.1",
-    "validator": "^13.0.0",
+    "validator": "^13.7.0",
     "webrtc": "^1.14.1"
   },
   "devDependencies": {
